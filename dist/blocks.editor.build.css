@@ -10,8 +10,11 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-.wp-block-cgb-block-bu-learning-blocks {
-  background: #bada55;
+.wp-block-bulb-block-container {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(orange));
+  background-image: -webkit-linear-gradient(red, orange);
+  background-image: -o-linear-gradient(red, orange);
+  background-image: linear-gradient(red, orange);
   border: 0.2rem solid #292929;
   color: #292929;
   margin: 0 auto;

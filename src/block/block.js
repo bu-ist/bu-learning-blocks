@@ -1,8 +1,7 @@
 /**
- * BLOCK: bu-learning-blocks
+ * BLOCK: Block Container
  *
- * Registering a basic block with Gutenberg.
- * Simple block, renders and saves the same content without any interactivity.
+ * A container block that allows the nesting of other Gutenberg blocks.
  */
 
 //  Import CSS.
@@ -13,27 +12,27 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
 /**
- * Register: aa Gutenberg Block.
+ * Register: Gutenberg Block.
  *
  * Registers a new block provided a unique name and an object defining its
  * behavior. Once registered, the block is made editor as an option to any
  * editor interface where blocks are implemented.
  *
  * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
+ * @param  {string}   name     Block Container
  * @param  {Object}   settings Block settings.
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'cgb/block-bu-learning-blocks', {
+registerBlockType( 'bulb/block-container', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'sample-bu-learning-block' ), // Block title.
-	icon: 'welcome-learn-more', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	title: __( 'Block Container' ), // Block title.
+	icon: 'layout', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'bu-learning-block' ),
-		__( 'BULB Example' ),
-		__( 'create-guten-block' ),
+		__( 'BULB' ),
+		__( 'Block Container' ),
 	],
 
 	/**
@@ -50,7 +49,7 @@ registerBlockType( 'cgb/block-bu-learning-blocks', {
 			<div className={ props.className }>
 				<p>— Hello from the backend.</p>
 				<p>
-					BULB BLOCK: <code>bu-learning-blocks</code> is a new Gutenberg block
+					BULB BLOCK: <code>Block Container</code> is a new Gutenberg block
 				</p>
 				<p>
 					It was created via{ ' ' }

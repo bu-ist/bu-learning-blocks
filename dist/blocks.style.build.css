@@ -9,9 +9,10 @@
  *
  * CSS for both Frontend+Backend.
  */
-.wp-block-cgb-block-bu-learning-blocks {
+.wp-block-bulb-block-container {
   background: orangered;
   border: 0.2rem solid #292929;
+  border-radius: 30px;
   color: #292929;
   margin: 0 auto;
   max-width: 740px;

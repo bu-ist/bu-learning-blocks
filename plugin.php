@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: bu-learning-blocks
+ * Plugin Name: BU Learning Blocks
  * Plugin URI: http://www.bu.edu
- * Description: bu-learning-blocks — is a collection of tools to enable the easy creation of lessons with embedded self-assessment questions.
- * Author: Danny Crews, Carlos Silva
+ * Description: BU Learning Blocks — is a collection of tools to enable the easy creation of academic lessons with embedded self-assessment questions.
+ * Author: Danny Crews, Carlos Silva, Jonathan Williams
  * Author URI: http://www.bu.edu/
  * Version: 0.0.1
  * License: GPL2+
