@@ -101,7 +101,6 @@ const blockAttributes = {
 };
 
 class BULBContainerBlock extends Component {
-
 	render() {
 		// Setup the attributes
 		const {
@@ -124,7 +123,7 @@ class BULBContainerBlock extends Component {
 			isSelected,
 			editable,
 			className,
-			setAttributes
+			setAttributes,
 		} = this.props;
 
 		const onSelectImage = img => {
@@ -170,13 +169,13 @@ class BULBContainerBlock extends Component {
 					<div
 						class="bulb-container-content"
 						style={ {
-							maxWidth: `${containerMaxWidth}px`,
+							maxWidth: `${ containerMaxWidth }px`,
 						} }
 					>
 						<InnerBlocks />
 					</div>
 				</div>
-			</Container>
+			</Container>,
 		];
 	}
 }
