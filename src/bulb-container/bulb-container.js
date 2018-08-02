@@ -1,5 +1,5 @@
 /**
- * BLOCK: Block Container
+ * BLOCK: BULB Container
  *
  * A container block that allows the nesting of other Gutenberg blocks.
  */
@@ -26,9 +26,9 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
  */
 registerBlockType( 'bulb/block-container', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Block Container' ), // Block title.
+	title: __( 'BULB Container' ), // Block title.
 	icon: 'layout', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	category: 'bu-learning-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'bu-learning-block' ),
 		__( 'BULB' ),
