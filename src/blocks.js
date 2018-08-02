@@ -9,4 +9,4 @@
  * Webpack is compiling as the input file.
  */
 
-import './bulb-container/bulb-container.js';
+import './bulb-container/index.js';

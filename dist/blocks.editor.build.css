@@ -5,18 +5,24 @@
  * that are used across the project.
 */
 /**
- * #.# Editor Styles
- *
- * CSS for just Backend enqueued after style.scss
- * which makes it higher in priority.
+ * Editor styles for the admin
  */
-.wp-block-bulb-block-container {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(red), to(orange));
-  background-image: -webkit-linear-gradient(red, orange);
-  background-image: -o-linear-gradient(red, orange);
-  background-image: linear-gradient(red, orange);
-  border: 0.2rem solid #292929;
-  color: #292929;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem; }
+.bulb-block-block-container {
+  margin-bottom: 0; }
+
+.editor-block-list__layout [data-type="bu-learning-blocks/bulb-block-container"] {
+  margin-bottom: 1.2em; }
+
+.bulb-block-container-button .blocks-button__inline-link .editor-url-input {
+  display: inline-block;
+  width: auto; }
+
+.bulb-block-container-button .blocks-button__inline-link .components-button {
+  display: inline-block; }
+
+.bulb-block-container-button .blocks-button__inline-link svg {
+  vertical-align: middle;
+  margin-right: 8px; }
+
+.bulb-block-block-container h2.editor-rich-text__tinymce.mce-content-body {
+  line-height: 1.2; }
