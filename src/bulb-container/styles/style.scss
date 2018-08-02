@@ -1,5 +1,4 @@
 /**
- * CTA styles
  * Loads on front end and back end
  */
 
@@ -16,23 +15,23 @@
 		}
 	}
 
-	&.alignfull .block-container-inside,
-	&.alignfull .block-container-inside {
+	&.alignfull .bulb-container-inside,
+	&.alignfull .bulb-container-inside {
 		@media only screen and (min-width: 768px) {
 			max-width: 100%;
 			margin: 0 auto;
 		}
 	}
 
-	&.alignwide .block-container-inside,
-	&.alignwide .block-container-inside {
+	&.alignwide .bulb-container-inside,
+	&.alignwide .bulb-container-inside {
 		@media only screen and (min-width: 768px) {
 			max-width: 80%;
 			margin: 0 auto;
 		}
 	}
 
-	.block-container-image-wrap {
+	.bulb-container-image-wrap {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -41,19 +40,19 @@
 		z-index: 0;
 	}
 
-	.block-container-image {
+	.bulb-container-image {
 		object-fit: cover;
 		height: 100%;
 		width: 100%;
 		transition: .3s ease;
 	}
 
-	.block-container-content {
+	.bulb-container-content {
 		margin: 0 auto;
 		position: relative;
 	}
 
-	.block-container-image:not(.has-background-dim) {
+	.bulb-container-image:not(.has-background-dim) {
 		opacity: 0;
 	}
 

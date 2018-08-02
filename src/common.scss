@@ -6,8 +6,46 @@
 */
 
 // Colors.
-$black: rgb(41, 41, 41);
+$black: #293038;
 $white: #f4f4f4;
 $gray: #dedede;
+$lightgray: #626e81;
 $green: #bada55;
-$red: orangered;
+$accent: #5a3fd6;
+
+.center {
+    text-align: center;
+  }
+
+  .left {
+    text-align: left;
+  }
+
+  .right {
+    text-align: right;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .wp-block-columns .layout-column-1,
+    .wp-block-columns .layout-column-2 {
+      margin-right: 5%;
+    }
+  }
+
+  .wp-block-image {
+    margin-bottom: 1.2em;
+  }
+
+  .bulb-text-link {
+    color: inherit;
+    box-shadow: 0 -1px 0 inset;
+    text-decoration: none;
+    transition: .3s ease;
+
+    &:hover {
+      color: inherit;
+      box-shadow: 0 -2px 0 inset;
+      color: $accent;
+    }
+  }
+

@@ -4,8 +4,38 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.center {
+  text-align: center; }
+
+.left {
+  text-align: left; }
+
+.right {
+  text-align: right; }
+
+@media only screen and (min-width: 600px) {
+  .wp-block-columns .layout-column-1,
+  .wp-block-columns .layout-column-2 {
+    margin-right: 5%; } }
+
+.wp-block-image {
+  margin-bottom: 1.2em; }
+
+.bulb-text-link {
+  color: inherit;
+  -webkit-box-shadow: 0 -1px 0 inset;
+          box-shadow: 0 -1px 0 inset;
+  text-decoration: none;
+  -webkit-transition: .3s ease;
+  -o-transition: .3s ease;
+  transition: .3s ease; }
+  .bulb-text-link:hover {
+    color: inherit;
+    -webkit-box-shadow: 0 -2px 0 inset;
+            box-shadow: 0 -2px 0 inset;
+    color: #5a3fd6; }
+
 /**
- * CTA styles
  * Loads on front end and back end
  */
 .wp-block-bulb-block-container {
@@ -17,23 +47,23 @@
   .wp-block-bulb-block-container.alignfull .editor-block-list__block {
     max-width: 100%; }
   @media only screen and (min-width: 768px) {
-    .wp-block-bulb-block-container.alignfull .block-container-inside,
-    .wp-block-bulb-block-container.alignfull .block-container-inside {
+    .wp-block-bulb-block-container.alignfull .bulb-container-inside,
+    .wp-block-bulb-block-container.alignfull .bulb-container-inside {
       max-width: 100%;
       margin: 0 auto; } }
   @media only screen and (min-width: 768px) {
-    .wp-block-bulb-block-container.alignwide .block-container-inside,
-    .wp-block-bulb-block-container.alignwide .block-container-inside {
+    .wp-block-bulb-block-container.alignwide .bulb-container-inside,
+    .wp-block-bulb-block-container.alignwide .bulb-container-inside {
       max-width: 80%;
       margin: 0 auto; } }
-  .wp-block-bulb-block-container .block-container-image-wrap {
+  .wp-block-bulb-block-container .bulb-container-image-wrap {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     height: 100%;
     z-index: 0; }
-  .wp-block-bulb-block-container .block-container-image {
+  .wp-block-bulb-block-container .bulb-container-image {
     -o-object-fit: cover;
        object-fit: cover;
     height: 100%;
@@ -41,10 +71,10 @@
     -webkit-transition: .3s ease;
     -o-transition: .3s ease;
     transition: .3s ease; }
-  .wp-block-bulb-block-container .block-container-content {
+  .wp-block-bulb-block-container .bulb-container-content {
     margin: 0 auto;
     position: relative; }
-  .wp-block-bulb-block-container .block-container-image:not(.has-background-dim) {
+  .wp-block-bulb-block-container .bulb-container-image:not(.has-background-dim) {
     opacity: 0; }
   .wp-block-bulb-block-container .has-background-dim {
     opacity: .5; }
