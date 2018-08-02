@@ -5,6 +5,8 @@
  * Description: BU Learning Blocks — is a collection of tools to enable the easy creation of academic lessons with embedded self-assessment questions.
  * Author: Danny Crews, Carlos Silva, Jonathan Williams
  * Author URI: http://www.bu.edu/
+ * Text Domain: bulearningmodules
+ * Domain Path: /languages
  * Version: 0.0.1
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt

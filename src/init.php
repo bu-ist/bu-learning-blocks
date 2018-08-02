@@ -63,3 +63,16 @@ function bu_learning_blocks_block_container_editor_assets() {
 
 // Hook: Editor assets.
 add_action( 'enqueue_block_editor_assets', 'bu_learning_blocks_block_container_editor_assets' );
+
+// Add custom block category.
+add_filter( 'block_categories', function( $categories, $post ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug'  => 'bu-learning-blocks',
+				'title' => __( 'BULB', 'bulearningblocks' ),
+			),
+		)
+	);
+}, 10, 2 );
