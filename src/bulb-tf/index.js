@@ -5,7 +5,7 @@
  */
 
 // Import block dependencies and components
-import Inspector from './components/inspector';
+// import Inspector from './components/inspector';
 import classnames from 'classnames';
 
 //  Import CSS.
@@ -18,10 +18,11 @@ const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
+	BlockAlignmentToolbar,
 } = wp.editor;
 
 // Extend component
-const { Component } = wp.element;
+// const { Component } = wp.element;
 
 // Register block
 const { registerBlockType } = wp.blocks;
@@ -46,18 +47,29 @@ registerBlockType( 'bulb/question-tf',
 			},
 			textAlignment: {
 				type: 'string',
-				default: 'left',
+			},
+			blockAlignment: {
+				type: 'string',
+				default: 'wide',
 			},
 		},
-
+		getEditWrapperProps( { blockAlignment } ) {
+			if ( 'left' === blockAlignment || 'right' === blockAlignment || 'full' === blockAlignment ) {
+				return { 'data-align': blockAlignment };
+			}
+		},
 		edit: props => {
-			const { attributes: { textAlignment, question },
+			const {
+				attributes: { textAlignment, blockAlignment, question },
 				className, setAttributes } = props;
-			const onChangeQuestion = question => { setAttributes( { question } ); };
+
 			return (
 				<div className={ className }>
-					<h2>{ __( 'Test Your Knowledge', 'bulearningblocks' ) }</h2>
 					<BlockControls>
+						<BlockAlignmentToolbar
+							value={ blockAlignment }
+							onChange={ blockAlignment => setAttributes( { blockAlignment } ) }
+						/>
 						<AlignmentToolbar
 							value={ textAlignment }
 							onChange={ textAlignment => setAttributes( { textAlignment } ) }
@@ -68,7 +80,7 @@ registerBlockType( 'bulb/question-tf',
 						multiline="p"
 						placeholder={ __( 'Write your question here!', 'bulearningblocks' ) }
 						style={ { textAlign: textAlignment } }
-						onChange={ onChangeQuestion }
+						onChange={ question => setAttributes( { question } ) }
 						value={ question }
 					/>
 				</div>
@@ -76,18 +88,18 @@ registerBlockType( 'bulb/question-tf',
 		},
 
 		save: props => {
-			const { textAlignment, message } = props.attributes;
+			const { blockAlignment, textAlignment, question } = props.attributes;
 			return (
-				<div>
-					<h2>{ __( 'True/False Question', 'bulearningblocks' ) }</h2>
-					<div
-						className="question-body"
-						style={ { textAlign: textAlignment } }
-					>
-						{ question }
-					</div>
+				<div
+					className={classnames(
+						// `align${blockAlignment}`,
+						'question-body',
+					) }
+					style={ { textAlign: textAlignment } }
+				>
+					{ question }
 				</div>
 			);
 		},
-	}
+	},
 );
