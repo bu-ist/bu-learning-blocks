@@ -12,20 +12,24 @@ import classnames from 'classnames';
 import './styles/style.scss';
 import './styles/editor.scss';
 
-// Components
+const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 const {
 	RichText,
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
+	InspectorControls,
 } = wp.editor;
 
-// Extend component
-// const { Component } = wp.element;
-
-// Register block
-const { registerBlockType } = wp.blocks;
+const {
+	Toolbar,
+	Button,
+	Tooltip,
+	PanelBody,
+	PanelRow,
+	FormToggle,
+} = wp.components;
 
 // Register the block
 registerBlockType( 'bulb/question-tf',
@@ -63,18 +67,37 @@ registerBlockType( 'bulb/question-tf',
 				attributes: { textAlignment, blockAlignment, question },
 				className, setAttributes } = props;
 
-			return (
+			return [
+				<InspectorControls>
+					<PanelBody
+						title={ __( 'BULB Controls', 'bulearningblocks' ) }
+					>
+						<PanelRow>
+							<label
+								htmlFor="tf-form-toggle"
+							>
+								{ __( 'True/False', 'bulearningblocks' ) }
+							</label>
+							<FormToggle
+								id="tf-form-toggle"
+								label={ __( 'Control Setting', 'bulearningblocks' ) }
+								// checked={ highContrast }
+								// onChange={ toggleHighContrast }
+							/>
+						</PanelRow>
+					</PanelBody>
+				</InspectorControls>,
+				<BlockControls>
+					<BlockAlignmentToolbar
+						value={ blockAlignment }
+						onChange={ blockAlignment => setAttributes( { blockAlignment } ) }
+					/>
+					<AlignmentToolbar
+						value={ textAlignment }
+						onChange={ textAlignment => setAttributes( { textAlignment } ) }
+					/>
+				</BlockControls>,
 				<div className={ className }>
-					<BlockControls>
-						<BlockAlignmentToolbar
-							value={ blockAlignment }
-							onChange={ blockAlignment => setAttributes( { blockAlignment } ) }
-						/>
-						<AlignmentToolbar
-							value={ textAlignment }
-							onChange={ textAlignment => setAttributes( { textAlignment } ) }
-						/>
-					</BlockControls>
 					<RichText
 						tagName="div"
 						multiline="p"
@@ -84,7 +107,7 @@ registerBlockType( 'bulb/question-tf',
 						value={ question }
 					/>
 				</div>
-			);
+			];
 		},
 
 		save: props => {
