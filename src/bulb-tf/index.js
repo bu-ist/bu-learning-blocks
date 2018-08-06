@@ -1,38 +1,23 @@
 /**
- * BLOCK: BULB TF Question
- *
- * A True/False Question Block
+ * Block dependencies
  */
-
-// Import block dependencies and components
-// import Inspector from './components/inspector';
 import classnames from 'classnames';
-
-//  Import CSS.
+import Inspector from './inspector';
+import Controls from './controls';
+import attributes from './attributes';
 import './styles/style.scss';
 import './styles/editor.scss';
 
-const { registerBlockType } = wp.blocks;
 const { __ } = wp.i18n;
 const {
+	registerBlockType,
+} = wp.blocks;
+const {
 	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	InspectorControls,
 } = wp.editor;
 
-const {
-	Toolbar,
-	Button,
-	Tooltip,
-	PanelBody,
-	PanelRow,
-	FormToggle,
-} = wp.components;
-
 // Register the block
-registerBlockType( 'bulb/question-tf',
+export default registerBlockType( 'bulb/question-tf',
 	{
 		title: __( 'BULB - T/F', 'bulearningblocks' ),
 		description: __( 'Add a TRUE/FALSE question to your learning module.' ),
@@ -43,81 +28,43 @@ registerBlockType( 'bulb/question-tf',
 			__( 'BULB', 'bulearningblocks' ),
 			__( 'True False Question', 'bulearningblocks' ),
 		],
-		attributes: {
-			question: {
-				type: 'array',
-				source: 'children',
-				selector: '.question-body',
-			},
-			textAlignment: {
-				type: 'string',
-			},
-			blockAlignment: {
-				type: 'string',
-				default: 'wide',
-			},
-		},
-		getEditWrapperProps( { blockAlignment } ) {
+		attributes,
+		getEditWrapperProps( attributes ) {
+			const { blockAlignment } = attributes;
 			if ( 'left' === blockAlignment || 'right' === blockAlignment || 'full' === blockAlignment ) {
 				return { 'data-align': blockAlignment };
 			}
 		},
 		edit: props => {
-			const {
-				attributes: { textAlignment, blockAlignment, question },
-				className, setAttributes } = props;
+			const { attributes: { textAlignment, blockAlignment, question },
+				attributes, className, setAttributes } = props;
 
 			return [
-				<InspectorControls>
-					<PanelBody
-						title={ __( 'BULB Controls', 'bulearningblocks' ) }
-					>
-						<PanelRow>
-							<label
-								htmlFor="tf-form-toggle"
-							>
-								{ __( 'True/False', 'bulearningblocks' ) }
-							</label>
-							<FormToggle
-								id="tf-form-toggle"
-								label={ __( 'Control Setting', 'bulearningblocks' ) }
-								// checked={ highContrast }
-								// onChange={ toggleHighContrast }
-							/>
-						</PanelRow>
-					</PanelBody>
-				</InspectorControls>,
-				<BlockControls>
-					<BlockAlignmentToolbar
-						value={ blockAlignment }
-						onChange={ blockAlignment => setAttributes( { blockAlignment } ) }
-					/>
-					<AlignmentToolbar
-						value={ textAlignment }
-						onChange={ textAlignment => setAttributes( { textAlignment } ) }
-					/>
-				</BlockControls>,
-				<div className={ className }>
-					<RichText
-						tagName="div"
-						multiline="p"
-						placeholder={ __( 'Write your question here!', 'bulearningblocks' ) }
-						style={ { textAlign: textAlignment } }
-						onChange={ question => setAttributes( { question } ) }
-						value={ question }
-					/>
-				</div>
-			];
-		},
-
-		save: props => {
-			const { blockAlignment, textAlignment, question } = props.attributes;
-			return (
-				<div
-					className={classnames(
-						// `align${blockAlignment}`,
+				<Inspector { ...{ setAttributes, ...props } } />,
+				<Controls { ...{ setAttributes, ...props } } />,
+				<RichText
+					tagName="div"
+					multiline="p"
+					placeholder={ __( 'Enter your question here..', 'bulearningmodules' ) }
+					value={ question }
+					className={ classnames(
 						'question-body',
 					) }
+					style={ { textAlign: textAlignment } }
+					onChange={ ( question ) => props.setAttributes( { question } ) }
+				/>,
+			];
+		},
+		save: props => {
+			const { attributes: { textAlignment, question }, attributes } = props;
+
+			// const settings = getSettings( attributes );
+			const className = classnames(
+				'question-body',
+			);
+			return (
+				<div
+					className={ className }
 					style={ { textAlign: textAlignment } }
 				>
 					{ question }

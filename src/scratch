@@ -1,0 +1,42 @@
+<RichText
+                                tagName="div"
+                                multiline="p"
+                                placeholder={ __( 'Write your question here!', 'bulearningblocks' ) }
+                                style={ { textAlign: textAlignment } }
+                                onChange={ question => setAttributes( { question } ) }
+                                value={ question }
+					/>
+
+	// { question }
+
+
+			return (
+				<div
+					className={classnames(
+						`align${blockAlignment}`,
+						'question-body',
+					) }
+					style={ { textAlign: textAlignment } }
+				>
+				</div>
+			);
+
+save: props => {
+			const { attributes: { textAlignment, blockAlignment, question }, attributes } = props;
+
+			let settings = getSettings( attributes );
+
+			return (
+				<div
+				className={ classnames(
+					`align${ blockAlignment }`,
+				 ) }
+				style={ { textAlign: textAlignment } }
+				>
+					<ul>
+						{ question }
+                    </ul>
+
+				</div>
+			);
+		},
