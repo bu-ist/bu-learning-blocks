@@ -1,7 +1,7 @@
 /**
  * Block dependencies
  */
-import classnames from 'classnames';
+import classnames from 'classnames'; // Helper library to add classnames to a component
 import Inspector from './inspector';
 import Controls from './controls';
 import attributes from './attributes';
@@ -21,8 +21,8 @@ export default registerBlockType( 'bulb/question-tf',
 	{
 		title: __( 'BULB - T/F', 'bulearningblocks' ),
 		description: __( 'Add a TRUE/FALSE question to your learning module.' ),
-		icon: 'welcome-learn-more', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-		category: 'bu-learning-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+		icon: 'welcome-learn-more',
+		category: 'bu-learning-blocks',
 		keywords: [
 			__( 'bu-learning-block', 'bulearningblocks' ),
 			__( 'BULB', 'bulearningblocks' ),
@@ -36,37 +36,35 @@ export default registerBlockType( 'bulb/question-tf',
 			}
 		},
 		edit: props => {
-			const { attributes: { textAlignment, blockAlignment, question },
-				attributes, className, setAttributes } = props;
+			const { attributes: { textAlignment, question }, setAttributes } = props;
+			const onChangeMessage = question => { setAttributes( { question } ) }
 
 			return [
 				<Inspector { ...{ setAttributes, ...props } } />,
 				<Controls { ...{ setAttributes, ...props } } />,
+				<h2>Enter a Question</h2>,
 				<RichText
 					tagName="div"
 					multiline="p"
 					placeholder={ __( 'Enter your question here..', 'bulearningmodules' ) }
-					value={ question }
-					className={ classnames(
-						'question-body',
-					) }
+					className={ classnames( 'question-body', ) }
 					style={ { textAlign: textAlignment } }
-					onChange={ ( question ) => props.setAttributes( { question } ) }
+					onChange={ onChangeMessage }
+					value={ question }
 				/>,
 			];
 		},
 		save: props => {
-			const { attributes: { textAlignment, question }, attributes } = props;
-
-			// const settings = getSettings( attributes );
-			const className = classnames(
-				'question-body',
-			);
+			const { attributes: { textAlignment, blockAlignment, question } } = props;
 			return (
 				<div
-					className={ className }
+					className={classnames(
+						`align${blockAlignment}`,
+						'question-body',
+					) }
 					style={ { textAlign: textAlignment } }
 				>
+					<h3>Assess Yourself!</h3>
 					{ question }
 				</div>
 			);

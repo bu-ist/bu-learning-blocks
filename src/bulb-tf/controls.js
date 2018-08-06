@@ -17,18 +17,24 @@ export default class Inspector extends Component {
 
 	constructor() {
 		super( ...arguments );
-	}
+    }
+
 	render() {
-		const { attributes: { blockAlignment, textAlignment }, setAttributes } = this.props;
+        const { attributes: { blockAlignment, textAlignment }, setAttributes } = this.props;
+
+        // Change Handlers
+        const onChangeBlockAlignment =  blockAlignment => setAttributes( { blockAlignment } );
+        const onChangeTextAlignment = textAlignment => setAttributes( { textAlignment } );
+
 		return (
 			<BlockControls>
 				<BlockAlignmentToolbar
 					value={ blockAlignment }
-					onChange={ blockAlignment => setAttributes( { blockAlignment } ) }
+					onChange={ onChangeBlockAlignment }
 				/>
 				<AlignmentToolbar
 					value={ textAlignment }
-					onChange={ textAlignment => setAttributes( { textAlignment } ) }
+					onChange={ onChangeTextAlignment }
 				/>
 			</BlockControls>
 		);

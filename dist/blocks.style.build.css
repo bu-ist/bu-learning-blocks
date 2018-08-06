@@ -142,9 +142,12 @@
   padding: 1rem; }
   .entry-content .wp-block-bulb-question-tf h2,
   .wp-block-bulb-question-tf h2 {
-    color: #222;
+    color: #f7b733;
     font-size: 2rem;
     margin: 1rem 0; }
   .entry-content .wp-block-bulb-question-tf p,
   .wp-block-bulb-question-tf p {
     font-size: 1.4rem; }
+  .entry-content .wp-block-bulb-question-tf li,
+  .wp-block-bulb-question-tf li {
+    list-style-position: inside; }
