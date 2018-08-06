@@ -57,16 +57,18 @@ export default registerBlockType( 'bulb/question-tf',
 		save: props => {
 			const { attributes: { textAlignment, blockAlignment, question } } = props;
 			return (
-				<div
-					className={classnames(
-						`align${blockAlignment}`,
-						'question-body',
-					) }
-					style={ { textAlign: textAlignment } }
-				>
-					<h3>Assess Yourself!</h3>
-					{ question }
-				</div>
+                <div>
+                    <h3>Assess Yourself!</h3>
+                    <div
+                        className={classnames(
+                            `align${blockAlignment}`,
+                            'question-body',
+                        ) }
+                        style={ { textAlign: textAlignment } }
+                    >
+                        { question }
+                    </div>
+                </div>
 			);
 		},
 	},
