@@ -5,7 +5,6 @@ const attributes = {
 		selector: '.question-body',
 	},
 	textAlignment: {
-		type: 'string',
 		default: 'left',
 	},
 	blockAlignment: {
@@ -19,6 +18,10 @@ const attributes = {
 	selectControl: {
 		type: 'string',
 	},
+	highContrast: {
+		type: 'boolean',
+		default: false,
+	}
 };
 
 export default attributes;

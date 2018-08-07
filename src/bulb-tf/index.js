@@ -36,39 +36,43 @@ export default registerBlockType( 'bulb/question-tf',
 			}
 		},
 		edit: props => {
-			const { attributes: { textAlignment, question }, setAttributes } = props;
-			const onChangeMessage = question => { setAttributes( { question } ) }
+			const { attributes: { textAlignment, question, highContrast }, className, setAttributes } = props;
+			const onChangeMessage = question => { setAttributes( { question } ); };
 
 			return [
 				<Inspector { ...{ setAttributes, ...props } } />,
+				<div
+					className={ classnames(
+						className,
+						{ 'high-contrast': highContrast },
+					) }
+				>
+					<RichText
+						tagName="div"
+						multiline="p"
+						placeholder={ __( 'Enter your question here..', 'bulearningmodules' ) }
+						className={ classnames( 'question-body', ) }
+						style={ { textAlign: textAlignment } }
+						onChange={ onChangeMessage }
+						value={ question }
+					/>
+				</div>,
 				<Controls { ...{ setAttributes, ...props } } />,
-				<h2>Enter a Question</h2>,
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Enter your question here..', 'bulearningmodules' ) }
-					className={ classnames( 'question-body', ) }
-					style={ { textAlign: textAlignment } }
-					onChange={ onChangeMessage }
-					value={ question }
-				/>,
 			];
 		},
 		save: props => {
-			const { attributes: { textAlignment, blockAlignment, question } } = props;
+			const { attributes: { highContrast, textAlignment, blockAlignment, question } } = props;
 			return (
-                <div>
-                    <h3>Assess Yourself!</h3>
-                    <div
-                        className={classnames(
-                            `align${blockAlignment}`,
-                            'question-body',
-                        ) }
-                        style={ { textAlign: textAlignment } }
-                    >
-                        { question }
-                    </div>
-                </div>
+				<div
+					className={classnames(
+						`align${ blockAlignment }`,
+						{ 'high-contrast': highContrast },
+						'question-body',
+					) }
+					style={ { textAlign: textAlignment } }
+				>
+					{ question }
+				</div>
 			);
 		},
 	},

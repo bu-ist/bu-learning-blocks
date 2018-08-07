@@ -5,38 +5,23 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const {
 	InspectorControls,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	ColorPalette,
 } = wp.editor;
 const {
-	Button,
-	ButtonGroup,
-	CheckboxControl,
 	PanelBody,
-	PanelRow,
-	PanelColor,
 	RadioControl,
-	RangeControl,
-	TextControl,
-	TextareaControl,
-	ToggleControl,
-	Toolbar,
-	SelectControl
+	SelectControl,
 } = wp.components;
 
 /**
  * Create an Inspector Controls wrapper Component
  */
 export default class Inspector extends Component {
-
 	constructor() {
 		super( ...arguments );
 	}
 
 	render() {
-		const { attributes: { checkboxControl, colorPaletteControl, radioControl, rangeControl, textControl, textareaControl, toggleControl, selectControl }, setAttributes } = this.props;
+		const { attributes: { radioControl, selectControl }, setAttributes } = this.props;
 
 		return (
 			<InspectorControls>

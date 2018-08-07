@@ -4,6 +4,12 @@
     border: 5px $dark solid;
     padding: 1rem;
 
+    &.high-contrast {
+        background: $black;
+        border-color: $black;
+        color: white;
+    }
+
     h2 {
         color: $dark;
         font-size: 2rem;
