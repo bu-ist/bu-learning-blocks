@@ -16,6 +16,18 @@ const {
 	RichText,
 } = wp.editor;
 
+function getSettings( attributes ) {
+    let settings = [];
+    for( let attribute in attributes ) {
+        let value = attributes[ attribute ];
+        if( 'boolean' === typeof attributes[ attribute ] ) {
+            value = value.toString();
+        }
+        settings.push( <li>{ attribute }: { value }</li> );
+    }
+    return settings;
+}
+
 // Register the block
 export default registerBlockType( 'bulb/question-tf',
 	{
@@ -37,7 +49,7 @@ export default registerBlockType( 'bulb/question-tf',
 		},
 		edit: props => {
 			const { attributes: { textAlignment, question, highContrast }, className, setAttributes } = props;
-			const onChangeMessage = question => { setAttributes( { question } ); };
+            const onChangeMessage = question => { setAttributes( { question } ); };
 
 			return [
 				<Inspector { ...{ setAttributes, ...props } } />,
@@ -60,8 +72,9 @@ export default registerBlockType( 'bulb/question-tf',
 				<Controls { ...{ setAttributes, ...props } } />,
 			];
 		},
-		save: props => {
-			const { attributes: { highContrast, textAlignment, blockAlignment, question } } = props;
+		save: function (props) {
+            const { attributes: { highContrast, textAlignment, blockAlignment, question }, attributes } = props;
+            const settings = getSettings(attributes);
 			return (
 				<div
 					className={classnames(
@@ -69,11 +82,17 @@ export default registerBlockType( 'bulb/question-tf',
 						{ 'high-contrast': highContrast },
 						'question-body',
 					) }
-					style={ { textAlign: textAlignment } }
-				>
-					{ question }
+					style={ { textAlign: textAlignment } }>
+                    <div>{ question }</div>
+
+                    <div>
+                        <p>{__('Check the settings', 'jsforwpblocks')}</p>
+                        <ul>
+                            {settings}
+                        </ul>
+                    </div>
 				</div>
 			);
-		},
+        },
 	},
 );
