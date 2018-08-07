@@ -72,7 +72,7 @@ export default registerBlockType( 'bulb/question-tf',
 				<Controls { ...{ setAttributes, ...props } } />,
 			];
 		},
-		save: function (props) {
+		save: props => {
             const { attributes: { highContrast, textAlignment, blockAlignment, question }, attributes } = props;
             const settings = getSettings(attributes);
 			return (
@@ -83,14 +83,8 @@ export default registerBlockType( 'bulb/question-tf',
 						'question-body',
 					) }
 					style={ { textAlign: textAlignment } }>
-                    <div>{ question }</div>
-
-                    <div>
-                        <p>{__('Check the settings', 'jsforwpblocks')}</p>
-                        <ul>
-                            {settings}
-                        </ul>
-                    </div>
+                    { question }
+                    <p>Correct Answer: {attributes.radioControl}</p>
 				</div>
 			);
         },
