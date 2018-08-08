@@ -11,6 +11,7 @@ import './styles/editor.scss';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { RichText } = wp.editor;
+const { Fragment } = wp.element;
 
 // Register the block
 export default registerBlockType( 'bulb/question-tf', {
@@ -24,8 +25,8 @@ export default registerBlockType( 'bulb/question-tf', {
 		__( 'True False Question', 'bulearningblocks' ),
 	],
 	attributes,
-	getEditWrapperProps( attributes ) {
-		const { blockAlignment } = attributes;
+	getEditWrapperProps( editWrapperProps ) {
+		const { blockAlignment } = editWrapperProps;
 		if (
 			'left' === blockAlignment ||
 			'right' === blockAlignment ||
@@ -40,30 +41,39 @@ export default registerBlockType( 'bulb/question-tf', {
 			className,
 			setAttributes,
 		} = props;
-		const onChangeMessage = question => {
-			setAttributes( { question } );
+		const onChangeMessage = newQuestion => {
+			setAttributes( { question: newQuestion } );
 		};
 
-		return [
-			<Inspector { ...{ setAttributes, ...props } } />,
-			<div className={ classnames( className, { 'high-contrast': highContrast } ) }>
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Enter your question here..', 'bulearningmodules' ) }
-					className={ classnames( 'question-body' ) }
-					style={ { textAlign: textAlignment } }
-					onChange={ onChangeMessage }
-					value={ question }
-				/>
-			</div>,
-			<Controls { ...{ setAttributes, ...props } } />,
-		];
+		return (
+			<Fragment>
+				<Inspector { ...{ setAttributes, ...props } } />
+				<div
+					className={ classnames( className, { 'high-contrast': highContrast } ) }
+				>
+					<RichText
+						tagName="div"
+						multiline="p"
+						placeholder={ __( 'Enter your question here..', 'bulearningmodules' ) }
+						className={ classnames( 'question-body' ) }
+						style={ { textAlign: textAlignment } }
+						onChange={ onChangeMessage }
+						value={ question }
+					/>
+				</div>
+				<Controls { ...{ setAttributes, ...props } } />
+			</Fragment>
+		);
 	},
 	save: props => {
 		const {
-			attributes: { highContrast, textAlignment, blockAlignment, question },
-			attributes,
+			attributes: {
+				highContrast,
+				textAlignment,
+				blockAlignment,
+				question,
+				radioControl,
+			},
 		} = props;
 		return (
 			<div
@@ -75,7 +85,7 @@ export default registerBlockType( 'bulb/question-tf', {
 				style={ { textAlign: textAlignment } }
 			>
 				{ question }
-				<p>Correct Answer: { attributes.radioControl }</p>
+				<p>Correct Answer: { radioControl }</p>
 			</div>
 		);
 	},
