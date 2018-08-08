@@ -3,25 +3,18 @@
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const {
-	InspectorControls,
-} = wp.editor;
-const {
-	PanelBody,
-	RadioControl,
-	SelectControl,
-} = wp.components;
+const { InspectorControls } = wp.editor;
+const { PanelBody, RadioControl, SelectControl } = wp.components;
 
 /**
  * Create an Inspector Controls wrapper Component
  */
 export default class Inspector extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-		const { attributes: { radioControl, selectControl }, setAttributes } = this.props;
+		const {
+			attributes: { radioControl, selectControl },
+			setAttributes,
+		} = this.props;
 
 		return (
 			<InspectorControls>
@@ -49,7 +42,6 @@ export default class Inspector extends Component {
 						onChange={ selectControl => setAttributes( { selectControl } ) }
 					/>
 				</PanelBody>
-
 			</InspectorControls>
 		);
 	}

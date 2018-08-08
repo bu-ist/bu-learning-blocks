@@ -21,7 +21,7 @@ const attributes = {
 	highContrast: {
 		type: 'boolean',
 		default: false,
-	}
+	},
 };
 
 export default attributes;

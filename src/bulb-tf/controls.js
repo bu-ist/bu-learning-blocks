@@ -3,33 +3,27 @@ import classnames from 'classnames';
 
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const {
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-} = wp.editor;
-const {
-	Dashicon,
-	Toolbar,
-	Button,
-	Tooltip,
-} = wp.components;
+const { AlignmentToolbar, BlockControls, BlockAlignmentToolbar } = wp.editor;
+const { Dashicon, Toolbar, Button, Tooltip } = wp.components;
 
 /**
  * Create a Block Controls wrapper Component
  */
 export default class Inspector extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
-		const { attributes: { highContrast, blockAlignment, textAlignment }, className, setAttributes } = this.props;
+		const {
+			attributes: { highContrast, blockAlignment, textAlignment },
+			className,
+			setAttributes,
+		} = this.props;
 
 		// Change Handlers
-		const onChangeBlockAlignment = blockAlignment => setAttributes( { blockAlignment } );
-		const onChangeTextAlignment = textAlignment => setAttributes( { textAlignment } );
-		const toggleHighContrast = () => setAttributes( { highContrast: ! highContrast } );
+		const onChangeBlockAlignment = blockAlignment =>
+			setAttributes( { blockAlignment } );
+		const onChangeTextAlignment = textAlignment =>
+			setAttributes( { textAlignment } );
+		const toggleHighContrast = () =>
+			setAttributes( { highContrast: ! highContrast } );
 
 		return (
 			<BlockControls>
@@ -47,7 +41,7 @@ export default class Inspector extends Component {
 							className={ classnames(
 								'components-icon-button',
 								'components-toolbar__control',
-								{ 'is-active': highContrast },
+								{ 'is-active': highContrast }
 							) }
 							onClick={ toggleHighContrast }
 						>

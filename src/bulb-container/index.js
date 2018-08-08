@@ -144,14 +144,13 @@ class BULBContainerBlock extends Component {
 				/>
 			</BlockControls>,
 			// Show the block controls on focus
-			<Inspector
-				{ ...{ setAttributes, ...this.props } }
-			/>,
+			<Inspector { ...{ setAttributes, ...this.props } } />,
 			// Show the container markup in the editor
 			<Container { ...this.props }>
-				<div class="bulb-container-inside">
-					{ containerImgURL && !! containerImgURL.length && (
-						<div class="bulb-container-image-wrap">
+				<div className="bulb-container-inside">
+					{ containerImgURL &&
+						!! containerImgURL.length && (
+						<div className="bulb-container-image-wrap">
 							<img
 								className={ classnames(
 									'bulb-container-image',
@@ -167,7 +166,7 @@ class BULBContainerBlock extends Component {
 					) }
 
 					<div
-						class="bulb-container-content"
+						className="bulb-container-content"
 						style={ {
 							maxWidth: `${ containerMaxWidth }px`,
 						} }
@@ -181,90 +180,94 @@ class BULBContainerBlock extends Component {
 }
 
 // Register the block
-registerBlockType( 'bulb/block-container',
-	{
-		title: __( 'BULB Container', 'bulearningblocks' ),
-		description: __( 'Add a container block to wrap several blocks in a parent container.' ),
-		icon: 'layout', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-		category: 'bu-learning-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-		keywords: [
-			__( 'bu-learning-block', 'bulearningblocks' ),
-			__( 'BULB', 'bulearningblocks' ),
-			__( 'Block Container', 'bulearningblocks' ),
-		],
+registerBlockType( 'bulb/block-container', {
+	title: __( 'BULB Container', 'bulearningblocks' ),
+	description: __(
+		'Add a container block to wrap several blocks in a parent container.'
+	),
+	icon: 'layout', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	category: 'bu-learning-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+	keywords: [
+		__( 'bu-learning-block', 'bulearningblocks' ),
+		__( 'BULB', 'bulearningblocks' ),
+		__( 'Block Container', 'bulearningblocks' ),
+	],
 
-		attributes: blockAttributes,
+	attributes: blockAttributes,
 
-		getEditWrapperProps( { containerWidth } ) {
-			if ( 'left' === containerWidth || 'right' === containerWidth || 'full' === containerWidth ) {
-				return { 'data-align': containerWidth };
-			}
-		},
+	getEditWrapperProps( { containerWidth } ) {
+		if (
+			'left' === containerWidth ||
+			'right' === containerWidth ||
+			'full' === containerWidth
+		) {
+			return { 'data-align': containerWidth };
+		}
+	},
 
-		// Render the block components
-		edit: BULBContainerBlock,
+	// Render the block components
+	edit: BULBContainerBlock,
 
-		// Save the attributes and markup
-		save: function( props ) {
-			// Setup the attributes
-			const {
-				containerPaddingTop,
-				containerPaddingRight,
-				containerPaddingBottom,
-				containerPaddingLeft,
-				containerMarginTop,
-				containerMarginBottom,
-				containerWidth,
-				containerMaxWidth,
-				containerBackgroundColor,
-				containerImgURL,
-				containerImgID,
-				containerImgAlt,
-				containerDimRatio,
-			} = props.attributes;
+	// Save the attributes and markup
+	save: function( props ) {
+		// Setup the attributes
+		const {
+			containerPaddingTop,
+			containerPaddingRight,
+			containerPaddingBottom,
+			containerPaddingLeft,
+			containerMarginTop,
+			containerMarginBottom,
+			containerWidth,
+			containerMaxWidth,
+			containerBackgroundColor,
+			containerImgURL,
+			containerImgID,
+			containerImgAlt,
+			containerDimRatio,
+		} = props.attributes;
 
-			// Save the block markup for the front end
-			return (
-				<Container { ...props }>
-					<div class="bulb-container-inside">
-						{ containerImgURL && !! containerImgURL.length && (
-							<div class="bulb-container-image-wrap">
-								<img
-									className={ classnames(
-										'bulb-container-image',
-										dimRatioToClass( containerDimRatio ),
-										{
-											'has-background-dim': containerDimRatio !== 0,
-										}
-									) }
-									src={ containerImgURL }
-									alt={ containerImgAlt }
-								/>
-							</div>
-						) }
-
-						<div
-							class="bulb-container-content"
-							style={ {
-								maxWidth: `${ containerMaxWidth }px`,
-							} }
-						>
-							<InnerBlocks.Content />
+		// Save the block markup for the front end
+		return (
+			<Container { ...props }>
+				<div className="bulb-container-inside">
+					{ containerImgURL &&
+						!! containerImgURL.length && (
+						<div className="bulb-container-image-wrap">
+							<img
+								className={ classnames(
+									'bulb-container-image',
+									dimRatioToClass( containerDimRatio ),
+									{
+										'has-background-dim': containerDimRatio !== 0,
+									}
+								) }
+								src={ containerImgURL }
+								alt={ containerImgAlt }
+							/>
 						</div>
+					) }
+
+					<div
+						className="bulb-container-content"
+						style={ {
+							maxWidth: `${ containerMaxWidth }px`,
+						} }
+					>
+						<InnerBlocks.Content />
 					</div>
-				</Container>
-			);
-		},
-	} );
+				</div>
+			</Container>
+		);
+	},
+} );
 
 function dimRatioToClass( ratio ) {
-	return ( ratio === 0 || ratio === 50 ) ?
+	return ratio === 0 || ratio === 50 ?
 		null :
-		'has-background-dim-' + ( 10 * Math.round( ratio / 10 ) );
+		'has-background-dim-' + 10 * Math.round( ratio / 10 );
 }
 
 function backgroundImageStyles( url ) {
-	return url ?
-		{ backgroundImage: `url(${ url })` } :
-		undefined;
+	return url ? { backgroundImage: `url(${ url })` } : undefined;
 }
