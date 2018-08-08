@@ -77,14 +77,12 @@ export default registerBlockType( 'bulb/question-tf', {
 		} = props;
 		return (
 			<div
-				className={ classnames(
-					`align${ blockAlignment }`,
-					{ 'high-contrast': highContrast },
-					'question-body'
-				) }
+				className={ classnames( `align${ blockAlignment }`, {
+					'high-contrast': highContrast,
+				} ) }
 				style={ { textAlign: textAlignment } }
 			>
-				{ question }
+				<div className={ classnames( 'question-body' ) }>{ question }</div>
 				<p>Correct Answer: { radioControl }</p>
 			</div>
 		);
