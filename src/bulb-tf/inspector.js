@@ -26,7 +26,7 @@ export default class Inspector extends Component {
 							{ label: 'True', value: 'true' },
 							{ label: 'False', value: 'false' },
 						] }
-						onChange={ radioControl => setAttributes( { radioControl } ) }
+						onChange={ value => setAttributes( { radioControl: value } ) }
 					/>
 				</PanelBody>
 
@@ -39,7 +39,7 @@ export default class Inspector extends Component {
 							{ value: 'b', label: __( 'Multiple Choice', 'bulearningblocks' ) },
 							{ value: 'c', label: __( 'Multiple Answer', 'bulearningblocks' ) },
 						] }
-						onChange={ selectControl => setAttributes( { selectControl } ) }
+						onChange={ value => setAttributes( { selectControl: value } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>
