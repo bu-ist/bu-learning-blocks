@@ -1,10 +1,10 @@
-import icons from './icons';
 import classnames from 'classnames';
+import icons from './icons';
 
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { AlignmentToolbar, BlockControls, BlockAlignmentToolbar } = wp.editor;
-const { Dashicon, Toolbar, Button, Tooltip } = wp.components;
+const { Toolbar, Button, Tooltip } = wp.components;
 
 /**
  * Create a Block Controls wrapper Component
@@ -13,15 +13,14 @@ export default class Inspector extends Component {
 	render() {
 		const {
 			attributes: { highContrast, blockAlignment, textAlignment },
-			className,
 			setAttributes,
 		} = this.props;
 
 		// Change Handlers
-		const onChangeBlockAlignment = blockAlignment =>
-			setAttributes( { blockAlignment } );
-		const onChangeTextAlignment = textAlignment =>
-			setAttributes( { textAlignment } );
+		const onChangeBlockAlignment = newAlignment =>
+			setAttributes( { blockAlignment: newAlignment } );
+		const onChangeTextAlignment = newAlignment =>
+			setAttributes( { textAlignment: newAlignment } );
 		const toggleHighContrast = () =>
 			setAttributes( { highContrast: ! highContrast } );
 
