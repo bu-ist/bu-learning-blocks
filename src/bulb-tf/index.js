@@ -12,22 +12,6 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { RichText } = wp.editor;
 
-function getSettings( attributes ) {
-	const settings = [];
-	for ( const attribute in attributes ) {
-		let value = attributes[ attribute ];
-		if ( 'boolean' === typeof attributes[ attribute ] ) {
-			value = value.toString();
-		}
-		settings.push(
-			<li>
-				{ attribute }: { value }
-			</li>
-		);
-	}
-	return settings;
-}
-
 // Register the block
 export default registerBlockType( 'bulb/question-tf', {
 	title: __( 'BULB - T/F', 'bulearningblocks' ),
@@ -81,7 +65,6 @@ export default registerBlockType( 'bulb/question-tf', {
 			attributes: { highContrast, textAlignment, blockAlignment, question },
 			attributes,
 		} = props;
-		const settings = getSettings( attributes );
 		return (
 			<div
 				className={ classnames(
