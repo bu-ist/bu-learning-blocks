@@ -42,14 +42,16 @@ export default registerBlockType( 'bulb/question-tf', {
 			setAttributes,
 		} = props;
 		const slickQuiz = decodeSlickQuiz( slickQuizBase64 );
-		const onChangeMessage = newQuestion => {
+		const onChangeQuestionHeader = newQuestionHeader => {
 			const newSlickQuiz = { ...slickQuiz };
-			newSlickQuiz.questions[ 0 ].q = newQuestion.join( '' );
-			console.log(
-				'onChangeMessage: ',
-				slickQuiz.questions[ 0 ].q,
-				newSlickQuiz.questions[ 0 ].q
-			);
+			newSlickQuiz.info.name = newQuestionHeader.join( ' ' );
+			setAttributes( {
+				slickQuizBase64: encodeSlickQuiz( newSlickQuiz ),
+			} );
+		};
+		const onChangeQuestionBody = newQuestionBody => {
+			const newSlickQuiz = { ...slickQuiz };
+			newSlickQuiz.questions[ 0 ].q = newQuestionBody.join( ' ' );
 
 			setAttributes( {
 				slickQuizBase64: encodeSlickQuiz( newSlickQuiz ),
@@ -60,10 +62,20 @@ export default registerBlockType( 'bulb/question-tf', {
 			<Fragment>
 				<div className={ classnames( className ) }>
 					<RichText
+						tagName="h2"
+						placeholder={ __(
+							'Enter your question header here..',
+							'bulearningmodules'
+						) }
+						className={ classnames( 'question-header' ) }
+						onChange={ onChangeQuestionHeader }
+						value={ slickQuiz.info.name }
+					/>
+					<RichText
 						tagName="div"
 						placeholder={ __( 'Enter your question here..', 'bulearningmodules' ) }
 						className={ classnames( 'question-body' ) }
-						onChange={ onChangeMessage }
+						onChange={ onChangeQuestionBody }
 						value={ slickQuiz.questions[ 0 ].q }
 					/>
 				</div>
