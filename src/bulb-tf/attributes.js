@@ -1,6 +1,6 @@
 const slickQuizDefault = {
 	info: {
-		name: 'True False question',
+		name: 'Is the following statement true or false?',
 		main: '',
 		results:
 			'<h5>Learn More</h5><p>Etiam scelerisque, nunc ac egestas consequat, odio nibh euismod nulla, eget auctor orci nibh vel nisi. Aliquam erat volutpat. Mauris vel neque sit amet nunc gravida congue sed sit amet purus.</p>',

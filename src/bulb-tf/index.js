@@ -2,7 +2,8 @@
  * Block dependencies
  */
 import classnames from 'classnames'; // Helper library to add classnames to a component
-// import Inspector from './inspector';
+const { InspectorControls } = wp.editor;
+const { PanelBody, RadioControl } = wp.components;
 // import Controls from './controls';
 import blockAttributes from './attributes';
 import './styles/style.scss';
@@ -60,6 +61,19 @@ export default registerBlockType( 'bulb/question-tf', {
 
 		return (
 			<Fragment>
+				<InspectorControls>
+					<PanelBody>
+						<RadioControl
+							label={ __( 'Correct Answer', 'bulearningblocks' ) }
+							selected={ 'true' }
+							options={ [
+								{ label: 'True', value: 'true' },
+								{ label: 'False', value: 'false' },
+							] }
+							// onChange={ value => setAttributes( { radioControl: value } ) }
+						/>
+					</PanelBody>
+				</InspectorControls>
 				<div className={ classnames( className ) }>
 					<RichText
 						tagName="h2"
