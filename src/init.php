@@ -21,7 +21,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 function bu_learning_blocks_block_container_assets() {
+	// Scripts.
+	wp_enqueue_script(
+		'bulb-slick-quiz-js',
+		plugins_url( 'lib/SlickQuiz/slickQuiz.js', dirname( __FILE__ ) ),
+		array( 'jquery' ),
+		true
+	);
+	wp_enqueue_script(
+		'bulb-question-js',
+		plugins_url( 'dist/question.js', dirname( __FILE__ ) ),
+		array( 'bulb-slick-quiz-js' ),
+		true
+	);
+
 	// Styles.
+	wp_enqueue_style(
+		'bulb-slick-quiz-css',
+		plugins_url( 'lib/SlickQuiz/slickQuiz.css', dirname( __FILE__ ) )
+	);
 	wp_enqueue_style(
 		'bu_learning_blocks-container-style-css', // Handle.
 		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
