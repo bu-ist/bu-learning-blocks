@@ -20,16 +20,16 @@ BULB.singleQuestionOptions = {
 // Initialize SlickQuiz questions.
 jQuery( document ).ready( function() {
 	jQuery( '.bulb-question' ).each( function() {
-		debugger;
-		const data = JSON.parse( window.atob( jQuery( this ).data( 'question' ) ) );
+		const questionDataBase64 = jQuery( this ).data( 'question' );
+		const questionData = JSON.parse( window.atob( questionDataBase64 ) );
 
 		// Generate boilerplate markup
 		const boilerplate = generateQuestionBoilerplate();
-		jQuery( this ).append( boilerplate );
+		jQuery( this ).html( boilerplate );
 
 		// Initialize slickquiz.
 		const question = Object.assign( {}, BULB.singleQuestionOptions, {
-			json: data,
+			json: questionData,
 		} );
 		jQuery( this ).slickQuiz( question );
 	} );
@@ -40,7 +40,6 @@ jQuery( document ).ready( function() {
  * @return {object} The boilerplate html
  */
 function generateQuestionBoilerplate() {
-	debugger;
 	const boilerplateString = `
 		<h1 class="quizName"></h1>
 		<div class="quizArea">
