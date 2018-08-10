@@ -111,7 +111,7 @@ Question:
         'You are correct! The name "two-toed sloth" erroneously describe the number of toes.'
       Correct: True
     - Answer: "All of the above"
-      Feedback: String
+      Feedback: "Really?"
 ```
 
 ## Question Type: Multiple Answer
