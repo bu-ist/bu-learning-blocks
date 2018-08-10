@@ -1,6 +1,6 @@
 # Data structure for questions
 
-## Question Type: True/False
+## Question: True/False
 
 ```yaml
 Question:
@@ -17,9 +17,7 @@ Question:
 
 - Header
 
-  The text that goes above the question body.
-
-  Default:
+  The text that goes above the question body. Default:
 
   ```yaml
   Header: "Is the following statement true or false"
@@ -27,9 +25,7 @@ Question:
 
 - Body
 
-  The question body.
-
-  Default:
+  The question body. Default:
 
   ```yaml
   Body: ""
@@ -37,9 +33,7 @@ Question:
 
 - Answers
 
-  An array of 2 answers.
-
-  Default:
+  An array of 2 answers. Default:
 
   ```yaml
   Answers:
@@ -79,7 +73,7 @@ Question:
       Correct: true
 ```
 
-## Question Type: Multiple Choice
+## Question: Multiple Choice
 
 ```yaml
 Question:
@@ -114,7 +108,7 @@ Question:
       Feedback: "Really?"
 ```
 
-## Question Type: Multiple Answer
+## Question: Multiple Answer
 
 ```yaml
 Question:
@@ -127,7 +121,7 @@ Question:
       Correct: Boolean
 ```
 
-## Question Type: Matching
+## Question: Matching
 
 ```yaml
 Question:
@@ -162,7 +156,7 @@ Question:
   Feedback: "Not so hard to speak portuguese huh?"
 ```
 
-## Question Type: Calculated Numeric
+## Question: Calculated Numeric
 
 ```yaml
 Question:
