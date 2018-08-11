@@ -54,7 +54,10 @@ npm start
 
 Tests for PHP use PHPUnit as the testing framework. If you're using the built-in local environment, you can run the PHP tests locally using this command:
 
+```
 npm run test-php
+```
+
 Code style in PHP is enforced using PHP_CodeSniffer. It is recommended that you install PHP_CodeSniffer and the WordPress Coding Standards for PHP_CodeSniffer ruleset using Composer. With Composer installed, run composer install from the project directory to install dependencies. The above npm run test-php will execute both unit tests and code linting. Code linting can be verified independently by running npm run lint-php.
 
 To run unit tests only, without the linter, use npm run test-unit-php instead.
