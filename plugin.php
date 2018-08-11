@@ -18,17 +18,11 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'add_action_links' );
-function add_action_links ( $links ) {
-	$mylinks = array(
-	'<a href="' . admin_url( 'options-general.php?page=bulb' ) . '">Settings</a>',
-	);
-	return array_merge( $links, $mylinks );
-}
-
+define( 'BULB_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'BULB_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'BULB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * Block Initializer.
  */
-require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
+require_once BULB_PLUGIN_DIR_PATH . 'src/init.php';

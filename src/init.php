@@ -4,7 +4,7 @@
  *
  * Enqueue CSS/JS of all the blocks.
  *
- * @since   1.0.0
+ * @since   0.0.1
  * @package Block Container
  */
 
@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+add_action( 'admin_menu', 'bulb_settings_pages' );
 function bulb_settings_pages() {
 	add_menu_page(
 		__( 'BU Learning Blocks', 'bulearningblocks' ),
@@ -43,20 +44,28 @@ function bulb_settings_pages() {
 	);
 }
 
-add_action( 'admin_menu', 'bulb_settings_pages' );
-
 function bulb_settings_page_markup() {
-	if ( !current_user_can( 'manage_options') ) {
+	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
+	$page_title = get_admin_page_title();
 	?>
 	<div class="wrap">
-		<h1><?php esc_html_e( get_admin_page_title() ); ?></h1>
+		<h1><?php esc_html_e( $page_title ); ?></h1>
 		<p><?php esc_html_e( 'Some content.' ); ?></p>
 	</div>
 	<?php
 }
 
+add_filter( 'plugin_action_links_' . BULB_PLUGIN_BASENAME, 'add_action_links' );
+function add_action_links( $links ) {
+	$mylinks = array(
+		'<a href="' . admin_url( 'options-general.php?page=bulb' ) . '">Settings</a>',
+	);
+	return array_merge( $links, $mylinks );
+}
+
+add_action( 'enqueue_block_assets', 'bulb_block_container_assets' );
 /**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
@@ -64,19 +73,16 @@ function bulb_settings_page_markup() {
  *
  * @since 1.0.0
  */
-function bu_learning_blocks_block_container_assets() {
-	// Styles.
+function bulb_block_container_assets() {
 	wp_enqueue_style(
-		'bu_learning_blocks-container-style-css', // Handle.
-		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
+		'bulb-container-style-css',
+		BULB_PLUGIN_URL . 'dist/blocks.style.build.css', // Block style CSS.
 		array( 'wp-blocks' ) // Dependency to include the CSS after it.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
 	);
-} // End function bu_learning_blocks_block_container_assets().
+}
 
-// Hook: Frontend assets.
-add_action( 'enqueue_block_assets', 'bu_learning_blocks_block_container_assets' );
-
+add_action( 'enqueue_block_editor_assets', 'bulb_block_container_editor_assets' );
 /**
  * Enqueue Gutenberg block assets for backend editor.
  *
@@ -86,11 +92,10 @@ add_action( 'enqueue_block_assets', 'bu_learning_blocks_block_container_assets' 
  *
  * @since 1.0.0
  */
-function bu_learning_blocks_block_container_editor_assets() {
-	// Scripts.
+function bulb_block_container_editor_assets() {
 	wp_enqueue_script(
-		'bu_learning_blocks-block-container-js', // Handle.
-		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
+		'bulb-block-container-js', // Handle.
+		BULB_PLUGIN_URL . '/dist/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 		true // Enqueue the script in the footer.
@@ -98,15 +103,12 @@ function bu_learning_blocks_block_container_editor_assets() {
 
 	// Styles.
 	wp_enqueue_style(
-		'bu_learning_blocks-block-editor-css', // Handle.
-		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
+		'bulb-block-editor-css', // Handle.
+		BULB_PLUGIN_URL . 'dist/blocks.editor.build.css', // Block editor CSS.
 		array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: filemtime — Gets file modification time.
 	);
-} // End function bu_learning_blocks_block_container_editor_assets().
-
-// Hook: Editor assets.
-add_action( 'enqueue_block_editor_assets', 'bu_learning_blocks_block_container_editor_assets' );
+}
 
 // Add custom block category.
 add_filter( 'block_categories', function( $categories, $post ) {
