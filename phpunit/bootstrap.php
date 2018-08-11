@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package Gutenberg
+ * @package BULB
  */
 
 // Determine the tests directory (from a WP dev checkout).
@@ -32,11 +32,7 @@ define( 'GUTENBERG_LOAD_VENDOR_SCRIPTS', false );
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/lib/load.php';
-
-	// Require dummy block type class for testing.
-	require_once dirname( __FILE__ ) . '/class-wp-dummy-block-type.php';
-	require_once dirname( __FILE__ ) . '/class-wp-rest-dummy-search-handler.php';
+	require dirname( dirname( __FILE__ ) ) . '/plugin.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
