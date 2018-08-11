@@ -36,3 +36,11 @@ docker-compose up -d >/dev/null
 # Note: we don't bother installing the test site right now, because that's
 # done on every time `npm run test-e2e` is run.
 . "$(dirname "$0")/install-wordpress.sh"
+
+# Install the PHPUnit test scaffolding.
+echo -e $(status_message "Installing PHPUnit test scaffolding...")
+docker-compose run --rm wordpress_phpunit /app/bin/install-wp-tests.sh wordpress_test root example mysql $WP_VERSION false > /dev/null
+
+# Install Composer. This is only used to run WordPress Coding Standards checks.
+echo -e $(status_message "Installing and updating Composer modules...")
+docker-compose run --rm composer install
