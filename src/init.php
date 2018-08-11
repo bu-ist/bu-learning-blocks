@@ -13,6 +13,50 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+function bulb_settings_pages() {
+	add_menu_page(
+		__( 'BU Learning Blocks', 'bulearningblocks' ),
+		__( 'BULB Menu', 'bulearningblocks' ),
+		'manage_options',
+		'bulb',
+		'bulb_settings_page_markup',
+		'dashicons-welcome-learn-more',
+		100
+	);
+
+	add_submenu_page(
+		'bulb',
+		__( 'BULB Feature 1', 'bulearningblocks' ),
+		__( 'Feature 1', 'bulearningblocks' ),
+		'manage_options',
+		'bulb-feature-1',
+		'bulb_settings_page_markup'
+	);
+
+	add_submenu_page(
+		'bulb',
+		__( 'BULB Feature 2', 'bulearningblocks' ),
+		__( 'Feature 2', 'bulearningblocks' ),
+		'manage_options',
+		'bulb-feature-2',
+		'bulb_settings_page_markup'
+	);
+}
+
+add_action( 'admin_menu', 'bulb_settings_pages' );
+
+function bulb_settings_page_markup() {
+	if ( !current_user_can( 'manage_options') ) {
+		return;
+	}
+	?>
+	<div class="wrap">
+		<h1><?php esc_html_e( get_admin_page_title() ); ?></h1>
+		<p><?php esc_html_e( 'Some content.' ); ?></p>
+	</div>
+	<?php
+}
+
 /**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
