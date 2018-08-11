@@ -15,16 +15,21 @@ cd "$(dirname "$0")/.."
 # Check Docker is installed and running
 . "$(dirname "$0")/install-docker.sh"
 
-! read -d '' GUTENBERG <<"EOT"
-,⁻⁻⁻·       .                 |
-|  ،⁓’.   . |---  ,---. ,---. |---. ,---. ,---. ,---.
-|   | |   | |     |---' |   | |   | |---' |     |   |
-`---' `---' `---’ `---’ '   ` `---' `---’ `     `---|
-                                                `---'
+! read -d '' BULB <<"EOT"
+
+########  ##     ## ##       ########  
+##     ## ##     ## ##       ##     ## 
+##     ## ##     ## ##       ##     ## 
+########  ##     ## ##       ########  
+##     ## ##     ## ##       ##     ## 
+##     ## ##     ## ##       ##     ## 
+########   #######  ######## ########  
+
 EOT
 
 CURRENT_URL=$(docker-compose run -T --rm cli option get siteurl)
 
 echo -e "\nWelcome to...\n"
-echo -e "\033[95m$GUTENBERG\033[0m"
-echo -e "Run $(action_format "npm run dev"), then open $(action_format "$CURRENT_URL") to get started!"
+echo -e "\033[95m$BULB\033[0m"
+echo ''
+echo -e "Run $(action_format "npm start"), then open $(action_format "$CURRENT_URL") to get started!"

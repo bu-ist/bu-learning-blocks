@@ -12,21 +12,6 @@ CONTAINER='wordpress'
 SITE_TITLE='Gutenberg Dev'
 WP_VERSION=${WP_VERSION-latest}
 
-# If we're installing/re-installing the test site, change the containers used.
-if [ "$1" == '--e2e_tests' ]; then
-	CLI="${CLI}_e2e_tests"
-	CONTAINER="${CONTAINER}_e2e_tests"
-	SITE_TITLE='Gutenberg Testing'
-
-	if ! docker ps | grep -q $CONTAINER; then
-		echo -e $(error_message "WordPress e2e tests run in their own Docker container, but that container wasn't found.")
-		echo "Please restart your Docker containers by running 'docker-compose down && docker-compose up -d' or"
-		echo "by running './bin/setup-local-env.sh' again."
-		echo ""
-		exit 1
-	fi
-fi
-
 # Get the host port for the WordPress container.
 HOST_PORT=$(docker-compose port $CONTAINER 80 | awk -F : '{printf $2}')
 
@@ -38,13 +23,6 @@ until $(curl -L http://localhost:$HOST_PORT -so - 2>&1 | grep -q "WordPress"); d
     sleep 5
 done
 echo ''
-
-# If this is the test site, we reset the database so no posts/comments/etc.
-# dirty up the tests.
-if [ "$1" == '--e2e_tests' ]; then
-	echo -e $(status_message "Resetting test database...")
-	docker-compose run --rm $CLI db reset --yes >/dev/null
-fi
 
 # Install WordPress.
 echo -e $(status_message "Installing WordPress...")
@@ -64,6 +42,10 @@ if [ "$CURRENT_URL" != "http://localhost:$HOST_PORT" ]; then
 	docker-compose run --rm $CLI option update siteurl "http://localhost:$HOST_PORT" >/dev/null
 fi
 
-# Activate Gutenberg.
-echo -e $(status_message "Activating Gutenberg...")
-docker-compose run --rm $CLI plugin activate gutenberg >/dev/null
+# Install and activate Gutenberg.
+echo -e $(status_message "Installing Gutenberg...")
+docker-compose run --rm -u 33 $CLI wp plugin install gutenberg --activate >/dev/null
+
+# Activate BULB
+echo -e $(status_message "Activating BULB...")
+docker-compose run --rm $CLI plugin activate bu-learning-blocks >/dev/null
