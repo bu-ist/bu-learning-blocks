@@ -1,11 +1,11 @@
 <?php
 /**
- * Blocks Initializer
+ * BULB Blocks Initializer
  *
  * Enqueue CSS/JS of all the blocks.
  *
  * @since   0.0.1
- * @package Block Container
+ * @package BU Learning Blocks
  */
 
 // Exit if accessed directly.
@@ -13,54 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_action( 'admin_menu', 'bulb_settings_pages' );
-function bulb_settings_pages() {
-	add_menu_page(
-		__( 'BU Learning Blocks', 'bulearningblocks' ),
-		__( 'BULB Menu', 'bulearningblocks' ),
-		'manage_options',
-		'bulb',
-		'bulb_settings_page_markup',
-		'dashicons-welcome-learn-more',
-		100
-	);
-
-	add_submenu_page(
-		'bulb',
-		__( 'BULB Feature 1', 'bulearningblocks' ),
-		__( 'Feature 1', 'bulearningblocks' ),
-		'manage_options',
-		'bulb-feature-1',
-		'bulb_settings_page_markup'
-	);
-
-	add_submenu_page(
-		'bulb',
-		__( 'BULB Feature 2', 'bulearningblocks' ),
-		__( 'Feature 2', 'bulearningblocks' ),
-		'manage_options',
-		'bulb-feature-2',
-		'bulb_settings_page_markup'
-	);
-}
-
-function bulb_settings_page_markup() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
-	$page_title = get_admin_page_title();
-	?>
-	<div class="wrap">
-		<h1><?php esc_html_e( $page_title ); ?></h1>
-		<p><?php esc_html_e( 'Some content.' ); ?></p>
-	</div>
-	<?php
-}
+// Pull in settings initilaization and markup.
+require_once BULB_PLUGIN_DIR_PATH . 'src/bulb-settings.php';
 
 add_filter( 'plugin_action_links_' . BULB_PLUGIN_BASENAME, 'add_action_links' );
+/**
+ * Plugin menu link to settings.
+ *
+ * @param array[] $links Array of links to be shown on plugin page.
+ *
+ * @since 0.0.1
+ */
 function add_action_links( $links ) {
 	$mylinks = array(
-		'<a href="' . admin_url( 'options-general.php?page=bulb' ) . '">Settings</a>',
+		'<a href="' . admin_url( 'admin.php?page=bulb' ) . '">Settings</a>',
 	);
 	return array_merge( $links, $mylinks );
 }
@@ -122,3 +88,43 @@ add_filter( 'block_categories', function( $categories, $post ) {
 		)
 	);
 }, 10, 2 );
+
+add_action( 'init', 'bulb_register_learning_module_post_type' );
+/**
+ * Calls register_post_type
+ *
+ * @since 0.0.1
+ */
+function bulb_register_learning_module_post_type() {
+	// Set various pieces of text, $labels is used inside the $args array.
+	$labels = array(
+		'name'          => __( 'Learning Modules', 'bulearningblocks' ),
+		'singular_name' => __( 'Learning Module', 'bulearningblocks' ),
+		'add_new'       => __( 'Add New Learning Module' ),
+		'add_new_item'  => __( 'Add New Learning Module' ),
+		'edit_item'     => __( 'Edit Learning Module' ),
+		'new_item'      => __( 'New Learning Module' ),
+		'all_items'     => __( 'All Learning Modules' ),
+		'view_item'     => __( 'View Learning Module' ),
+		'search_items'  => __( 'Search Learning Modules' ),
+	);
+
+	// Set various pieces of information about the post type.
+	$args = array(
+		'labels'             => $labels,
+		'description'        => __( 'Holds our Learning Modules', 'bulearningblocks' ),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'page-attributes' ),
+		'hierarchical'       => true,
+		'has_archive'        => true,
+		'rewrite'            => array( 'slug' => 'modules' ),
+		'show_in_admin_bar'  => true,
+		'show_in_nav_menus'  => true,
+		'show_in_rest'       => true,
+		'can_export'         => true,
+	);
+
+	// Register the movie post type with all the information contained in the $arguments array.
+	register_post_type( 'learning_module', $args );
+}
