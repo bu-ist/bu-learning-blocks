@@ -1,7 +1,16 @@
+<?php
+/**
+ * BULB Plugin Templates
+ *
+ * Primarily HTML markup for the admin settings page.
+ *
+ * @package BU Learning Blocks
+ */
+
+?>
+
 <div class="wrap">
-	<h1>
-		<?php esc_html_e( get_admin_page_title() ); ?>
-	</h1>
+	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
 	<form method="post" action="options.php">
 	<!-- Display necessary hidden fields for settings -->
