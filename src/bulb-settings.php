@@ -62,3 +62,18 @@ function bulb_settings_page_markup() {
 	}
 	include BULB_PLUGIN_DIR_PATH . 'src/templates/admin/settings-page.php';
 }
+
+add_filter( 'plugin_action_links_' . BULB_PLUGIN_BASENAME, 'add_action_links' );
+/**
+ * Plugin menu link to settings.
+ *
+ * @param array[] $links Array of links to be shown on plugin page.
+ *
+ * @since 0.0.1
+ */
+function add_action_links( $links ) {
+	$mylinks = array(
+		'<a href="' . admin_url( 'admin.php?page=bulb' ) . '">Settings</a>',
+	);
+	return array_merge( $links, $mylinks );
+}
