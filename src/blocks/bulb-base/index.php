@@ -1,4 +1,12 @@
 <?php
+/**
+ * Base question block
+ *
+ * Register dynamic block functions
+ *
+ * @since   0.0.1
+ * @package BU Learning Blocks
+ */
 
 /**
  * Render the block
