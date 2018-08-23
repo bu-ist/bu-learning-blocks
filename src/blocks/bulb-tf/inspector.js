@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls } = wp.editor;
-const { PanelBody, RadioControl, SelectControl } = wp.components;
+const { PanelBody, RadioControl } = wp.components;
 
 /**
  * Create an Inspector Controls wrapper Component
@@ -12,7 +12,7 @@ const { PanelBody, RadioControl, SelectControl } = wp.components;
 export default class Inspector extends Component {
 	render() {
 		const {
-			attributes: { radioControl, selectControl },
+			attributes: { radioControl },
 			setAttributes,
 		} = this.props;
 
@@ -27,19 +27,6 @@ export default class Inspector extends Component {
 							{ label: 'False', value: 'false' },
 						] }
 						onChange={ value => setAttributes( { radioControl: value } ) }
-					/>
-				</PanelBody>
-
-				<PanelBody>
-					<SelectControl
-						label={ __( 'Answer Types', 'bulearningblocks' ) }
-						value={ selectControl }
-						options={ [
-							{ value: 'a', label: __( 'True/False', 'bulearningblocks' ) },
-							{ value: 'b', label: __( 'Multiple Choice', 'bulearningblocks' ) },
-							{ value: 'c', label: __( 'Multiple Answer', 'bulearningblocks' ) },
-						] }
-						onChange={ value => setAttributes( { selectControl: value } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>

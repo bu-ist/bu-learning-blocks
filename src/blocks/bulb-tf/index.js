@@ -2,9 +2,10 @@
  * Block dependencies
  */
 import classnames from 'classnames'; // Helper library to add classnames to a component
+import uuidv5 from 'uuid/v5';
 import Inspector from './inspector';
 import Controls from './controls';
-import attributes from './attributes';
+import blockAttributes from './attributes';
 import './styles/style.scss';
 import './styles/editor.scss';
 
@@ -24,7 +25,8 @@ export default registerBlockType( 'bulb/question-tf', {
 		__( 'BULB', 'bulearningblocks' ),
 		__( 'True False Question', 'bulearningblocks' ),
 	],
-	attributes,
+	attributes: blockAttributes,
+
 	getEditWrapperProps( editWrapperProps ) {
 		const { blockAlignment } = editWrapperProps;
 		if (
@@ -37,54 +39,62 @@ export default registerBlockType( 'bulb/question-tf', {
 	},
 	edit: props => {
 		const {
-			attributes: { textAlignment, question, highContrast },
+			attributes: { id, header, body, textAlignment },
 			className,
 			setAttributes,
 		} = props;
-		const onChangeMessage = newQuestion => {
-			setAttributes( { question: newQuestion } );
+
+		if ( ! id ) {
+			setAttributes( {
+				id:
+					'bulb_question_' +
+					uuidv5( window.location.hostname, uuidv5.DNS ).replace(
+						/-/g,
+						''
+					),
+			} );
+		}
+
+		const onChangeHeader = newHeader => {
+			setAttributes( {
+				header: newHeader,
+			} );
+		};
+
+		const onChangeBody = newBody => {
+			setAttributes( {
+				body: newBody,
+			} );
 		};
 
 		return (
 			<Fragment>
 				<Inspector { ...{ setAttributes, ...props } } />
 				<div
-					className={ classnames( className, { 'high-contrast': highContrast } ) }
+					id={ id }
+					className={ classnames( className ) }
 				>
 					<RichText
 						tagName="div"
 						multiline="p"
-						placeholder={ __( 'Enter your question here..', 'bulearningmodules' ) }
+						placeholder={ __( 'Question Header', 'bulearningmodules' ) }
+						className={ classnames( 'question-header' ) }
+						onChange={ onChangeHeader }
+						value={ header }
+					/>
+					<RichText
+						tagName="div"
+						multiline="p"
+						placeholder={ __( 'Question Body', 'bulearningmodules' ) }
 						className={ classnames( 'question-body' ) }
 						style={ { textAlign: textAlignment } }
-						onChange={ onChangeMessage }
-						value={ question }
+						onChange={ onChangeBody }
+						value={ body }
 					/>
 				</div>
 				<Controls { ...{ setAttributes, ...props } } />
 			</Fragment>
 		);
 	},
-	save: props => {
-		const {
-			attributes: {
-				highContrast,
-				textAlignment,
-				blockAlignment,
-				question,
-				radioControl,
-			},
-		} = props;
-		return (
-			<div
-				className={ classnames( `align${ blockAlignment }`, {
-					'high-contrast': highContrast,
-				} ) }
-				style={ { textAlign: textAlignment } }
-			>
-				<div className={ classnames( 'question-body' ) }>{ question }</div>
-				<p>Correct Answer: { radioControl }</p>
-			</div>
-		);
-	},
+	save: () => null,
 } );
