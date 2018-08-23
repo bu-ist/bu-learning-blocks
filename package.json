@@ -5,7 +5,11 @@
     "scripts": {
         "start": "cgb-scripts start",
         "build": "cgb-scripts build",
-        "eject": "cgb-scripts eject"
+        "eject": "cgb-scripts eject",
+        "lint-php": "docker-compose run --rm composer run-script lint",
+        "test-php": "npm run lint-php && npm run test-unit-php",
+        "test-unit-php": "docker-compose run --rm wordpress_phpunit phpunit",
+        "test-unit-php-multisite": "docker-compose run -e WP_MULTISITE=1 --rm wordpress_phpunit phpunit"
     },
     "dependencies": {
         "@wordpress/html-entities": "^1.0.1",

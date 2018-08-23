@@ -41,7 +41,8 @@
 .bulb-block-container {
   margin-bottom: 0; }
 
-.editor-block-list__layout [data-type="bu-learning-blocks/bulb-block-container"] {
+.editor-block-list__layout
+[data-type="bu-learning-blocks/bulb-block-container"] {
   margin-bottom: 1.2em; }
 
 .bulb-block-container-button .blocks-button__inline-link .editor-url-input {

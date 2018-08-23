@@ -1,5 +1,5 @@
 /**
- * Gutenberg Blocks
+ * BULB Blocks
  *
  * All blocks related JavaScript files should be imported here.
  * You can create a new block folder in this dir and include code
@@ -9,5 +9,4 @@
  * Webpack is compiling as the input file.
  */
 
-import './bulb-container/index.js';
-import './bulb-tf/index.js';
+import "./blocks/bulb-container/index.js";

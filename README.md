@@ -1,25 +1,67 @@
+# BULB (Boston University Learning Blocks)
+
+## Getting Started
+
+### Local Environment
+
+First, you need a WordPress Environment to run the plugin on. The quickest way to get up and running is to use the provided docker setup. Install [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) by following the most recent instructions on the docker site.
+
+In the folder of your preference, clone this project and enter the working directory:
+
+```bash
+git clone git@github.com:bu-ist/bu-learning-modules.git
+cd bu-learning-modules
+```
+
+Then, run a setup script to check if docker and node are configured properly and starts the local WordPress instance. You may need to run this script multiple times if prompted.
+
+```
+./bin/setup-local-env.sh
+```
+
+If everything was successful, you'll see the following ascii art:
+
+```
+Welcome to...
+
+########  ##     ## ##       ########
+##     ## ##     ## ##       ##     ##
+##     ## ##     ## ##       ##     ##
+########  ##     ## ##       ########
+##     ## ##     ## ##       ##     ##
+##     ## ##     ## ##       ##     ##
+########   #######  ######## ########
+```
+
+The WordPress installation should be available at `http://localhost:8888` (username: `admin`, password: `password`).
+Inside this repository, you can use any docker command to interact with your containers. If this port is in use, you can override it in your `docker-compose.override.yml` file.
+
+To bring down this local WordPress instance later run:
+
+```
+docker-compose down
+```
+
+If you'd like to see your changes reflected in this local WordPress instance, run:
+
+```
+npm start
+```
+
+## Testing
+
+### PHP Testing
+
+Tests for PHP use PHPUnit as the testing framework. If you're using the built-in local environment, you can run the PHP tests locally using this command:
+
+```
+npm run test-php
+```
+
+Code style in PHP is enforced using PHP_CodeSniffer. It is recommended that you install PHP_CodeSniffer and the WordPress Coding Standards for PHP_CodeSniffer ruleset using Composer. With Composer installed, run composer install from the project directory to install dependencies. The above npm run test-php will execute both unit tests and code linting. Code linting can be verified independently by running npm run lint-php.
+
+To run unit tests only, without the linter, use npm run test-unit-php instead.
+
+## Create Guten Block
+
 This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
-
-Below you will find some information on how to run scripts.
-
->You can find the most recent version of this guide [here](https://github.com/ahmadawais/create-guten-block).
-
-## 👉  `npm start`
-- Use to compile and run the block in development mode.
-- Watches for any changes and reports back any errors in your code.
-
-## 👉  `npm run build`
-- Use to build production code for your block inside `dist` folder.
-- Runs once and reports back the gzip file sizes of the produced code.
-
-## 👉  `npm run eject`
-- Use to eject your plugin out of `create-guten-block`.
-- Provides all the configurations so you can customize the project as you want.
-- It's a one-way street, `eject` and you have to maintain everything yourself.
-- You don't normally have to `eject` a project because by ejecting you lose the connection with `create-guten-block` and from there onwards you have to update and maintain all the dependencies on your own.
-
----
-
-###### Feel free to tweet and say 👋 at me [@MrAhmadAwais](https://twitter.com/mrahmadawais/)
-
-[![npm](https://img.shields.io/npm/v/create-guten-block.svg?style=flat-square)](https://www.npmjs.com/package/create-guten-block) [![npm](https://img.shields.io/npm/dt/create-guten-block.svg?style=flat-square&label=downloads)](https://www.npmjs.com/package/create-guten-block)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/ahmadawais/create-guten-block) [![Tweet for help](https://img.shields.io/twitter/follow/mrahmadawais.svg?style=social&label=Tweet%20@MrAhmadAwais)](https://twitter.com/mrahmadawais/) [![GitHub stars](https://img.shields.io/github/stars/ahmadawais/create-guten-block.svg?style=social&label=Stars)](https://github.com/ahmadawais/create-guten-block/stargazers) [![GitHub followers](https://img.shields.io/github/followers/ahmadawais.svg?style=social&label=Follow)](https://github.com/ahmadawais?tab=followers)
