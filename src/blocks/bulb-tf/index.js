@@ -39,14 +39,10 @@ export default registerBlockType( 'bulb/question-tf', {
 	},
 	edit: props => {
 		const {
-			attributes: { id, header, body, textAlignment, highContrast },
+			attributes: { id, header, body, textAlignment },
 			className,
 			setAttributes,
 		} = props;
-
-		// const onChangeMessage = newQuestion => {
-		// 	setAttributes( { question: newQuestion } );
-		// };
 
 		if ( ! id ) {
 			setAttributes( {
@@ -76,9 +72,7 @@ export default registerBlockType( 'bulb/question-tf', {
 				<Inspector { ...{ setAttributes, ...props } } />
 				<div
 					id={ id }
-					className={ classnames( className, {
-						'high-contrast': highContrast,
-					} ) }
+					className={ classnames( className ) }
 				>
 					<RichText
 						tagName="div"

@@ -12,7 +12,7 @@ const { Toolbar, Button, Tooltip } = wp.components;
 export default class Inspector extends Component {
 	render() {
 		const {
-			attributes: { highContrast, blockAlignment, textAlignment },
+			attributes: { blockAlignment, textAlignment },
 			setAttributes,
 		} = this.props;
 
@@ -21,8 +21,6 @@ export default class Inspector extends Component {
 			setAttributes( { blockAlignment: newAlignment } );
 		const onChangeTextAlignment = newAlignment =>
 			setAttributes( { textAlignment: newAlignment } );
-		const toggleHighContrast = () =>
-			setAttributes( { highContrast: ! highContrast } );
 
 		return (
 			<BlockControls>
@@ -34,20 +32,6 @@ export default class Inspector extends Component {
 					value={ textAlignment }
 					onChange={ onChangeTextAlignment }
 				/>
-				<Toolbar>
-					<Tooltip text={ __( 'High Contrast', 'bulearningblocks' ) }>
-						<Button
-							className={ classnames(
-								'components-icon-button',
-								'components-toolbar__control',
-								{ 'is-active': highContrast }
-							) }
-							onClick={ toggleHighContrast }
-						>
-							{ icons.contrast }
-						</Button>
-					</Tooltip>
-				</Toolbar>
 			</BlockControls>
 		);
 	}

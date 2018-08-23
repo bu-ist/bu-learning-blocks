@@ -16,10 +16,6 @@ const attributes = {
 	selectControl: {
 		type: 'string',
 	},
-	highContrast: {
-		type: 'boolean',
-		default: false,
-	},
 };
 
 export default attributes;
