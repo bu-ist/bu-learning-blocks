@@ -10,3 +10,4 @@
  */
 
 import "./blocks/bulb-container/index.js";
+import "./blocks/bulb-tf/index.js";
