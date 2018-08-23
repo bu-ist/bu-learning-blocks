@@ -8,6 +8,16 @@ add_action( 'enqueue_block_assets', 'bulb_block_container_assets' );
  * @since 1.0.0
  */
 function bulb_block_container_assets() {
+	// Scripts.
+	wp_enqueue_script(
+		'bulb-blocks-front-end-js',
+		BULB_PLUGIN_URL . 'dist/blocks-front-end.js',
+		array(),
+		filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks-front-end.js' ), // Version: filemtime — Gets file modification time.
+		true
+	);
+
+	// Styles.
 	wp_enqueue_style(
 		'bulb-container-style-css',
 		BULB_PLUGIN_URL . 'dist/blocks.style.build.css', // Block style CSS.
@@ -29,7 +39,7 @@ add_action( 'enqueue_block_editor_assets', 'bulb_block_container_editor_assets' 
 function bulb_block_container_editor_assets() {
 	wp_enqueue_script(
 		'bulb-block-container-js', // Handle.
-		BULB_PLUGIN_URL . '/dist/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
+		BULB_PLUGIN_URL . 'dist/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 		true // Enqueue the script in the footer.
