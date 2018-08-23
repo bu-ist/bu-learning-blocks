@@ -1,5 +1,5 @@
 <?php
-add_action( 'enqueue_block_assets', 'bulb_block_container_assets' );
+add_action( 'enqueue_block_assets', 'bulb_block_assets' );
 /**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
@@ -7,7 +7,7 @@ add_action( 'enqueue_block_assets', 'bulb_block_container_assets' );
  *
  * @since 1.0.0
  */
-function bulb_block_container_assets() {
+function bulb_block_assets() {
 	// Scripts.
 	wp_enqueue_script(
 		'bulb-blocks-front-end-js',
@@ -19,14 +19,14 @@ function bulb_block_container_assets() {
 
 	// Styles.
 	wp_enqueue_style(
-		'bulb-container-style-css',
+		'bulb-style-css',
 		BULB_PLUGIN_URL . 'dist/blocks.style.build.css', // Block style CSS.
 		array( 'wp-blocks' ) // Dependency to include the CSS after it.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
 	);
 }
 
-add_action( 'enqueue_block_editor_assets', 'bulb_block_container_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'bulb_block_editor_assets' );
 /**
  * Enqueue Gutenberg block assets for backend editor.
  *
@@ -36,9 +36,9 @@ add_action( 'enqueue_block_editor_assets', 'bulb_block_container_editor_assets' 
  *
  * @since 1.0.0
  */
-function bulb_block_container_editor_assets() {
+function bulb_block_editor_assets() {
 	wp_enqueue_script(
-		'bulb-block-container-js', // Handle.
+		'bulb-block-js', // Handle.
 		BULB_PLUGIN_URL . 'dist/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.

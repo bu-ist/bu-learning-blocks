@@ -21,6 +21,7 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/enqueue-assets.php';
 
 // Register dynamic blocks.
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-base/index.php';
+require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-tf/index.php';
 
 // Add custom block category.
 add_filter( 'block_categories', function( $categories, $post ) {

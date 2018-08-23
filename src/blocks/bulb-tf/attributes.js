@@ -1,9 +1,7 @@
 const attributes = {
-	question: {
-		type: 'array',
-		source: 'children',
-		selector: '.question-body',
-	},
+	id: {},
+	header: {},
+	body: {},
 	textAlignment: {
 		default: 'left',
 	},
