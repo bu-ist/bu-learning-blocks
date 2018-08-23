@@ -6,6 +6,8 @@
         "start": "cgb-scripts start",
         "build": "cgb-scripts build",
         "eject": "cgb-scripts eject",
+        "lint-js": "eslint .",
+        "lint-js:fix": "eslint . --fix",
         "lint-php": "docker-compose run --rm composer run-script lint",
         "test-php": "npm run lint-php && npm run test-unit-php",
         "test-unit-php": "docker-compose run --rm wordpress_phpunit phpunit",
