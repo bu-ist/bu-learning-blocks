@@ -57,14 +57,14 @@ export default registerBlockType( 'bulb/base', {
 				<div id={ id } className={ classnames( 'mystring', className ) }>
 					<RichText
 						tagName="div"
-						placeholder={ __( 'Question Header', 'bulearningmodules' ) }
+						placeholder={ __( 'Question Header', 'bulearningblocks' ) }
 						className={ classnames( 'question-header' ) }
 						onChange={ onChangeHeader }
 						value={ header }
 					/>
 					<RichText
 						tagName="div"
-						placeholder={ __( 'Question Body', 'bulearningmodules' ) }
+						placeholder={ __( 'Question Body', 'bulearningblocks' ) }
 						className={ classnames( 'question-body' ) }
 						onChange={ onChangeBody }
 						value={ body }

@@ -35,6 +35,5 @@ function bulb_register_learning_module_post_type() {
 		'can_export'         => true,
 	);
 
-	// Register the movie post type with all the information contained in the $arguments array.
-	register_post_type( 'learning_module', $args );
+	register_post_type( 'bulb_learning_module', $args );
 }

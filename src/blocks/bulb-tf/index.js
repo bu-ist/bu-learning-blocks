@@ -77,7 +77,7 @@ export default registerBlockType( 'bulb/question-tf', {
 					<RichText
 						tagName="div"
 						multiline="p"
-						placeholder={ __( 'Question Header', 'bulearningmodules' ) }
+						placeholder={ __( 'Question Header', 'bulearningblocks' ) }
 						className={ classnames( 'question-header' ) }
 						onChange={ onChangeHeader }
 						value={ header }
@@ -85,7 +85,7 @@ export default registerBlockType( 'bulb/question-tf', {
 					<RichText
 						tagName="div"
 						multiline="p"
-						placeholder={ __( 'Question Body', 'bulearningmodules' ) }
+						placeholder={ __( 'Question Body', 'bulearningblocks' ) }
 						className={ classnames( 'question-body' ) }
 						style={ { textAlign: textAlignment } }
 						onChange={ onChangeBody }
