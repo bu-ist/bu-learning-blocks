@@ -6,6 +6,8 @@
         "start": "cgb-scripts start",
         "build": "cgb-scripts build",
         "eject": "cgb-scripts eject",
+        "lint-js": "eslint .",
+        "lint-js:fix": "eslint . --fix",
         "lint-php": "docker-compose run --rm composer run-script lint",
         "test-php": "npm run lint-php && npm run test-unit-php",
         "test-unit-php": "docker-compose run --rm wordpress_phpunit phpunit",
@@ -24,7 +26,8 @@
         "querystringify": "^2.0.0",
         "re-resizable": "^4.4.8",
         "react": "16.2.0",
-        "styled-components": "^3.2.5"
+        "styled-components": "^3.2.5",
+        "uuid": "^3.3.2"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
