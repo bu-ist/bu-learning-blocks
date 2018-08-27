@@ -1,5 +1,12 @@
 <?php
-add_action( 'enqueue_block_assets', 'bulb_block_assets' );
+/**
+ * Enqueue plugin assets
+ *
+ * @since   0.0.1
+ * @package BU Learning Blocks
+ */
+
+add_action( 'enqueue_block_assets', 'bulb_block_container_assets' );
 /**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
