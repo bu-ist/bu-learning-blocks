@@ -9,8 +9,8 @@ First, you need a WordPress Environment to run the plugin on. The quickest way t
 In the folder of your preference, clone this project and enter the working directory:
 
 ```bash
-git clone git@github.com:bu-ist/bu-learning-modules.git
-cd bu-learning-modules
+git clone git@github.com:bu-ist/bu-learning-blocks.git
+cd bu-learning-blocks
 ```
 
 Then, run a setup script to check if docker and node are configured properly and starts the local WordPress instance. You may need to run this script multiple times if prompted.
