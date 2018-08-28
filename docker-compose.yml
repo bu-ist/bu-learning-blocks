@@ -14,7 +14,7 @@ services:
       - .:/var/www/html/wp-content/plugins/bu-learning-blocks
 
   cli:
-    image: wordpress:cli
+    image: wordpress:cli-2.0.0
     volumes:
       - wordpress:/var/www/html
       - .:/var/www/html/wp-content/plugins/bu-learning-blocks
