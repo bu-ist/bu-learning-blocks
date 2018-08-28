@@ -1,4 +1,4 @@
-const attributes = {
+export default {
 	id: {},
 	header: {},
 	body: {},
@@ -13,9 +13,4 @@ const attributes = {
 		type: 'string',
 		default: 'true',
 	},
-	selectControl: {
-		type: 'string',
-	},
 };
-
-export default attributes;

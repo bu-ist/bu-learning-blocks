@@ -1,30 +1,43 @@
 <?php
+/**
+ * Base question block
+ *
+ * Register dynamic block functions
+ *
+ * @since   0.0.1
+ * @package BU Learning Blocks
+ */
 
 /**
- * Render the block
+ * Render the dynamic block
  *
  * @param object $attributes The block's attributes.
  * @param string $content The block's content.
  * @return string The html markup for the block
  */
 function bulb_render_block_tf( $attributes, $content ) {
-	$id		= $attributes['id'];
-	// $header = $attributes['header'];
-	// $body	= $attributes['body'];
+	// Get the question block instance id.
+	$id = $attributes['id'];
+
+	// Save the block data as a JS variable.
+	// Use the instance id as the variable name.
 	wp_localize_script( 'bulb-blocks-front-end-js', $id, $attributes );
-	return '<div id="' . $id . '" class="bulb-question">The div</div>';
+
+	// Print a question block wrapper with the same instance id.
+	// The JS code will then be able to connect the question wrapper with its data.
+	return '<div id="' . $id . '" class="bulb-question">In Question div</div>';
 }
 
 /**
- * Register the block
+ * Register the dynamic block
  *
  * @return void
  */
-function bulb_register_tf() {
+function bulb_register_question_tf() {
 	register_block_type(
 		'bulb/question-tf', array(
 			'render_callback' => 'bulb_render_block_tf',
 		)
 	);
 }
-add_action( 'init', 'bulb_register_tf' );
+add_action( 'init', 'bulb_register_question_tf' );
