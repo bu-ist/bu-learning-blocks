@@ -29,30 +29,28 @@ function bulb_render_block_tf( $attributes, $content ) {
 	// Print a question block wrapper with the same instance id.
 	// The JS code will then be able to connect the question wrapper with its data.
 	return(
-		'<div id="' . $id . '" class="bulb-question">
-			<h1 class="quizName">The Quiz Name</h1>
+		'<div id="slickQuiz" class="bulb-question">
+        <h1 class="quizName"><!-- where the quiz name goes --></h1>
 
-			<div class="quizArea">
-				<div class="quizHeader">
-					Main Quiz Copy
-					<a class="startQuiz" href="">Get Started!</a>
-				</div>'
-				. $header .
-			'</div>'
-			. $body .
-			'<div> The correct indicator = '
-			. $correct_answer .
-			'</div>
-			<div class="quizResults">
-				<h3 class="quizScore">You Scored: <span><!-- where the quiz score goes --></span></h3>
+        <div class="quizArea">
+            <div class="quizHeader">
+                <!-- where the quiz main copy goes -->
 
-				<h3 class="quizLevel"><strong>Ranking:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
+                <a class="button startQuiz" href="#">Get Started!</a>
+            </div>
 
-				<div class="quizResultsCopy">
-					<!-- where the quiz result copy goes -->
-				</div>
-			</div>
-		</div>'
+            <!-- where the quiz gets built -->
+        </div>
+
+        <div class="quizResults">
+            <h3 class="quizScore">You Scored: <span><!-- where the quiz score goes --></span></h3>
+
+            <h3 class="quizLevel"><strong>Ranking:</strong> <span><!-- where the quiz ranking level goes --></span></h3>
+
+            <div class="quizResultsCopy">
+                <!-- where the quiz result copy goes -->
+            </div>
+</div>'
 	);
 }
 
