@@ -1,21 +1,21 @@
 // Setup your quiz text and questions here
 let questionId = document.querySelector( '.bulb-question' ).id;
 let question = window[questionId];
+console.log(JSON.stringify(question, null, 4));
 
 // NOTE: pay attention to commas, IE struggles with those bad boys
 
 const quizJSON = {
 	info: {
-		name: 'True or False',
-		main:
-			'<p>What do you know about the Grateful Dead</p>',
-		results:
-			'<h5>Learn More</h5><p><a href="https://en.wikipedia.org/wiki/Jerry_Garcia">About Jerry</a></p>',
-		level1: 'Jeopardy Ready',
-		level2: 'Jeopardy Contender',
-		level3: 'Jeopardy Amateur',
-		level4: 'Jeopardy Newb',
-		level5: 'Stay in school, kid...', // no comma here
+        // name: question.header[0],
+		main: '<p>' + question.header[0] + '</p>',
+		// results:
+		// 	'<h5>Learn More</h5><p><a href="https://en.wikipedia.org/wiki/Jerry_Garcia">About Jerry</a></p>',
+		// level1: 'Jeopardy Ready',
+		// level2: 'Jeopardy Contender',
+		// level3: 'Jeopardy Amateur',
+		// level4: 'Jeopardy Newb',
+		// level5: 'Stay in school, kid...', // no comma here
 	},
 	questions: [
 		{
@@ -78,7 +78,7 @@ const quizJSON = {
 		// },
 		// {
 		// 	// Question 5
-			q: 'Jerry Garcia died in 1995?',
+			q: question.body[0],
 			a: [
 				{ option: 'True', correct: true },
 				{ option: 'False', correct: false }, // no comma here
@@ -86,7 +86,7 @@ const quizJSON = {
 			correct:
 				'<p><span>Good Job!</span> You have a good memory!</p>',
 			incorrect:
-				'<p>Nope. He died in 1995</p>', // no comma here
+                '<p>Nope. He died in 1995</p>', // no comma here
 		}, // no comma here
 	],
 };

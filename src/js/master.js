@@ -3,6 +3,11 @@ const bulbQuestion = document.querySelector( '.bulb-question' );
 
 ( function( $ ) {
 	$( function() {
-		$( '#' + bulbQuestion.id ).slickQuiz();
+		$( '#' + bulbQuestion.id ).slickQuiz( {
+			nextQuestionText: '',
+			displayQuestionNumber: false,
+			displayQuestionCount: false,
+			skipStartButton: true,
+		} );
 	} );
 }( jQuery ) );
