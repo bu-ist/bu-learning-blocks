@@ -1,6 +1,8 @@
 // Put all your page JS here
+const bulbQuestion = document.querySelector( '.bulb-question' );
+
 ( function( $ ) {
 	$( function() {
-		$( '#slickQuiz' ).slickQuiz();
+		$( '#' + bulbQuestion.id ).slickQuiz();
 	} );
 }( jQuery ) );

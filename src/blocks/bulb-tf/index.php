@@ -24,12 +24,12 @@ function bulb_render_block_tf( $attributes, $content ) {
 
 	// Save the block data as a JS variable.
 	// Use the instance id as the variable name.
-	wp_localize_script( 'bulb-blocks-front-end-js', $id, $attributes );
+	wp_localize_script( 'slickquiz-master-js', $id, $attributes );
 
 	// Print a question block wrapper with the same instance id.
 	// The JS code will then be able to connect the question wrapper with its data.
 	return(
-		'<div id="slickQuiz" class="bulb-question">
+		'<div id=' . $id . ' class="bulb-question">
         <h1 class="quizName"><!-- where the quiz name goes --></h1>
 
         <div class="quizArea">
