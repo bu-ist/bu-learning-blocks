@@ -22,7 +22,7 @@ const {
 export default class Inspector extends Component {
 	render() {
 		const {
-			attributes: { colorPaletteControl, rangeControl },
+			attributes: { backgroundColorControl, textColorControl, textSizeControl },
 			setAttributes,
 		} = this.props;
 
@@ -30,14 +30,28 @@ export default class Inspector extends Component {
 			<InspectorControls>
 				<PanelBody title={ __( 'Text Settings', 'bulearningblocks' ) }>
 					<PanelColor
-						title={ __( 'Text Color', 'bulearningblocks' ) }
-						colorValue={ colorPaletteControl }
+						title={ __( 'Background Color', 'bulearningblocks' ) }
+						colorValue={ backgroundColorControl }
 					>
 						<BaseControl>
 							<ColorPalette
-								value={ colorPaletteControl }
-								onChange={ colorPaletteControl =>
-									setAttributes( { colorPaletteControl } )
+								value={ backgroundColorControl }
+								onChange={ backgroundColorControl =>
+									setAttributes( { backgroundColorControl } )
+								}
+							/>
+						</BaseControl>
+					</PanelColor>
+
+					<PanelColor
+						title={ __( 'Text Color', 'bulearningblocks' ) }
+						colorValue={ textColorControl }
+					>
+						<BaseControl>
+							<ColorPalette
+								value={ textColorControl }
+								onChange={ textColorControl =>
+									setAttributes( { textColorControl } )
 								}
 							/>
 						</BaseControl>
@@ -46,10 +60,10 @@ export default class Inspector extends Component {
 					<RangeControl
 						beforeIcon="arrow-left-alt2"
 						afterIcon="arrow-right-alt2"
-						label={ __( 'Text Size', 'bulearningblocks' ) }
-						value={ rangeControl }
-						onChange={ rangeControl =>
-							setAttributes( { rangeControl } )
+						label={ __( 'Font Size', 'bulearningblocks' ) }
+						value={ textSizeControl }
+						onChange={ textSizeControl =>
+							setAttributes( { textSizeControl } )
 						}
 						min={ 12 }
 						max={ 100 }

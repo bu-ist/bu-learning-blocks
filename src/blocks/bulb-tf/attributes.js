@@ -11,11 +11,15 @@ export default {
 		type: 'string',
 		default: 'wide',
 	},
-	colorPaletteControl: {
+	backgroundColorControl: {
 		type: 'string',
 		default: '#000000',
 	},
-	rangeControl: {
+	textColorControl: {
+		type: 'string',
+		default: '#000000',
+	},
+	textSizeControl: {
 		type: 'string',
 		default: 27,
 	},
