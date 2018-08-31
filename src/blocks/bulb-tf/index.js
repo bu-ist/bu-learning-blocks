@@ -41,7 +41,7 @@ export default registerBlockType( 'bulb/question-tf', {
 
 	edit: props => {
 		const {
-			attributes: { id, header, body, textAlignment },
+			attributes: { id, header, body, trueFeedback, falseFeedback, textAlignment },
 			className,
 			setAttributes,
 		} = props;
@@ -50,7 +50,10 @@ export default registerBlockType( 'bulb/question-tf', {
 			setAttributes( {
 				id:
 					'bulb_question_' +
-					uuidv5( window.location.hostname, uuidv5.DNS ).replace( /-/g, '' ),
+					uuidv5( window.location.hostname, uuidv5.DNS ).replace(
+						/-/g,
+						''
+					),
 			} );
 		}
 
@@ -66,28 +69,71 @@ export default registerBlockType( 'bulb/question-tf', {
 			} );
 		};
 
+		const onChangeTrueFeedback = newTrueFeedback => {
+			setAttributes( {
+				trueFeedback: newTrueFeedback,
+			} );
+		};
+
+		const onChangeFalseFeedback = newFalseFeedback => {
+			setAttributes( {
+				falseFeedback: newFalseFeedback,
+			} );
+		};
+
 		return (
-			<Fragment>
-				<Inspector { ...{ setAttributes, ...props } } />
-				<div id={ id } className={ classnames( 'question', className ) }>
-					<RichText
-						tagName="div"
-						placeholder={ __( 'Question Header', 'bulearningblocks' ) }
-						className={ classnames( 'question-header' ) }
-						onChange={ onChangeHeader }
-						value={ header }
-					/>
-					<RichText
-						tagName="div"
-						placeholder={ __( 'Question Body', 'bulearningblocks' ) }
-						className={ classnames( 'question-body' ) }
-						style={ { textAlign: textAlignment } }
-						onChange={ onChangeBody }
-						value={ body }
-					/>
-				</div>
-				<Controls { ...{ setAttributes, ...props } } />
-			</Fragment>
+			<div class="quizDescription">
+				<Fragment>
+					<Inspector { ...{ setAttributes, ...props } } />
+					<div id={ id } className={ classnames( 'question', className ) }>
+						<RichText
+							tagName="div"
+							multiline="p"
+							placeholder={ __( 'Question Header', 'bulearningblocks' ) }
+							keepPlaceholderOnFocus={ true }
+							className={ classnames( 'question-header' ) }
+							style={ { textAlign: textAlignment } }
+							onChange={ onChangeHeader }
+							value={ header }
+						/>
+						<RichText
+							tagName="div"
+							multiline="p"
+							placeholder={ __( 'Question Body', 'bulearningblocks' ) }
+							keepPlaceholderOnFocus={ true }
+							className={ classnames( 'question-body' ) }
+							style={ { textAlign: textAlignment } }
+							onChange={ onChangeBody }
+							value={ body }
+						/>
+						<RichText
+							tagName="div"
+							multiline="p"
+							placeholder={ __(
+								'True Answer Feedback',
+								'bulearningblocks'
+							) }
+							keepPlaceholderOnFocus={ true }
+							className={ classnames( 'question-feedback' ) }
+							onChange={ onChangeTrueFeedback }
+							value={ trueFeedback }
+						/>
+						<RichText
+							tagName="div"
+							multiline="p"
+							placeholder={ __(
+								'False Answer Feedback',
+								'bulearningblocks'
+							) }
+							keepPlaceholderOnFocus={ true }
+							className={ classnames( 'question-feedback' ) }
+							onChange={ onChangeFalseFeedback }
+							value={ falseFeedback }
+						/>
+					</div>
+					<Controls { ...{ setAttributes, ...props } } />
+				</Fragment>
+			</div>
 		);
 	},
 	save: () => null,

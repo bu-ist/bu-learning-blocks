@@ -16,7 +16,7 @@ add_action( 'enqueue_block_assets', 'bulb_block_assets' );
  */
 function bulb_block_assets() {
 	// Scripts.
-	if ( ! is_admin() ) {
+	// if ( ! is_admin() ) {
 		wp_enqueue_script( 'jquery' );
 
 		wp_enqueue_script(
@@ -51,25 +51,13 @@ function bulb_block_assets() {
 			true
 		);
 
-		// wp_enqueue_style(
-		// 'master-css',
-		// BULB_PLUGIN_URL . 'src/css/master.css', // Block style CSS.
-		// array( 'wp-blocks' ) // Dependency to include the CSS after it.
-		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
-		// );
-		// wp_enqueue_style(
-		// 'reset-css',
-		// BULB_PLUGIN_URL . 'src/css/reset.css', // Block style CSS.
-		// array( 'wp-blocks' ), // Dependency to include the CSS after it.
-		// filemtime( plugin_dir_path( __DIR__ ) . 'src/css/reset.css' ) // Version: filemtime — Gets file modification time.
-		// );
 		wp_enqueue_style(
 			'slickquiz-css',
 			BULB_PLUGIN_URL . 'src/css/slickQuiz.css', // Block style CSS.
 			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			filemtime( plugin_dir_path( __DIR__ ) . 'src/css/slickQuiz.css' ) // Version: filemtime — Gets file modification time.
 		);
-	}
+	// }
 }
 
 add_action( 'enqueue_block_editor_assets', 'bulb_block_editor_assets' );

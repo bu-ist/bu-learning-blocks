@@ -2,6 +2,8 @@ export default {
 	id: {},
 	header: {},
 	body: {},
+	trueFeedback: {},
+	falseFeedback: {},
 	textAlignment: {
 		default: 'left',
 	},

@@ -20,13 +20,13 @@ export default class Inspector extends Component {
 			<InspectorControls>
 				<PanelBody>
 					<RadioControl
-						label={ __( 'Correct Answer', 'bulearningblocks' ) }
-						selected={ radioControl }
-						options={ [
-							{ label: 'True', value: 'true' },
-							{ label: 'False', value: 'false' },
-						] }
-						onChange={ value => setAttributes( { radioControl: value } ) }
+						// label={ __( 'Correct Answer', 'bulearningblocks' ) }
+						// selected={ radioControl }
+						// options={ [
+						// 	{ label: 'True', value: 'true' },
+						// 	{ label: 'False', value: 'false' },
+						// ] }
+						// onChange={ value => setAttributes( { radioControl: value } ) }
 					/>
 				</PanelBody>
 			</InspectorControls>

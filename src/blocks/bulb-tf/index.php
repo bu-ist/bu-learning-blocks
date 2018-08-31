@@ -17,10 +17,7 @@
  */
 function bulb_render_block_tf( $attributes, $content ) {
 	// Get the question block instance id.
-	$id             = $attributes['id'];
-	$header         = $attributes['header'][0];
-	$body           = $attributes['body'][0];
-	$correct_answer = $attributes['radioControl'];
+	$id = $attributes['id'];
 
 	// Save the block data as a JS variable.
 	// Use the instance id as the variable name.
@@ -29,13 +26,13 @@ function bulb_render_block_tf( $attributes, $content ) {
 	// Print a question block wrapper with the same instance id.
 	// The JS code will then be able to connect the question wrapper with its data.
 	return(
-        '<div id=' . $id . ' class="bulb-question">
-            <div class="quizArea">
-                <div class="quizHeader">
-                    <a class="button startQuiz" href="#">Test Your knowledge!</a>
-                </div>
-            </div>
-        </div'
+		'<div id=' . $id . ' class="bulb-question">
+			<div class="quizArea">
+				<div class="quizHeader">
+					<a class="button startQuiz" href="#">Test Your knowledge!</a>
+				</div>
+			</div>
+		</div'
 	);
 }
 
