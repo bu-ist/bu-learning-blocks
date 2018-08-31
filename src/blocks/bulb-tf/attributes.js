@@ -13,7 +13,7 @@ export default {
 	},
 	backgroundColorControl: {
 		type: 'string',
-		default: '#000000',
+		default: '#FFFFFF',
 	},
 	textColorControl: {
 		type: 'string',
