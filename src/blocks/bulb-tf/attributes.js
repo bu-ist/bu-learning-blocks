@@ -11,8 +11,12 @@ export default {
 		type: 'string',
 		default: 'wide',
 	},
-	radioControl: {
+	colorPaletteControl: {
 		type: 'string',
-		default: 'true',
+		default: '#000000',
+	},
+	rangeControl: {
+		type: 'string',
+		default: 27,
 	},
 };

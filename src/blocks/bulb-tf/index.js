@@ -41,7 +41,15 @@ export default registerBlockType( 'bulb/question-tf', {
 
 	edit: props => {
 		const {
-			attributes: { id, header, body, trueFeedback, falseFeedback, textAlignment },
+			attributes: {
+				id,
+				header,
+				body,
+				trueFeedback,
+				textColor,
+				falseFeedback,
+				textAlignment,
+			},
 			className,
 			setAttributes,
 		} = props;
@@ -82,14 +90,21 @@ export default registerBlockType( 'bulb/question-tf', {
 		};
 
 		return (
-			<div class="quizDescription">
+			<div className="quizDescription">
 				<Fragment>
 					<Inspector { ...{ setAttributes, ...props } } />
-					<div id={ id } className={ classnames( 'question', className ) }>
+					<div
+						id={ id }
+						className={ classnames( 'question', className ) }
+						textColor={ textColor }
+					>
 						<RichText
 							tagName="div"
 							multiline="p"
-							placeholder={ __( 'Question Header', 'bulearningblocks' ) }
+							placeholder={ __(
+								'Question Header',
+								'bulearningblocks'
+							) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-header' ) }
 							style={ { textAlign: textAlignment } }
@@ -99,7 +114,10 @@ export default registerBlockType( 'bulb/question-tf', {
 						<RichText
 							tagName="div"
 							multiline="p"
-							placeholder={ __( 'Question Body', 'bulearningblocks' ) }
+							placeholder={ __(
+								'Question Body',
+								'bulearningblocks'
+							) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-body' ) }
 							style={ { textAlign: textAlignment } }
