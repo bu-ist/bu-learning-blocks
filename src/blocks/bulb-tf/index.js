@@ -46,7 +46,8 @@ export default registerBlockType( 'bulb/question-tf', {
 				header,
 				body,
 				trueFeedback,
-				textColor,
+				textColorControl,
+				backgroundColorControl,
 				falseFeedback,
 				textAlignment,
 			},
@@ -93,58 +94,72 @@ export default registerBlockType( 'bulb/question-tf', {
 			<div className="quizDescription">
 				<Fragment>
 					<Inspector { ...{ setAttributes, ...props } } />
-					<div
-						id={ id }
-						className={ classnames( 'question', className ) }
-						textColor={ textColor }
-					>
+					<div id={ id } className={ classnames( 'question', className ) }>
 						<RichText
-							tagName="div"
-							multiline="p"
+							tagName="p"
+							// multiline="p"
 							placeholder={ __(
 								'Question Header',
 								'bulearningblocks'
 							) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-header' ) }
-							style={ { textAlign: textAlignment } }
+							style={ {
+								textAlign: textAlignment,
+								color: textColorControl,
+								backgroundColor: backgroundColorControl,
+							} }
 							onChange={ onChangeHeader }
 							value={ header }
 						/>
 						<RichText
-							tagName="div"
-							multiline="p"
+							tagName="p"
+							// multiline="p"
 							placeholder={ __(
 								'Question Body',
 								'bulearningblocks'
 							) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-body' ) }
-							style={ { textAlign: textAlignment } }
+							style={ {
+								textAlign: textAlignment,
+								color: textColorControl,
+								backgroundColor: backgroundColorControl,
+							} }
 							onChange={ onChangeBody }
 							value={ body }
 						/>
 						<RichText
-							tagName="div"
-							multiline="p"
+							tagName="p"
+							// multiline="p"
 							placeholder={ __(
 								'True Answer Feedback',
 								'bulearningblocks'
 							) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-feedback' ) }
+							style={ {
+								textAlign: textAlignment,
+								color: textColorControl,
+								backgroundColor: backgroundColorControl,
+							} }
 							onChange={ onChangeTrueFeedback }
 							value={ trueFeedback }
 						/>
 						<RichText
-							tagName="div"
-							multiline="p"
+							tagName="p"
+							// multiline="p"
 							placeholder={ __(
 								'False Answer Feedback',
 								'bulearningblocks'
 							) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-feedback' ) }
+							style={ {
+								textAlign: textAlignment,
+								color: textColorControl,
+								backgroundColor: backgroundColorControl,
+							} }
 							onChange={ onChangeFalseFeedback }
 							value={ falseFeedback }
 						/>

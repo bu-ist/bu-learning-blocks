@@ -134,17 +134,6 @@
     -webkit-box-shadow: 0 -2px 0 inset;
             box-shadow: 0 -2px 0 inset;
     color: #5a3fd6; }
-
-.entry-content .wp-block-bulb-question-tf,
-.wp-block-bulb-question-tf {
-  padding: 1rem; }
-  .entry-content .wp-block-bulb-question-tf h2,
-  .wp-block-bulb-question-tf h2 {
-    color: #f7b733;
-    margin: 1rem 0; }
-  .entry-content .wp-block-bulb-question-tf li,
-  .wp-block-bulb-question-tf li {
-    list-style-position: inside; }
 /**
  * #.# Common SCSS
  *
