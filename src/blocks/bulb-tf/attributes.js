@@ -19,8 +19,8 @@ export default {
 		type: 'string',
 		default: '#000000',
 	},
-	textSizeControl: {
+	fontSize: {
 		type: 'string',
-		default: 27,
+		default: '12',
 	},
 };

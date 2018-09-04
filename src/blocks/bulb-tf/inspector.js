@@ -8,6 +8,7 @@ const {
 	Button,
 	ButtonGroup,
 	CheckboxControl,
+	FontSizePicker,
 	PanelBody,
 	PanelRow,
 	PanelColor,
@@ -22,17 +23,28 @@ const {
 export default class Inspector extends Component {
 	render() {
 		const {
-			attributes: {
-				backgroundColorControl,
-				textColorControl,
-				textSizeControl,
-			},
+			attributes: { backgroundColorControl, textColorControl, fontSize },
 			setAttributes,
 		} = this.props;
+
+		const fontSizes = [
+			{ shortName: 'S', size: 12 },
+			{ shortName: 'M', size: 16 },
+			{ shortName: 'L', size: 36 },
+			{ shortName: 'XL', size: 48 },
+		];
+
+		const fallbackFontSize = 16;
 
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Text Settings', 'bulearningblocks' ) }>
+					<FontSizePicker
+						fontSizes={ fontSizes }
+						fallbackFontSize={ fallbackFontSize }
+						value={ fontSize }
+						onChange={ fontSize => setAttributes( { fontSize } ) }
+					/>
 					<PanelColor
 						title={ __( 'Background Color', 'bulearningblocks' ) }
 						colorValue={ backgroundColorControl }
@@ -62,22 +74,6 @@ export default class Inspector extends Component {
 							/>
 						</BaseControl>
 					</PanelColor>
-
-					<PanelBody initialOpen={ false }>
-						<BaseControl>
-							<RangeControl
-								beforeIcon="arrow-left-alt2"
-								afterIcon="arrow-right-alt2"
-								label={ __( 'Font Size', 'bulearningblocks' ) }
-								value={ textSizeControl }
-								onChange={ textSizeControl =>
-									setAttributes( { textSizeControl } )
-								}
-								min={ 12 }
-								max={ 100 }
-							/>
-						</BaseControl>
-					</PanelBody>
 				</PanelBody>
 			</InspectorControls>
 		);
