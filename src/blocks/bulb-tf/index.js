@@ -13,6 +13,7 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { RichText } = wp.editor;
+const { CheckboxControl } = wp.components;
 const { Fragment } = wp.element;
 
 // Register the block
@@ -46,6 +47,8 @@ export default registerBlockType( 'bulb/question-tf', {
 				header,
 				body,
 				fontSize,
+				checkboxControlAnswer1,
+				checkboxControlAnswer2,
 				trueFeedback,
 				textColorControl,
 				backgroundColorControl,
@@ -91,11 +94,24 @@ export default registerBlockType( 'bulb/question-tf', {
 			} );
 		};
 
+		const onChangeCheckboxAnswer1 = newCheckboxControl => {
+			setAttributes( {
+				checkboxControlAnswer1: newCheckboxControl,
+			} );
+		};
+
+		const onChangeCheckboxAnswer2 = newCheckboxControl => {
+			setAttributes( {
+				checkboxControlAnswer2: newCheckboxControl,
+			} );
+		};
+
 		return (
 			<div className="quizDescription">
 				<Fragment>
 					<Inspector { ...{ setAttributes, ...props } } />
 					<div id={ id } className={ classnames( 'question', className ) }>
+						<h5>Question Header:</h5>
 						<RichText
 							tagName="p"
 							// multiline="p"
@@ -116,6 +132,7 @@ export default registerBlockType( 'bulb/question-tf', {
 							onChange={ onChangeHeader }
 							value={ header }
 						/>
+						<h5>Question Body:</h5>
 						<RichText
 							tagName="p"
 							// multiline="p"
@@ -136,6 +153,14 @@ export default registerBlockType( 'bulb/question-tf', {
 							onChange={ onChangeBody }
 							value={ body }
 						/>
+						<h5>
+							True:
+							<CheckboxControl
+								label="Correct Answer"
+								checked={ checkboxControlAnswer1 }
+								onChange={ onChangeCheckboxAnswer1 }
+							/>
+						</h5>
 						<RichText
 							tagName="p"
 							// multiline="p"
@@ -156,6 +181,14 @@ export default registerBlockType( 'bulb/question-tf', {
 							onChange={ onChangeTrueFeedback }
 							value={ trueFeedback }
 						/>
+						<h5>
+							False:
+							<CheckboxControl
+								label="Correct Answer"
+								checked={ checkboxControlAnswer2 }
+								onChange={ onChangeCheckboxAnswer2 }
+							/>
+						</h5>
 						<RichText
 							tagName="p"
 							// multiline="p"

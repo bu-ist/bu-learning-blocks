@@ -10,8 +10,8 @@ const quizJSON = {
 		{
 			q: question.body[ 0 ].props.children,
 			a: [
-				{ option: 'True', correct: true },
-				{ option: 'False', correct: false },
+				{ option: 'True', correct: question.checkboxControlAnswer1 },
+				{ option: 'False', correct: question.checkboxControlAnswer2 },
 			],
 			correct: '<p>' + question.trueFeedback[ 0 ].props.children + '</p>',
 			incorrect: '<p>' + question.falseFeedback[ 0 ].props.children + '</p>',

@@ -18,7 +18,15 @@ export default {
 	textColorControl: {
 		type: 'string',
 		default: '#000000',
-	},
+    },
+    checkboxControlAnswer1: {
+        type: 'boolean',
+        default: false,
+    },
+    checkboxControlAnswer2: {
+        type: 'boolean',
+        default: false,
+    },
 	fontSize: {
 		type: 'string',
 		default: '16',
