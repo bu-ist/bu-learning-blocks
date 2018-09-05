@@ -45,6 +45,7 @@ export default registerBlockType( 'bulb/question-tf', {
 				id,
 				header,
 				body,
+				fontSize,
 				trueFeedback,
 				textColorControl,
 				backgroundColorControl,
@@ -108,6 +109,9 @@ export default registerBlockType( 'bulb/question-tf', {
 								textAlign: textAlignment,
 								color: textColorControl,
 								backgroundColor: backgroundColorControl,
+								fontSize: fontSize ?
+									fontSize + 'px' :
+									undefined,
 							} }
 							onChange={ onChangeHeader }
 							value={ header }
@@ -125,6 +129,9 @@ export default registerBlockType( 'bulb/question-tf', {
 								textAlign: textAlignment,
 								color: textColorControl,
 								backgroundColor: backgroundColorControl,
+								fontSize: fontSize ?
+									fontSize + 'px' :
+									undefined,
 							} }
 							onChange={ onChangeBody }
 							value={ body }
@@ -142,6 +149,9 @@ export default registerBlockType( 'bulb/question-tf', {
 								textAlign: textAlignment,
 								color: textColorControl,
 								backgroundColor: backgroundColorControl,
+								fontSize: fontSize ?
+									fontSize + 'px' :
+									undefined,
 							} }
 							onChange={ onChangeTrueFeedback }
 							value={ trueFeedback }
@@ -159,6 +169,9 @@ export default registerBlockType( 'bulb/question-tf', {
 								textAlign: textAlignment,
 								color: textColorControl,
 								backgroundColor: backgroundColorControl,
+								fontSize: fontSize ?
+									fontSize + 'px' :
+									undefined,
 							} }
 							onChange={ onChangeFalseFeedback }
 							value={ falseFeedback }

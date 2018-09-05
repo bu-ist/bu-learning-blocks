@@ -21,6 +21,6 @@ export default {
 	},
 	fontSize: {
 		type: 'string',
-		default: '12',
+		default: '16',
 	},
 };
