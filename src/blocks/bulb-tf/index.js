@@ -161,11 +161,20 @@ export default registerBlockType( 'bulb/question-tf', {
 								onChange={ onChangeCheckboxAnswer1 }
 							/>
 						</h5>
+						<h5>
+							False:
+							<CheckboxControl
+								label="Correct Answer"
+								checked={ checkboxControlAnswer2 }
+								onChange={ onChangeCheckboxAnswer2 }
+							/>
+						</h5>
+						<h5>Correct Answer Feedback:</h5>
 						<RichText
 							tagName="p"
 							// multiline="p"
 							placeholder={ __(
-								'True Answer Feedback',
+								'Correct Answer Feedback',
 								'bulearningblocks'
 							) }
 							keepPlaceholderOnFocus={ true }
@@ -181,19 +190,12 @@ export default registerBlockType( 'bulb/question-tf', {
 							onChange={ onChangeTrueFeedback }
 							value={ trueFeedback }
 						/>
-						<h5>
-							False:
-							<CheckboxControl
-								label="Correct Answer"
-								checked={ checkboxControlAnswer2 }
-								onChange={ onChangeCheckboxAnswer2 }
-							/>
-						</h5>
+						<h5>Incorrect Answer Feedback:</h5>
 						<RichText
 							tagName="p"
 							// multiline="p"
 							placeholder={ __(
-								'False Answer Feedback',
+								'Incorrect Answer Feedback',
 								'bulearningblocks'
 							) }
 							keepPlaceholderOnFocus={ true }
