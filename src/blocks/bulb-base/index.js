@@ -28,17 +28,16 @@ export default registerBlockType( 'bulb/base', {
 		const {
 			attributes: { id, header, body },
 			className,
-			setAttributes,
+            setAttributes,
+            clientId,
 		} = props;
 
 		// Generate question id on block instantiation
 		if ( ! id ) {
 			setAttributes( {
-				id:
-					'bulb_question_' +
-					uuidv5( window.location.hostname, uuidv5.DNS ).replace( /-/g, '' ),
+				id: 'bulb_question_' + clientId.replace( /-/g, '' ),
 			} );
-		}
+}
 
 		// Handle input field changes
 		const onChangeHeader = newHeader => {

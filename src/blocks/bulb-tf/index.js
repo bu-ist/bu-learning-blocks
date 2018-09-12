@@ -57,16 +57,12 @@ export default registerBlockType( 'bulb/question-tf', {
 			},
 			className,
 			setAttributes,
+			clientId,
 		} = props;
 
 		if ( ! id ) {
 			setAttributes( {
-				id:
-					'bulb_question_' +
-					uuidv5( window.location.hostname, uuidv5.DNS ).replace(
-						/-/g,
-						''
-					),
+				id: 'bulb_question_' + clientId.replace( /-/g, '' ),
 			} );
 		}
 

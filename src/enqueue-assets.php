@@ -19,13 +19,13 @@ function bulb_block_assets() {
 	if ( ! is_admin() ) {
 		wp_enqueue_script( 'jquery' );
 
-		wp_enqueue_script(
-			'bulb-blocks-front-end-js',
-			BULB_PLUGIN_URL . 'src/js/blocks-front-end.js',
-			array(),
-			filemtime( plugin_dir_path( __DIR__ ) . 'src/js/blocks-front-end.js' ), // Version: filemtime — Gets file modification time.
-			true
-		);
+		// wp_enqueue_script(
+		// 	'bulb-blocks-front-end-js',
+		// 	BULB_PLUGIN_URL . 'src/js/blocks-front-end.js',
+		// 	array(),
+		// 	filemtime( plugin_dir_path( __DIR__ ) . 'src/js/blocks-front-end.js' ), // Version: filemtime — Gets file modification time.
+		// 	true
+		// );
 
 		wp_enqueue_script(
 			'slickquiz-master-js',
