@@ -1,38 +1,38 @@
 {
-	"name": "bu-learning-blocks",
-	"version": "",
-	"private": true,
-	"scripts": {
-		"start": "cgb-scripts start",
-		"build": "cgb-scripts build",
-		"eject": "cgb-scripts eject",
-		"lint-js": "eslint .",
-		"lint-js:fix": "eslint . --fix",
-		"lint-php": "docker-compose run --rm composer run-script lint",
-		"test-php": "npm run lint-php && npm run test-unit-php",
-		"test-unit-php": "docker-compose run --rm wordpress_phpunit phpunit",
-		"test-unit-php-multisite": "docker-compose run -e WP_MULTISITE=1 --rm wordpress_phpunit phpunit"
-	},
-	"dependencies": {
-		"@wordpress/html-entities": "^1.0.1",
-		"@wordpress/i18n": "^1.2.1",
-		"babel-preset-es2015": "^6.24.1",
-		"cgb-scripts": "1.9.8",
-		"classnames": "^2.2.5",
-		"hoek": "^5.0.3",
-		"lodash": "^4.17.10",
-		"md5": "^2.2.1",
-		"moment": "^2.22.1",
-		"querystringify": "^2.0.0",
-		"re-resizable": "^4.4.8",
-		"react": "16.2.0",
-		"styled-components": "^3.2.5"
-	},
-	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-plugin-lodash": "^3.3.2",
-		"babel-preset-env": "^1.7.0",
-		"babel-preset-stage-2": "^6.24.1",
-		"grunt-wp-i18n": "^1.0.2"
-	}
+    "name": "bu-learning-blocks",
+    "version": "",
+    "private": true,
+    "scripts": {
+        "start": "cgb-scripts start",
+        "build": "cgb-scripts build",
+        "eject": "cgb-scripts eject",
+        "lint-js": "eslint .",
+        "lint-js:fix": "eslint . --fix",
+        "lint-php": "docker-compose run --rm composer run-script lint",
+        "test-php": "npm run lint-php && npm run test-unit-php",
+        "test-unit-php": "docker-compose run --rm wordpress_phpunit phpunit",
+        "test-unit-php-multisite": "docker-compose run -e WP_MULTISITE=1 --rm wordpress_phpunit phpunit"
+    },
+    "dependencies": {
+        "@wordpress/html-entities": "^1.0.1",
+        "@wordpress/i18n": "^1.2.1",
+        "babel-preset-es2015": "^6.24.1",
+        "cgb-scripts": "1.9.8",
+        "classnames": "^2.2.5",
+        "hoek": "^5.0.3",
+        "lodash": "^4.17.10",
+        "md5": "^2.2.1",
+        "moment": "^2.22.1",
+        "querystringify": "^2.0.0",
+        "re-resizable": "^4.4.8",
+        "react": "16.2.0",
+        "styled-components": "^3.2.5"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-plugin-lodash": "^3.3.2",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-stage-2": "^6.24.1",
+        "grunt-wp-i18n": "^1.0.2"
+    }
 }
