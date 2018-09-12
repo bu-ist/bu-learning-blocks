@@ -20,22 +20,30 @@ Array.prototype.forEach.call( bulbQuestionsDivs, questionDiv => {
 	bulbQuestions.push( question );
 } );
 
+// for ( let i = 0; i < bulbQuestions.length; i++ ) {
+const i = 0;
 const quizJSON = {
 	info: {
-		main: '<p>' + bulbQuestions[0].data.header[0] + '</p>',
+		main: '<p>' + bulbQuestions[ i ].data.header[ 0 ] + '</p>',
 	},
 	questions: [
 		{
-			q: bulbQuestions[0].data.body[ 0 ],
+			q: bulbQuestions[ i ].data.body[ 0 ],
 			a: [
-				{ option: 'True', correct: bulbQuestions[0].data.checkboxControlAnswer1 },
-				{ option: 'False', correct: bulbQuestions[0].data.checkboxControlAnswer2 },
+				{
+					option: 'True',
+					correct: bulbQuestions[ i ].data.checkboxControlAnswer1,
+				},
+				{
+					option: 'False',
+					correct: bulbQuestions[ i ].data.checkboxControlAnswer2,
+				},
 			],
-			correct: '<p>' + bulbQuestions[0].data.trueFeedback[ 0 ] + '</p>',
-			incorrect: '<p>' + bulbQuestions[0].data.falseFeedback[ 0 ] + '</p>',
+			correct: '<p>' + bulbQuestions[ i ].data.trueFeedback[ 0 ] + '</p>',
+			incorrect: '<p>' + bulbQuestions[ i ].data.falseFeedback[ 0 ] + '</p>',
 		},
 	],
 };
+// }
 
-console.log( bulbQuestions[0].data.header[0] );
-
+console.log( bulbQuestions );
