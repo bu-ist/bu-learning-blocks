@@ -2,7 +2,6 @@
  * Block dependencies
  */
 import classnames from 'classnames'; // Helper library to add classnames to a component
-import uuidv5 from 'uuid/v5'; // Helper library to generate unique question IDs
 import blockAttributes from './attributes';
 import './styles/style.scss';
 import './styles/editor.scss';
@@ -29,14 +28,13 @@ export default registerBlockType( 'bulb/base', {
 			attributes: { id, header, body },
 			className,
 			setAttributes,
+			clientId,
 		} = props;
 
 		// Generate question id on block instantiation
 		if ( ! id ) {
 			setAttributes( {
-				id:
-					'bulb_question_' +
-					uuidv5( window.location.hostname, uuidv5.DNS ).replace( /-/g, '' ),
+				id: 'bulb_question_' + clientId.replace( /-/g, '' ),
 			} );
 		}
 
