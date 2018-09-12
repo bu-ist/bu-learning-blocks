@@ -21,7 +21,7 @@ Array.prototype.forEach.call( bulbQuestionsDivs, questionDiv => {
 } );
 
 // for ( let i = 0; i < bulbQuestions.length; i++ ) {
-const i = 0;
+let i = 0;
 const quizJSON = {
 	info: {
 		main: '<p>' + bulbQuestions[ i ].data.header[ 0 ] + '</p>',
