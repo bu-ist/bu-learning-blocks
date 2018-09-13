@@ -34,6 +34,8 @@
         "uuid": "^3.3.2"
     },
     "devDependencies": {
+        "@wordpress/components": "^3.0.0",
+        "@wordpress/element": "^2.0.0",
         "babel-cli": "^6.26.0",
         "babel-plugin-lodash": "^3.3.2",
         "babel-preset-env": "^1.7.0",
