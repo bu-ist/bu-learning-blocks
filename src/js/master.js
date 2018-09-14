@@ -100,7 +100,6 @@ class BULBQuestion {
 		const incorrectFeedback = this.rawData.Answers.find(
 			answer => ! answer.Correct
 		).Feedback;
-		debugger;
 
 		// Construct slickQuizData object and return it.
 		const slickQuizData = {
