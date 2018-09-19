@@ -10,4 +10,5 @@
  */
 
 import './blocks/bulb-container/index.js';
+import './blocks/bulb-tf/index.js';
 import './blocks/bulb-base/index.js';

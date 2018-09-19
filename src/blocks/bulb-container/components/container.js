@@ -12,13 +12,22 @@ import classnames from 'classnames';
  * Create a Button wrapper Component
  */
 export default class Container extends Component {
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
 		// Setup the attributes
-		const { attributes: { containerBackgroundColor, containerAlignment, containerPaddingTop, containerPaddingRight, containerPaddingBottom, containerPaddingLeft, containerMarginTop, containerMarginBottom, containerWidth, containerMaxWidth } } = this.props;
+		const {
+			attributes: {
+				containerBackgroundColor,
+				containerAlignment,
+				containerPaddingTop,
+				containerPaddingRight,
+				containerPaddingBottom,
+				containerPaddingLeft,
+				containerMarginTop,
+				containerMarginBottom,
+				containerWidth,
+				containerMaxWidth,
+			},
+		} = this.props;
 
 		return (
 			<div
@@ -35,9 +44,11 @@ export default class Container extends Component {
 				className={ classnames(
 					this.props.className,
 					`align${ containerWidth }`,
-					'bulb-block-container',
+					'bulb-block-container'
 				) }
-			>{ this.props.children }</div>
+			>
+				{ this.props.children }
+			</div>
 		);
 	}
 }

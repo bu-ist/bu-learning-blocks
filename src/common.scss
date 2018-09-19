@@ -6,12 +6,14 @@
 */
 
 // Colors.
-$black: #293038;
+$black: #222;
 $white: #f4f4f4;
 $gray: #dedede;
 $lightgray: #626e81;
 $green: #bada55;
 $accent: #5a3fd6;
+$dark: #f7b733;
+$light: rgba(254, 243, 224, 0.52);
 
 .center {
     text-align: center;
@@ -37,7 +39,7 @@ $accent: #5a3fd6;
   }
 
   .bulb-text-link {
-    color: inherit;
+    // color: inherit;
     box-shadow: 0 -1px 0 inset;
     text-decoration: none;
     transition: .3s ease;
