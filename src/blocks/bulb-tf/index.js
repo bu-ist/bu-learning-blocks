@@ -2,7 +2,6 @@
  * Block dependencies
  */
 import classnames from 'classnames'; // Helper library to add classnames to a component
-import uuidv5 from 'uuid/v5'; // Helper library to generate unique question IDs
 import blockAttributes from './attributes';
 import './styles/style.scss';
 import './styles/editor.scss';
@@ -49,11 +48,11 @@ export default registerBlockType( 'bulb/question-tf', {
 				fontSize,
 				checkboxControlAnswer1,
 				checkboxControlAnswer2,
-				trueFeedback,
+				correctFeedback,
+				incorrectFeedback,
+				textAlignment,
 				textColorControl,
 				backgroundColorControl,
-				falseFeedback,
-				textAlignment,
 			},
 			className,
 			setAttributes,
@@ -78,15 +77,15 @@ export default registerBlockType( 'bulb/question-tf', {
 			} );
 		};
 
-		const onChangeTrueFeedback = newTrueFeedback => {
+		const onChangeCorrectFeedback = newCorrectFeedback => {
 			setAttributes( {
-				trueFeedback: newTrueFeedback,
+				correctFeedback: newCorrectFeedback,
 			} );
 		};
 
-		const onChangeFalseFeedback = newFalseFeedback => {
+		const onChangeIncorrectFeedback = newIncorrectFeedback => {
 			setAttributes( {
-				falseFeedback: newFalseFeedback,
+				incorrectFeedback: newIncorrectFeedback,
 			} );
 		};
 
@@ -183,8 +182,8 @@ export default registerBlockType( 'bulb/question-tf', {
 									fontSize + 'px' :
 									undefined,
 							} }
-							onChange={ onChangeTrueFeedback }
-							value={ trueFeedback }
+							onChange={ onChangeCorrectFeedback }
+							value={ correctFeedback }
 						/>
 						<h5>Incorrect Answer Feedback:</h5>
 						<RichText
@@ -204,8 +203,8 @@ export default registerBlockType( 'bulb/question-tf', {
 									fontSize + 'px' :
 									undefined,
 							} }
-							onChange={ onChangeFalseFeedback }
-							value={ falseFeedback }
+							onChange={ onChangeIncorrectFeedback }
+							value={ incorrectFeedback }
 						/>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />

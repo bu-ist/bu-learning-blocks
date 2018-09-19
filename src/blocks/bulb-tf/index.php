@@ -30,13 +30,13 @@ function bulb_render_block_tf( $attributes, $content ) {
 		'Answers' => [
 			[
 				'Answer'   => 'True',
-				'Feedback' => bulb_richtext_to_string( $attributes['trueFeedback'] ),
-				'Correct'  => true,
+				'Feedback' => get_feedback( $attributes['checkboxControlAnswer1'], $attributes ),
+				'Correct'  => $attributes['checkboxControlAnswer1'],
 			],
 			[
 				'Answer'   => 'False',
-				'Feedback' => bulb_richtext_to_string( $attributes['falseFeedback'] ),
-				'Correct'  => false,
+				'Feedback' => get_feedback( $attributes['checkboxControlAnswer2'], $attributes ),
+				'Correct'  => $attributes['checkboxControlAnswer2'],
 			],
 		],
 	];
@@ -78,4 +78,22 @@ function bulb_richtext_to_string( $value ) {
 		return $value[0];
 	}
 	return $value;
+}
+
+/**
+ * Return feedback based on boolean control value.
+ *
+ * TODO: Extract this to a separate file so it can be reused.
+ *
+ * @param boolean $control Chooses which value to return.
+ * @param object  $attributes The block's attributes.
+ * @return string $feedback
+ */
+function get_feedback( $control, $attributes ) {
+	$correct_feedback   = $attributes['trueFeedback'];
+	$incorrect_feedback = $attributes['falseFeedback'];
+
+	$feedback = $control ? $correct_feedback : $incorrect_feedback;
+
+	return $feedback;
 }
