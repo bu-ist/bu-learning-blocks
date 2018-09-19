@@ -1,11 +1,11 @@
 <?php
 /**
- * Blocks Initializer
+ * BULB Blocks Initializer
  *
  * Enqueue CSS/JS of all the blocks.
  *
- * @since   1.0.0
- * @package Block Container
+ * @since   0.0.1
+ * @package BU Learning Blocks
  */
 
 // Exit if accessed directly.
@@ -13,56 +13,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Enqueue Gutenberg block assets for both frontend + backend.
- *
- * `wp-blocks`: includes block type registration and related functions.
- *
- * @since 1.0.0
- */
-function bu_learning_blocks_block_container_assets() {
-	// Styles.
-	wp_enqueue_style(
-		'bu_learning_blocks-container-style-css', // Handle.
-		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
-		array( 'wp-blocks' ) // Dependency to include the CSS after it.
-		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
-	);
-} // End function bu_learning_blocks_block_container_assets().
+// Pull in settings initialization and markup.
+require_once BULB_PLUGIN_DIR_PATH . 'src/bulb-settings.php';
 
-// Hook: Frontend assets.
-add_action( 'enqueue_block_assets', 'bu_learning_blocks_block_container_assets' );
+// Enqueue editor and front end assests.
+require_once BULB_PLUGIN_DIR_PATH . 'src/enqueue-assets.php';
 
-/**
- * Enqueue Gutenberg block assets for backend editor.
- *
- * `wp-blocks`: includes block type registration and related functions.
- * `wp-element`: includes the WordPress Element abstraction for describing the structure of your blocks.
- * `wp-i18n`: To internationalize the block's text.
- *
- * @since 1.0.0
- */
-function bu_learning_blocks_block_container_editor_assets() {
-	// Scripts.
-	wp_enqueue_script(
-		'bu_learning_blocks-block-container-js', // Handle.
-		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
-		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
-		true // Enqueue the script in the footer.
-	);
-
-	// Styles.
-	wp_enqueue_style(
-		'bu_learning_blocks-block-editor-css', // Handle.
-		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
-		array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
-		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: filemtime — Gets file modification time.
-	);
-} // End function bu_learning_blocks_block_container_editor_assets().
-
-// Hook: Editor assets.
-add_action( 'enqueue_block_editor_assets', 'bu_learning_blocks_block_container_editor_assets' );
+// Register dynamic blocks.
+require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-base/index.php';
+require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-tf/index.php';
 
 // Add custom block category.
 add_filter( 'block_categories', function( $categories, $post ) {
@@ -76,3 +35,6 @@ add_filter( 'block_categories', function( $categories, $post ) {
 		)
 	);
 }, 10, 2 );
+
+// Register a learning-module custom post type.
+require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
