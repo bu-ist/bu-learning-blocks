@@ -90,8 +90,8 @@ function bulb_richtext_to_string( $value ) {
  * @return string $feedback
  */
 function get_feedback( $control, $attributes ) {
-	$correct_feedback   = $attributes['trueFeedback'];
-	$incorrect_feedback = $attributes['falseFeedback'];
+	$correct_feedback   = $attributes['correctFeedback'];
+	$incorrect_feedback = $attributes['incorrectFeedback'];
 
 	$feedback = $control ? $correct_feedback : $incorrect_feedback;
 
