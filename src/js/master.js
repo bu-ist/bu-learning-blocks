@@ -92,14 +92,14 @@ class BULBQuestion {
 		const name = this.rawData.Header;
 		const question = this.rawData.Body;
 		const answers = this.rawData.Answers.map( answer => ( {
-			option: answer.Answer,
-			correct: answer.Correct,
+			option: answer.answer,
+			correct: answer.correct,
 		} ) );
-		const correctFeedback = this.rawData.Answers.find( answer => answer.Correct )
-			.Feedback;
+		const correctFeedback = this.rawData.Answers.find( answer => answer.correct )
+			.feedback;
 		const incorrectFeedback = this.rawData.Answers.find(
-			answer => ! answer.Correct
-		).Feedback;
+			answer => ! answer.correct
+		).feedback;
 
 		// Construct slickQuizData object and return it.
 		const slickQuizData = {
