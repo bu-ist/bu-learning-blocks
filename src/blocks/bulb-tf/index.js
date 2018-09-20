@@ -13,7 +13,6 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { RichText } = wp.editor;
-const { CheckboxControl } = wp.components;
 const { Fragment } = wp.element;
 
 // Register the block
@@ -48,10 +47,6 @@ export default registerBlockType( 'bulb/question-tf', {
 				body,
 				answers,
 				fontSize,
-				checkboxControlAnswer1,
-				checkboxControlAnswer2,
-				correctFeedback,
-				incorrectFeedback,
 				textAlignment,
 				textColorControl,
 				backgroundColorControl,
@@ -79,29 +74,6 @@ export default registerBlockType( 'bulb/question-tf', {
 			} );
 		};
 
-		const onChangeCorrectFeedback = newCorrectFeedback => {
-			setAttributes( {
-				correctFeedback: newCorrectFeedback,
-			} );
-		};
-
-		const onChangeIncorrectFeedback = newIncorrectFeedback => {
-			setAttributes( {
-				incorrectFeedback: newIncorrectFeedback,
-			} );
-		};
-
-		const onChangeCheckboxAnswer1 = newCheckboxControl => {
-			setAttributes( {
-				checkboxControlAnswer1: newCheckboxControl,
-			} );
-		};
-
-		const onChangeCheckboxAnswer2 = newCheckboxControl => {
-			setAttributes( {
-				checkboxControlAnswer2: newCheckboxControl,
-			} );
-		};
 		const onChangeAnswers = newAnswers => {
 			setAttributes( {
 				answers: newAnswers,
