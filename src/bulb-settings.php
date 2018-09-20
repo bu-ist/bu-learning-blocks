@@ -2,7 +2,7 @@
 /**
  * BULB Settings Page Setup
  *
- * Set the BULB plugin settigs pages.
+ * Set the BULB plugin settings pages.
  *
  * @since   0.0.1
  * @package BU Learning Blocks

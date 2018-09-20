@@ -12,7 +12,6 @@
 require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/get-feedback.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/richtext-to-string.php';
 
-
 /**
  * Render the dynamic block
  *
@@ -20,7 +19,7 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/richtext-to-string.php';
  * @param string $content The block's content.
  * @return string The html markup for the block
  */
-function bulb_render_block_tf( $attributes, $content ) {
+function bulb_render_block_mc( $attributes, $content ) {
 	// Get the question block instance id.
 	$id               = $attributes['id'];
 	$background_color = $attributes['backgroundColorControl'];
@@ -60,12 +59,11 @@ function bulb_render_block_tf( $attributes, $content ) {
  *
  * @return void
  */
-function bulb_register_question_tf() {
+function bulb_register_question_mc() {
 	register_block_type(
-		'bulb/question-tf', array(
-			'render_callback' => 'bulb_render_block_tf',
+		'bulb/question-mc', array(
+			'render_callback' => 'bulb_render_block_mc',
 		)
 	);
 }
-add_action( 'init', 'bulb_register_question_tf' );
-
+add_action( 'init', 'bulb_register_question_mc' );

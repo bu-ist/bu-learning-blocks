@@ -2,7 +2,7 @@
 /**
  * BULB Blocks Initializer
  *
- * Enqueue CSS/JS of all the blocks.
+ *  Initialize PHP files for the plugin.
  *
  * @since   0.0.1
  * @package BU Learning Blocks
@@ -13,15 +13,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Pull in settings initialization and markup.
+// Load plugin settings pages.
 require_once BULB_PLUGIN_DIR_PATH . 'src/bulb-settings.php';
 
-// Enqueue editor and front end assests.
+// Enqueue editor and front end assets.
 require_once BULB_PLUGIN_DIR_PATH . 'src/enqueue-assets.php';
 
-// Register dynamic blocks.
+// Load dynamic blocks.
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-base/index.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-tf/index.php';
+require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-mc/index.php';
+
 
 // Add custom block category.
 add_filter( 'block_categories', function( $categories, $post ) {
