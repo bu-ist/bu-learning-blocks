@@ -5,6 +5,7 @@ import classnames from 'classnames'; // Helper library to add classnames to a co
 import blockAttributes from './attributes';
 import './styles/style.scss';
 import './styles/editor.scss';
+import Answers from '../../components/Answers';
 
 import Inspector from './inspector';
 import Controls from './controls';
@@ -12,7 +13,6 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { RichText } = wp.editor;
-const { CheckboxControl } = wp.components;
 const { Fragment } = wp.element;
 
 // Register the block
@@ -45,11 +45,8 @@ export default registerBlockType( 'bulb/question-tf', {
 				id,
 				header,
 				body,
+				answers,
 				fontSize,
-				checkboxControlAnswer1,
-				checkboxControlAnswer2,
-				correctFeedback,
-				incorrectFeedback,
 				textAlignment,
 				textColorControl,
 				backgroundColorControl,
@@ -77,27 +74,9 @@ export default registerBlockType( 'bulb/question-tf', {
 			} );
 		};
 
-		const onChangeCorrectFeedback = newCorrectFeedback => {
+		const onChangeAnswers = newAnswers => {
 			setAttributes( {
-				correctFeedback: newCorrectFeedback,
-			} );
-		};
-
-		const onChangeIncorrectFeedback = newIncorrectFeedback => {
-			setAttributes( {
-				incorrectFeedback: newIncorrectFeedback,
-			} );
-		};
-
-		const onChangeCheckboxAnswer1 = newCheckboxControl => {
-			setAttributes( {
-				checkboxControlAnswer1: newCheckboxControl,
-			} );
-		};
-
-		const onChangeCheckboxAnswer2 = newCheckboxControl => {
-			setAttributes( {
-				checkboxControlAnswer2: newCheckboxControl,
+				answers: newAnswers,
 			} );
 		};
 
@@ -110,19 +89,14 @@ export default registerBlockType( 'bulb/question-tf', {
 						<RichText
 							tagName="p"
 							// multiline="p"
-							placeholder={ __(
-								'Question Header',
-								'bulearningblocks'
-							) }
+							placeholder={ __( 'Question Header', 'bulearningblocks' ) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-header' ) }
 							style={ {
 								textAlign: textAlignment,
 								color: textColorControl,
 								backgroundColor: backgroundColorControl,
-								fontSize: fontSize ?
-									fontSize + 'px' :
-									undefined,
+								fontSize: fontSize ? fontSize + 'px' : undefined,
 							} }
 							onChange={ onChangeHeader }
 							value={ header }
@@ -131,81 +105,19 @@ export default registerBlockType( 'bulb/question-tf', {
 						<RichText
 							tagName="p"
 							// multiline="p"
-							placeholder={ __(
-								'Question Body',
-								'bulearningblocks'
-							) }
+							placeholder={ __( 'Question Body', 'bulearningblocks' ) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-body' ) }
 							style={ {
 								textAlign: textAlignment,
 								color: textColorControl,
 								backgroundColor: backgroundColorControl,
-								fontSize: fontSize ?
-									fontSize + 'px' :
-									undefined,
+								fontSize: fontSize ? fontSize + 'px' : undefined,
 							} }
 							onChange={ onChangeBody }
 							value={ body }
 						/>
-						<h5>
-							True:
-							<CheckboxControl
-								label="Correct Answer"
-								checked={ checkboxControlAnswer1 }
-								onChange={ onChangeCheckboxAnswer1 }
-							/>
-						</h5>
-						<h5>
-							False:
-							<CheckboxControl
-								label="Correct Answer"
-								checked={ checkboxControlAnswer2 }
-								onChange={ onChangeCheckboxAnswer2 }
-							/>
-						</h5>
-						<h5>Correct Answer Feedback:</h5>
-						<RichText
-							tagName="p"
-							// multiline="p"
-							placeholder={ __(
-								'Correct Answer Feedback',
-								'bulearningblocks'
-							) }
-							keepPlaceholderOnFocus={ true }
-							className={ classnames( 'question-feedback' ) }
-							style={ {
-								textAlign: textAlignment,
-								color: textColorControl,
-								backgroundColor: backgroundColorControl,
-								fontSize: fontSize ?
-									fontSize + 'px' :
-									undefined,
-							} }
-							onChange={ onChangeCorrectFeedback }
-							value={ correctFeedback }
-						/>
-						<h5>Incorrect Answer Feedback:</h5>
-						<RichText
-							tagName="p"
-							// multiline="p"
-							placeholder={ __(
-								'Incorrect Answer Feedback',
-								'bulearningblocks'
-							) }
-							keepPlaceholderOnFocus={ true }
-							className={ classnames( 'question-feedback' ) }
-							style={ {
-								textAlign: textAlignment,
-								color: textColorControl,
-								backgroundColor: backgroundColorControl,
-								fontSize: fontSize ?
-									fontSize + 'px' :
-									undefined,
-							} }
-							onChange={ onChangeIncorrectFeedback }
-							value={ incorrectFeedback }
-						/>
+						<Answers answers={ answers } onChangeAnswers={ onChangeAnswers } />
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
 				</Fragment>
