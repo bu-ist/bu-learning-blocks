@@ -68,6 +68,7 @@
 {
   "question": {
     "type": "true-false",
+    "header": "Is the following statement true or false",
     "body": "The square root of 4 is 2",
     "answers": [
       {
@@ -94,7 +95,8 @@
     "answers": [
       {
         "answer": "Yes, that is correct",
-        "feedback": "Please join the elections sir, we need more people like you!"
+        "feedback": "Please join the elections sir, we need more people like you!",
+        "correct": false
       },
       {
         "answer": "No, that equation is wrong",
@@ -136,24 +138,28 @@
     "answers": [
       {
         "answer": "None",
-        "feedback": "Nope, definitely more than that"
+        "feedback": "Nope, definitely more than that",
+        "correct": false
       },
       {
         "answer": "Ten",
-        "feedback": "Nope, that is too many"
+        "feedback": "Nope, that is too many",
+        "correct": false
       },
       {
         "answer": "Two",
-        "feedback": "Nope, a little more than that."
+        "feedback": "Nope, a little more than that.",
+        "correct": false
       },
       {
         "answer": "Either six or eight",
-        "feedback": "You are correct! The name \"two-toed sloth\" erroneously describe the number of toes.",
+        "feedback": "You are correct! The name \"two-toed sloth\" erroneously describe the number of toes.",,
         "correct": true
       },
       {
         "answer": "All of the above",
-        "feedback": "Really?"
+        "feedback": "Really?",
+        "correct": false
       }
     ]
   }
