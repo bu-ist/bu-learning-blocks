@@ -2,182 +2,265 @@
 
 ## Question: True/False
 
-```yaml
-Question:
-  Type: "true-false"
-  Header: String
-  Body: String
-  Answers:
-    - Answer: String
-      Feedback: String
-      Correct: Boolean
+```json
+{
+  "question": {
+    "type": "true-false",
+    "header": "String",
+    "body": "String",
+    "answers": [
+      {
+        "answer": "String",
+        "feedback": "String",
+        "correct": "Boolean"
+      }
+    ]
+  }
+}
 ```
 
 ### Properties
 
-- Header
+- header
 
   The text that goes above the question body. Default:
 
-  ```yaml
-  Header: "Is the following statement true or false"
+  ```json
+  {
+    "header": "Is the following statement true or false"
+  }
   ```
 
-- Body
+- body
 
   The question body. Default:
 
-  ```yaml
-  Body: ""
+  ```json
+  {
+    "body: ""
+  }
   ```
 
-- Answers
+- answers
 
   An array of 2 answers. Default:
 
-  ```yaml
-  Answers:
-    - Answer: "True"
-      Feedback: ""
-      Correct: true
-    - Answer: "False"
-      Feedback: ""
-      Correct: false
+  ```json
+  {
+    "answers": [
+      {
+        "answer": "True",
+        "feedback": "",
+        "correct": true
+      },
+      {
+        "answer": "False",
+        "feedback": "",
+        "correct": false
+      }
+    ]
+  }
   ```
 
 ### Examples
 
-```yaml
-Question:
-  Type: "true-false"
-  Body: "The square root of 4 is 2"
-  Answers:
-    - Answer: "True"
-      Feedback: "Wow, you are like a doctor or a rocket scientist!"
-      Correct: true
-    - Answer: "False"
-      Feedback: "Are you a kindergarden dropout?"
-      Correct: false
+```json
+{
+  "question": {
+    "type": "true-false",
+    "body": "The square root of 4 is 2",
+    "answers": [
+      {
+        "answer": "True",
+        "feedback": "Wow, you are like a doctor or a rocket scientist!",
+        "correct": true
+      },
+      {
+        "answer": "False",
+        "feedback": "Are you a kindergarden dropout?",
+        "correct": false
+      }
+    ]
+  }
+}
 ```
 
-```yaml
-Question:
-  Type: "true-false"
-  Header: "Is this equation right?"
-  Body: "2 + 2 = 5"
-  Answers:
-    - Answer: "Yes, that is correct"
-      Feedback: "Please join the elections sir, we need more people like you!"
-    - Answer: "No, that equation is wrong"
-      Feedback: "Thanks, my whole life has been a lie."
-      Correct: true
+```json
+{
+  "question": {
+    "type": "true-false",
+    "header": "Is this equation right?",
+    "body": "2 + 2 = 5",
+    "answers": [
+      {
+        "answer": "Yes, that is correct",
+        "feedback": "Please join the elections sir, we need more people like you!"
+      },
+      {
+        "answer": "No, that equation is wrong",
+        "feedback": "Thanks, my whole life has been a lie.",
+        "correct": true
+      }
+    ]
+  }
+}
 ```
 
 ## Question: Multiple Choice
 
-```yaml
-Question:
-  Type: "multiple-choice"
-  Header: String
-  Body: String
-  Answers:
-    - Answer: String
-      Feedback: String
-      Correct: Boolean
+```json
+{
+  "question": {
+    "type": "multiple-choice",
+    "header": "String",
+    "body": "String",
+    "answers": [
+      {
+        "answer": "String",
+        "feedback": "String",
+        "correct": "Boolean"
+      }
+    ]
+  }
+}
 ```
 
 ### Examples
 
-```yaml
-Question:
-  Type: "multiple-choice"
-  Header: "Please select the correct answer"
-  Body: "How many toes does a two toed sloth have?"
-  Answers:
-    - Answer: "None"
-      Feedback: "Nope, definitely more than that"
-    - Answer: "Ten"
-      Feedback: "Nope, that is too many"
-    - Answer: "Two"
-      Feedback: "Nope, a little more than that."
-    - Answer: "Either six or eight"
-      Feedback:
-        'You are correct! The name "two-toed sloth" erroneously describe the number of toes.'
-      Correct: True
-    - Answer: "All of the above"
-      Feedback: "Really?"
+```json
+{
+  "question": {
+    "type": "multiple-choice",
+    "header": "Please select the correct answer",
+    "body": "How many toes does a two toed sloth have?",
+    "answers": [
+      {
+        "answer": "None",
+        "feedback": "Nope, definitely more than that"
+      },
+      {
+        "answer": "Ten",
+        "feedback": "Nope, that is too many"
+      },
+      {
+        "answer": "Two",
+        "feedback": "Nope, a little more than that."
+      },
+      {
+        "answer": "Either six or eight",
+        "feedback": "You are correct! The name \"two-toed sloth\" erroneously describe the number of toes.",
+        "correct": true
+      },
+      {
+        "answer": "All of the above",
+        "feedback": "Really?"
+      }
+    ]
+  }
+}
 ```
 
 ## Question: Multiple Answer
 
-```yaml
-Question:
-  Type: "multiple-answer"
-  Header: String
-  Body: String
-  Answers:
-    - Answer: String
-      Feedback: String
-      Correct: Boolean
+```json
+{
+  "question": {
+    "type": "multiple-answer",
+    "header": "String",
+    "body": "String",
+    "answers": [
+      {
+        "answer": "String",
+        "feedback": "String",
+        "correct": "Boolean"
+      }
+    ]
+  }
+}
 ```
 
 ## Question: Matching
 
-```yaml
-Question:
-  Type: "matching"
-  Header: String
-  Body: String
-  Answers:
-    - Stimulus: String
-      Match: String
-  Feedback: String
+```json
+{
+  "question": {
+    "type": "matching",
+    "header": "String",
+    "body": "String",
+    "answers": [
+      {
+        "stimulus": "String",
+        "match": "String"
+      }
+    ],
+    "feedback": "String"
+  }
+}
 ```
 
 ### Examples
 
-```yaml
-Question:
-  Type: "matching"
-  Header: Match the terms
-  Body:
-    What are the correct portuguese translations for the following english words?
-  Answers:
-    - Stimulus: "Accident"
-      Match: "Acidente"
-    - Stimulus: "Animal"
-      Match: "Animal"
-    - Stimulus: "Continent"
-      Match: "Continente"
-    - Stimulus: "Telephone"
-      Match: "Telefone"
-    - Stimulus: "Gorilla"
-      Match: "Gorila"
-  Feedback: "Not so hard to speak portuguese huh?"
+```json
+{
+  "question": {
+    "type": "matching",
+    "header": "Match the terms",
+    "body": "What are the correct portuguese translations for the following english words?",
+    "answers": [
+      {
+        "stimulus": "Accident",
+        "match": "Acidente"
+      },
+      {
+        "stimulus": "Animal",
+        "match": "Animal"
+      },
+      {
+        "stimulus": "Continent",
+        "match": "Continente"
+      },
+      {
+        "stimulus": "Telephone",
+        "match": "Telefone"
+      },
+      {
+        "stimulus": "Gorilla",
+        "match": "Gorila"
+      }
+    ],
+    "feedback": "Not so hard to speak portuguese huh?"
+  }
+}
 ```
 
 ## Question: Calculated Numeric
 
-```yaml
-Question:
-  Type: "calculated-numeric"
-  Header: String
-  Body: String
-  Answer: Float
-  AnswerRange: Float
-  DecimalNumbers: Integer
-  Feedback: String
+```json
+{
+  "question": {
+    "type": "calculated-numeric",
+    "header": "String",
+    "body": "String",
+    "answer": "Float",
+    "answerRange": "Float",
+    "decimalNumbers": "Integer",
+    "feedback": "String"
+  }
+}
 ```
 
 ### Examples
 
-```yaml
-Question:
-  Type: "calculated-numeric"
-  Header: "What is the result of"
-  Body: "10 / 3"
-  Answer: 1.333
-  AnswerRange: 0.01
-  DecimalNumbers: 3
-  Feedback: "The accepted answer range is 1.323 to 1.343"
+```json
+{
+  "question": {
+    "type": "calculated-numeric",
+    "header": "What is the result of",
+    "body": "10 / 3",
+    "answer": 1.333,
+    "answerRange": 0.01,
+    "decimalNumbers": 3,
+    "feedback": "The accepted answer range is 1.323 to 1.343"
+  }
+}
 ```
