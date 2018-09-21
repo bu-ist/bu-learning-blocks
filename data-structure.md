@@ -122,7 +122,9 @@
         "feedback": "String",
         "correct": "Boolean"
       }
-    ]
+    ],
+    "correctFeedback": "String",
+    "incorrectFeedback": "String"
   }
 }
 ```
@@ -161,7 +163,9 @@
         "feedback": "Really?",
         "correct": false
       }
-    ]
+    ],
+    "correctFeedback": "You picked the correct answer!",
+    "incorrectFeedback": "You picked an incorrect answer, see the feedback below your answer for why it was wrong."
   }
 }
 ```
@@ -180,7 +184,9 @@
         "feedback": "String",
         "correct": "Boolean"
       }
-    ]
+    ],
+    "correctFeedback": "String",
+    "incorrectFeedback": "String"
   }
 }
 ```
