@@ -155,7 +155,7 @@
       },
       {
         "answer": "Either six or eight",
-        "feedback": "You are correct! The name \"two-toed sloth\" erroneously describe the number of toes.",,
+        "feedback": "You are correct! The name \"two-toed sloth\" erroneously describe the number of toes.",
         "correct": true
       },
       {
