@@ -2,8 +2,20 @@ export default {
 	id: {},
 	header: {},
 	body: {},
-	correctFeedback: {},
-	incorrectFeedback: {},
+	answers: {
+		default: [
+			{
+				answer: 'True',
+				feedback: '',
+				correct: true,
+			},
+			{
+				answer: 'False',
+				feedback: '',
+				correct: false,
+			},
+		],
+	},
 	textAlignment: {
 		default: 'left',
 	},
@@ -18,14 +30,6 @@ export default {
 	textColorControl: {
 		type: 'string',
 		default: '#000000',
-	},
-	checkboxControlAnswer1: {
-		type: 'boolean',
-		default: false,
-	},
-	checkboxControlAnswer2: {
-		type: 'boolean',
-		default: false,
 	},
 	fontSize: {
 		type: 'string',

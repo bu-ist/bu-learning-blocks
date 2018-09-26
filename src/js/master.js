@@ -74,7 +74,7 @@ class BULBQuestion {
 	 * @returns {object} The slickQuiz formatted data.
 	 */
 	slickQuizParseData() {
-		switch ( this.rawData.Type ) {
+		switch ( this.rawData.type ) {
 			case 'true-false':
 				return this.slickQuizParseDataTrueFalse();
 			default:
@@ -89,17 +89,17 @@ class BULBQuestion {
 	 */
 	slickQuizParseDataTrueFalse() {
 		// Parse raw data data.
-		const name = this.rawData.Header;
-		const question = this.rawData.Body;
-		const answers = this.rawData.Answers.map( answer => ( {
-			option: answer.Answer,
-			correct: answer.Correct,
+		const name = this.rawData.header;
+		const question = this.rawData.body;
+		const answers = this.rawData.answers.map( answer => ( {
+			option: answer.answer,
+			correct: answer.correct,
 		} ) );
-		const correctFeedback = this.rawData.Answers.find( answer => answer.Correct )
-			.Feedback;
-		const incorrectFeedback = this.rawData.Answers.find(
-			answer => ! answer.Correct
-		).Feedback;
+		const correctFeedback = this.rawData.answers.find( answer => answer.correct )
+			.feedback;
+		const incorrectFeedback = this.rawData.answers.find(
+			answer => ! answer.correct
+		).feedback;
 
 		// Construct slickQuizData object and return it.
 		const slickQuizData = {
