@@ -117,7 +117,11 @@ export default registerBlockType( 'bulb/question-tf', {
 							onChange={ onChangeBody }
 							value={ body }
 						/>
-						<Answers answers={ answers } onChangeAnswers={ onChangeAnswers } />
+						<Answers
+							answers={ answers }
+							onChangeAnswers={ onChangeAnswers }
+							multipleCorrectAllowed={ false }
+						/>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
 				</Fragment>

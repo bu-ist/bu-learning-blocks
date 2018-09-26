@@ -10,7 +10,9 @@ export default function Answer( {
 	onChangeAnswerValue,
 	onChangeFeedback,
 	onChangeCorrect,
+	multipleCorrectAllowed,
 } ) {
+	const inputType = multipleCorrectAllowed ? 'checkbox' : 'radio';
 	return (
 		<div style={ { background: '#ccc', padding: '1rem', margin: '1rem 0' } }>
 			<strong>{ __( 'Answer:', 'bulearningblocks' ) }</strong>
@@ -37,7 +39,7 @@ export default function Answer( {
 			/>
 			<strong>
 				<input
-					type="radio"
+					type={ inputType }
 					value="1"
 					onChange={ () => {
 						onChangeCorrect( index );
