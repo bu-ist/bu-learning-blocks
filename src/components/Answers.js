@@ -4,6 +4,8 @@ export default function Answers( {
 	answers = [],
 	onChangeAnswers,
 	multipleCorrectAllowed,
+	minAnswers = 1,
+	maxAnswers = 1,
 } ) {
 	const onChangeAnswerValue = ( newAnswerValue, index ) => {
 		const newAnswers = [ ...answers ];
@@ -66,10 +68,26 @@ export default function Answers( {
 		) );
 		return answerList;
 	};
+
 	return (
 		<div>
 			<h5>Answers:</h5>
 			{ renderAnswers() }
+			<button
+				onClick={ () => {
+					const newAnswers = [
+						...answers,
+						{
+							answer: '',
+							feedback: '',
+							correct: false,
+						},
+					];
+					onChangeAnswers( newAnswers );
+				} }
+			>
+				Add Answer
+			</button>
 		</div>
 	);
 }
