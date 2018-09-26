@@ -62,6 +62,13 @@ export default function Answers( {
 		}
 	};
 
+	const onRemoveAnswer = index => {
+		if ( answers.length > minAnswers ) {
+			const newAnswers = answers.filter( ( answer, i ) => index !== i );
+			onChangeAnswers( newAnswers );
+		}
+	};
+
 	const renderAnswers = () => {
 		const answerList = answers.map( ( answer, index ) => (
 			<Answer
@@ -75,6 +82,7 @@ export default function Answers( {
 						onChangeMultipleCorrect :
 						onChangeSingleCorrect
 				}
+				onRemoveAnswer={ answers.length > minAnswers ? onRemoveAnswer : null }
 				multipleCorrectAllowed={ multipleCorrectAllowed }
 			/>
 		) );
