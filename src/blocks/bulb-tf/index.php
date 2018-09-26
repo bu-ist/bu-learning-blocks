@@ -24,10 +24,10 @@ function bulb_render_block_tf( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'Type'    => 'true-false',
-		'Header'  => bulb_richtext_to_string( $attributes['header'] ),
-		'Body'    => bulb_richtext_to_string( $attributes['body'] ),
-		'Answers' => $attributes['answers'],
+		'type'    => 'true-false',
+		'header'  => bulb_richtext_to_string( $attributes['header'] ),
+		'body'    => bulb_richtext_to_string( $attributes['body'] ),
+		'answers' => $attributes['answers'],
 	];
 
 	// Save the block data as a JS variable.
