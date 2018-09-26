@@ -1,6 +1,10 @@
 import Answer from './Answer';
 
-export default function Answers( { answers = [], onChangeAnswers } ) {
+export default function Answers( {
+	answers = [],
+	onChangeAnswers,
+	multipleCorrectAllowed,
+} ) {
 	const onChangeAnswerValue = ( newAnswerValue, index ) => {
 		const newAnswers = [ ...answers ];
 		newAnswers[ index ] = { ...answers[ index ], answer: newAnswerValue };
@@ -11,7 +15,8 @@ export default function Answers( { answers = [], onChangeAnswers } ) {
 		newAnswers[ index ] = { ...answers[ index ], feedback: newFeedback };
 		onChangeAnswers( newAnswers );
 	};
-	const onChangeCorrect = index => {
+	const onChangeSingleCorrect = index => {
+		// Make answers[index] the only correct answer in the answers array.
 		const newAnswers = answers.map( ( answer, i ) => {
 			const isCorrect = index === i;
 			return {
@@ -20,6 +25,27 @@ export default function Answers( { answers = [], onChangeAnswers } ) {
 			};
 		} );
 		onChangeAnswers( newAnswers );
+	};
+	const onChangeMultipleCorrect = index => {
+		// Toggle the 'correct' property for answers[index].
+		const newAnswers = answers.map( ( answer, i ) => {
+			if ( index === i ) {
+				return {
+					...answer,
+					correct: ! answer.correct,
+				};
+			}
+			return answer;
+		} );
+
+		// Make sure that at least one answer is selected as the correct answer before updating state.
+		const numCorrectAnswers = newAnswers.reduce(
+			( accumulator, answer ) => accumulator + answer.correct,
+			0
+		);
+		if ( numCorrectAnswers > 0 ) {
+			onChangeAnswers( newAnswers );
+		}
 	};
 
 	const renderAnswers = () => {
@@ -30,7 +56,12 @@ export default function Answers( { answers = [], onChangeAnswers } ) {
 				{ ...answer }
 				onChangeAnswerValue={ onChangeAnswerValue }
 				onChangeFeedback={ onChangeFeedback }
-				onChangeCorrect={ onChangeCorrect }
+				onChangeCorrect={
+					multipleCorrectAllowed ?
+						onChangeMultipleCorrect :
+						onChangeSingleCorrect
+				}
+				multipleCorrectAllowed={ multipleCorrectAllowed }
 			/>
 		) );
 		return answerList;
