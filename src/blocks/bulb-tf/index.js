@@ -2,7 +2,6 @@
  * Block dependencies
  */
 import classnames from 'classnames'; // Helper library to add classnames to a component
-import blockAttributes from './attributes';
 import './styles/style.scss';
 import './styles/editor.scss';
 import Answers from '../../components/Answers';
@@ -26,7 +25,6 @@ export default registerBlockType( 'bulb/question-tf', {
 		__( 'BULB', 'bulearningblocks' ),
 		__( 'True False Question', 'bulearningblocks' ),
 	],
-	attributes: blockAttributes,
 
 	getEditWrapperProps( editWrapperProps ) {
 		const { blockAlignment } = editWrapperProps;
@@ -79,7 +77,6 @@ export default registerBlockType( 'bulb/question-tf', {
 				answers: newAnswers,
 			} );
 		};
-		// TODO: Remove inline styles in RichText component.
 		// TODO: Hide Answer delete button for T/F answers since it's fixed at two.
 		return (
 			<div className="quizDescription">
@@ -89,12 +86,12 @@ export default registerBlockType( 'bulb/question-tf', {
 						<h5>Question Header:</h5>
 						<RichText
 							tagName="p"
-							placeholder={ __( 'Question Header', 'bulearningblocks' ) }
-							keepPlaceholderOnFocus={ true }
+							placeholder={ __( 'Enter Question Header', 'bulearningblocks' ) }
+							// keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-header' ) }
 							style={ {
 								textAlign: textAlignment,
-								// color: textColorControl,
+								color: textColorControl,
 								backgroundColor: backgroundColorControl,
 								fontSize: fontSize ? fontSize + 'px' : undefined,
 							} }
@@ -104,12 +101,12 @@ export default registerBlockType( 'bulb/question-tf', {
 						<h5>Question Body:</h5>
 						<RichText
 							tagName="p"
-							placeholder={ __( 'Question Body', 'bulearningblocks' ) }
-							keepPlaceholderOnFocus={ true }
+							placeholder={ __( 'Enter Question Body', 'bulearningblocks' ) }
+							// keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-body' ) }
 							style={ {
 								textAlign: textAlignment,
-								// color: textColorControl,
+								color: textColorControl,
 								backgroundColor: backgroundColorControl,
 								fontSize: fontSize ? fontSize + 'px' : undefined,
 							} }

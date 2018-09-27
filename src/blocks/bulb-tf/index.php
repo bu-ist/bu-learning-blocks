@@ -46,9 +46,47 @@ function bulb_render_block_tf( $attributes, $content ) {
  */
 function bulb_register_question_tf() {
 	register_block_type(
-		'bulb/question-tf', array(
+		'bulb/question-tf', [
+			'attributes'      => [
+				'id'                     => [],
+				'header'                 => [],
+				'body'                   => [],
+				'answers'                => [
+					'default' => [
+						[
+							'answer'   => 'True',
+							'feedback' => '',
+							'correct'  => true,
+						],
+						[
+							'answer'   => 'False',
+							'feedback' => '',
+							'correct'  => false,
+						],
+					],
+				],
+				'textAlignment'          => [
+					'default' => 'left',
+				],
+				'blockAlignment'         => [
+					'type'    => 'string',
+					'default' => 'wide',
+				],
+				'backgroundColorControl' => [
+					'type'    => 'string',
+					'default' => '#FFFFFF',
+				],
+				'textColorControl'       => [
+					'type'    => 'string',
+					'default' => '#000000',
+				],
+				'fontSize'               => [
+					'type'    => 'string',
+					'default' => '16',
+				],
+			],
 			'render_callback' => 'bulb_render_block_tf',
-		)
+		]
 	);
 }
 add_action( 'init', 'bulb_register_question_tf' );
