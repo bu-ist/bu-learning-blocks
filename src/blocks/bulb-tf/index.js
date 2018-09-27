@@ -2,7 +2,6 @@
  * Block dependencies
  */
 import classnames from 'classnames'; // Helper library to add classnames to a component
-import blockAttributes from './attributes';
 import './styles/style.scss';
 import './styles/editor.scss';
 import Answers from '../../components/Answers';
@@ -26,7 +25,6 @@ export default registerBlockType( 'bulb/question-tf', {
 		__( 'BULB', 'bulearningblocks' ),
 		__( 'True False Question', 'bulearningblocks' ),
 	],
-	attributes: blockAttributes,
 
 	getEditWrapperProps( editWrapperProps ) {
 		const { blockAlignment } = editWrapperProps;
@@ -79,7 +77,7 @@ export default registerBlockType( 'bulb/question-tf', {
 				answers: newAnswers,
 			} );
 		};
-
+		// TODO: Hide Answer delete button for T/F answers since it's fixed at two.
 		return (
 			<div className="quizDescription">
 				<Fragment>
@@ -88,9 +86,8 @@ export default registerBlockType( 'bulb/question-tf', {
 						<h5>Question Header:</h5>
 						<RichText
 							tagName="p"
-							// multiline="p"
-							placeholder={ __( 'Question Header', 'bulearningblocks' ) }
-							keepPlaceholderOnFocus={ true }
+							placeholder={ __( 'Enter Question Header', 'bulearningblocks' ) }
+							// keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-header' ) }
 							style={ {
 								textAlign: textAlignment,
@@ -104,9 +101,8 @@ export default registerBlockType( 'bulb/question-tf', {
 						<h5>Question Body:</h5>
 						<RichText
 							tagName="p"
-							// multiline="p"
-							placeholder={ __( 'Question Body', 'bulearningblocks' ) }
-							keepPlaceholderOnFocus={ true }
+							placeholder={ __( 'Enter Question Body', 'bulearningblocks' ) }
+							// keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-body' ) }
 							style={ {
 								textAlign: textAlignment,
