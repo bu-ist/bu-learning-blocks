@@ -3,7 +3,14 @@ import Answer from './Answer';
 export default function Answers( {
 	answers = [],
 	onChangeAnswers,
-	multipleCorrectAllowed,
+	multipleCorrectAllowed = false,
+	minAnswers = 1,
+	maxAnswers = 1,
+	defaultAnswer = {
+		answer: '',
+		feedback: '',
+		correct: false,
+	},
 } ) {
 	const onChangeAnswerValue = ( newAnswerValue, index ) => {
 		const newAnswers = [ ...answers ];
@@ -48,6 +55,20 @@ export default function Answers( {
 		}
 	};
 
+	const onAddAnswer = () => {
+		if ( answers.length < maxAnswers ) {
+			const newAnswers = [ ...answers, defaultAnswer ];
+			onChangeAnswers( newAnswers );
+		}
+	};
+
+	const onRemoveAnswer = index => {
+		if ( answers.length > minAnswers ) {
+			const newAnswers = answers.filter( ( answer, i ) => index !== i );
+			onChangeAnswers( newAnswers );
+		}
+	};
+
 	const renderAnswers = () => {
 		const answerList = answers.map( ( answer, index ) => (
 			<Answer
@@ -61,15 +82,24 @@ export default function Answers( {
 						onChangeMultipleCorrect :
 						onChangeSingleCorrect
 				}
+				onRemoveAnswer={ answers.length > minAnswers ? onRemoveAnswer : null }
 				multipleCorrectAllowed={ multipleCorrectAllowed }
 			/>
 		) );
 		return answerList;
 	};
+
+	const renderAddAnswer = () => {
+		if ( answers.length < maxAnswers ) {
+			return <button onClick={ onAddAnswer }>Add Answer</button>;
+		}
+	};
+
 	return (
 		<div>
 			<h5>Answers:</h5>
 			{ renderAnswers() }
+			{ renderAddAnswer() }
 		</div>
 	);
 }

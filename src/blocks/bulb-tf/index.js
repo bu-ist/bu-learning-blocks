@@ -121,6 +121,8 @@ export default registerBlockType( 'bulb/question-tf', {
 							answers={ answers }
 							onChangeAnswers={ onChangeAnswers }
 							multipleCorrectAllowed={ false }
+							minAnswers={ 2 }
+							maxAnswers={ 2 }
 						/>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
