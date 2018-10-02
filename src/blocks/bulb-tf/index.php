@@ -29,21 +29,10 @@ function bulb_render_block_tf( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'Type'    => 'true-false',
-		'Header'  => bulb_richtext_to_string( $attributes['header'] ),
-		'Body'    => bulb_richtext_to_string( $attributes['body'] ),
-		'Answers' => [
-			[
-				'Answer'   => 'True',
-				'Feedback' => get_feedback( $attributes['checkboxControlAnswer1'], $attributes ),
-				'Correct'  => $attributes['checkboxControlAnswer1'],
-			],
-			[
-				'Answer'   => 'False',
-				'Feedback' => get_feedback( $attributes['checkboxControlAnswer2'], $attributes ),
-				'Correct'  => $attributes['checkboxControlAnswer2'],
-			],
-		],
+		'type'    => 'true-false',
+		'header'  => bulb_richtext_to_string( $attributes['header'] ),
+		'body'    => bulb_richtext_to_string( $attributes['body'] ),
+		'answers' => $attributes['answers'],
 	];
 
 	// Save the block data as a JS variable.
@@ -62,10 +51,47 @@ function bulb_render_block_tf( $attributes, $content ) {
  */
 function bulb_register_question_tf() {
 	register_block_type(
-		'bulb/question-tf', array(
+		'bulb/question-tf', [
+			'attributes'      => [
+				'id'                     => [],
+				'header'                 => [],
+				'body'                   => [],
+				'answers'                => [
+					'default' => [
+						[
+							'answer'   => 'True',
+							'feedback' => '',
+							'correct'  => true,
+						],
+						[
+							'answer'   => 'False',
+							'feedback' => '',
+							'correct'  => false,
+						],
+					],
+				],
+				'textAlignment'          => [
+					'default' => 'left',
+				],
+				'blockAlignment'         => [
+					'type'    => 'string',
+					'default' => 'wide',
+				],
+				'backgroundColorControl' => [
+					'type'    => 'string',
+					'default' => '#FFFFFF',
+				],
+				'textColorControl'       => [
+					'type'    => 'string',
+					'default' => '#000000',
+				],
+				'fontSize'               => [
+					'type'    => 'string',
+					'default' => '16',
+				],
+			],
 			'render_callback' => 'bulb_render_block_tf',
-		)
+		]
 	);
 }
 add_action( 'init', 'bulb_register_question_tf' );
-
