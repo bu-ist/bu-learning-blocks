@@ -5,15 +5,9 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls, ColorPalette } = wp.editor;
 const {
-	Button,
-	ButtonGroup,
-	CheckboxControl,
 	FontSizePicker,
 	PanelBody,
-	PanelRow,
 	PanelColor,
-	RangeControl,
-	FormToggle,
 	BaseControl,
 } = wp.components;
 
@@ -36,6 +30,24 @@ export default class Inspector extends Component {
 
 		const fallbackFontSize = 16;
 
+		const onChangeFontSize = newFontSize => {
+			setAttributes( {
+				fontSize: newFontSize,
+			} );
+		};
+
+		const onChangeBackgroundColor = newBackgroundColor => {
+			setAttributes( {
+				backgroundColorControl: newBackgroundColor,
+			} );
+		};
+
+		const onChangeTextColor = newTextColor => {
+			setAttributes( {
+				textColorControl: newTextColor,
+			} );
+		};
+
 		return (
 			<InspectorControls>
 				<PanelBody title={ __( 'Text Settings', 'bulearningblocks' ) }>
@@ -43,7 +55,7 @@ export default class Inspector extends Component {
 						fontSizes={ fontSizes }
 						fallbackFontSize={ fallbackFontSize }
 						value={ fontSize }
-						onChange={ fontSize => setAttributes( { fontSize } ) }
+						onChange={ onChangeFontSize }
 					/>
 					<PanelColor
 						title={ __( 'Background Color', 'bulearningblocks' ) }
@@ -53,9 +65,7 @@ export default class Inspector extends Component {
 						<BaseControl>
 							<ColorPalette
 								value={ backgroundColorControl }
-								onChange={ backgroundColorControl =>
-									setAttributes( { backgroundColorControl } )
-								}
+								onChange={ onChangeBackgroundColor }
 							/>
 						</BaseControl>
 					</PanelColor>
@@ -68,9 +78,7 @@ export default class Inspector extends Component {
 						<BaseControl>
 							<ColorPalette
 								value={ textColorControl }
-								onChange={ textColorControl =>
-									setAttributes( { textColorControl } )
-								}
+								onChange={ onChangeTextColor }
 							/>
 						</BaseControl>
 					</PanelColor>
