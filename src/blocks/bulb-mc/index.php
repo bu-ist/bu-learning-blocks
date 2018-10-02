@@ -44,48 +44,48 @@ function bulb_render_block_mc( $attributes, $content ) {
 }
 
 /**
-* Register the dynamic block
-*
-* @return void
-*/
+ * Register the dynamic block
+ *
+ * @return void
+ */
 function bulb_register_question_mc() {
-   register_block_type(
-	   'bulb/question-mc', [
-		   'attributes'      => [
-			   'id'                     => [],
-			   'header'                 => [],
-			   'body'                   => [],
-			   'answers'                => [
-				   'default' => [
-					   [
-						   'answer'   => '',
-						   'feedback' => '',
-						   'correct'  => true,
-					   ],
-				   ],
-			   ],
-			   'textAlignment'          => [
-				   'default' => 'left',
-			   ],
-			   'blockAlignment'         => [
-				   'type'    => 'string',
-				   'default' => 'wide',
-			   ],
-			   'backgroundColorControl' => [
-				   'type'    => 'string',
-				   'default' => '#FFFFFF',
-			   ],
-			   'textColorControl'       => [
-				   'type'    => 'string',
-				   'default' => '#000000',
-			   ],
-			   'fontSize'               => [
-				   'type'    => 'string',
-				   'default' => '16',
-			   ],
-		   ],
-		   'render_callback' => 'bulb_render_block_mc',
-	   ]
-   );
+	register_block_type(
+		'bulb/question-mc', [
+			'attributes'      => [
+				'id'                     => [],
+				'header'                 => [],
+				'body'                   => [],
+				'answers'                => [
+					'default' => [
+						[
+							'answer'   => '',
+							'feedback' => '',
+							'correct'  => true,
+						],
+					],
+				],
+				'textAlignment'          => [
+					'default' => 'left',
+				],
+				'blockAlignment'         => [
+					'type'    => 'string',
+					'default' => 'wide',
+				],
+				'backgroundColorControl' => [
+					'type'    => 'string',
+					'default' => '#FFFFFF',
+				],
+				'textColorControl'       => [
+					'type'    => 'string',
+					'default' => '#000000',
+				],
+				'fontSize'               => [
+					'type'    => 'string',
+					'default' => '16',
+				],
+			],
+			'render_callback' => 'bulb_render_block_mc',
+		]
+	);
 }
 add_action( 'init', 'bulb_register_question_mc' );

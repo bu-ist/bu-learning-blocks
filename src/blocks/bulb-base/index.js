@@ -36,7 +36,7 @@ export default registerBlockType( 'bulb/base', {
 			setAttributes( {
 				id: 'bulb_question_' + clientId.replace( /-/g, '' ),
 			} );
-}
+		}
 
 		// Handle input field changes
 		const onChangeHeader = newHeader => {

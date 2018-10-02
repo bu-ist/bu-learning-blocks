@@ -1,10 +1,5 @@
-import classnames from 'classnames';
-import icons from './icons';
-
-const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { AlignmentToolbar, BlockControls, BlockAlignmentToolbar } = wp.editor;
-const { Toolbar, Button, Tooltip } = wp.components;
 
 /**
  * Create a Block Controls wrapper Component
