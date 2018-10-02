@@ -1,6 +1,6 @@
 <?php
 /**
- * Base question block
+ * True/False question block
  *
  * Register dynamic block functions
  *

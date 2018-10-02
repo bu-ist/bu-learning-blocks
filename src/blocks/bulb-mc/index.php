@@ -1,6 +1,6 @@
 <?php
 /**
- * Base question block
+ * Multiple Choice question block
  *
  * Register dynamic block functions
  *
@@ -28,21 +28,10 @@ function bulb_render_block_mc( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'Type'    => 'true-false',
-		'Header'  => bulb_richtext_to_string( $attributes['header'] ),
-		'Body'    => bulb_richtext_to_string( $attributes['body'] ),
-		'Answers' => [
-			[
-				'Answer'   => 'True',
-				'Feedback' => get_feedback( $attributes['checkboxControlAnswer1'], $attributes ),
-				'Correct'  => $attributes['checkboxControlAnswer1'],
-			],
-			[
-				'Answer'   => 'False',
-				'Feedback' => get_feedback( $attributes['checkboxControlAnswer2'], $attributes ),
-				'Correct'  => $attributes['checkboxControlAnswer2'],
-			],
-		],
+		'type'    => 'multiple-choice',
+		'header'  => bulb_richtext_to_string( $attributes['header'] ),
+		'body'    => bulb_richtext_to_string( $attributes['body'] ),
+		'answers' => $attributes['answers'],
 	];
 
 	// Save the block data as a JS variable.
@@ -55,15 +44,48 @@ function bulb_render_block_mc( $attributes, $content ) {
 }
 
 /**
- * Register the dynamic block
- *
- * @return void
- */
+* Register the dynamic block
+*
+* @return void
+*/
 function bulb_register_question_mc() {
-	register_block_type(
-		'bulb/question-mc', array(
-			'render_callback' => 'bulb_render_block_mc',
-		)
-	);
+   register_block_type(
+	   'bulb/question-mc', [
+		   'attributes'      => [
+			   'id'                     => [],
+			   'header'                 => [],
+			   'body'                   => [],
+			   'answers'                => [
+				   'default' => [
+					   [
+						   'answer'   => '',
+						   'feedback' => '',
+						   'correct'  => true,
+					   ],
+				   ],
+			   ],
+			   'textAlignment'          => [
+				   'default' => 'left',
+			   ],
+			   'blockAlignment'         => [
+				   'type'    => 'string',
+				   'default' => 'wide',
+			   ],
+			   'backgroundColorControl' => [
+				   'type'    => 'string',
+				   'default' => '#FFFFFF',
+			   ],
+			   'textColorControl'       => [
+				   'type'    => 'string',
+				   'default' => '#000000',
+			   ],
+			   'fontSize'               => [
+				   'type'    => 'string',
+				   'default' => '16',
+			   ],
+		   ],
+		   'render_callback' => 'bulb_render_block_mc',
+	   ]
+   );
 }
 add_action( 'init', 'bulb_register_question_mc' );

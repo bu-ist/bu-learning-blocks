@@ -76,6 +76,8 @@ class BULBQuestion {
 	slickQuizParseData() {
 		switch ( this.rawData.type ) {
 			case 'true-false':
+                return this.slickQuizParseDataTrueFalse();
+            case 'multiple-choice':
 				return this.slickQuizParseDataTrueFalse();
 			default:
 				break;

@@ -71,7 +71,6 @@ export default registerBlockType( 'bulb/question-tf', {
 				body: newBody,
 			} );
 		};
-
 		const onChangeAnswers = newAnswers => {
 			setAttributes( {
 				answers: newAnswers,
