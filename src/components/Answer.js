@@ -64,7 +64,9 @@ export default function Answer( {
 				</strong>
 			</div>
 			<div className="bulb-answer-controls">
-				<button onClick={ () => onRemoveAnswer( index ) }>X</button>
+				{ onRemoveAnswer && (
+					<button onClick={ () => onRemoveAnswer( index ) }>X</button>
+				) }
 			</div>
 		</div>
 	);
