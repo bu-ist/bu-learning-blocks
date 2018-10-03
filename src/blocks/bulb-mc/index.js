@@ -86,7 +86,7 @@ export default registerBlockType( 'bulb/question-mc', {
 						<RichText
 							tagName="p"
 							placeholder={ __( 'Enter Question Header', 'bulearningblocks' ) }
-							// keepPlaceholderOnFocus={ true }
+							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-header' ) }
 							style={ {
 								textAlign: textAlignment,
@@ -101,7 +101,7 @@ export default registerBlockType( 'bulb/question-mc', {
 						<RichText
 							tagName="p"
 							placeholder={ __( 'Enter Question Body', 'bulearningblocks' ) }
-							// keepPlaceholderOnFocus={ true }
+							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'question-body' ) }
 							style={ {
 								textAlign: textAlignment,

@@ -61,6 +61,11 @@ function bulb_register_question_mc() {
 							'answer'   => '',
 							'feedback' => '',
 							'correct'  => true,
+                        ],
+                        [
+							'answer'   => '',
+							'feedback' => '',
+							'correct'  => false,
 						],
 					],
 				],
