@@ -76,8 +76,10 @@ class BULBQuestion {
 	slickQuizParseData() {
 		switch ( this.rawData.type ) {
 			case 'true-false':
-                return this.slickQuizParseDataTrueFalse();
-            case 'multiple-choice':
+				return this.slickQuizParseDataTrueFalse();
+			case 'multiple-choice':
+				return this.slickQuizParseDataTrueFalse();
+			case 'multiple-answer':
 				return this.slickQuizParseDataTrueFalse();
 			default:
 				break;
@@ -97,8 +99,9 @@ class BULBQuestion {
 			option: answer.answer,
 			correct: answer.correct,
 		} ) );
-		const correctFeedback = this.rawData.answers.find( answer => answer.correct )
-			.feedback;
+		const correctFeedback = this.rawData.answers.find(
+			answer => answer.correct
+		).feedback;
 		const incorrectFeedback = this.rawData.answers.find(
 			answer => ! answer.correct
 		).feedback;

@@ -15,15 +15,15 @@ const { RichText } = wp.editor;
 const { Fragment } = wp.element;
 
 // Register the block
-export default registerBlockType( 'bulb/question-mc', {
-	title: __( 'BULB - M/C', 'bulearningblocks' ),
-	description: __( 'Add a Multiple Choice question to your learning module.' ),
+export default registerBlockType( 'bulb/question-ma', {
+	title: __( 'BULB - M/A', 'bulearningblocks' ),
+	description: __( 'Add a Multiple Answer question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
 	keywords: [
 		__( 'bu-learning-block', 'bulearningblocks' ),
 		__( 'BULB', 'bulearningblocks' ),
-		__( 'Multiple Choice Question', 'bulearningblocks' ),
+		__( 'Multiple Answer Question', 'bulearningblocks' ),
 	],
 
 	getEditWrapperProps( editWrapperProps ) {
@@ -125,7 +125,7 @@ export default registerBlockType( 'bulb/question-mc', {
 						<Answers
 							answers={ answers }
 							onChangeAnswers={ onChangeAnswers }
-							multipleCorrectAllowed={ false }
+							multipleCorrectAllowed={ true }
 							minAnswers={ 2 }
 							maxAnswers={ 6 }
 						/>
