@@ -79,7 +79,6 @@ export default registerBlockType( 'bulb/question-mc', {
 
 		return (
 			<div className="quizDescription">
-				<Fragment>
 					<Inspector { ...{ setAttributes, ...props } } />
 					<div id={ id } className={ classnames( 'question', className ) }>
 						<h5>Question Header:</h5>
@@ -121,7 +120,6 @@ export default registerBlockType( 'bulb/question-mc', {
 						/>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
-				</Fragment>
 			</div>
 		);
 	},

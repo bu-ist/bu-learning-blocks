@@ -86,7 +86,6 @@ function bulb_register_question_tf() {
 				],
 				'fontSize'               => [
 					'type'    => 'string',
-					'default' => '16',
 				],
 			],
 			'render_callback' => 'bulb_render_block_tf',
