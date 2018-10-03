@@ -82,8 +82,7 @@ function bulb_register_question_tf() {
 					'default' => '#FFFFFF',
 				],
 				'textColorControl'       => [
-					'type'    => 'string',
-					'default' => '#000000',
+					'type' => 'string',
 				],
 				'fontSize'               => [
 					'type'    => 'string',

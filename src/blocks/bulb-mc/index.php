@@ -61,8 +61,8 @@ function bulb_register_question_mc() {
 							'answer'   => '',
 							'feedback' => '',
 							'correct'  => true,
-                        ],
-                        [
+						],
+						[
 							'answer'   => '',
 							'feedback' => '',
 							'correct'  => false,
@@ -81,8 +81,7 @@ function bulb_register_question_mc() {
 					'default' => '#FFFFFF',
 				],
 				'textColorControl'       => [
-					'type'    => 'string',
-					'default' => '#000000',
+					'type' => 'string',
 				],
 				'fontSize'               => [
 					'type'    => 'string',
