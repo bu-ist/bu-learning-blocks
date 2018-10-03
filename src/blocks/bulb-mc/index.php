@@ -53,7 +53,8 @@ function bulb_register_question_mc() {
 		'bulb/question-mc', [
 			'attributes'      => [
 				'id'                     => [],
-				'header'                 => [],
+				'header'                 => [
+				],
 				'body'                   => [],
 				'answers'                => [
 					'default' => [
@@ -78,7 +79,6 @@ function bulb_register_question_mc() {
 				],
 				'backgroundColorControl' => [
 					'type'    => 'string',
-					'default' => '#FFFFFF',
 				],
 				'textColorControl'       => [
 					'type' => 'string',

@@ -79,7 +79,6 @@ function bulb_register_question_tf() {
 				],
 				'backgroundColorControl' => [
 					'type'    => 'string',
-					'default' => '#FFFFFF',
 				],
 				'textColorControl'       => [
 					'type' => 'string',
