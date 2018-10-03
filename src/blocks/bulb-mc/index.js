@@ -116,7 +116,7 @@ export default registerBlockType( 'bulb/question-mc', {
 							onChangeAnswers={ onChangeAnswers }
 							multipleCorrectAllowed={ false }
 							minAnswers={ 2 }
-							maxAnswers={ 5 }
+							maxAnswers={ 6 }
 						/>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
