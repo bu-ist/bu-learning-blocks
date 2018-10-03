@@ -1,5 +1,11 @@
 <?php
-add_action( 'init', 'bulb_register_learning_module_post_type' );
+/**
+ * Register the Learning Module custom post type.
+ *
+ * @since   0.0.1
+ * @package BU Learning Blocks
+ */
+
 /**
  * Calls register_post_type
  *
@@ -37,3 +43,5 @@ function bulb_register_learning_module_post_type() {
 
 	register_post_type( 'bulb_learning_module', $args );
 }
+add_action( 'init', 'bulb_register_learning_module_post_type' );
+

@@ -1,6 +1,6 @@
 <?php
 /**
- * True/False question block
+ * Multiple Choice question block
  *
  * Register dynamic block functions
  *
@@ -12,7 +12,6 @@
 require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/get-feedback.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/richtext-to-string.php';
 
-
 /**
  * Render the dynamic block
  *
@@ -20,7 +19,7 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/richtext-to-string.php';
  * @param string $content The block's content.
  * @return string The html markup for the block
  */
-function bulb_render_block_tf( $attributes, $content ) {
+function bulb_render_block_mc( $attributes, $content ) {
 	// Get the question block instance id.
 	$id               = $attributes['id'];
 	$background_color = $attributes['backgroundColorControl'];
@@ -29,7 +28,7 @@ function bulb_render_block_tf( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'    => 'true-false',
+		'type'    => 'multiple-choice',
 		'header'  => bulb_richtext_to_string( $attributes['header'] ),
 		'body'    => bulb_richtext_to_string( $attributes['body'] ),
 		'answers' => $attributes['answers'],
@@ -49,22 +48,23 @@ function bulb_render_block_tf( $attributes, $content ) {
  *
  * @return void
  */
-function bulb_register_question_tf() {
+function bulb_register_question_mc() {
 	register_block_type(
-		'bulb/question-tf', [
+		'bulb/question-mc', [
 			'attributes'      => [
 				'id'                     => [],
-				'header'                 => [],
+				'header'                 => [
+				],
 				'body'                   => [],
 				'answers'                => [
 					'default' => [
 						[
-							'answer'   => 'True',
+							'answer'   => '',
 							'feedback' => '',
 							'correct'  => true,
 						],
 						[
-							'answer'   => 'False',
+							'answer'   => '',
 							'feedback' => '',
 							'correct'  => false,
 						],
@@ -87,8 +87,8 @@ function bulb_register_question_tf() {
 					'type'    => 'string',
 				],
 			],
-			'render_callback' => 'bulb_render_block_tf',
+			'render_callback' => 'bulb_render_block_mc',
 		]
 	);
 }
-add_action( 'init', 'bulb_register_question_tf' );
+add_action( 'init', 'bulb_register_question_mc' );

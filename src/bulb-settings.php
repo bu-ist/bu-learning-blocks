@@ -2,13 +2,12 @@
 /**
  * BULB Settings Page Setup
  *
- * Set the BULB plugin settigs pages.
+ * Register BULB plugin settings pages.
  *
  * @since   0.0.1
  * @package BU Learning Blocks
  */
 
-add_action( 'admin_menu', 'bulb_settings_pages' );
 /**
  * Set up plugin menu pages.
  *
@@ -25,8 +24,8 @@ function bulb_settings_pages() {
 		100
 	);
 }
+add_action( 'admin_menu', 'bulb_settings_pages' );
 
-add_action( 'admin_init', 'bulb_settings' );
 /**
  * Set up plugin settings section.
  *
@@ -40,6 +39,7 @@ function bulb_settings() {
 		'bulb'
 	);
 }
+add_action( 'admin_init', 'bulb_settings' );
 
 /**
  * Setting section secondary description.
@@ -63,7 +63,6 @@ function bulb_settings_page_markup() {
 	include BULB_PLUGIN_DIR_PATH . 'src/templates/admin/settings-page.php';
 }
 
-add_filter( 'plugin_action_links_' . BULB_PLUGIN_BASENAME, 'add_action_links' );
 /**
  * Plugin menu link to settings.
  *
@@ -77,3 +76,5 @@ function add_action_links( $links ) {
 	);
 	return array_merge( $links, $mylinks );
 }
+add_filter( 'plugin_action_links_' . BULB_PLUGIN_BASENAME, 'add_action_links' );
+

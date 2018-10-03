@@ -6,7 +6,6 @@
  * @package BU Learning Blocks
  */
 
-add_action( 'enqueue_block_assets', 'bulb_block_assets' );
 /**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
@@ -43,8 +42,8 @@ function bulb_block_assets() {
 		);
 	}
 }
+add_action( 'enqueue_block_assets', 'bulb_block_assets' );
 
-add_action( 'enqueue_block_editor_assets', 'bulb_block_editor_assets' );
 /**
  * Enqueue Gutenberg block assets for backend editor.
  *
@@ -71,4 +70,6 @@ function bulb_block_editor_assets() {
 		filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
 	);
 }
+add_action( 'enqueue_block_editor_assets', 'bulb_block_editor_assets' );
+
 
