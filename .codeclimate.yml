@@ -8,11 +8,6 @@ plugins:
   eslint:
     enabled: true
     channel: eslint-4
-  markdownlint:
-    enabled: true
-    checks:
-      MD013:
-        enabled: false
   phpcodesniffer:
     enabled: true
     config:
