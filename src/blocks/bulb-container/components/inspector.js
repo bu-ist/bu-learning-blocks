@@ -7,35 +7,15 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 
 // Import block components
-const {
-	InspectorControls,
-	BlockDescription,
-	ColorPalette,
-	MediaUpload,
-} = wp.editor;
+const { InspectorControls, ColorPalette, MediaUpload } = wp.editor;
 
 // Import Inspector components
-const {
-	Toolbar,
-	Button,
-	PanelBody,
-	PanelRow,
-	PanelColor,
-	FormToggle,
-	RangeControl,
-	SelectControl,
-	ToggleControl,
-	IconButton,
-} = wp.components;
+const { PanelBody, PanelColor, RangeControl, IconButton } = wp.components;
 
 /**
  * Create an Inspector Controls wrapper Component
  */
 export default class Inspector extends Component {
-	constructor( props ) {
-		super( ...arguments );
-	}
-
 	render() {
 		// Setup the attributes
 		const {
@@ -50,7 +30,6 @@ export default class Inspector extends Component {
 			containerDimRatio,
 			containerImgURL,
 			containerImgID,
-			containerImgAlt,
 		} = this.props.attributes;
 		const { setAttributes } = this.props;
 

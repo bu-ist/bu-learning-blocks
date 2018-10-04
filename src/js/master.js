@@ -1,4 +1,5 @@
 // Put all your page JS here
+const { jQuery } = window;
 
 // Initialize the BULB object.
 const BULB = {
