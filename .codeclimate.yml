@@ -19,8 +19,8 @@ plugins:
       ignore_warnings: false
 
 exclude_patterns:
-- node_modules/
-- vendor/
-- dist/
-- src/css/slickQuiz.css
-- src/js/slickQuiz.js
+- "**/node_modules/"
+- "vendor/"
+- "dist/"
+- "slickQuiz.css"
+- "slickQuiz.js"
