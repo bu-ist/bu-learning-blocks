@@ -1,0 +1,19 @@
+version: "2"
+
+plugins:
+  eslint:
+    enabled: true
+    channel: eslint-4
+  markdownlint:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+    config:
+      file_extensions: php
+      standard: WordPress
+      ignore_warnings: false
+
+exclude_patterns:
+- node_modules/
+- vendor/
+- dist/
