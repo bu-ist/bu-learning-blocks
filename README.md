@@ -1,5 +1,7 @@
 # BULB (Boston University Learning Blocks)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/b920b4489aa4ded7bd77/maintainability)](https://codeclimate.com/github/bu-ist/bu-learning-blocks/maintainability)
+
 ## Getting Started
 
 ### Local Environment
