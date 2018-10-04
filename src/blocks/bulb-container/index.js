@@ -17,30 +17,13 @@ import './styles/editor.scss';
 const { __ } = wp.i18n;
 
 // Extend component
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 // Register block
 const { registerBlockType } = wp.blocks;
 
 // Register editor components
-const {
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	MediaUpload,
-	RichText,
-	InnerBlocks,
-} = wp.editor;
-
-// Register components
-const {
-	Button,
-	withFallbackStyles,
-	IconButton,
-	Dashicon,
-	withState,
-	Toolbar,
-} = wp.components;
+const { BlockControls, BlockAlignmentToolbar, InnerBlocks } = wp.editor;
 
 const blockAttributes = {
 	containerPaddingTop: {
@@ -105,77 +88,59 @@ class BULBContainerBlock extends Component {
 		// Setup the attributes
 		const {
 			attributes: {
-				containerPaddingTop,
-				containerPaddingRight,
-				containerPaddingBottom,
-				containerPaddingLeft,
-				containerMarginTop,
-				containerMarginBottom,
 				containerWidth,
 				containerMaxWidth,
-				containerBackgroundColor,
 				containerImgURL,
-				containerImgID,
 				containerImgAlt,
 				containerDimRatio,
 			},
-			attributes,
-			isSelected,
-			editable,
-			className,
 			setAttributes,
 		} = this.props;
 
-		const onSelectImage = img => {
-			setAttributes( {
-				containerImgID: img.id,
-				containerImgURL: img.url,
-				containerImgAlt: img.alt,
-			} );
-		};
+		return (
+			<Fragment>
+				{ /* Show the alignment toolbar on focus */ }
+				<BlockControls>
+					<BlockAlignmentToolbar
+						value={ containerWidth }
+						onChange={ newContainerWidth => setAttributes( { newContainerWidth } ) }
+						controls={ [ 'center', 'full' ] }
+					/>
+				</BlockControls>
+				, // Show the block controls on focus
+				<Inspector { ...{ setAttributes, ...this.props } } />, // Show the
+				container markup in the editor
+				<Container { ...this.props }>
+					<div className="bulb-container-inside">
+						{ containerImgURL &&
+							!! containerImgURL.length && (
+							<div className="bulb-container-image-wrap">
+								<img
+									className={ classnames(
+										'bulb-container-image',
+										dimRatioToClass( containerDimRatio ),
+										{
+											'has-background-dim': containerDimRatio !== 0,
+										}
+									) }
+									src={ containerImgURL }
+									alt={ containerImgAlt }
+								/>
+							</div>
+						) }
 
-		return [
-			// Show the alignment toolbar on focus
-			<BlockControls>
-				<BlockAlignmentToolbar
-					value={ containerWidth }
-					onChange={ containerWidth => setAttributes( { containerWidth } ) }
-					controls={ [ 'center', 'full' ] }
-				/>
-			</BlockControls>,
-			// Show the block controls on focus
-			<Inspector { ...{ setAttributes, ...this.props } } />,
-			// Show the container markup in the editor
-			<Container { ...this.props }>
-				<div className="bulb-container-inside">
-					{ containerImgURL &&
-						!! containerImgURL.length && (
-						<div className="bulb-container-image-wrap">
-							<img
-								className={ classnames(
-									'bulb-container-image',
-									dimRatioToClass( containerDimRatio ),
-									{
-										'has-background-dim': containerDimRatio !== 0,
-									}
-								) }
-								src={ containerImgURL }
-								alt={ containerImgAlt }
-							/>
+						<div
+							className="bulb-container-content"
+							style={ {
+								maxWidth: `${ containerMaxWidth }px`,
+							} }
+						>
+							<InnerBlocks />
 						</div>
-					) }
-
-					<div
-						className="bulb-container-content"
-						style={ {
-							maxWidth: `${ containerMaxWidth }px`,
-						} }
-					>
-						<InnerBlocks />
 					</div>
-				</div>
-			</Container>,
-		];
+				</Container>
+			</Fragment>
+		);
 	}
 }
 
@@ -212,17 +177,8 @@ registerBlockType( 'bulb/block-container', {
 	save: function( props ) {
 		// Setup the attributes
 		const {
-			containerPaddingTop,
-			containerPaddingRight,
-			containerPaddingBottom,
-			containerPaddingLeft,
-			containerMarginTop,
-			containerMarginBottom,
-			containerWidth,
 			containerMaxWidth,
-			containerBackgroundColor,
 			containerImgURL,
-			containerImgID,
 			containerImgAlt,
 			containerDimRatio,
 		} = props.attributes;
@@ -265,9 +221,5 @@ registerBlockType( 'bulb/block-container', {
 function dimRatioToClass( ratio ) {
 	return ratio === 0 || ratio === 50 ?
 		null :
-		'has-background-dim-' + 10 * Math.round( ratio / 10 );
-}
-
-function backgroundImageStyles( url ) {
-	return url ? { backgroundImage: `url(${ url })` } : undefined;
+		`has-background-dim-${ 10 * Math.round( ratio / 10 ) }`;
 }

@@ -25,7 +25,6 @@ export default class Container extends Component {
 				containerMarginTop,
 				containerMarginBottom,
 				containerWidth,
-				containerMaxWidth,
 			},
 		} = this.props;
 
