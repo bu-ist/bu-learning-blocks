@@ -53,8 +53,7 @@ function bulb_register_question_ma() {
 		'bulb/question-ma', [
 			'attributes'      => [
 				'id'                     => [],
-				'header'                 => [
-				],
+				'header'                 => [],
 				'body'                   => [],
 				'answers'                => [
 					'default' => [
@@ -78,13 +77,13 @@ function bulb_register_question_ma() {
 					'default' => 'wide',
 				],
 				'backgroundColorControl' => [
-					'type'    => 'string',
+					'type' => 'string',
 				],
 				'textColorControl'       => [
 					'type' => 'string',
 				],
 				'fontSize'               => [
-					'type'    => 'string',
+					'type' => 'string',
 				],
 			],
 			'render_callback' => 'bulb_render_block_mc',
