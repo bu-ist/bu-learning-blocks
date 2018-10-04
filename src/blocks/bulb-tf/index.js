@@ -76,7 +76,6 @@ export default registerBlockType( 'bulb/question-tf', {
 				answers: newAnswers,
 			} );
 		};
-		// TODO: Hide Answer delete button for T/F answers since it's fixed at two.
 		return (
 			<div className="quizDescription">
 				<Fragment>
