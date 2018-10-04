@@ -1,6 +1,6 @@
 <?php
 /**
- * Multiple Choice question block
+ * Multiple Answer question block
  *
  * Register dynamic block functions
  *
@@ -19,7 +19,7 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/richtext-to-string.php';
  * @param string $content The block's content.
  * @return string The html markup for the block
  */
-function bulb_render_block_mc( $attributes, $content ) {
+function bulb_render_block_ma( $attributes, $content ) {
 	// Get the question block instance id.
 	$id               = $attributes['id'];
 	$background_color = $attributes['backgroundColorControl'];
@@ -28,7 +28,7 @@ function bulb_render_block_mc( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'    => 'multiple-choice',
+		'type'    => 'multiple-answer',
 		'header'  => bulb_richtext_to_string( $attributes['header'] ),
 		'body'    => bulb_richtext_to_string( $attributes['body'] ),
 		'answers' => $attributes['answers'],
@@ -48,12 +48,13 @@ function bulb_render_block_mc( $attributes, $content ) {
  *
  * @return void
  */
-function bulb_register_question_mc() {
+function bulb_register_question_ma() {
 	register_block_type(
-		'bulb/question-mc', [
+		'bulb/question-ma', [
 			'attributes'      => [
 				'id'                     => [],
-				'header'                 => [],
+				'header'                 => [
+				],
 				'body'                   => [],
 				'answers'                => [
 					'default' => [
@@ -77,17 +78,17 @@ function bulb_register_question_mc() {
 					'default' => 'wide',
 				],
 				'backgroundColorControl' => [
-					'type' => 'string',
+					'type'    => 'string',
 				],
 				'textColorControl'       => [
 					'type' => 'string',
 				],
 				'fontSize'               => [
-					'type' => 'string',
+					'type'    => 'string',
 				],
 			],
 			'render_callback' => 'bulb_render_block_mc',
 		]
 	);
 }
-add_action( 'init', 'bulb_register_question_mc' );
+add_action( 'init', 'bulb_register_question_ma' );
