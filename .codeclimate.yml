@@ -2,8 +2,7 @@ version: "2"
 
 checks:
   method-lines:
-    config:
-      threshold: 250
+    enabled: false
 
 plugins:
   eslint:
@@ -22,5 +21,5 @@ exclude_patterns:
 - "**/node_modules/"
 - "vendor/"
 - "dist/"
-- "slickQuiz.css"
-- "slickQuiz.js"
+- "src/css/slickQuiz.css"
+- "src/js/slickQuiz.js"
