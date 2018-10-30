@@ -105,9 +105,9 @@ class BULBQuestion {
 		const correctFeedback = this.rawData.answers.find(
 			answer => answer.correct
 		).feedback;
-		const incorrectFeedback = this.rawData.answers.find(
-			answer => ! answer.correct
-		).feedback;
+		// const incorrectFeedback = this.rawData.answers.find(
+		// 	answer => ! answer.correct
+		// ).feedback;
 
 		// Construct slickQuizData object and return it.
 		const slickQuizData = {
@@ -122,7 +122,7 @@ class BULBQuestion {
 						q: question,
 						a: answers,
 						correct: '<p>' + correctFeedback + '</p>',
-						incorrect: '<p>' + incorrectFeedback + '</p>',
+						// incorrect: '<p>' + incorrectFeedback + '</p>',
 					},
 				],
 			},

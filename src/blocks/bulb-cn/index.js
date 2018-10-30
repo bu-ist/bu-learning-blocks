@@ -4,7 +4,7 @@
 import classnames from 'classnames'; // Helper library to add classnames to a component
 import './styles/style.scss';
 import './styles/editor.scss';
-import Answers from '../../components/Answers';
+import Answers from './components/Answers';
 
 import Inspector from './inspector';
 import Controls from './controls';
@@ -115,8 +115,6 @@ export default registerBlockType( 'bulb/question-cn', {
 							answers={ answers }
 							onChangeAnswers={ onChangeAnswers }
 							multipleCorrectAllowed={ false }
-							minAnswers={ 2 }
-							maxAnswers={ 2 }
 						/>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />

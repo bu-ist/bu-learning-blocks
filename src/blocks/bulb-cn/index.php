@@ -41,7 +41,12 @@ function bulb_render_block_cn( $attributes, $content ) {
 
 	// Print a question block wrapper with the same instance id.
 	// The JS code will then be able to connect the question wrapper with its data.
-	return '<div id="' . $id . '" class="bulb-question" style="background-color:' . $background_color . ';color:' . $text_color . ';font-size:' . $font_size . 'px;"></div>';
+	// return '<div id="' . $id . '" class="bulb-question" style="background-color:' . $background_color . ';color:' . $text_color . ';font-size:' . $font_size . 'px;"></div>';
+	return '<div id="' . $id . '" class="bulb-question" style="background-color:' . $background_color . ';color:' . $text_color . ';font-size:' . $font_size . 'px;"></div>
+
+	<form action="">
+	Enter Answer: <input type="text" name="cn_answer"><br>
+	<input type="submit" value="Submit"></form> ';
 }
 
 /**
@@ -59,14 +64,10 @@ function bulb_register_question_cn() {
 				'answers'                => [
 					'default' => [
 						[
-							'answer'   => 'True',
-							'feedback' => '',
-							'correct'  => true,
-						],
-						[
-							'answer'   => 'False',
-							'feedback' => '',
-							'correct'  => false,
+							'answer'            => '',
+							'correctFeedback'   => '',
+							'incorrectFeedback' => '',
+							'correct'           => true,
 						],
 					],
 				],
