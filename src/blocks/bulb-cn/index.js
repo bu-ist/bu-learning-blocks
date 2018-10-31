@@ -4,10 +4,10 @@
 import classnames from 'classnames'; // Helper library to add classnames to a component
 import './styles/style.scss';
 import './styles/editor.scss';
-import Answers from './components/Answers';
 
 import Inspector from './inspector';
 import Controls from './controls';
+import FloatInput from '../../components/FloatInput';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -43,7 +43,9 @@ export default registerBlockType( 'bulb/question-cn', {
 				id,
 				header,
 				body,
-				answers,
+				answer,
+				answerRange,
+				decimalNumbers,
 				fontSize,
 				textAlignment,
 				textColorControl,
@@ -111,11 +113,39 @@ export default registerBlockType( 'bulb/question-cn', {
 							onChange={ onChangeBody }
 							value={ body }
 						/>
-						<Answers
-							answers={ answers }
-							onChangeAnswers={ onChangeAnswers }
-							multipleCorrectAllowed={ false }
-						/>
+						<div>
+							<h5>Answer:</h5>
+							<FloatInput
+								value={ answer }
+								onChange={ value =>
+									setAttributes( {
+										answer: value,
+									} )
+								}
+							/>
+							<h5>Accepted Range:</h5>
+							<FloatInput
+								value={ answerRange }
+								onChange={ value =>
+									setAttributes( {
+										answerRange: value,
+									} )
+								}
+							/>
+							<h5>Decimal Numbers:</h5>
+							<input
+								type="number"
+								step="1"
+								min="0"
+								max="100"
+								value={ decimalNumbers }
+								onChange={ event => {
+									setAttributes( {
+										decimalNumbers: event.target.value,
+									} );
+								} }
+							/>
+						</div>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
 				</Fragment>

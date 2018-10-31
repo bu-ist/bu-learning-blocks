@@ -60,16 +60,16 @@ function bulb_register_question_cn() {
 				'id'                     => [],
 				'header'                 => [],
 				'body'                   => [],
-				'answers'                => [
-					'default' => [
-						[
-							'answer'            => '',
-							'correctFeedback'   => '',
-							'incorrectFeedback' => '',
-							'correct'           => true,
-						],
-					],
+				'answer'                 => [
+					'default' => '0.0',
 				],
+				'answerRange'            => [
+					'default' => '0.1',
+				],
+				'decimalNumbers'         => [
+					'default' => 3,
+				],
+				'feedback'               => '',
 				'textAlignment'          => [
 					'default' => 'left',
 				],
