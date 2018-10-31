@@ -10,7 +10,6 @@
 
 // Load helper functions.
 require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/get-feedback.php';
-require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/richtext-to-string.php';
 
 
 /**
@@ -30,8 +29,8 @@ function bulb_render_block_cn( $attributes, $content ) {
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
 		'type'    => 'calculated-numeric',
-		'header'  => bulb_richtext_to_string( $attributes['header'] ),
-		'body'    => bulb_richtext_to_string( $attributes['body'] ),
+		'header'  => do_shortcode( $attributes['header'] ),
+		'body'    => do_shortcode( $attributes['body'] ),
 		'answers' => $attributes['answers'],
 	];
 
