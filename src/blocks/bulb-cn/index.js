@@ -87,10 +87,9 @@ export default registerBlockType( 'bulb/question-cn', {
 		const renderPossibleAnswers = () => {
 			const possibleAnswers = [];
 
-			if ( 0 === answerRange ) {
-				possibleAnswers.push( answer );
-			} else {
-				for ( let i = 0; i < 6; i++ ) {
+			possibleAnswers.push( parseFloat( answer ).toFixed( decimalNumbers ) );
+			if ( 0 !== answerRange ) {
+				for ( let i = 0; i < 4; i++ ) {
 					const possibleAnswer = generatePossibleAnswer();
 					if (
 						! isNaN( possibleAnswer ) &&
