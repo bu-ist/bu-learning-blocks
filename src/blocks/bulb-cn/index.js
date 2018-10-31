@@ -73,11 +73,53 @@ export default registerBlockType( 'bulb/question-cn', {
 				body: newBody,
 			} );
 		};
-		const onChangeAnswers = newAnswers => {
-			setAttributes( {
-				answers: newAnswers,
-			} );
+
+		const generatePossibleAnswer = () => {
+			const min = parseFloat( answer ) - parseFloat( answerRange );
+			const max = parseFloat( answer ) + parseFloat( answerRange );
+
+			const possibleAnswer = ( Math.random() * ( max - min ) + min ).toFixed(
+				decimalNumbers
+			);
+			return possibleAnswer;
 		};
+
+		const renderPossibleAnswers = () => {
+			const possibleAnswers = [];
+
+			if ( 0 === answerRange ) {
+				possibleAnswers.push( answer );
+			} else {
+				for ( let i = 0; i < 6; i++ ) {
+					const possibleAnswer = generatePossibleAnswer();
+					if (
+						! isNaN( possibleAnswer ) &&
+						! possibleAnswers.includes( possibleAnswer )
+					) {
+						possibleAnswers.push( possibleAnswer );
+					}
+					if ( possibleAnswers.length >= 3 ) {
+						break;
+					}
+				}
+			}
+
+			const possibleAnswerItems = possibleAnswers.map( possibleAnswer => (
+				<li key={ possibleAnswer }>{ possibleAnswer }</li>
+			) );
+
+			return (
+				<div>
+					<h5>Example of answers that would be possibly be accepted:</h5>
+					{ possibleAnswerItems.length ? (
+						<ul className="possible-answers-list">{ possibleAnswerItems }</ul>
+					) : (
+						'No possible answers found'
+					) }
+				</div>
+			);
+		};
+
 		return (
 			<div className="quizDescription">
 				<Fragment>
@@ -145,6 +187,7 @@ export default registerBlockType( 'bulb/question-cn', {
 									} );
 								} }
 							/>
+							{ renderPossibleAnswers() }
 						</div>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
