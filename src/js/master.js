@@ -114,8 +114,8 @@ class BULBQuestion {
 			...BULB.slickQuiz.defaultQuestionOptions,
 			json: {
 				info: {
-					name: '<p>' + name + '</p>',
-					main: '',
+					name: '',
+					main: name,
 				},
 				questions: [
 					{
