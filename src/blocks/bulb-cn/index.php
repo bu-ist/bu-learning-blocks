@@ -28,10 +28,13 @@ function bulb_render_block_cn( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'    => 'calculated-numeric',
-		'header'  => do_shortcode( $attributes['header'] ),
-		'body'    => do_shortcode( $attributes['body'] ),
-		'answers' => $attributes['answers'],
+		'type'           => 'calculated-numeric',
+		'header'         => do_shortcode( $attributes['header'] ),
+		'body'           => do_shortcode( $attributes['body'] ),
+		'answer'         => $attributes['answer'],
+		'answerRange'    => $attributes['answerRange'],
+		'decimalNumbers' => $attributes['decimalNumbers'],
+		'feedback'       => $attributes['feedback'],
 	];
 
 	// Save the block data as a JS variable.
@@ -40,12 +43,7 @@ function bulb_render_block_cn( $attributes, $content ) {
 
 	// Print a question block wrapper with the same instance id.
 	// The JS code will then be able to connect the question wrapper with its data.
-	// return '<div id="' . $id . '" class="bulb-question" style="background-color:' . $background_color . ';color:' . $text_color . ';font-size:' . $font_size . 'px;"></div>';
-	return '<div id="' . $id . '" class="bulb-question" style="background-color:' . $background_color . ';color:' . $text_color . ';font-size:' . $font_size . 'px;"></div>
-
-	<form action="">
-	Enter Answer: <input type="text" name="cn_answer"><br>
-	<input type="submit" value="Submit"></form> ';
+	return '<div id="' . $id . '" class="bulb-question" style="background-color:' . $background_color . ';color:' . $text_color . ';font-size:' . $font_size . 'px;"></div><pre>' . wp_json_encode( $data, JSON_PRETTY_PRINT ) . '</pre>';
 }
 
 /**
@@ -69,7 +67,7 @@ function bulb_register_question_cn() {
 				'decimalNumbers'         => [
 					'default' => 3,
 				],
-				'feedback'               => '',
+				'feedback'               => [],
 				'textAlignment'          => [
 					'default' => 'left',
 				],
