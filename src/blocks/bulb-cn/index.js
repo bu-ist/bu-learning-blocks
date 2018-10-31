@@ -120,7 +120,7 @@ export default registerBlockType( 'bulb/question-cn', {
 		};
 
 		return (
-			<div className="quizDescription">
+			<div className="bulb-question-cn">
 				<Fragment>
 					<Inspector { ...{ setAttributes, ...props } } />
 					<div id={ id } className={ classnames( 'question', className ) }>
