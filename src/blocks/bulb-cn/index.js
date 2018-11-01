@@ -114,7 +114,7 @@ export default registerBlockType( 'bulb/question-cn', {
 
 			return (
 				<div>
-					<h5>Example of answers that would be possibly be accepted:</h5>
+					<h5>Example of answers that would possibly be accepted:</h5>
 					{ possibleAnswerItems.length ? (
 						<ul className="possible-answers-list">{ possibleAnswerItems }</ul>
 					) : (
