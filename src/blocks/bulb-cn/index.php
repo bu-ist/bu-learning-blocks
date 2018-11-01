@@ -34,7 +34,7 @@ function bulb_render_block_cn( $attributes, $content ) {
 		'answer'         => $attributes['answer'],
 		'answerRange'    => $attributes['answerRange'],
 		'decimalNumbers' => $attributes['decimalNumbers'],
-		'feedback'       => $attributes['feedback'],
+		'feedback'       => do_shortcode( $attributes['feedback'] ),
 	];
 
 	// Save the block data as a JS variable.
