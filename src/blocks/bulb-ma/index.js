@@ -8,10 +8,11 @@ import Answers from '../../components/Answers';
 
 import Inspector from './inspector';
 import Controls from './controls';
+import QuestionHeader from '../../components/QuestionHeader';
+import QuestionBody from '../../components/QuestionBody';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { RichText } = wp.editor;
 const { Fragment } = wp.element;
 
 // Register the block
@@ -82,45 +83,21 @@ export default registerBlockType( 'bulb/question-ma', {
 				<Fragment>
 					<Inspector { ...{ setAttributes, ...props } } />
 					<div id={ id } className={ classnames( 'question', className ) }>
-						<h5>Question Header:</h5>
-						<RichText
-							tagName="p"
-							placeholder={ __(
-								'Enter Question Header',
-								'bulearningblocks'
-							) }
-							keepPlaceholderOnFocus={ true }
-							className={ classnames( 'question-header' ) }
-							style={ {
-								textAlign: textAlignment,
-								color: textColorControl,
-								backgroundColor: backgroundColorControl,
-								fontSize: fontSize ?
-									fontSize + 'px' :
-									undefined,
-							} }
-							onChange={ onChangeHeader }
+						<QuestionHeader
 							value={ header }
+							onChange={ onChangeHeader }
+							textAlignment={ textAlignment }
+							textColorControl={ textColorControl }
+							backgroundColorControl={ backgroundColorControl }
+							fontSize={ fontSize }
 						/>
-						<h5>Question Body:</h5>
-						<RichText
-							tagName="p"
-							placeholder={ __(
-								'Enter Question Body',
-								'bulearningblocks'
-							) }
-							keepPlaceholderOnFocus={ true }
-							className={ classnames( 'question-body' ) }
-							style={ {
-								textAlign: textAlignment,
-								color: textColorControl,
-								backgroundColor: backgroundColorControl,
-								fontSize: fontSize ?
-									fontSize + 'px' :
-									undefined,
-							} }
-							onChange={ onChangeBody }
+						<QuestionBody
 							value={ body }
+							onChange={ onChangeBody }
+							textAlignment={ textAlignment }
+							textColorControl={ textColorControl }
+							backgroundColorControl={ backgroundColorControl }
+							fontSize={ fontSize }
 						/>
 						<Answers
 							answers={ answers }
