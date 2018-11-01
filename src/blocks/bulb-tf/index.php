@@ -59,7 +59,9 @@ function bulb_register_question_tf() {
 		'bulb/question-tf', [
 			'attributes'      => [
 				'id'                     => [],
-				'header'                 => [],
+				'header'                 => [
+					'default' => 'Is the following statement true or false',
+				],
 				'body'                   => [],
 				'answers'                => [
 					'default' => [
