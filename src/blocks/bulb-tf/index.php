@@ -34,10 +34,12 @@ function bulb_render_block_tf( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'    => 'true-false',
-		'header'  => do_shortcode( $attributes['header'] ),
-		'body'    => do_shortcode( $attributes['body'] ),
-		'answers' => $attributes['answers'],
+		'type'              => 'true-false',
+		'header'            => do_shortcode( $attributes['header'] ),
+		'body'              => do_shortcode( $attributes['body'] ),
+		'answers'           => $attributes['answers'],
+		'correctFeedback'   => do_shortcode( $attributes['correctFeedback'] ),
+		'incorrectFeedback' => do_shortcode( $attributes['incorrectFeedback'] ),
 	];
 
 	// Save the block data as a JS variable.
@@ -59,7 +61,9 @@ function bulb_register_question_tf() {
 		'bulb/question-tf', [
 			'attributes'      => [
 				'id'                     => [],
-				'header'                 => [],
+				'header'                 => [
+					'default' => 'Is the following statement true or false',
+				],
 				'body'                   => [],
 				'answers'                => [
 					'default' => [
@@ -75,6 +79,8 @@ function bulb_register_question_tf() {
 						],
 					],
 				],
+				'correctFeedback'        => [],
+				'incorrectFeedback'      => [],
 				'textAlignment'          => [
 					'default' => 'left',
 				],
