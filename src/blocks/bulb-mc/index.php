@@ -32,10 +32,12 @@ function bulb_render_block_mc( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'    => 'multiple-choice',
-		'header'  => do_shortcode( $attributes['header'] ),
-		'body'    => do_shortcode( $attributes['body'] ),
-		'answers' => $attributes['answers'],
+		'type'              => 'multiple-choice',
+		'header'            => do_shortcode( $attributes['header'] ),
+		'body'              => do_shortcode( $attributes['body'] ),
+		'answers'           => $attributes['answers'],
+		'correctFeedback'   => do_shortcode( $attributes['correctFeedback'] ),
+		'incorrectFeedback' => do_shortcode( $attributes['incorrectFeedback'] ),
 	];
 
 	// Save the block data as a JS variable.
@@ -73,6 +75,8 @@ function bulb_register_question_mc() {
 						],
 					],
 				],
+				'correctFeedback'        => [],
+				'incorrectFeedback'      => [],
 				'textAlignment'          => [
 					'default' => 'left',
 				],

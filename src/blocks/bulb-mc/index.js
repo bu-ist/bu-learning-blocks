@@ -10,6 +10,7 @@ import Inspector from './inspector';
 import Controls from './controls';
 import QuestionHeader from '../../components/QuestionHeader';
 import QuestionBody from '../../components/QuestionBody';
+import QuestionFeedback from '../../components/QuestionFeedback';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -45,6 +46,8 @@ export default registerBlockType( 'bulb/question-mc', {
 				header,
 				body,
 				answers,
+				correctFeedback,
+				incorrectFeedback,
 				fontSize,
 				textAlignment,
 				textColorControl,
@@ -61,20 +64,9 @@ export default registerBlockType( 'bulb/question-mc', {
 			} );
 		}
 
-		// Handle input field changes
-		const onChangeHeader = newHeader => {
+		const onSimpleAttributeChange = attribute => value => {
 			setAttributes( {
-				header: newHeader,
-			} );
-		};
-		const onChangeBody = newBody => {
-			setAttributes( {
-				body: newBody,
-			} );
-		};
-		const onChangeAnswers = newAnswers => {
-			setAttributes( {
-				answers: newAnswers,
+				[ attribute ]: value,
 			} );
 		};
 
@@ -85,26 +77,46 @@ export default registerBlockType( 'bulb/question-mc', {
 					<div id={ id } className={ classnames( 'question', className ) }>
 						<QuestionHeader
 							value={ header }
-							onChange={ onChangeHeader }
-							textAlignment={ textAlignment }
-							textColorControl={ textColorControl }
-							backgroundColorControl={ backgroundColorControl }
-							fontSize={ fontSize }
+							onChange={ onSimpleAttributeChange( 'header' ) }
+							{ ...{
+								textAlignment,
+								textColorControl,
+								backgroundColorControl,
+								fontSize,
+							} }
 						/>
 						<QuestionBody
 							value={ body }
-							onChange={ onChangeBody }
-							textAlignment={ textAlignment }
-							textColorControl={ textColorControl }
-							backgroundColorControl={ backgroundColorControl }
-							fontSize={ fontSize }
+							onChange={ onSimpleAttributeChange( 'body' ) }
+							{ ...{
+								textAlignment,
+								textColorControl,
+								backgroundColorControl,
+								fontSize,
+							} }
 						/>
 						<Answers
 							answers={ answers }
-							onChangeAnswers={ onChangeAnswers }
+							onChangeAnswers={ onSimpleAttributeChange( 'answers' ) }
 							multipleCorrectAllowed={ false }
 							minAnswers={ 2 }
 							maxAnswers={ 6 }
+						/>
+						<QuestionFeedback
+							correctFeedback={ correctFeedback }
+							onCorrectFeedbackChange={ onSimpleAttributeChange(
+								'correctFeedback'
+							) }
+							incorrectFeedback={ incorrectFeedback }
+							onIncorrectFeedbackChange={ onSimpleAttributeChange(
+								'incorrectFeedback'
+							) }
+							{ ...{
+								textAlignment,
+								textColorControl,
+								backgroundColorControl,
+								fontSize,
+							} }
 						/>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
