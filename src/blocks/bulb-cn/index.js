@@ -10,6 +10,7 @@ import Controls from './controls';
 import QuestionHeader from '../../components/QuestionHeader';
 import QuestionBody from '../../components/QuestionBody';
 import FloatInput from '../../components/FloatInput';
+import QuestionFeedback from '../../components/QuestionFeedback';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -47,6 +48,7 @@ export default registerBlockType( 'bulb/question-cn', {
 				answer,
 				answerRange,
 				decimalNumbers,
+				feedback,
 				fontSize,
 				textAlignment,
 				textColorControl,
@@ -63,15 +65,9 @@ export default registerBlockType( 'bulb/question-cn', {
 			} );
 		}
 
-		// Handle input field changes
-		const onChangeHeader = newHeader => {
+		const onSimpleAttributeChange = attribute => value => {
 			setAttributes( {
-				header: newHeader,
-			} );
-		};
-		const onChangeBody = newBody => {
-			setAttributes( {
-				body: newBody,
+				[ attribute ]: value,
 			} );
 		};
 
@@ -131,38 +127,34 @@ export default registerBlockType( 'bulb/question-cn', {
 					<div id={ id } className={ classnames( 'question', className ) }>
 						<QuestionHeader
 							value={ header }
-							onChange={ onChangeHeader }
-							textAlignment={ textAlignment }
-							textColorControl={ textColorControl }
-							backgroundColorControl={ backgroundColorControl }
-							fontSize={ fontSize }
+							onChange={ onSimpleAttributeChange( 'header' ) }
+							{ ...{
+								textAlignment,
+								textColorControl,
+								backgroundColorControl,
+								fontSize,
+							} }
 						/>
 						<QuestionBody
 							value={ body }
-							onChange={ onChangeBody }
-							textAlignment={ textAlignment }
-							textColorControl={ textColorControl }
-							backgroundColorControl={ backgroundColorControl }
-							fontSize={ fontSize }
+							onChange={ onSimpleAttributeChange( 'body' ) }
+							{ ...{
+								textAlignment,
+								textColorControl,
+								backgroundColorControl,
+								fontSize,
+							} }
 						/>
 						<div>
 							<h5>Answer:</h5>
 							<FloatInput
 								value={ answer }
-								onChange={ value =>
-									setAttributes( {
-										answer: value,
-									} )
-								}
+								onChange={ onSimpleAttributeChange( 'answer' ) }
 							/>
 							<h5>Accepted Range:</h5>
 							<FloatInput
 								value={ answerRange }
-								onChange={ value =>
-									setAttributes( {
-										answerRange: value,
-									} )
-								}
+								onChange={ onSimpleAttributeChange( 'answerRange' ) }
 							/>
 							<h5>Decimal Numbers:</h5>
 							<input
@@ -178,6 +170,17 @@ export default registerBlockType( 'bulb/question-cn', {
 								} }
 							/>
 							{ renderPossibleAnswers() }
+							<QuestionFeedback
+								singleFeedback
+								feedback={ feedback }
+								onFeedbackChange={ onSimpleAttributeChange( 'feedback' ) }
+								{ ...{
+									textAlignment,
+									textColorControl,
+									backgroundColorControl,
+									fontSize,
+								} }
+							/>
 						</div>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
