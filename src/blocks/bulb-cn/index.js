@@ -88,18 +88,22 @@ export default registerBlockType( 'bulb/question-cn', {
 		const renderPossibleAnswers = () => {
 			const possibleAnswers = [];
 
-			possibleAnswers.push( parseFloat( answer ).toFixed( decimalNumbers ) );
-			if ( 0 !== answerRange ) {
-				for ( let i = 0; i < 4; i++ ) {
-					const possibleAnswer = generatePossibleAnswer();
-					if (
-						! isNaN( possibleAnswer ) &&
-						! possibleAnswers.includes( possibleAnswer )
-					) {
-						possibleAnswers.push( possibleAnswer );
-					}
-					if ( possibleAnswers.length >= 3 ) {
-						break;
+			const correctAnswer = parseFloat( answer ).toFixed( decimalNumbers );
+			if ( ! isNaN( correctAnswer ) ) {
+				possibleAnswers.push( correctAnswer );
+
+				if ( 0 !== answerRange ) {
+					for ( let i = 0; i < 4; i++ ) {
+						const possibleAnswer = generatePossibleAnswer();
+						if (
+							! isNaN( possibleAnswer ) &&
+							! possibleAnswers.includes( possibleAnswer )
+						) {
+							possibleAnswers.push( possibleAnswer );
+						}
+						if ( possibleAnswers.length >= 3 ) {
+							break;
+						}
 					}
 				}
 			}
