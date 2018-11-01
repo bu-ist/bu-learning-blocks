@@ -28,8 +28,8 @@ function bulb_render_block_mc( $attributes, $content ) {
 	// Parse any shortcodes in feedback string.
 	foreach ( $attributes['answers'] as &$answer ) {
 		$answer['feedback'] = do_shortcode( $answer['feedback'] );
+		$answer['answer']   = do_shortcode( $answer['answer'] );
 	}
-
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
 		'type'              => 'multiple-choice',
