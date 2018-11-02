@@ -21,16 +21,10 @@ checks:
     enabled: true
   similar-code:
     enabled: true
-    config:
-      languages:
-        javascript:
-          threshold: 500
+    issue_override:
+      severity: info
   identical-code:
     enabled: true
-    config:
-      languages:
-        - javascript:
-            threshold: 75
 
 plugins:
   eslint:
