@@ -24,7 +24,7 @@ checks:
     config:
       languages:
         - javascript:
-            threshold: 75
+            threshold: 150
   identical-code:
     enabled: true
     config:
