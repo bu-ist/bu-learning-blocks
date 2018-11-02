@@ -33,7 +33,7 @@ function bulb_render_block_cn( $attributes, $content ) {
 		'body'           => do_shortcode( $attributes['body'] ),
 		'answer'         => $attributes['answer'],
 		'answerRange'    => $attributes['answerRange'],
-		'decimalNumbers' => $attributes['decimalNumbers'],
+		'decimalPlaces' => $attributes['decimalPlaces'],
 		'feedback'       => do_shortcode( $attributes['feedback'] ),
 	];
 
@@ -64,7 +64,7 @@ function bulb_register_question_cn() {
 				'answerRange'            => [
 					'default' => '0.1',
 				],
-				'decimalNumbers'         => [
+				'decimalPlaces'         => [
 					'default' => 3,
 				],
 				'feedback'               => [],

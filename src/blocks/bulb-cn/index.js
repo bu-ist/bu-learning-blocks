@@ -47,7 +47,7 @@ export default registerBlockType( 'bulb/question-cn', {
 				body,
 				answer,
 				answerRange,
-				decimalNumbers,
+				decimalPlaces,
 				feedback,
 				fontSize,
 				textAlignment,
@@ -76,7 +76,7 @@ export default registerBlockType( 'bulb/question-cn', {
 			const max = parseFloat( answer ) + parseFloat( answerRange );
 
 			const possibleAnswer = ( Math.random() * ( max - min ) + min ).toFixed(
-				decimalNumbers
+				decimalPlaces
 			);
 			return possibleAnswer;
 		};
@@ -84,7 +84,7 @@ export default registerBlockType( 'bulb/question-cn', {
 		const renderPossibleAnswers = () => {
 			const possibleAnswers = [];
 
-			const correctAnswer = parseFloat( answer ).toFixed( decimalNumbers );
+			const correctAnswer = parseFloat( answer ).toFixed( decimalPlaces );
 			if ( ! isNaN( correctAnswer ) ) {
 				possibleAnswers.push( correctAnswer );
 
@@ -156,16 +156,16 @@ export default registerBlockType( 'bulb/question-cn', {
 								value={ answerRange }
 								onChange={ onSimpleAttributeChange( 'answerRange' ) }
 							/>
-							<h5>Decimal Numbers:</h5>
+							<h5>Decimal Places:</h5>
 							<input
 								type="number"
 								step="1"
 								min="0"
 								max="100"
-								value={ decimalNumbers }
+								value={ decimalPlaces }
 								onChange={ event => {
 									setAttributes( {
-										decimalNumbers: event.target.value,
+										decimalPlaces: event.target.value,
 									} );
 								} }
 							/>
