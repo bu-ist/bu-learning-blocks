@@ -21,8 +21,6 @@ checks:
     enabled: true
   similar-code:
     enabled: true
-    issue_override:
-      severity: info
   identical-code:
     enabled: true
 
