@@ -28,13 +28,13 @@ function bulb_render_block_cn( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'           => 'calculated-numeric',
-		'header'         => do_shortcode( $attributes['header'] ),
-		'body'           => do_shortcode( $attributes['body'] ),
-		'answer'         => $attributes['answer'],
-		'answerRange'    => $attributes['answerRange'],
+		'type'          => 'calculated-numeric',
+		'header'        => do_shortcode( $attributes['header'] ),
+		'body'          => do_shortcode( $attributes['body'] ),
+		'answer'        => $attributes['answer'],
+		'answerRange'   => $attributes['answerRange'],
 		'decimalPlaces' => $attributes['decimalPlaces'],
-		'feedback'       => do_shortcode( $attributes['feedback'] ),
+		'feedback'      => do_shortcode( $attributes['feedback'] ),
 	];
 
 	// Save the block data as a JS variable.
@@ -64,7 +64,7 @@ function bulb_register_question_cn() {
 				'answerRange'            => [
 					'default' => '0.1',
 				],
-				'decimalPlaces'         => [
+				'decimalPlaces'          => [
 					'default' => 3,
 				],
 				'feedback'               => [],
