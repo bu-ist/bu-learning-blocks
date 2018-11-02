@@ -9,8 +9,8 @@ import Inspector from './inspector';
 import Controls from './controls';
 import QuestionHeader from '../../components/QuestionHeader';
 import QuestionBody from '../../components/QuestionBody';
-import FloatInput from '../../components/FloatInput';
 import QuestionFeedback from '../../components/QuestionFeedback';
+import CalculatedNumericAnswer from './CalculatedNumericAnswer';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -71,55 +71,6 @@ export default registerBlockType( 'bulb/question-cn', {
 			} );
 		};
 
-		const generatePossibleAnswer = () => {
-			const min = parseFloat( answer ) - parseFloat( answerRange );
-			const max = parseFloat( answer ) + parseFloat( answerRange );
-
-			const possibleAnswer = ( Math.random() * ( max - min ) + min ).toFixed(
-				decimalPlaces
-			);
-			return possibleAnswer;
-		};
-
-		const renderPossibleAnswers = () => {
-			const possibleAnswers = [];
-
-			const correctAnswer = parseFloat( answer ).toFixed( decimalPlaces );
-			if ( ! isNaN( correctAnswer ) ) {
-				possibleAnswers.push( correctAnswer );
-
-				if ( 0 !== answerRange ) {
-					for ( let i = 0; i < 4; i++ ) {
-						const possibleAnswer = generatePossibleAnswer();
-						if (
-							! isNaN( possibleAnswer ) &&
-							! possibleAnswers.includes( possibleAnswer )
-						) {
-							possibleAnswers.push( possibleAnswer );
-						}
-						if ( possibleAnswers.length >= 3 ) {
-							break;
-						}
-					}
-				}
-			}
-
-			const possibleAnswerItems = possibleAnswers.map( possibleAnswer => (
-				<li key={ possibleAnswer }>{ possibleAnswer }</li>
-			) );
-
-			return (
-				<div>
-					<h5>Example of answers that would possibly be accepted:</h5>
-					{ possibleAnswerItems.length ? (
-						<ul className="possible-answers-list">{ possibleAnswerItems }</ul>
-					) : (
-						'No possible answers found'
-					) }
-				</div>
-			);
-		};
-
 		return (
 			<div className="bulb-question-cn">
 				<Fragment>
@@ -145,43 +96,26 @@ export default registerBlockType( 'bulb/question-cn', {
 								fontSize,
 							} }
 						/>
-						<div>
-							<h5>Answer:</h5>
-							<FloatInput
-								value={ answer }
-								onChange={ onSimpleAttributeChange( 'answer' ) }
-							/>
-							<h5>Accepted Range:</h5>
-							<FloatInput
-								value={ answerRange }
-								onChange={ onSimpleAttributeChange( 'answerRange' ) }
-							/>
-							<h5>Decimal Places:</h5>
-							<input
-								type="number"
-								step="1"
-								min="0"
-								max="100"
-								value={ decimalPlaces }
-								onChange={ event => {
-									setAttributes( {
-										decimalPlaces: event.target.value,
-									} );
-								} }
-							/>
-							{ renderPossibleAnswers() }
-							<QuestionFeedback
-								singleFeedback
-								feedback={ feedback }
-								onFeedbackChange={ onSimpleAttributeChange( 'feedback' ) }
-								{ ...{
-									textAlignment,
-									textColorControl,
-									backgroundColorControl,
-									fontSize,
-								} }
-							/>
-						</div>
+						<CalculatedNumericAnswer
+							{ ...{
+								answer,
+								answerRange,
+								decimalPlaces,
+								onSimpleAttributeChange,
+								setAttributes,
+							} }
+						/>
+						<QuestionFeedback
+							singleFeedback
+							feedback={ feedback }
+							onFeedbackChange={ onSimpleAttributeChange( 'feedback' ) }
+							{ ...{
+								textAlignment,
+								textColorControl,
+								backgroundColorControl,
+								fontSize,
+							} }
+						/>
 					</div>
 					<Controls { ...{ setAttributes, ...props } } />
 				</Fragment>
