@@ -97,13 +97,12 @@ export default registerBlockType( 'bulb/question-cn', {
 							} }
 						/>
 						<CalculatedNumericAnswer
-							{ ...{
-								answer,
-								answerRange,
-								decimalPlaces,
-								onSimpleAttributeChange,
-								setAttributes,
-							} }
+							answer={ answer }
+							answerRange={ answerRange }
+							decimalPlaces={ decimalPlaces }
+							onChangeAnswer={ onSimpleAttributeChange( 'answer' ) }
+							onChangeAnswerRange={ onSimpleAttributeChange( 'answerRange' ) }
+							onChangeDecimalPlaces={ onSimpleAttributeChange( 'decimalPlaces' ) }
 						/>
 						<QuestionFeedback
 							singleFeedback

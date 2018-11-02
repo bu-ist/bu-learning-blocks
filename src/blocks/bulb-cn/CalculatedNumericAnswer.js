@@ -4,8 +4,9 @@ export default ( {
 	answer,
 	answerRange,
 	decimalPlaces,
-	onSimpleAttributeChange,
-	setAttributes,
+	onChangeAnswer,
+	onChangeAnswerRange,
+	onChangeDecimalPlaces,
 } ) => {
 	const generatePossibleAnswer = () => {
 		const min = parseFloat( answer ) - parseFloat( answerRange );
@@ -59,12 +60,9 @@ export default ( {
 	return (
 		<div>
 			<h5>Answer:</h5>
-			<FloatInput value={ answer } onChange={ onSimpleAttributeChange( 'answer' ) } />
+			<FloatInput value={ answer } onChange={ onChangeAnswer } />
 			<h5>Accepted Range:</h5>
-			<FloatInput
-				value={ answerRange }
-				onChange={ onSimpleAttributeChange( 'answerRange' ) }
-			/>
+			<FloatInput value={ answerRange } onChange={ onChangeAnswerRange } />
 			<h5>Decimal Places:</h5>
 			<input
 				type="number"
@@ -72,11 +70,7 @@ export default ( {
 				min="0"
 				max="100"
 				value={ decimalPlaces }
-				onChange={ event => {
-					setAttributes( {
-						decimalPlaces: event.target.value,
-					} );
-				} }
+				onChange={ event => onChangeDecimalPlaces( event.target.value ) }
 			/>
 			{ renderPossibleAnswers() }
 		</div>
