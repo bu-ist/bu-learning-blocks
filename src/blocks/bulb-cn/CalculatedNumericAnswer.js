@@ -12,7 +12,8 @@ export default ( {
 		const min = parseFloat( answer ) - parseFloat( answerRange );
 		const max = parseFloat( answer ) + parseFloat( answerRange );
 
-		const possibleAnswer = ( Math.random() * ( max - min ) + min ).toFixed(
+		// prettier-ignore
+		const possibleAnswer = ( ( Math.random() * ( max - min ) ) + min ).toFixed(
 			decimalPlaces
 		);
 		return possibleAnswer;
