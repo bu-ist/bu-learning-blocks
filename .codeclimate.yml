@@ -20,9 +20,7 @@ checks:
   return-statements:
     enabled: true
   similar-code:
-    enabled: true
-    issue_override:
-      severity: info
+    enabled: false
   identical-code:
     enabled: true
 
