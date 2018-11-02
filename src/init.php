@@ -21,9 +21,11 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/enqueue-assets.php';
 
 // Load dynamic blocks.
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-base/index.php';
-require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-tf/index.php';
+require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-cn/index.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-ma/index.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-mc/index.php';
+require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-tf/index.php';
+
 
 
 // Add custom block category.

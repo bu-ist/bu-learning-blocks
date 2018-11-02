@@ -255,7 +255,7 @@
     "body": "String",
     "answer": "Float",
     "answerRange": "Float",
-    "decimalNumbers": "Integer",
+    "decimalPlaces": "Integer",
     "feedback": "String"
   }
 }
@@ -271,7 +271,7 @@
     "body": "10 / 3",
     "answer": 1.333,
     "answerRange": 0.01,
-    "decimalNumbers": 3,
+    "decimalPlaces": 3,
     "feedback": "The accepted answer range is 1.323 to 1.343"
   }
 }
