@@ -23,8 +23,8 @@ checks:
     enabled: true
     config:
       languages:
-        - javascript:
-            mass_threshold: 500
+        javascript:
+          threshold: 500
   identical-code:
     enabled: true
     config:
