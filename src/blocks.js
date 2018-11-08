@@ -9,6 +9,7 @@
  */
 
 import './blocks/bulb-base/index.js';
+import './blocks/bulb-cn/index.js';
 import './blocks/bulb-container/index.js';
 import './blocks/bulb-ma/index.js';
 import './blocks/bulb-mc/index.js';
