@@ -44,9 +44,9 @@ export default ( {
 			) : (
 				<QuestionFeedback
 					correctFeedback={ correctFeedback }
-					onCorrectFeedbackChange={ onChangeCorrectFeedback }
+					onChangeCorrectFeedback={ onChangeCorrectFeedback }
 					incorrectFeedback={ incorrectFeedback }
-					onIncorrectFeedbackChange={ onChangeIncorrectFeedback }
+					onChangeIncorrectFeedback={ onChangeIncorrectFeedback }
 					{ ...styles }
 				/>
 			) }
