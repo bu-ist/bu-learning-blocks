@@ -5,8 +5,6 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
 
-import Inspector from './inspector';
-import Controls from './controls';
 import Question from '../../components/Question';
 import CalculatedNumericAnswer from './CalculatedNumericAnswer';
 
@@ -71,7 +69,6 @@ export default registerBlockType( 'bulb/question-cn', {
 		return (
 			<div className="bulb-question-cn">
 				<Fragment>
-					<Inspector { ...{ setAttributes, ...props } } />
 					<Question
 						{ ...{
 							classes: [ `bulb-question-${ type }` ],
@@ -97,7 +94,6 @@ export default registerBlockType( 'bulb/question-cn', {
 							onChangeDecimalPlaces={ onSimpleAttributeChange( 'decimalPlaces' ) }
 						/>
 					</Question>
-					<Controls { ...{ setAttributes, ...props } } />
 				</Fragment>
 			</div>
 		);
