@@ -5,8 +5,6 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
 
-import Inspector from './inspector';
-import Controls from './controls';
 import Question from '../../components/Question';
 import Answers from '../../components/Answers';
 
@@ -69,7 +67,6 @@ export default registerBlockType( 'bulb/question-ma', {
 
 		return (
 			<Fragment>
-				<Inspector { ...{ setAttributes, ...props } } />
 				<Question
 					{ ...{
 						classes: [ `bulb-question-${ type }` ],
@@ -97,7 +94,6 @@ export default registerBlockType( 'bulb/question-ma', {
 						maxAnswers={ 6 }
 					/>
 				</Question>
-				<Controls { ...{ setAttributes, ...props } } />
 			</Fragment>
 		);
 	},
