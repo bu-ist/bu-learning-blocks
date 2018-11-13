@@ -107,9 +107,9 @@ class BULBContainerBlock extends Component {
 						controls={ [ 'center', 'full' ] }
 					/>
 				</BlockControls>
-				, // Show the block controls on focus
-				<Inspector { ...{ setAttributes, ...this.props } } />, // Show the
-				container markup in the editor
+				{ /* Show the block controls on focus */ }
+				<Inspector { ...{ setAttributes, ...this.props } } />
+				{ /* Show the container markup in the editor */ }
 				<Container { ...this.props }>
 					<div className="bulb-container-inside">
 						{ containerImgURL &&
