@@ -33,7 +33,7 @@ function bulb_render_block_ma( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'              => 'multiple-answer',
+		'type'              => $attributes['type'],
 		'header'            => do_shortcode( $attributes['header'] ),
 		'body'              => do_shortcode( $attributes['body'] ),
 		'answers'           => $attributes['answers'],
@@ -60,6 +60,9 @@ function bulb_register_question_ma() {
 		'bulb/question-ma', [
 			'attributes'      => [
 				'id'                     => [],
+				'type'                   => [
+					'default' => 'multiple-answer',
+				],
 				'header'                 => [],
 				'body'                   => [],
 				'answers'                => [

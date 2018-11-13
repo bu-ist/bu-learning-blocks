@@ -11,7 +11,7 @@ export default props => {
 					className="question-feedback"
 					placeholder={ __( 'Enter Feedback', 'bulearningblocks' ) }
 					value={ props.feedback }
-					onChange={ props.onFeedbackChange }
+					onChange={ props.onChangeFeedback }
 					{ ...props }
 				/>
 			</div>
@@ -24,7 +24,7 @@ export default props => {
 				className="question-feedback"
 				placeholder={ __( 'Enter Correct Feedback', 'bulearningblocks' ) }
 				value={ props.correctFeedback }
-				onChange={ props.onCorrectFeedbackChange }
+				onChange={ props.onChangeCorrectFeedback }
 				{ ...props }
 			/>
 			<h5>{ __( 'Incorrect Feedback:', 'bulearningblocks' ) }</h5>
@@ -32,7 +32,7 @@ export default props => {
 				className="question-feedback"
 				placeholder={ __( 'Enter Incorrect Feedback', 'bulearningblocks' ) }
 				value={ props.incorrectFeedback }
-				onChange={ props.onIncorrectFeedbackChange }
+				onChange={ props.onChangeIncorrectFeedback }
 				{ ...props }
 			/>
 		</div>

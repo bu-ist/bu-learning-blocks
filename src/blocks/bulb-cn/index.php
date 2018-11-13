@@ -28,7 +28,7 @@ function bulb_render_block_cn( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'          => 'calculated-numeric',
+		'type'          => $attributes['type'],
 		'header'        => do_shortcode( $attributes['header'] ),
 		'body'          => do_shortcode( $attributes['body'] ),
 		'answer'        => $attributes['answer'],
@@ -56,6 +56,9 @@ function bulb_register_question_cn() {
 		'bulb/question-cn', [
 			'attributes'      => [
 				'id'                     => [],
+				'type'                   => [
+					'default' => 'calculated-numeric',
+				],
 				'header'                 => [],
 				'body'                   => [],
 				'answer'                 => [

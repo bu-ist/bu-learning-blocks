@@ -1,20 +1,17 @@
 /**
  * Block dependencies
  */
-import classnames from 'classnames'; // Helper library to add classnames to a component
-import './styles/style.scss';
-import './styles/editor.scss';
-
-import Inspector from './inspector';
-import Controls from './controls';
-import QuestionHeader from '../../components/QuestionHeader';
-import QuestionBody from '../../components/QuestionBody';
-import QuestionFeedback from '../../components/QuestionFeedback';
-import CalculatedNumericAnswer from './CalculatedNumericAnswer';
-
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
+
+import Inspector from './inspector';
+import Controls from './controls';
+import Question from '../../components/Question';
+import CalculatedNumericAnswer from './CalculatedNumericAnswer';
+
+import './styles/style.scss';
+import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-cn', {
@@ -43,6 +40,7 @@ export default registerBlockType( 'bulb/question-cn', {
 		const {
 			attributes: {
 				id,
+				type,
 				header,
 				body,
 				answer,
@@ -54,7 +52,6 @@ export default registerBlockType( 'bulb/question-cn', {
 				textColorControl,
 				backgroundColorControl,
 			},
-			className,
 			setAttributes,
 			clientId,
 		} = props;
@@ -75,27 +72,22 @@ export default registerBlockType( 'bulb/question-cn', {
 			<div className="bulb-question-cn">
 				<Fragment>
 					<Inspector { ...{ setAttributes, ...props } } />
-					<div id={ id } className={ classnames( 'question', className ) }>
-						<QuestionHeader
-							value={ header }
-							onChange={ onSimpleAttributeChange( 'header' ) }
-							{ ...{
-								textAlignment,
-								textColorControl,
-								backgroundColorControl,
-								fontSize,
-							} }
-						/>
-						<QuestionBody
-							value={ body }
-							onChange={ onSimpleAttributeChange( 'body' ) }
-							{ ...{
-								textAlignment,
-								textColorControl,
-								backgroundColorControl,
-								fontSize,
-							} }
-						/>
+					<Question
+						{ ...{
+							classes: [ `bulb-question-${ type }` ],
+							header,
+							onChangeHeader: onSimpleAttributeChange( 'header' ),
+							body,
+							onChangeBody: onSimpleAttributeChange( 'body' ),
+							singleFeedback: true,
+							feedback,
+							onChangeFeedback: onSimpleAttributeChange( 'feedback' ),
+							textAlignment,
+							textColorControl,
+							backgroundColorControl,
+							fontSize,
+						} }
+					>
 						<CalculatedNumericAnswer
 							answer={ answer }
 							answerRange={ answerRange }
@@ -104,18 +96,7 @@ export default registerBlockType( 'bulb/question-cn', {
 							onChangeAnswerRange={ onSimpleAttributeChange( 'answerRange' ) }
 							onChangeDecimalPlaces={ onSimpleAttributeChange( 'decimalPlaces' ) }
 						/>
-						<QuestionFeedback
-							singleFeedback
-							feedback={ feedback }
-							onFeedbackChange={ onSimpleAttributeChange( 'feedback' ) }
-							{ ...{
-								textAlignment,
-								textColorControl,
-								backgroundColorControl,
-								fontSize,
-							} }
-						/>
-					</div>
+					</Question>
 					<Controls { ...{ setAttributes, ...props } } />
 				</Fragment>
 			</div>

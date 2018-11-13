@@ -1,20 +1,17 @@
 /**
  * Block dependencies
  */
-import classnames from 'classnames'; // Helper library to add classnames to a component
-import './styles/style.scss';
-import './styles/editor.scss';
-import Answers from '../../components/Answers';
-
-import Inspector from './inspector';
-import Controls from './controls';
-import QuestionHeader from '../../components/QuestionHeader';
-import QuestionBody from '../../components/QuestionBody';
-import QuestionFeedback from '../../components/QuestionFeedback';
-
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
+
+import Inspector from './inspector';
+import Controls from './controls';
+import Question from '../../components/Question';
+import Answers from '../../components/Answers';
+
+import './styles/style.scss';
+import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-tf', {
@@ -43,6 +40,7 @@ export default registerBlockType( 'bulb/question-tf', {
 		const {
 			attributes: {
 				id,
+				type,
 				header,
 				body,
 				answers,
@@ -53,7 +51,6 @@ export default registerBlockType( 'bulb/question-tf', {
 				textColorControl,
 				backgroundColorControl,
 			},
-			className,
 			setAttributes,
 			clientId,
 		} = props;
@@ -71,57 +68,37 @@ export default registerBlockType( 'bulb/question-tf', {
 		};
 
 		return (
-			<div className="quizDescription">
-				<Fragment>
-					<Inspector { ...{ setAttributes, ...props } } />
-					<div id={ id } className={ classnames( 'question', className ) }>
-						<QuestionHeader
-							value={ header }
-							onChange={ onSimpleAttributeChange( 'header' ) }
-							{ ...{
-								textAlignment,
-								textColorControl,
-								backgroundColorControl,
-								fontSize,
-							} }
-						/>
-						<QuestionBody
-							value={ body }
-							onChange={ onSimpleAttributeChange( 'body' ) }
-							{ ...{
-								textAlignment,
-								textColorControl,
-								backgroundColorControl,
-								fontSize,
-							} }
-						/>
-						<Answers
-							answers={ answers }
-							onChangeAnswers={ onSimpleAttributeChange( 'answers' ) }
-							multipleCorrectAllowed={ false }
-							minAnswers={ 2 }
-							maxAnswers={ 2 }
-						/>
-						<QuestionFeedback
-							correctFeedback={ correctFeedback }
-							onCorrectFeedbackChange={ onSimpleAttributeChange(
-								'correctFeedback'
-							) }
-							incorrectFeedback={ incorrectFeedback }
-							onIncorrectFeedbackChange={ onSimpleAttributeChange(
-								'incorrectFeedback'
-							) }
-							{ ...{
-								textAlignment,
-								textColorControl,
-								backgroundColorControl,
-								fontSize,
-							} }
-						/>
-					</div>
-					<Controls { ...{ setAttributes, ...props } } />
-				</Fragment>
-			</div>
+			<Fragment>
+				<Inspector { ...{ setAttributes, ...props } } />
+				<Question
+					{ ...{
+						classes: [ `bulb-question-${ type }` ],
+						header,
+						onChangeHeader: onSimpleAttributeChange( 'header' ),
+						body,
+						onChangeBody: onSimpleAttributeChange( 'body' ),
+						correctFeedback,
+						onChangeCorrectFeedback: onSimpleAttributeChange( 'correctFeedback' ),
+						incorrectFeedback,
+						onChangeIncorrectFeedback: onSimpleAttributeChange(
+							'incorrectFeedback'
+						),
+						textAlignment,
+						textColorControl,
+						backgroundColorControl,
+						fontSize,
+					} }
+				>
+					<Answers
+						answers={ answers }
+						onChangeAnswers={ onSimpleAttributeChange( 'answers' ) }
+						multipleCorrectAllowed={ false }
+						minAnswers={ 2 }
+						maxAnswers={ 2 }
+					/>
+				</Question>
+				<Controls { ...{ setAttributes, ...props } } />
+			</Fragment>
 		);
 	},
 	save: () => null,

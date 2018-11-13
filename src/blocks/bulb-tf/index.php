@@ -34,7 +34,7 @@ function bulb_render_block_tf( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'              => 'true-false',
+		'type'              => $attributes['type'],
 		'header'            => do_shortcode( $attributes['header'] ),
 		'body'              => do_shortcode( $attributes['body'] ),
 		'answers'           => $attributes['answers'],
@@ -61,6 +61,9 @@ function bulb_register_question_tf() {
 		'bulb/question-tf', [
 			'attributes'      => [
 				'id'                     => [],
+				'type'                   => [
+					'default' => 'true-false',
+				],
 				'header'                 => [
 					'default' => 'Is the following statement true or false',
 				],
