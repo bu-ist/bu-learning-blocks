@@ -5,7 +5,9 @@
     "scripts": {
         "start": "cgb-scripts start",
         "build": "cgb-scripts build",
+        "disable-wp-debug": "docker-compose run --rm -u 33 cli config set WP_DEBUG false --raw",
         "eject": "cgb-scripts eject",
+        "enable-wp-debug": "docker-compose run --rm -u 33 cli config set WP_DEBUG true --raw",
         "lint-js": "eslint .",
         "lint-js:fix": "eslint . --fix",
         "lint-php": "docker-compose run --rm composer run-script lint",

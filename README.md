@@ -64,6 +64,13 @@ Code style in PHP is enforced using PHP_CodeSniffer. It is recommended that you 
 
 To run unit tests only, without the linter, use npm run test-unit-php instead.
 
+### Toggling WP_DEBUG
+
+```
+$ npm run enable-wp-debug
+$ npm run disable-wp-debug
+```
+
 ## Create Guten Block
 
 This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
