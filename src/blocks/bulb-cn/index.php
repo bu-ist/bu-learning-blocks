@@ -74,10 +74,6 @@ function bulb_register_question_cn() {
 				'textAlignment'          => [
 					'default' => 'left',
 				],
-				'blockAlignment'         => [
-					'type'    => 'string',
-					'default' => 'wide',
-				],
 				'backgroundColorControl' => [
 					'type' => 'string',
 				],

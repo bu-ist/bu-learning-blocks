@@ -87,10 +87,6 @@ function bulb_register_question_tf() {
 				'textAlignment'          => [
 					'default' => 'left',
 				],
-				'blockAlignment'         => [
-					'type'    => 'string',
-					'default' => 'wide',
-				],
 				'backgroundColorControl' => [
 					'type' => 'string',
 				],
