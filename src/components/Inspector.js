@@ -4,7 +4,7 @@
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { InspectorControls, PanelColorSettings } = wp.editor;
-const { FontSizePicker, PanelBody, BaseControl } = wp.components;
+const { FontSizePicker, PanelBody } = wp.components;
 
 /**
  * Create an Inspector Controls wrapper Component
