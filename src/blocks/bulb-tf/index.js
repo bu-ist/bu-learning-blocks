@@ -58,8 +58,8 @@ export default registerBlockType( 'bulb/question-tf', {
 
 		return (
 			<Fragment>
-				<Inspector { ...{ setAttributes, ...props } } />
-				<Controls { ...{ setAttributes, ...props } } />
+				<Inspector { ...props } />
+				<Controls { ...props } />
 				<Question
 					{ ...{
 						classes: [ `bulb-question-${ type }` ],
