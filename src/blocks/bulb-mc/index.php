@@ -83,10 +83,6 @@ function bulb_register_question_mc() {
 				'textAlignment'          => [
 					'default' => 'left',
 				],
-				'blockAlignment'         => [
-					'type'    => 'string',
-					'default' => 'wide',
-				],
 				'backgroundColorControl' => [
 					'type' => 'string',
 				],

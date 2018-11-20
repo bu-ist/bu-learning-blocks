@@ -6,6 +6,8 @@ const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
 
 import Question from '../../components/Question';
+import Controls from '../../components/Controls';
+import Inspector from '../../components/Inspector';
 import CalculatedNumericAnswer from './CalculatedNumericAnswer';
 
 import './styles/style.scss';
@@ -14,7 +16,9 @@ import './styles/editor.scss';
 // Register the block
 export default registerBlockType( 'bulb/question-cn', {
 	title: __( 'BULB - Calculated Numeric', 'bulearningblocks' ),
-	description: __( 'Add a Calculated Numeric question to your learning module.' ),
+	description: __(
+		'Add a Calculated Numeric question to your learning module.'
+	),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
 	keywords: [
@@ -22,17 +26,6 @@ export default registerBlockType( 'bulb/question-cn', {
 		__( 'BULB', 'bulearningblocks' ),
 		__( 'Calculated Numeric Question', 'bulearningblocks' ),
 	],
-
-	getEditWrapperProps( editWrapperProps ) {
-		const { blockAlignment } = editWrapperProps;
-		if (
-			'left' === blockAlignment ||
-			'right' === blockAlignment ||
-			'full' === blockAlignment
-		) {
-			return { 'data-align': blockAlignment };
-		}
-	},
 
 	edit: props => {
 		const {
@@ -69,6 +62,8 @@ export default registerBlockType( 'bulb/question-cn', {
 		return (
 			<div className="bulb-question-cn">
 				<Fragment>
+					<Inspector { ...props } />
+					<Controls { ...props } />
 					<Question
 						{ ...{
 							classes: [ `bulb-question-${ type }` ],
@@ -78,7 +73,9 @@ export default registerBlockType( 'bulb/question-cn', {
 							onChangeBody: onSimpleAttributeChange( 'body' ),
 							singleFeedback: true,
 							feedback,
-							onChangeFeedback: onSimpleAttributeChange( 'feedback' ),
+							onChangeFeedback: onSimpleAttributeChange(
+								'feedback'
+							),
 							textAlignment,
 							textColorControl,
 							backgroundColorControl,
@@ -90,8 +87,12 @@ export default registerBlockType( 'bulb/question-cn', {
 							answerRange={ answerRange }
 							decimalPlaces={ decimalPlaces }
 							onChangeAnswer={ onSimpleAttributeChange( 'answer' ) }
-							onChangeAnswerRange={ onSimpleAttributeChange( 'answerRange' ) }
-							onChangeDecimalPlaces={ onSimpleAttributeChange( 'decimalPlaces' ) }
+							onChangeAnswerRange={ onSimpleAttributeChange(
+								'answerRange'
+							) }
+							onChangeDecimalPlaces={ onSimpleAttributeChange(
+								'decimalPlaces'
+							) }
 						/>
 					</Question>
 				</Fragment>

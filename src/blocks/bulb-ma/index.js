@@ -7,6 +7,8 @@ const { Fragment } = wp.element;
 
 import Question from '../../components/Question';
 import Answers from '../../components/Answers';
+import Controls from '../../components/Controls';
+import Inspector from '../../components/Inspector';
 
 import './styles/style.scss';
 import './styles/editor.scss';
@@ -22,17 +24,6 @@ export default registerBlockType( 'bulb/question-ma', {
 		__( 'BULB', 'bulearningblocks' ),
 		__( 'Multiple Answer Question', 'bulearningblocks' ),
 	],
-
-	getEditWrapperProps( editWrapperProps ) {
-		const { blockAlignment } = editWrapperProps;
-		if (
-			'left' === blockAlignment ||
-			'right' === blockAlignment ||
-			'full' === blockAlignment
-		) {
-			return { 'data-align': blockAlignment };
-		}
-	},
 
 	edit: props => {
 		const {
@@ -67,6 +58,8 @@ export default registerBlockType( 'bulb/question-ma', {
 
 		return (
 			<Fragment>
+				<Inspector { ...props } />
+				<Controls { ...props } />
 				<Question
 					{ ...{
 						classes: [ `bulb-question-${ type }` ],
@@ -75,7 +68,9 @@ export default registerBlockType( 'bulb/question-ma', {
 						body,
 						onChangeBody: onSimpleAttributeChange( 'body' ),
 						correctFeedback,
-						onChangeCorrectFeedback: onSimpleAttributeChange( 'correctFeedback' ),
+						onChangeCorrectFeedback: onSimpleAttributeChange(
+							'correctFeedback'
+						),
 						incorrectFeedback,
 						onChangeIncorrectFeedback: onSimpleAttributeChange(
 							'incorrectFeedback'

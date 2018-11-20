@@ -7,6 +7,8 @@ const { Fragment } = wp.element;
 
 import Question from '../../components/Question';
 import Answers from '../../components/Answers';
+import Controls from '../../components/Controls';
+import Inspector from '../../components/Inspector';
 
 import './styles/style.scss';
 import './styles/editor.scss';
@@ -22,17 +24,6 @@ export default registerBlockType( 'bulb/question-tf', {
 		__( 'BULB', 'bulearningblocks' ),
 		__( 'True False Question', 'bulearningblocks' ),
 	],
-
-	getEditWrapperProps( editWrapperProps ) {
-		const { blockAlignment } = editWrapperProps;
-		if (
-			'left' === blockAlignment ||
-			'right' === blockAlignment ||
-			'full' === blockAlignment
-		) {
-			return { 'data-align': blockAlignment };
-		}
-	},
 
 	edit: props => {
 		const {
@@ -67,6 +58,8 @@ export default registerBlockType( 'bulb/question-tf', {
 
 		return (
 			<Fragment>
+				<Inspector { ...props } />
+				<Controls { ...props } />
 				<Question
 					{ ...{
 						classes: [ `bulb-question-${ type }` ],
