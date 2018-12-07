@@ -21,7 +21,7 @@ function bulb_render_block_base( $attributes, $content ) {
 
 	// Save the block data as a JS variable.
 	// Use the instance id as the variable name.
-	wp_localize_script( 'slickquiz-master-js', $id, $data );
+	wp_localize_script( 'bulb-frontend-js', $id, $data );
 
 	// Print a question block wrapper with the same instance id.
 	// The JS code will then be able to connect the question wrapper with its data.

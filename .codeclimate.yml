@@ -39,5 +39,3 @@ exclude_patterns:
 - "**/node_modules/"
 - "vendor/"
 - "dist/"
-- "src/css/slickQuiz.css"
-- "src/js/slickQuiz.js"
