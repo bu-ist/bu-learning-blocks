@@ -1,16 +1,21 @@
 import React from 'react';
 
 class FloatInput extends React.Component {
-	state = { error: '' };
+	constructor( props ) {
+		super( props );
+		this.state = { error: '' };
+		this.onChange = this.onChange.bind( this );
+	}
 
-	onChange = event => {
+	onChange( event ) {
 		const { value } = event.target;
 		const error = isNaN( parseFloat( value ) ) ? 'Invalid number' : '';
 		this.props.onChange( value );
 		this.setState( {
 			error,
 		} );
-	};
+	}
+
 	render() {
 		return (
 			<React.Fragment>
