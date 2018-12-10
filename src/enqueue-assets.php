@@ -37,7 +37,7 @@ function bulb_block_assets() {
 		wp_enqueue_style(
 			'slickquiz-css',
 			BULB_PLUGIN_URL . 'src/css/slickQuiz.css', // Block style CSS.
-			array( 'wp-blocks' ), // Dependency to include the CSS after it.
+			array(), // Dependency to include the CSS after it.
 			filemtime( plugin_dir_path( __DIR__ ) . 'src/css/slickQuiz.css' ) // Version: filemtime — Gets file modification time.
 		);
 	}
@@ -45,7 +45,7 @@ function bulb_block_assets() {
 	wp_enqueue_style(
 		'bulb-block-style-css',
 		BULB_PLUGIN_URL . 'dist/blocks.style.build.css', // Block style CSS.
-		array( 'wp-blocks' ), // Dependency to include the CSS after it.
+		array(), // Dependency to include the CSS after it.
 		filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
 	);
 }
