@@ -19,7 +19,7 @@ function bulb_block_assets() {
 		wp_enqueue_script(
 			'bulb-frontend-js', // Handle.
 			BULB_PLUGIN_URL . 'dist/frontend.build.js', // frontend.build.js: We handle the frontend logic here. Built with Webpack.
-			array( 'wp-element' ),
+			array( 'wp-element' ), // Depending on 'wp-element' makes sure react and react-dom is available on the frontend.
 			filemtime( plugin_dir_path( __DIR__ ) . 'dist/frontend.build.js' ), // Version: filemtime — Gets file modification time.
 			true // Enqueue the script in the footer.
 		);
