@@ -103,8 +103,8 @@ module.exports = {
 				},
 			},
 			{
-				test: /style\.s?css$/,
-				exclude: /(node_modules|bower_components)/,
+				test: /\.s?css$/,
+				exclude: /(node_modules|bower_components|editor\.s?css$)/,
 				use: blocksCSSPlugin.extract( extractConfig ),
 			},
 			{
