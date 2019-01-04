@@ -18,7 +18,7 @@ export default function Answer( {
 		<div
 			className="bulb-answer"
 			style={ {
-				background: '#ccc',
+				background: '#ececec',
 				padding: '1rem',
 				margin: '1rem 0',
 				display: 'grid',
