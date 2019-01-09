@@ -58,6 +58,7 @@ function bulb_register_learning_module_post_type() {
 		'show_in_nav_menus'  => true,
 		'show_in_rest'       => true,
 		'can_export'         => true,
+		'menu_icon'          => 'dashicons-welcome-learn-more',
 	);
 
 	register_post_type( 'bulb_learning_module', $args );
