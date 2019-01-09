@@ -65,4 +65,24 @@ $light: rgba(254, 243, 224, 0.52);
     border-bottom: 1px solid #8092af
   }
 
+  &-answer {
+    background-color: #ececec;
+    padding: 1rem;
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-column-gap: 1rem;
+    justify-items: stretch;
+    align-items: stretch;
+
+    &-label {
+      font-weight: bold;
+
+      &-feedback {
+        font-weight: bold;
+        font-size: .9em;
+      }
+    }
+  }
+
 }
