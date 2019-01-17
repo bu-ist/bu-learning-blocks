@@ -13,9 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Load plugin settings pages.
-require_once BULB_PLUGIN_DIR_PATH . 'src/bulb-settings.php';
-
 // Enqueue editor and front end assets.
 require_once BULB_PLUGIN_DIR_PATH . 'src/enqueue-assets.php';
 
