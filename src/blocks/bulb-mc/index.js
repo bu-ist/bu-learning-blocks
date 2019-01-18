@@ -33,8 +33,7 @@ export default registerBlockType( 'bulb/question-mc', {
 				header,
 				body,
 				answers,
-				correctFeedback,
-				incorrectFeedback,
+				feedback,
 				fontSize,
 				textAlignment,
 				textColorControl,
@@ -67,14 +66,8 @@ export default registerBlockType( 'bulb/question-mc', {
 						onChangeHeader: onSimpleAttributeChange( 'header' ),
 						body,
 						onChangeBody: onSimpleAttributeChange( 'body' ),
-						correctFeedback,
-						onChangeCorrectFeedback: onSimpleAttributeChange(
-							'correctFeedback'
-						),
-						incorrectFeedback,
-						onChangeIncorrectFeedback: onSimpleAttributeChange(
-							'incorrectFeedback'
-						),
+						feedback,
+						onChangeFeedback: onSimpleAttributeChange( 'feedback' ),
 						textAlignment,
 						textColorControl,
 						backgroundColorControl,

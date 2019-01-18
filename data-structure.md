@@ -10,11 +10,18 @@
     "body": "String",
     "answers": [
       {
-        "answer": "String",
-        "feedback": "String",
+        "answer": "True",
+        "correct": "Boolean"
+      },
+      {
+        "answer": "False",
         "correct": "Boolean"
       }
-    ]
+    ],
+    "feedback": {
+      "correct": "String",
+      "incorrect": "String"
+    }
   }
 }
 ```
@@ -50,18 +57,27 @@
     "answers": [
       {
         "answer": "True",
-        "feedback": "",
         "correct": true
       },
       {
         "answer": "False",
-        "feedback": "",
         "correct": false
       }
     ]
   }
   ```
+- feedback
 
+  An object with the correct and incorrect feedbacks.
+
+  ```json
+  {
+    "feedback": {
+      "correct": "String",
+      "incorrect": "String"
+    }
+  }
+  ```
 ### Examples
 
 ```json
@@ -73,15 +89,17 @@
     "answers": [
       {
         "answer": "True",
-        "feedback": "Wow, you are like a doctor or a rocket scientist!",
         "correct": true
       },
       {
         "answer": "False",
-        "feedback": "Are you a kindergarden dropout?",
         "correct": false
       }
-    ]
+    ],
+    "feedback": {
+      "correct": "Wow, you are like a doctor or a rocket scientist!",
+      "incorrect": "Are you a kindergarden dropout?"
+    }
   }
 }
 ```
@@ -95,15 +113,17 @@
     "answers": [
       {
         "answer": "Yes, that is correct",
-        "feedback": "Please join the elections sir, we need more people like you!",
         "correct": false
       },
       {
         "answer": "No, that equation is wrong",
-        "feedback": "Thanks, my whole life has been a lie.",
         "correct": true
       }
-    ]
+    ],
+    "feedback": {
+      "correct": "Please join the elections sir, we need more people like you!",
+      "incorrect": "Thanks, my whole life has been a lie."
+    }
   }
 }
 ```
@@ -123,8 +143,10 @@
         "correct": "Boolean"
       }
     ],
-    "correctFeedback": "String",
-    "incorrectFeedback": "String"
+    "feedback": {
+      "correct": "String",
+      "incorrect": "String"
+    }
   }
 }
 ```
@@ -164,8 +186,10 @@
         "correct": false
       }
     ],
-    "correctFeedback": "You picked the correct answer!",
-    "incorrectFeedback": "You picked an incorrect answer, see the feedback below your answer for why it was wrong."
+    "feedback": {
+      "correct": "You picked the correct answer!",
+      "incorrect": "You picked an incorrect answer, see the feedback below your answer for why it was wrong."
+    }
   }
 }
 ```
@@ -185,8 +209,10 @@
         "correct": "Boolean"
       }
     ],
-    "correctFeedback": "String",
-    "incorrectFeedback": "String"
+    "feedback": {
+      "correct": "String",
+      "incorrect": "String"
+    }
   }
 }
 ```
@@ -205,7 +231,10 @@
         "match": "String"
       }
     ],
-    "feedback": "String"
+    "feedback": {
+      "correct": "String",
+      "incorrect": "String"
+    }
   }
 }
 ```
@@ -240,7 +269,10 @@
         "match": "Gorila"
       }
     ],
-    "feedback": "Not so hard to speak portuguese huh?"
+    "feedback": {
+      "correct": "Not so hard to speak portuguese huh?",
+      "incorrect": "Not so hard to speak portuguese huh?"
+    }
   }
 }
 ```
@@ -256,7 +288,10 @@
     "answer": "Float",
     "answerRange": "Float",
     "decimalPlaces": "Integer",
-    "feedback": "String"
+    "feedback": {
+      "correct": "String",
+      "incorrect": "String"
+    }
   }
 }
 ```
@@ -272,7 +307,10 @@
     "answer": 1.333,
     "answerRange": 0.01,
     "decimalPlaces": 3,
-    "feedback": "The accepted answer range is 1.323 to 1.343"
+    "feedback": {
+      "correct": "The accepted answer range is 1.323 to 1.343",
+      "incorrect": "The accepted answer range is 1.323 to 1.343"
+    }
   }
 }
 ```

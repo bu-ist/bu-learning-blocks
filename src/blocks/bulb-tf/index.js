@@ -33,8 +33,7 @@ export default registerBlockType( 'bulb/question-tf', {
 				header,
 				body,
 				answers,
-				correctFeedback,
-				incorrectFeedback,
+				feedback,
 				fontSize,
 				textAlignment,
 				textColorControl,
@@ -67,12 +66,8 @@ export default registerBlockType( 'bulb/question-tf', {
 						onChangeHeader: onSimpleAttributeChange( 'header' ),
 						body,
 						onChangeBody: onSimpleAttributeChange( 'body' ),
-						correctFeedback,
-						onChangeCorrectFeedback: onSimpleAttributeChange( 'correctFeedback' ),
-						incorrectFeedback,
-						onChangeIncorrectFeedback: onSimpleAttributeChange(
-							'incorrectFeedback'
-						),
+						feedback,
+						onChangeFeedback: onSimpleAttributeChange( 'feedback' ),
 						textAlignment,
 						textColorControl,
 						backgroundColorControl,
@@ -83,6 +78,7 @@ export default registerBlockType( 'bulb/question-tf', {
 						answers={ answers }
 						onChangeAnswers={ onSimpleAttributeChange( 'answers' ) }
 						multipleCorrectAllowed={ false }
+						feedbackPerAnswer={ false }
 						minAnswers={ 2 }
 						maxAnswers={ 2 }
 					/>

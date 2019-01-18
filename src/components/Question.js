@@ -13,10 +13,6 @@ export default ( {
 	singleFeedback,
 	feedback,
 	onChangeFeedback,
-	correctFeedback,
-	onChangeCorrectFeedback,
-	incorrectFeedback,
-	onChangeIncorrectFeedback,
 	textAlignment,
 	textColorControl,
 	backgroundColorControl,
@@ -34,22 +30,12 @@ export default ( {
 			<QuestionHeader value={ header } onChange={ onChangeHeader } { ...styles } />
 			<QuestionBody value={ body } onChange={ onChangeBody } { ...styles } />
 			{ children }
-			{ singleFeedback ? (
-				<QuestionFeedback
-					singleFeedback
-					feedback={ feedback }
-					onChangeFeedback={ onChangeFeedback }
-					{ ...styles }
-				/>
-			) : (
-				<QuestionFeedback
-					correctFeedback={ correctFeedback }
-					onChangeCorrectFeedback={ onChangeCorrectFeedback }
-					incorrectFeedback={ incorrectFeedback }
-					onChangeIncorrectFeedback={ onChangeIncorrectFeedback }
-					{ ...styles }
-				/>
-			) }
+			<QuestionFeedback
+				singleFeedback={ singleFeedback }
+				feedback={ feedback }
+				onChangeFeedback={ onChangeFeedback }
+				{ ...styles }
+			/>
 		</div>
 	);
 };

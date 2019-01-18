@@ -1,12 +1,14 @@
 import classnames from 'classnames'; // Helper library to add classnames to a component
 const { __ } = wp.i18n;
 const { RichText } = wp.editor;
+const { Fragment } = wp.element;
 
 export default function Answer( {
 	index,
 	answer = '',
 	feedback = '',
 	correct = false,
+	feedbackPerAnswer,
 	onChangeAnswerValue,
 	onChangeFeedback,
 	onChangeCorrect,
@@ -40,17 +42,21 @@ export default function Answer( {
 					} }
 					value={ answer }
 				/>
-				<strong>{ __( 'Feedback:', 'bulearningblocks' ) }</strong>
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Feedback', 'bulearningblocks' ) }
-					keepPlaceholderOnFocus={ true }
-					className={ classnames( 'answer-feedback' ) }
-					onChange={ newFeedback => {
-						onChangeFeedback( newFeedback, index );
-					} }
-					value={ feedback }
-				/>
+				{ feedbackPerAnswer && (
+					<Fragment>
+						<strong>{ __( 'Feedback:', 'bulearningblocks' ) }</strong>
+						<RichText
+							tagName="p"
+							placeholder={ __( 'Feedback', 'bulearningblocks' ) }
+							keepPlaceholderOnFocus={ true }
+							className={ classnames( 'answer-feedback' ) }
+							onChange={ newFeedback => {
+								onChangeFeedback( newFeedback, index );
+							} }
+							value={ feedback }
+						/>
+					</Fragment>
+				) }
 				<strong>
 					<input
 						type={ inputType }
