@@ -26,6 +26,10 @@ function bulb_render_block_cn( $attributes, $content ) {
 	$text_color       = $attributes['textColorControl'];
 	$font_size        = $attributes['fontSize'];
 
+	// Parse any shorcodes in feedback.
+	$attributes['feedback']['correct']   = do_shortcode( $attributes['feedback']['correct'] );
+	$attributes['feedback']['incorrect'] = do_shortcode( $attributes['feedback']['incorrect'] );
+
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
 		'type'          => $attributes['type'],
@@ -34,7 +38,7 @@ function bulb_render_block_cn( $attributes, $content ) {
 		'answer'        => $attributes['answer'],
 		'answerRange'   => $attributes['answerRange'],
 		'decimalPlaces' => $attributes['decimalPlaces'],
-		'feedback'      => do_shortcode( $attributes['feedback'] ),
+		'feedback'      => $attributes['feedback'],
 	];
 
 	// Save the block data as a JS variable.
@@ -70,7 +74,12 @@ function bulb_register_question_cn() {
 				'decimalPlaces'          => [
 					'default' => 3,
 				],
-				'feedback'               => [],
+				'feedback'               => [
+					'default' => [
+						'correct'   => '',
+						'incorrect' => '',
+					],
+				],
 				'textAlignment'          => [
 					'default' => 'left',
 				],

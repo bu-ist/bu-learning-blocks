@@ -11,6 +11,7 @@ export default function Answers( {
 		feedback: '',
 		correct: false,
 	},
+	feedbackPerAnswer = true,
 } ) {
 	const onChangeAnswerValue = ( newAnswerValue, index ) => {
 		const newAnswers = [ ...answers ];
@@ -75,6 +76,7 @@ export default function Answers( {
 				key={ index }
 				index={ index }
 				{ ...answer }
+				feedbackPerAnswer={ feedbackPerAnswer }
 				onChangeAnswerValue={ onChangeAnswerValue }
 				onChangeFeedback={ onChangeFeedback }
 				onChangeCorrect={

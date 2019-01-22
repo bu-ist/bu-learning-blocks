@@ -25,20 +25,23 @@ function bulb_render_block_ma( $attributes, $content ) {
 	$text_color       = $attributes['textColorControl'];
 	$font_size        = $attributes['fontSize'];
 
-	// Parse any shortcodes in feedback string.
+	// Parse any shortcodes in answer array.
 	foreach ( $attributes['answers'] as &$answer ) {
 		$answer['feedback'] = do_shortcode( $answer['feedback'] );
 		$answer['answer']   = do_shortcode( $answer['answer'] );
 	}
 
+	// Parse any shorcodes in feedback.
+	$attributes['feedback']['correct']   = do_shortcode( $attributes['feedback']['correct'] );
+	$attributes['feedback']['incorrect'] = do_shortcode( $attributes['feedback']['incorrect'] );
+
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'              => $attributes['type'],
-		'header'            => do_shortcode( $attributes['header'] ),
-		'body'              => do_shortcode( $attributes['body'] ),
-		'answers'           => $attributes['answers'],
-		'correctFeedback'   => do_shortcode( $attributes['correctFeedback'] ),
-		'incorrectFeedback' => do_shortcode( $attributes['incorrectFeedback'] ),
+		'type'     => $attributes['type'],
+		'header'   => do_shortcode( $attributes['header'] ),
+		'body'     => do_shortcode( $attributes['body'] ),
+		'answers'  => $attributes['answers'],
+		'feedback' => $attributes['feedback'],
 	];
 
 	// Save the block data as a JS variable.
@@ -79,8 +82,12 @@ function bulb_register_question_ma() {
 						],
 					],
 				],
-				'correctFeedback'        => [],
-				'incorrectFeedback'      => [],
+				'feedback'               => [
+					'default' => [
+						'correct'   => '',
+						'incorrect' => '',
+					],
+				],
 				'textAlignment'          => [
 					'default' => 'left',
 				],
