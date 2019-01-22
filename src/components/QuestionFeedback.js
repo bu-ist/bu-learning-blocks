@@ -29,7 +29,8 @@ export default props => {
 	}
 	return (
 		<div>
-			<h5>{ __( 'Correct Feedback:', 'bulearningblocks' ) }</h5>
+			<h4 className="bulb-editor-section-label">{ __( 'Feedback', 'bulearningblocks' ) }</h4>
+			<h5 className="bulb-editor-field-label"> { __( 'Correct Feedback', 'bulearningblocks' ) }</h5>
 			<EnhancedRichText
 				className="question-feedback"
 				placeholder={ __( 'Enter Correct Feedback', 'bulearningblocks' ) }
@@ -37,7 +38,7 @@ export default props => {
 				onChange={ newValue => onChangeFeedback( { correct: newValue } ) }
 				{ ...props }
 			/>
-			<h5>{ __( 'Incorrect Feedback:', 'bulearningblocks' ) }</h5>
+			<h5 className="bulb-editor-field-label">{ __( 'Incorrect Feedback', 'bulearningblocks' ) }</h5>
 			<EnhancedRichText
 				className="question-feedback"
 				placeholder={ __( 'Enter Incorrect Feedback', 'bulearningblocks' ) }

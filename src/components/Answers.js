@@ -99,7 +99,7 @@ export default function Answers( {
 
 	return (
 		<div>
-			<h5>Answers:</h5>
+			<h5 className="bulb-editor-section-label">Answers</h5>
 			{ renderAnswers() }
 			{ renderAddAnswer() }
 		</div>

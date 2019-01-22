@@ -17,21 +17,11 @@ export default function Answer( {
 } ) {
 	const inputType = multipleCorrectAllowed ? 'checkbox' : 'radio';
 	return (
-		<div
-			className="bulb-answer"
-			style={ {
-				background: '#ccc',
-				padding: '1rem',
-				margin: '1rem 0',
-				display: 'grid',
-				gridTemplateColumns: '1fr auto',
-				gridColumnGap: '1rem',
-				justifyItems: 'stretch',
-				alignItems: 'stretch',
-			} }
-		>
+		<div className="bulb-editor-answer">
 			<div className="bulb-answer-content">
-				<strong>{ __( 'Answer:', 'bulearningblocks' ) }</strong>
+				<div className="bulb-editor-answer-label">
+					{ __( 'Answer', 'bulearningblocks' ) } { index + 1 }
+				</div>
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Answer', 'bulearningblocks' ) }
@@ -44,7 +34,9 @@ export default function Answer( {
 				/>
 				{ feedbackPerAnswer && (
 					<Fragment>
-						<strong>{ __( 'Feedback:', 'bulearningblocks' ) }</strong>
+						<div className="bulb-editor-answer-label-feedback">
+							{ __( 'Feedback', 'bulearningblocks' ) }
+						</div>
 						<RichText
 							tagName="p"
 							placeholder={ __( 'Feedback', 'bulearningblocks' ) }
