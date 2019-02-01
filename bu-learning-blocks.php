@@ -38,9 +38,9 @@ function gutenberg_notice() {
 				<?php esc_html_e( 'BULB Error: BU Learning Blocks requires either WordPress 5.0.0, or the Gutenberg plugin to be installed and activated on any version previous to 5.0.0.', 'bulearningblocks' ); ?>
 			</p>
 			<p>
-				<?php esc_html_e( 'Please install and activate the Gutenberg plugin to use BU Prepress.', 'bulearningblocks' ); ?>
+				<?php esc_html_e( 'Please install and activate the Gutenberg plugin to use BU Learning Blocks.', 'bulearningblocks' ); ?>
 			</p>
-			<p><a class="button" href="https://wordpress.org/plugins/gutenberg/" target="_blank" rel="noopener noreferrer"><?php _e( 'Get Gutenberg', 'bulearningblocks' ); ?></a></p>
+			<p><a class="button" href="https://wordpress.org/plugins/gutenberg/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Get Gutenberg', 'bulearningblocks' ); ?></a></p>
 		</div>
 	<?php
 	deactivate_plugins( BULB_PLUGIN_BASENAME );
