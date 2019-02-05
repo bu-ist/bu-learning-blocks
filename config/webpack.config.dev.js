@@ -100,7 +100,7 @@ module.exports = {
 			},
 			{
 				test: /\.s?css$/,
-				exclude: /(node_modules(?!\/@carlosesilva)|bower_components|editor\.s?css$)/,
+				exclude: /(node_modules(?!\/@bostonuniversity)|bower_components|editor\.s?css$)/,
 				use: blocksCSSPlugin.extract( extractConfig ),
 			},
 			{
