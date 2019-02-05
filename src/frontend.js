@@ -34,6 +34,8 @@ function onResetReactQuestionHook( questionContainer ) {
 }
 
 function reTypesetEquationsInElementWithMathJax( element ) {
+	const MathJax = window.MathJax;
+
 	// Bail if MathJax is not present.
 	if ( typeof MathJax === 'undefined' ) {
 		return;
