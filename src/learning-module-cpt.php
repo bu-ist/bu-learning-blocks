@@ -33,12 +33,13 @@ function bulb_register_learning_module_post_type() {
 
 	// Set various pieces of information about the post type.
 	$args = array(
-		'labels'             => $labels,
-		'description'        => __( 'Holds our Learning Modules', 'bulearningblocks' ),
-		'public'             => true,
-		'publicly_queryable' => true,
-		'query_var'          => true,
-		'supports'           => array(
+		'labels'              => $labels,
+		'description'         => __( 'Holds our Learning Modules', 'bulearningblocks' ),
+		'public'              => true,
+		'publicly_queryable'  => true,
+		'query_var'           => true,
+		'capability_type'     => 'post',
+		'supports'            => array(
 			'title',
 			'editor',
 			'author',
@@ -47,20 +48,39 @@ function bulb_register_learning_module_post_type() {
 			'revisions',
 			'page-attributes',
 		),
-		'taxonomies'         => array(
+		'taxonomies'          => array(
 			'category',
 			'post_tag',
 		),
-		'hierarchical'       => true,
-		'has_archive'        => true,
-		'rewrite'            => array( 'slug' => 'modules' ),
-		'show_in_admin_bar'  => true,
-		'show_in_nav_menus'  => true,
-		'show_in_rest'       => true,
-		'can_export'         => true,
-		'menu_icon'          => 'dashicons-welcome-learn-more',
+		'hierarchical'        => true,
+		'has_archive'         => true,
+		'rewrite'             => array( 'slug' => 'modules' ),
+		'show_in_admin_bar'   => true,
+		'show_in_nav_menus'   => true,
+		'show_in_rest'        => true,
+		'can_export'          => true,
+		'menu_icon'           => 'dashicons-welcome-learn-more',
+		'menu_position'       => 30,
+		'exclude_from_search' => false,
 	);
 
 	register_post_type( 'bulb_learning_module', $args );
 }
 add_action( 'init', 'bulb_register_learning_module_post_type' );
+
+function bulb_cpt_template( $single ) {
+
+	global $post;
+
+	/* Checks for single template by post type */
+	if ( $post->post_type == 'bulb_learning_module' ) {
+		if ( file_exists( BULB_PLUGIN_DIR_PATH . 'src/single-bulb_learning_module.php' ) ) {
+			return BULB_PLUGIN_DIR_PATH . 'src/single-bulb_learning_module.php';
+		}
+	}
+
+	return $single;
+
+}
+/* Filter the single_template with our custom function*/
+add_filter( 'single_template', 'bulb_cpt_template' );
