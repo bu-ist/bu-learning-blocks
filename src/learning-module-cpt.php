@@ -73,7 +73,7 @@ function bulb_cpt_template( $single ) {
 	global $post;
 
 	/* Checks for single template by post type */
-	if ( $post->post_type == 'bulb_learning_module' ) {
+	if ( 'bulb_learning_module' === $post->post_type ) {
 		if ( file_exists( BULB_PLUGIN_DIR_PATH . 'src/single-bulb_learning_module.php' ) ) {
 			return BULB_PLUGIN_DIR_PATH . 'src/single-bulb_learning_module.php';
 		}
