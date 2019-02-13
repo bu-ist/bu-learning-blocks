@@ -40,7 +40,6 @@ function gutenberg_notice() {
 			<p>
 				<?php esc_html_e( 'Please install and activate the Gutenberg plugin to use BU Learning Blocks.', 'bulearningblocks' ); ?>
 			</p>
-			<p><a class="button" href="https://wordpress.org/plugins/gutenberg/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Get Gutenberg', 'bulearningblocks' ); ?></a></p>
 		</div>
 	<?php
 	deactivate_plugins( BULB_PLUGIN_BASENAME );
