@@ -6,3 +6,7 @@
  *
  * It exists to stop directory listings on poorly configured servers.
  */
+
+/**
+ * Silence is golden.
+ */
