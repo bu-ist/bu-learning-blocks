@@ -16,73 +16,115 @@ $dark: #f7b733;
 $light: rgba(254, 243, 224, 0.52);
 
 .center {
-    text-align: center;
-  }
+	text-align: center;
+}
 
-  .left {
-    text-align: left;
-  }
+.left {
+	text-align: left;
+}
 
-  .right {
-    text-align: right;
-  }
+.right {
+	text-align: right;
+}
 
-  @media only screen and (min-width: 600px) {
-    .wp-block-columns .layout-column-1,
-    .wp-block-columns .layout-column-2 {
-      margin-right: 5%;
-    }
-  }
+@media only screen and (min-width: 600px) {
+	.wp-block-columns .layout-column-1,
+	.wp-block-columns .layout-column-2 {
+		margin-right: 5%;
+	}
+}
 
-  .wp-block-image {
-    margin-bottom: 1.2em;
-  }
+.wp-block-image {
+	margin-bottom: 1.2em;
+}
 
-  .bulb-text-link {
-    // color: inherit;
-    box-shadow: 0 -1px 0 inset;
-    text-decoration: none;
-    transition: .3s ease;
+.bulb-text-link {
+	// color: inherit;
+	box-shadow: 0 -1px 0 inset;
+	text-decoration: none;
+	transition: 0.3s ease;
 
-    &:hover {
-      color: inherit;
-      box-shadow: 0 -2px 0 inset;
-      color: $accent;
-    }
-  }
+	&:hover {
+		color: inherit;
+		box-shadow: 0 -2px 0 inset;
+		color: $accent;
+	}
+}
 
 .bulb-editor {
+	&-section-label {
+		color: rgb(59, 48, 48);
+		font-size: 1.3em;
+		margin-bottom: 0.5em;
+	}
 
-  &-section-label {
-    color: rgb(59, 48, 48);
-    font-size: 1.3em;
-    margin-bottom: .5em;
-  }
+	&-field-label {
+		color: #7c7c7c;
+		margin-bottom: 0.5em;
+		border-bottom: 1px solid #8092af;
+	}
 
-  &-field-label {
-    color: #7c7c7c;
-    margin-bottom: .5em;
-    border-bottom: 1px solid #8092af
-  }
+	&-answer {
+		background-color: #ececec;
+		padding: 1rem;
+		margin: 1rem 0;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-column-gap: 1rem;
+		justify-items: stretch;
+		align-items: stretch;
 
-  &-answer {
-    background-color: #ececec;
-    padding: 1rem;
-    margin: 1rem 0;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-column-gap: 1rem;
-    justify-items: stretch;
-    align-items: stretch;
+		&-label {
+			font-weight: bold;
 
-    &-label {
-      font-weight: bold;
+			&-feedback {
+				font-weight: bold;
+				font-size: 0.9em;
+			}
+		}
+	}
+}
 
-      &-feedback {
-        font-weight: bold;
-        font-size: .9em;
-      }
-    }
-  }
+.bulb-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
 
+.bulb-page-links {
+	position: relative;
+	background-color: #faf0ca;
+}
+
+@media (min-width: 767px) {
+	.bulb-page-links {
+		margin: 0 0 0px 10px;
+		width: 300px;
+		float: right;
+	}
+}
+
+.bulb-page-links__title {
+	margin: 0;
+	text-align: center;
+	padding: 5px 0;
+	background-color: #0d3b66;
+}
+
+.bulb-page-links__title a {
+	color: #fff !important;
+}
+
+.bulb-page-links li a {
+	display: block;
+	text-align: center;
+}
+
+.bulb-min-list {
+	padding: 0;
+	margin: 0;
+}
+
+.bulb-min-list li {
+	list-style: none;
 }
