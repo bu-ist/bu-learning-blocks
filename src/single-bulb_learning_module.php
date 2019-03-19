@@ -12,6 +12,8 @@ get_header();
 		<main id="main" class="site-main">
 
 		<?php
+		$current_id = get_the_ID();
+
 		while ( have_posts() ) :
 			the_post();
 			?>
@@ -82,13 +84,68 @@ get_header();
 					</footer><!-- .entry-footer -->
 				</article><!-- #post-<?php the_ID(); ?> -->
 			<?php
-			the_post_navigation();
 		endwhile; // End of the loop.
+
+		$parent = ( '0' != $post->post_parent ? $post->post_parent : $post->ID );
+		$child_args = array(
+			'post_type' => 'bulb_learning_module',
+			'post_parent' => $parent,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+
+		);
+
+		$ids = array( $parent );
+		$ids = array_merge( $ids, array_keys( get_children( $child_args ) ) );
+
+		$args = array(
+			'post_type' => 'bulb_learning_module',
+			'post__in' => $ids,
+			'posts_per_page' => 1,
+			'paged' => $paged,
+		);
+
+		$range        = 2;
+		$showitems = ( $range * 2 ) + 1;
+		$author_posts = new WP_Query ( $args );
+		$module_pages = $author_posts->max_num_pages;
+
 		?>
+
+		<div class="pagination">
+			<h6>There are <?php echo $module_pages?> pages in this Learning Module: </h6>
+		<?php
+		$ids_current_index = array_search( $current_id, $ids, true );
+
+		if ( 1 !== $module_pages ) {
+			if ( $ids_current_index > 1 && $ids_current_index > $range + 1 && $showitems < $module_pages) {
+				echo "<a href='" . get_permalink( $ids[0] ) . "'>&laquo; First</a>";
+			}
+
+			if ( $ids_current_index > 0 && $showitems < $module_pages ) {
+				echo "<a href='" . get_permalink( $ids[ $ids_current_index - 1 ] ) . "'>&lsaquo; Previous</a>";
+			}
+
+			for ( $i = 1; $i <= $module_pages; $i++ ) {
+				if ( 1 !== $module_pages && ( ! ( $i >= $ids_current_index + $range + 2 || $i <= $ids_current_index - $range ) || $module_pages <= $showitems ) ) {
+					echo ( $current_id === $ids[ $i - 1 ] ) ? '<span class="current">' . $i . '</span>' : '<a href=' . get_permalink( $ids[ $i - 1 ] ) . ' class="inactive">' . $i . '</a>';
+				}
+			}
+
+			if ( $ids_current_index < $module_pages - 1 && $showitems < $module_pages ) {
+				echo '<a href="' . get_permalink( $ids[ $ids_current_index + 1 ] ) . '">Next &rsaquo;</a>';
+			}
+
+			if ( $ids_current_index < $module_pages - 2 && $showitems < $module_pages ) {
+				echo '<a href="' . get_permalink( end( $ids ) ) . '">Last &raquo;</a>';
+			}
+		}
+		?>
+		</div><!-- .pagination -->
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();

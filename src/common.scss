@@ -93,7 +93,7 @@ $light: rgba(254, 243, 224, 0.52);
 
 .bulb-page-links {
 	position: relative;
-	background-color: #faf0ca;
+	// background-color: $light;
 }
 
 @media (min-width: 767px) {
@@ -101,6 +101,7 @@ $light: rgba(254, 243, 224, 0.52);
 		margin: 0 0 0px 10px;
 		width: 300px;
 		float: right;
+		border: 1px solid black;
 	}
 }
 
@@ -108,7 +109,7 @@ $light: rgba(254, 243, 224, 0.52);
 	margin: 0;
 	text-align: center;
 	padding: 5px 0;
-	background-color: #0d3b66;
+	background-color: $lightgray;
 }
 
 .bulb-page-links__title a {
@@ -120,6 +121,10 @@ $light: rgba(254, 243, 224, 0.52);
 	text-align: center;
 }
 
+.current_page_item {
+	background-color: #dedede !important;
+}
+
 .bulb-min-list {
 	padding: 0;
 	margin: 0;
@@ -127,4 +132,43 @@ $light: rgba(254, 243, 224, 0.52);
 
 .bulb-min-list li {
 	list-style: none;
+}
+
+.pagination {
+	clear: both;
+	padding: 10px 0 40px 0;
+	position: relative;
+	font-size: 20px;
+	line-height: 13px;
+	margin: auto;
+	width: 50%;
+	text-align: center;
+}
+
+.pagination h6 {
+	float: left;
+	margin: 5px;
+}
+
+.pagination span,
+.pagination a {
+	display: block;
+	float: left;
+	margin: 2px 2px 2px 0;
+	padding: 6px 9px 5px 9px;
+	text-decoration: none;
+	width: auto;
+	color: #000;
+	background: #fff;
+}
+
+.pagination a:hover {
+	color: #fff;
+	background: #000;
+}
+
+.pagination .current {
+	padding: 6px 9px 5px 9px;
+	background: #dddddd;
+	color: #fff;
 }
