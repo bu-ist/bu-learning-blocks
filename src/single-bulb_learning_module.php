@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying learning module pages.
+ * Template file used to render a single learning module.
  *
  * @package bu-learning-blocks
  */
@@ -12,49 +12,53 @@ get_header();
 		<main id="main" class="site-main">
 
 		<?php
-		$current_id = get_the_ID();
+		$current_post_id = get_the_ID();
 
 		while ( have_posts() ) :
 			the_post();
 			?>
-			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'content_area' ); ?>>
 					<header class="entry-header">
 						<?php
 							the_title( '<h1 class="entry-title">', '</h1>' );
 						?>
 					</header><!-- .entry-header -->
+
 					<div class="bulb-container bulb-container--narrow bulb-page-section">
 						<?php
-						$the_parent = wp_get_post_parent_id( get_the_id() );
-						$test_array = get_pages(
+						$the_parent_id = wp_get_post_parent_id( get_the_id() );
+						$test_children = get_pages(
 							array(
-								'child_of' => get_the_ID(),
+								'child_of'  => get_the_ID(),
 								'post_type' => 'bulb_learning_module',
 							)
 						);
-						if ( $the_parent || $test_array ) { ?>
-						<div class="bulb-page-links">
-							<h3 class="bulb-page-links__title"><a href="<?php echo get_permalink( $the_parent ); ?>"><?php echo get_the_title( $the_parent ); ?></a></h3>
-							<ul class="bulb-min-list">
-								<?php
-								if ( $the_parent ) {
-									$find_children_of = $the_parent;
-								} else {
-									$find_children_of = get_the_ID();
-								}
-								wp_list_pages(
-									array(
-										'title_li'    => null,
-										'post_type'   => 'bulb_learning_module',
-										'child_of'    => $find_children_of,
-										'sort_column' => 'menu_order',
-									)
-								);
-								?>
-							</ul>
-						</div>
+
+						if ( $the_parent_id || $test_children ) {
+							?>
+							<div class="bulb-page-links">
+								<h3 class="bulb-page-links__title"><a href="<?php echo esc_url( get_permalink( $the_parent_id ) ); ?>"><?php echo esc_html( get_the_title( $the_parent_id ) ); ?></a></h3>
+								<ul class="bulb-min-list">
+									<?php
+									if ( $the_parent_id ) {
+										$find_children_of = $the_parent_id;
+									} else {
+										$find_children_of = get_the_ID();
+									}
+									wp_list_pages(
+										array(
+											'title_li'    => null,
+											'post_type'   => 'bulb_learning_module',
+											'child_of'    => $find_children_of,
+											'sort_column' => 'menu_order',
+										)
+									);
+									?>
+								</ul>
+							</div>
 						<?php } ?>
 					</div>
+
 					<div class="entry-content">
 						<?php
 						the_content(
@@ -86,63 +90,51 @@ get_header();
 			<?php
 		endwhile; // End of the loop.
 
-		$parent = ( '0' != $post->post_parent ? $post->post_parent : $post->ID );
-		$child_args = array(
-			'post_type' => 'bulb_learning_module',
-			'post_parent' => $parent,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
-
+		// Navigate the hierarchical custom post type.
+		$module_parent        = ( 0 === $post->post_parent ? $post->ID : $post->post_parent );
+		$child_args           = array(
+			'post_type'   => 'bulb_learning_module',
+			'post_parent' => $module_parent,
+			'orderby'     => 'menu_order',
+			'order'       => 'ASC',
 		);
-
-		$ids = array( $parent );
-		$ids = array_merge( $ids, array_keys( get_children( $child_args ) ) );
-
-		$args = array(
-			'post_type' => 'bulb_learning_module',
-			'post__in' => $ids,
-			'posts_per_page' => 1,
-			'paged' => $paged,
-		);
-
-		$range        = 2;
-		$showitems = ( $range * 2 ) + 1;
-		$author_posts = new WP_Query ( $args );
-		$module_pages = $author_posts->max_num_pages;
-
+		$module_ids           = array( $module_parent );
+		$module_ids           = array_merge( $module_ids, array_keys( get_children( $child_args ) ) );
+		$current_module_index = array_search( $current_post_id, $module_ids, true );
+		$total_pages          = count( $module_ids );
+		$range                = 2; // Adjust this value to set the number of pages that appear in the nav.
+		$showitems            = ( $range * 2 ) + 1;
 		?>
 
-		<div class="pagination">
-			<h6>There are <?php echo $module_pages?> pages in this Learning Module: </h6>
-		<?php
-		$ids_current_index = array_search( $current_id, $ids, true );
+			<div class="pagination">
+				<h6>Page <?php echo esc_html( $current_module_index + 1 ); ?> of <?php echo esc_html( $total_pages ); ?></h6>
 
-		if ( 1 !== $module_pages ) {
-			if ( $ids_current_index > 1 && $ids_current_index > $range + 1 && $showitems < $module_pages) {
-				echo "<a href='" . get_permalink( $ids[0] ) . "'>&laquo; First</a>";
-			}
+			<?php
+			if ( 1 !== $total_pages ) {
+				if ( $current_module_index > 1 && $current_module_index > $range - 1 && $showitems < $total_pages ) {
+					echo "<a href='" . esc_url( get_permalink( $module_ids[0] ) ) . "'>&laquo; First Page</a>";
+				}
 
-			if ( $ids_current_index > 0 && $showitems < $module_pages ) {
-				echo "<a href='" . get_permalink( $ids[ $ids_current_index - 1 ] ) . "'>&lsaquo; Previous</a>";
-			}
+				if ( $current_module_index > 0 && $showitems < $total_pages ) {
+					echo "<a href='" . esc_url( get_permalink( $module_ids[ $current_module_index - 1 ] ) ) . "'>&lsaquo; Previous Page</a>";
+				}
 
-			for ( $i = 1; $i <= $module_pages; $i++ ) {
-				if ( 1 !== $module_pages && ( ! ( $i >= $ids_current_index + $range + 2 || $i <= $ids_current_index - $range ) || $module_pages <= $showitems ) ) {
-					echo ( $current_id === $ids[ $i - 1 ] ) ? '<span class="current">' . $i . '</span>' : '<a href=' . get_permalink( $ids[ $i - 1 ] ) . ' class="inactive">' . $i . '</a>';
+				foreach ( $module_ids as $position => $page_id ) {
+					if ( 1 !== $total_pages && ( ! ( $position >= $current_module_index + $range + 2 || $position <= $current_module_index - $range ) || $total_pages <= $showitems ) ) {
+						echo $current_post_id === $module_ids[ $position ] ? '<span class="current">' . esc_html( $position + 1 ) . '</span>' : '<a href=' . esc_url( get_permalink( $module_ids[ $position ] ) ) . ' class="inactive">' . esc_html( $position + 1 ) . '</a>';
+					}
+				}
+
+				if ( $current_module_index < $total_pages - 1 && $showitems < $total_pages ) {
+					echo '<a href="' . esc_url( get_permalink( $module_ids[ $current_module_index + 1 ] ) ) . '">Next Page &rsaquo;</a>';
+				}
+
+				if ( $current_module_index < $total_pages - 2 && $showitems < $total_pages ) {
+					echo '<a href="' . esc_url( get_permalink( end( $module_ids ) ) ) . '">Last Page &raquo;</a>';
 				}
 			}
-
-			if ( $ids_current_index < $module_pages - 1 && $showitems < $module_pages ) {
-				echo '<a href="' . get_permalink( $ids[ $ids_current_index + 1 ] ) . '">Next &rsaquo;</a>';
-			}
-
-			if ( $ids_current_index < $module_pages - 2 && $showitems < $module_pages ) {
-				echo '<a href="' . get_permalink( end( $ids ) ) . '">Last &raquo;</a>';
-			}
-		}
-		?>
-		</div><!-- .pagination -->
-
+			?>
+			</div><!-- .pagination -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

@@ -14,6 +14,7 @@ $green: #bada55;
 $accent: #5a3fd6;
 $dark: #f7b733;
 $light: rgba(254, 243, 224, 0.52);
+$aqua-forest: #6aac70;
 
 .center {
 	text-align: center;
@@ -113,7 +114,7 @@ $light: rgba(254, 243, 224, 0.52);
 }
 
 .bulb-page-links__title a {
-	color: #fff !important;
+	color: $white !important;
 }
 
 .bulb-page-links li a {
@@ -122,7 +123,7 @@ $light: rgba(254, 243, 224, 0.52);
 }
 
 .current_page_item {
-	background-color: #dedede !important;
+	background-color: $gray !important;
 }
 
 .bulb-min-list {
@@ -134,20 +135,20 @@ $light: rgba(254, 243, 224, 0.52);
 	list-style: none;
 }
 
-.pagination {
-	clear: both;
-	padding: 10px 0 40px 0;
-	position: relative;
-	font-size: 20px;
-	line-height: 13px;
-	margin: auto;
-	width: 50%;
-	text-align: center;
-}
-
 .pagination h6 {
 	float: left;
 	margin: 5px;
+}
+
+.pagination {
+	clear: both;
+	position: relative;
+	font-size: 20px; /* Pagination text size */
+	line-height: 13px;
+	// float: right; /* Pagination float direction */
+	margin: auto;
+	width: 60%;
+	text-align: center;
 }
 
 .pagination span,
@@ -158,17 +159,22 @@ $light: rgba(254, 243, 224, 0.52);
 	padding: 6px 9px 5px 9px;
 	text-decoration: none;
 	width: auto;
-	color: #000;
-	background: #fff;
+	color: $white; /* Pagination text color */
+	background: $gray; /* Pagination non-active background color */
+	-webkit-transition: background 0.15s ease-in-out;
+	-moz-transition: background 0.15s ease-in-out;
+	-ms-transition: background 0.15s ease-in-out;
+	-o-transition: background 0.15s ease-in-out;
+	transition: background 0.15s ease-in-out;
 }
 
 .pagination a:hover {
-	color: #fff;
-	background: #000;
+	color: $white;
+	background: $aqua-forest; /* Pagination background on hover */
 }
 
 .pagination .current {
 	padding: 6px 9px 5px 9px;
-	background: #dddddd;
-	color: #fff;
+	background: $lightgray; /* Current page background */
+	color: $white;
 }
