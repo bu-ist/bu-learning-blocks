@@ -22,8 +22,6 @@ $args = array(
 
 $bulb_query = new WP_Query( $args );
 
-add_filter( 'pre_get_posts', 'my_get_posts' );
-
 /**
  * Enqueue the custom post type's single- template.
  *
@@ -33,12 +31,13 @@ add_filter( 'pre_get_posts', 'my_get_posts' );
  *
  * @since 0.0.2
  */
-function my_get_posts( $bulb_query ) {
+function get_bulb_parents( $bulb_query ) {
 	if ( is_archive() && false === $bulb_query->query_vars['post_parent'] && 'bulb_learning_module' === $bulb_query->query_vars['post_type'] ) {
 		$bulb_query->set( 'post_parent', 0 );
 	}
 	return $bulb_query;
 }
+add_filter( 'pre_get_posts', 'get_bulb_parents' );
 ?>
 
 <div class="bulb-container bulb-container--narrow bulb-page-section">

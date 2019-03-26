@@ -93,13 +93,20 @@ function bulb_cpt_template( $single ) {
 /* Filter the single_template with our custom function*/
 add_filter( 'single_template', 'bulb_cpt_template' );
 
+/**
+ * Load custom archive template.
+ *
+ * @param string $archive_template Template to be replaced.
+ *
+ * @return string $archive_template New Template.
+ */
 function get_custom_post_type_template( $archive_template ) {
-     global $post;
+	global $post;
 
-     if ( is_post_type_archive ( 'bulb_learning_module' ) ) {
-          $archive_template = dirname( __FILE__ ) . '/bulb-learning-module-archive.php';
-     }
-     return $archive_template;
+	if ( is_post_type_archive( 'bulb_learning_module' ) ) {
+		$archive_template = dirname( __FILE__ ) . '/bulb-learning-module-archive.php';
+	}
+	return $archive_template;
 }
 
-add_filter( 'archive_template', 'get_custom_post_type_template' ) ;
+add_filter( 'archive_template', 'get_custom_post_type_template' );

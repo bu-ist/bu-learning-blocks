@@ -45,6 +45,11 @@ add_filter(
 // Register a learning-module custom post type.
 require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
 
+/**
+ * Register a dynamic sidebar
+ *
+ * @return void
+ */
 function bulb_widgets_init() {
 	register_sidebar(
 		array(
