@@ -68,8 +68,16 @@ function bulb_register_learning_module_post_type() {
 }
 add_action( 'init', 'bulb_register_learning_module_post_type' );
 
+/**
+ * Enqueue the custom post type's single- template.
+ *
+ * @param string $single Template file to be filtered.
+ *
+ * @return string $single Filtered template.
+ *
+ * @since 0.0.2
+ */
 function bulb_cpt_template( $single ) {
-
 	global $post;
 
 	/* Checks for single template by post type */
@@ -84,3 +92,14 @@ function bulb_cpt_template( $single ) {
 }
 /* Filter the single_template with our custom function*/
 add_filter( 'single_template', 'bulb_cpt_template' );
+
+function get_custom_post_type_template( $archive_template ) {
+     global $post;
+
+     if ( is_post_type_archive ( 'bulb_learning_module' ) ) {
+          $archive_template = dirname( __FILE__ ) . '/bulb-learning-module-archive.php';
+     }
+     return $archive_template;
+}
+
+add_filter( 'archive_template', 'get_custom_post_type_template' ) ;

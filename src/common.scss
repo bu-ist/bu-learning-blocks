@@ -90,6 +90,7 @@ $aqua-forest: #6aac70;
 	max-width: 1200px;
 	margin: 0 auto;
 	position: relative;
+	// float: right;
 }
 
 .bulb-page-links {
@@ -101,7 +102,7 @@ $aqua-forest: #6aac70;
 	.bulb-page-links {
 		margin: 0 0 0px 10px;
 		width: 300px;
-		float: right;
+		float: left;
 		border: 1px solid black;
 	}
 }

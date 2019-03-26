@@ -8,6 +8,40 @@
 get_header();
 ?>
 
+<div class="bulb-container bulb-container--narrow bulb-page-section">
+	<?php
+	$the_parent_id = wp_get_post_parent_id( get_the_id() );
+	$test_children = get_pages(
+		array(
+			'child_of'  => get_the_ID(),
+			'post_type' => 'bulb_learning_module',
+		)
+	);
+
+	if ( $the_parent_id || $test_children ) {
+		?>
+		<div class="bulb-page-links">
+			<h3 class="bulb-page-links__title"><a href="<?php echo esc_url( get_permalink( $the_parent_id ) ); ?>"><?php echo esc_html( get_the_title( $the_parent_id ) ); ?></a></h3>
+			<ul class="bulb-min-list">
+				<?php
+				if ( $the_parent_id ) {
+					$find_children_of = $the_parent_id;
+				} else {
+					$find_children_of = get_the_ID();
+				}
+				wp_list_pages(
+					array(
+						'title_li'    => null,
+						'post_type'   => 'bulb_learning_module',
+						'child_of'    => $find_children_of,
+						'sort_column' => 'menu_order',
+					)
+				);
+				?>
+			</ul>
+		</div><!-- #page-links -->
+	<?php } ?>
+
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
@@ -23,41 +57,6 @@ get_header();
 							the_title( '<h1 class="entry-title">', '</h1>' );
 						?>
 					</header><!-- .entry-header -->
-
-					<div class="bulb-container bulb-container--narrow bulb-page-section">
-						<?php
-						$the_parent_id = wp_get_post_parent_id( get_the_id() );
-						$test_children = get_pages(
-							array(
-								'child_of'  => get_the_ID(),
-								'post_type' => 'bulb_learning_module',
-							)
-						);
-
-						if ( $the_parent_id || $test_children ) {
-							?>
-							<div class="bulb-page-links">
-								<h3 class="bulb-page-links__title"><a href="<?php echo esc_url( get_permalink( $the_parent_id ) ); ?>"><?php echo esc_html( get_the_title( $the_parent_id ) ); ?></a></h3>
-								<ul class="bulb-min-list">
-									<?php
-									if ( $the_parent_id ) {
-										$find_children_of = $the_parent_id;
-									} else {
-										$find_children_of = get_the_ID();
-									}
-									wp_list_pages(
-										array(
-											'title_li'    => null,
-											'post_type'   => 'bulb_learning_module',
-											'child_of'    => $find_children_of,
-											'sort_column' => 'menu_order',
-										)
-									);
-									?>
-								</ul>
-							</div>
-						<?php } ?>
-					</div>
 
 					<div class="entry-content">
 						<?php
@@ -83,9 +82,6 @@ get_header();
 						);
 						?>
 					</div><!-- .entry-content -->
-
-					<footer class="entry-footer">
-					</footer><!-- .entry-footer -->
 				</article><!-- #post-<?php the_ID(); ?> -->
 			<?php
 		endwhile; // End of the loop.
@@ -137,7 +133,12 @@ get_header();
 			</div><!-- .pagination -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
+</div><!-- #container --
+<br>
+<hr>
 
 <?php
-// get_sidebar();
+if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'BULB Module Sidebar' ) ) {
+	dynamic_sidebar( 'BULB Module Sidebar' );
+}
 get_footer();
