@@ -12,10 +12,11 @@ import { Question } from '@bostonuniversity/react-questions';
 // Find all .bulb-question DOM containers, collect their data from window and render <Questions> into them.
 document.querySelectorAll( '.bulb-question' ).forEach( questionContainer => {
 	const questionId = questionContainer.id;
-	const questionData = window[ questionId ];
+	const questionData = parseHTMLStrings( window[ questionId ] );
+
 	ReactDOM.render(
 		<Question
-			questionData={ parseHTMLStrings( questionData ) }
+			{ ...questionData }
 			onSubmit={ () => onSubmitReactQuestionHook( questionContainer ) }
 			onReset={ () => onResetReactQuestionHook( questionContainer ) }
 		/>,
