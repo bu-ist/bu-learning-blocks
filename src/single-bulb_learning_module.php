@@ -9,7 +9,7 @@ get_header();
 ?>
 
 <div class="bulb-container bulb-container--narrow bulb-page-section">
-	<?php
+<?php
 	$the_parent_id = wp_get_post_parent_id( get_the_id() );
 	$test_children = get_pages(
 		array(
@@ -42,7 +42,7 @@ get_header();
 		</div><!-- #page-links -->
 	<?php } ?>
 
-	<div id="primary" class="content-area">
+	<div id="primary">
 		<main id="main" class="site-main">
 
 		<?php
@@ -133,7 +133,7 @@ get_header();
 			</div><!-- .pagination -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
-</div><!-- #container --
+</div><!-- #container -->
 <br>
 <hr>
 
