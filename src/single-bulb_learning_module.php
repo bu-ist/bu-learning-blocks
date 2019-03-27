@@ -7,8 +7,6 @@
 
 get_header();
 ?>
-
-<div class="bulb-container bulb-container--narrow bulb-page-section">
 <?php
 	$the_parent_id = wp_get_post_parent_id( get_the_id() );
 	$test_children = get_pages(
@@ -42,6 +40,7 @@ get_header();
 		</div><!-- #page-links -->
 	<?php } ?>
 
+<div class="bulb-container bulb-container--narrow bulb-page-section">
 	<div id="primary">
 		<main id="main" class="site-main">
 
@@ -135,7 +134,6 @@ get_header();
 	</div><!-- #primary -->
 </div><!-- #container -->
 <br>
-<hr>
 
 <?php
 if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'BULB Module Sidebar' ) ) {

@@ -85,24 +85,37 @@ $aqua-forest: #6aac70;
 	}
 }
 
-.bulb-container {
+.content-container {
 	display: flex;
-	max-width: 1200px;
-	margin: 0 auto;
-	position: relative;
+	padding-bottom: 60px;
+}
+
+@media screen and (max-width: 600px) {
+	// Change flex-direction from row to column, for custom ordering.
+	.content-container {
+		flex-direction: column;
+	}
+
+	// Make links come 2nd in order, after the bulb container.
+	.bulb-page-links {
+		order: 2;
+	}
+
+	// Since this is a column, change flex-basis back to auto.
+	.bulb-container {
+		flex: 1 0 auto;
+	}
+}
+
+.bulb-container {
+	flex: 0 1 auto;
+	// margin-top: 20px;
 }
 
 .bulb-page-links {
 	flex: 1 0 200px;
+	width: 200px;
 	margin-right: 40px;
-}
-
-@media (min-width: 767px) {
-	.bulb-page-links {
-		margin: 0 10px 0 10px;
-		width: 200px;
-		// border: 1px solid black;
-	}
 }
 
 .bulb-page-links__title {
@@ -147,7 +160,7 @@ $aqua-forest: #6aac70;
 	font-size: 12px; /* Pagination text size */
 	line-height: 13px;
 	float: left; /* Pagination float direction */
-	margin: auto;
+	margin: 0 0 20px 0;
 	width: 100%;
 	text-align: center;
 }
