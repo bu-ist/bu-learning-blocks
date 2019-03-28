@@ -8,9 +8,7 @@
  */
 
 get_header();
-?>
 
-<?php
 $args = array(
 	'paged'          => $paged,
 	'post_parent'    => 0,
@@ -53,4 +51,5 @@ while ( $bulb_query->have_posts() ) {
 
 </div>
 
-<?php get_footer(); ?>
+<?php
+get_footer();

@@ -6,39 +6,37 @@
  */
 
 get_header();
-?>
-<?php
-	$the_parent_id = wp_get_post_parent_id( get_the_id() );
-	$test_children = get_pages(
-		array(
-			'child_of'  => get_the_ID(),
-			'post_type' => 'bulb-learning-module',
-		)
-	);
+$the_parent_id = wp_get_post_parent_id( get_the_id() );
+$test_children = get_pages(
+	array(
+		'child_of'  => get_the_ID(),
+		'post_type' => 'bulb-learning-module',
+	)
+);
 
-	if ( $the_parent_id || $test_children ) {
-		?>
-		<div class="bulb-page-links">
-			<h3 class="bulb-page-links__title"><a href="<?php echo esc_url( get_permalink( $the_parent_id ) ); ?>"><?php echo esc_html( get_the_title( $the_parent_id ) ); ?></a></h3>
-			<ul class="bulb-min-list">
-				<?php
-				if ( $the_parent_id ) {
-					$find_children_of = $the_parent_id;
-				} else {
-					$find_children_of = get_the_ID();
-				}
-				wp_list_pages(
-					array(
-						'title_li'    => null,
-						'post_type'   => 'bulb-learning-module',
-						'child_of'    => $find_children_of,
-						'sort_column' => 'menu_order',
-					)
-				);
-				?>
-			</ul>
-		</div><!-- #page-links -->
-	<?php } ?>
+if ( $the_parent_id || $test_children ) {
+	?>
+	<div class="bulb-page-links">
+		<h3 class="bulb-page-links__title"><a href="<?php echo esc_url( get_permalink( $the_parent_id ) ); ?>"><?php echo esc_html( get_the_title( $the_parent_id ) ); ?></a></h3>
+		<ul class="bulb-min-list">
+			<?php
+			if ( $the_parent_id ) {
+				$find_children_of = $the_parent_id;
+			} else {
+				$find_children_of = get_the_ID();
+			}
+			wp_list_pages(
+				array(
+					'title_li'    => null,
+					'post_type'   => 'bulb-learning-module',
+					'child_of'    => $find_children_of,
+					'sort_column' => 'menu_order',
+				)
+			);
+			?>
+		</ul>
+	</div><!-- #page-links -->
+<?php } ?>
 
 <div class="bulb-container bulb-container--narrow bulb-page-section">
 	<div id="primary">
