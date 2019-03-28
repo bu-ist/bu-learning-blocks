@@ -64,7 +64,7 @@ function bulb_register_learning_module_post_type() {
 		'exclude_from_search' => false,
 	);
 
-	register_post_type( 'bulb_learning_module', $args );
+	register_post_type( 'bulb-learning-module', $args );
 }
 add_action( 'init', 'bulb_register_learning_module_post_type' );
 
@@ -81,9 +81,9 @@ function bulb_cpt_template( $single ) {
 	global $post;
 
 	/* Checks for single template by post type */
-	if ( 'bulb_learning_module' === $post->post_type ) {
-		if ( file_exists( BULB_PLUGIN_DIR_PATH . 'src/single-bulb_learning_module.php' ) ) {
-			return BULB_PLUGIN_DIR_PATH . 'src/single-bulb_learning_module.php';
+	if ( 'bulb-learning-module' === $post->post_type ) {
+		if ( file_exists( BULB_PLUGIN_DIR_PATH . 'src/single-bulb-learning-module.php' ) ) {
+			return BULB_PLUGIN_DIR_PATH . 'src/single-bulb-learning-module.php';
 		}
 	}
 
@@ -103,7 +103,7 @@ add_filter( 'single_template', 'bulb_cpt_template' );
 function get_custom_post_type_template( $archive_template ) {
 	global $post;
 
-	if ( is_post_type_archive( 'bulb_learning_module' ) ) {
+	if ( is_post_type_archive( 'bulb-learning-module' ) ) {
 		$archive_template = dirname( __FILE__ ) . '/bulb-learning-module-archive.php';
 	}
 	return $archive_template;

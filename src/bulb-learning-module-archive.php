@@ -14,7 +14,7 @@ get_header();
 $args = array(
 	'paged'          => $paged,
 	'post_parent'    => 0,
-	'post_type'      => 'bulb_learning_module',
+	'post_type'      => 'bulb-learning-module',
 	'orderby'        => 'title',
 	'order'          => 'ASC',
 	'posts_per_page' => -1,
@@ -32,7 +32,7 @@ $bulb_query = new WP_Query( $args );
  * @since 0.0.2
  */
 function get_bulb_parents( $bulb_query ) {
-	if ( is_archive() && false === $bulb_query->query_vars['post_parent'] && 'bulb_learning_module' === $bulb_query->query_vars['post_type'] ) {
+	if ( is_archive() && false === $bulb_query->query_vars['post_parent'] && 'bulb-learning-module' === $bulb_query->query_vars['post_type'] ) {
 		$bulb_query->set( 'post_parent', 0 );
 	}
 	return $bulb_query;

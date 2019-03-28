@@ -12,7 +12,7 @@ get_header();
 	$test_children = get_pages(
 		array(
 			'child_of'  => get_the_ID(),
-			'post_type' => 'bulb_learning_module',
+			'post_type' => 'bulb-learning-module',
 		)
 	);
 
@@ -30,7 +30,7 @@ get_header();
 				wp_list_pages(
 					array(
 						'title_li'    => null,
-						'post_type'   => 'bulb_learning_module',
+						'post_type'   => 'bulb-learning-module',
 						'child_of'    => $find_children_of,
 						'sort_column' => 'menu_order',
 					)
@@ -88,7 +88,7 @@ get_header();
 		// Navigate the hierarchical custom post type.
 		$module_parent        = ( 0 === $post->post_parent ? $post->ID : $post->post_parent );
 		$child_args           = array(
-			'post_type'   => 'bulb_learning_module',
+			'post_type'   => 'bulb-learning-module',
 			'post_parent' => $module_parent,
 			'orderby'     => 'menu_order',
 			'order'       => 'ASC',
