@@ -119,7 +119,7 @@ function remove_bulb_attributes_panel() {
 	wp_enqueue_script(
 		'remove-panel-js',
 		BULB_PLUGIN_URL . 'src/remove_panel.js',
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
+		array(),
 		filemtime( plugin_dir_path( __DIR__ ) . 'dist/frontend.build.js' ), // Gets file modification time for cache busting.
 		true // Enqueue the script in the footer.
 	);
