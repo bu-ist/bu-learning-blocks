@@ -106,5 +106,22 @@ function get_custom_post_type_template( $archive_template ) {
 	}
 	return $archive_template;
 }
-
 add_filter( 'archive_template', 'get_custom_post_type_template' );
+
+/**
+ * Load script to kill attributes panel in Document editor panel.
+ *
+ * @since 0.0.3
+ */
+function remove_bulb_attributes_panel() {
+	wp_enqueue_script(
+		'remove-panel-js',
+		BULB_PLUGIN_URL . 'src/remove_attributes_panel.js',
+		array(),
+		filemtime( plugin_dir_path( __DIR__ ) . 'src/remove_attributes_panel.js' ), // Gets file modification time for cache busting.
+		true // Enqueue the script in the footer.
+	);
+}
+if ( class_exists( 'BU_Navigation_Plugin' ) ) {
+	add_action( 'enqueue_block_editor_assets', 'remove_bulb_attributes_panel' );
+}
