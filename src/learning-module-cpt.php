@@ -43,8 +43,6 @@ function bulb_register_learning_module_post_type() {
 			'title',
 			'editor',
 			'author',
-			'thumbnail',
-			'excerpt',
 			'revisions',
 			'page-attributes',
 		),
