@@ -116,9 +116,9 @@ add_filter( 'archive_template', 'get_custom_post_type_template' );
 function remove_bulb_attributes_panel() {
 	wp_enqueue_script(
 		'remove-panel-js',
-		BULB_PLUGIN_URL . 'src/remove_panel.js',
+		BULB_PLUGIN_URL . 'src/remove_attributes_panel.js',
 		array(),
-		filemtime( plugin_dir_path( __DIR__ ) . 'dist/frontend.build.js' ), // Gets file modification time for cache busting.
+		filemtime( plugin_dir_path( __DIR__ ) . 'src/remove_attributes_panel.js' ), // Gets file modification time for cache busting.
 		true // Enqueue the script in the footer.
 	);
 }
