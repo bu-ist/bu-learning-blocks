@@ -15,7 +15,7 @@ import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-tf', {
-	title: __( 'BULB - T/F', 'bulearningblocks' ),
+	title: __( 'BULB - True/False', 'bulearningblocks' ),
 	description: __( 'Add a TRUE/FALSE question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',

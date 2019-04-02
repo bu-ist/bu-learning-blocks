@@ -15,7 +15,7 @@ import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-mc', {
-	title: __( 'BULB - M/C', 'bulearningblocks' ),
+	title: __( 'BULB - Multiple Choice', 'bulearningblocks' ),
 	description: __( 'Add a Multiple Choice question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
