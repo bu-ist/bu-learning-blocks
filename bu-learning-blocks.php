@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'BULB_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'BULB_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BULB_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'BULB_PLUGIN_FILE_PATH', __FILE__ );
 
 /**
  * Displays admin notice and prevents activation.
