@@ -15,7 +15,7 @@ import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-ma', {
-	title: __( 'BULB - M/A', 'bulearningblocks' ),
+	title: __( 'BULB - Multiple Answer', 'bulearningblocks' ),
 	description: __( 'Add a Multiple Answer question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
