@@ -69,7 +69,7 @@ add_action( 'init', 'bulb_register_learning_module_post_type' );
 /**
  * Flush rewrite rules for CPT
  *
- * @since 0.0.3
+ * @since 0.0.4
  */
 function bulb_flush_rewrites() {
 	bulb_register_learning_module_post_type();
