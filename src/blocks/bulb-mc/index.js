@@ -8,7 +8,6 @@ const { Fragment } = wp.element;
 import Question from '../../components/Question';
 import Answers from '../../components/Answers';
 import Controls from '../../components/Controls';
-import Inspector from '../../components/Inspector';
 
 import './styles/style.scss';
 import './styles/editor.scss';
@@ -57,7 +56,6 @@ export default registerBlockType( 'bulb/question-mc', {
 
 		return (
 			<Fragment>
-				<Inspector { ...props } />
 				<Controls { ...props } />
 				<Question
 					{ ...{
