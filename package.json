@@ -15,7 +15,7 @@
 		"test-unit-php-multisite": "docker-compose run -e WP_MULTISITE=1 --rm wordpress_phpunit phpunit"
 	},
 	"dependencies": {
-		"@bostonuniversity/react-questions": "0.0.6",
+		"@bostonuniversity/react-questions": "0.0.7",
 		"autoprefixer": "^7.2.4",
 		"babel-core": "^6.25.0",
 		"babel-eslint": "^8.2.1",
