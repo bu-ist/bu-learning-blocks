@@ -67,6 +67,18 @@ function bulb_register_learning_module_post_type() {
 add_action( 'init', 'bulb_register_learning_module_post_type' );
 
 /**
+ * Flush rewrite rules for CPT
+ *
+ * @since 0.0.4
+ */
+function bulb_flush_rewrites() {
+	bulb_register_learning_module_post_type();
+	flush_rewrite_rules();
+}
+register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_flush_rewrites' );
+
+
+/**
  * Enqueue the custom post type's single- template.
  *
  * @param string $single Template file to be filtered.
