@@ -1,5 +1,5 @@
 import FloatInput from '../../components/FloatInput';
-import { Fragment } from 'react';
+const { Fragment } = wp.element;
 
 export default ( {
 	answer,
@@ -11,9 +11,10 @@ export default ( {
 } ) => {
 	const renderPossibleAnswers = () => {
 		const answerFloat = parseFloat( answer );
+		const answerRangeFloat = parseFloat( answerRange );
 
-		const min = ( answerFloat - parseFloat( answerRange ) ).toFixed( decimalPlaces );
-		const max = ( answerFloat + parseFloat( answerRange ) ).toFixed( decimalPlaces );
+		const min = ( answerFloat - answerRangeFloat ).toFixed( decimalPlaces );
+		const max = ( answerFloat + answerRangeFloat ).toFixed( decimalPlaces );
 
 		const interval = 1 / Math.pow( 10, decimalPlaces );
 
