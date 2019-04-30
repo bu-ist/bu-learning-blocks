@@ -1,4 +1,5 @@
 import FloatInput from '../../components/FloatInput';
+const { Fragment } = wp.element;
 
 export default ( {
 	answer,
@@ -8,49 +9,32 @@ export default ( {
 	onChangeAnswerRange,
 	onChangeDecimalPlaces,
 } ) => {
-	const generatePossibleAnswer = () => {
-		const min = parseFloat( answer ) - parseFloat( answerRange );
-		const max = parseFloat( answer ) + parseFloat( answerRange );
-
-		// prettier-ignore
-		const possibleAnswer = ( ( Math.random() * ( max - min ) ) + min ).toFixed(
-			decimalPlaces
-		);
-		return possibleAnswer;
-	};
-
 	const renderPossibleAnswers = () => {
-		const possibleAnswers = [];
+		const answerFloat = parseFloat( answer );
+		const answerRangeFloat = parseFloat( answerRange );
 
-		const correctAnswer = parseFloat( answer ).toFixed( decimalPlaces );
-		if ( ! isNaN( correctAnswer ) ) {
-			possibleAnswers.push( correctAnswer );
+		const min = ( answerFloat - answerRangeFloat ).toFixed( decimalPlaces );
+		const max = ( answerFloat + answerRangeFloat ).toFixed( decimalPlaces );
 
-			if ( 0 !== answerRange ) {
-				for ( let i = 0; i < 4; i++ ) {
-					const possibleAnswer = generatePossibleAnswer();
-					if (
-						! isNaN( possibleAnswer ) &&
-						! possibleAnswers.includes( possibleAnswer )
-					) {
-						possibleAnswers.push( possibleAnswer );
-					}
-					if ( possibleAnswers.length >= 3 ) {
-						break;
-					}
-				}
-			}
-		}
+		const interval = 1 / Math.pow( 10, decimalPlaces );
 
-		const possibleAnswerItems = possibleAnswers.map( possibleAnswer => (
-			<li key={ possibleAnswer }>{ possibleAnswer }</li>
+		const nearestLess = answerFloat - interval;
+		const nearestGreater = answerFloat + interval;
+
+		const nearestAnswers = [ nearestLess, answerFloat, nearestGreater ].map( val => parseFloat( val ).toFixed( decimalPlaces ) );
+
+		const nearestAnswersItems = nearestAnswers.map( ( possibleAnswer, index ) => (
+			<li key={ index }>{ possibleAnswer }</li>
 		) );
 
 		return (
 			<div>
-				<h5>Example of answers that would possibly be accepted:</h5>
-				{ possibleAnswerItems.length ? (
-					<ul className="possible-answers-list">{ possibleAnswerItems }</ul>
+				<h5>Examples of the nearest acceptable answers:</h5>
+				{ nearestAnswersItems.length ? (
+					<Fragment>
+						<ul className="possible-answers-list">{ nearestAnswersItems }</ul>
+						<div> Minimum: { min }, Maximum: { max }</div>
+					</Fragment>
 				) : (
 					'No possible answers found'
 				) }
@@ -73,7 +57,7 @@ export default ( {
 				value={ decimalPlaces }
 				onChange={ event => onChangeDecimalPlaces( event.target.value ) }
 			/>
-			{ renderPossibleAnswers() }
+			{ ( answerRange !== '0' ) && renderPossibleAnswers() }
 		</div>
 	);
 };
