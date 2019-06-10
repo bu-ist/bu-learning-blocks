@@ -121,23 +121,6 @@ function get_custom_post_type_template( $archive_template ) {
 add_filter( 'archive_template', 'get_custom_post_type_template' );
 
 /**
- * Disable Classic Editor by template
- *
- */
-function bulb_disable_classic_editor() {
-
-	$screen = get_current_screen();
-	if( 'bulb-learning-module' !== $screen->id || ! isset( $_GET['post']) )
-		return;
-
-	// if( bulb_disable_editor( $_GET['post'] ) ) {
-		remove_post_type_support( 'bulb-learning-module', 'editor' );
-	// }
-
-}
-add_action( 'admin_head', 'bulb_disable_classic_editor' );
-
-/**
  * Load script to kill attributes panel in Document editor panel.
  *
  * @since 0.0.3
