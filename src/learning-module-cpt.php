@@ -16,15 +16,15 @@ function bulb_register_learning_module_post_type() {
 	$labels = array(
 		'name'               => __( 'Learning Modules', 'bulearningblocks' ),
 		'singular_name'      => __( 'Learning Module', 'bulearningblocks' ),
-		'add_new'            => __( 'Add New Learning Module', 'bulearningblocks' ),
-		'add_new_item'       => __( 'Add New Learning Module', 'bulearningblocks' ),
-		'edit_item'          => __( 'Edit Learning Module', 'bulearningblocks' ),
-		'new_item'           => __( 'New Learning Module', 'bulearningblocks' ),
+		'add_new'            => __( 'Add Learning Module Page', 'bulearningblocks' ),
+		'add_new_item'       => __( 'Add Learning Module Page', 'bulearningblocks' ),
+		'edit_item'          => __( 'Edit Module Page', 'bulearningblocks' ),
+		'new_item'           => __( 'New Module Page', 'bulearningblocks' ),
 		'all_items'          => __( 'All Learning Modules', 'bulearningblocks' ),
-		'view_item'          => __( 'View Learning Module', 'bulearningblocks' ),
-		'view_items'         => __( 'View Learning Modules', 'bulearningblocks' ),
+		'view_item'          => __( 'View Module Page', 'bulearningblocks' ),
+		'view_items'         => __( 'View Module Pages', 'bulearningblocks' ),
 		'attributes'         => __( 'Learning Module Attributes', 'bulearningblocks' ),
-		'search_items'       => __( 'Search Learning Modules', 'bulearningblocks' ),
+		'search_items'       => __( 'Search Module Pages', 'bulearningblocks' ),
 		'not_found'          => __( 'No Learning Modules found', 'bulearningblocks' ),
 		'not_found_in_trash' => __( 'No Learning Modules found in Trash', 'bulearningblocks' ),
 		'archives'           => __( 'Learning Module Archives', 'bulearningblocks' ),
@@ -119,6 +119,23 @@ function get_custom_post_type_template( $archive_template ) {
 	return $archive_template;
 }
 add_filter( 'archive_template', 'get_custom_post_type_template' );
+
+/**
+ * Disable Classic Editor by template
+ *
+ */
+function bulb_disable_classic_editor() {
+
+	$screen = get_current_screen();
+	if( 'bulb-learning-module' !== $screen->id || ! isset( $_GET['post']) )
+		return;
+
+	// if( bulb_disable_editor( $_GET['post'] ) ) {
+		remove_post_type_support( 'bulb-learning-module', 'editor' );
+	// }
+
+}
+add_action( 'admin_head', 'bulb_disable_classic_editor' );
 
 /**
  * Load script to kill attributes panel in Document editor panel.
