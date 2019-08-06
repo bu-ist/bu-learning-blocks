@@ -13,15 +13,15 @@ import './styles/style.scss';
 import './styles/editor.scss';
 
 // Register the block
-export default registerBlockType( 'bulb/question-tf', {
-	title: __( 'BULB - True/False', 'bulearningblocks' ),
-	description: __( 'Add a TRUE/FALSE question to your learning module.' ),
+export default registerBlockType( 'bulb/question-mc', {
+	title: __( 'BULB - Multiple Choice', 'bulearningblocks' ),
+	description: __( 'Add a Multiple Choice question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
 	keywords: [
 		__( 'bu-learning-block', 'bulearningblocks' ),
 		__( 'BULB', 'bulearningblocks' ),
-		__( 'True False Question', 'bulearningblocks' ),
+		__( 'Multiple Choice Question', 'bulearningblocks' ),
 	],
 
 	edit: props => {
@@ -76,9 +76,8 @@ export default registerBlockType( 'bulb/question-tf', {
 						answers={ answers }
 						onChangeAnswers={ onSimpleAttributeChange( 'answers' ) }
 						multipleCorrectAllowed={ false }
-						feedbackPerAnswer={ false }
 						minAnswers={ 2 }
-						maxAnswers={ 2 }
+						maxAnswers={ 6 }
 					/>
 				</Question>
 			</Fragment>

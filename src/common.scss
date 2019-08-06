@@ -14,40 +14,180 @@ $green: #bada55;
 $accent: #5a3fd6;
 $dark: #f7b733;
 $light: rgba(254, 243, 224, 0.52);
+$aqua-forest: #6aac70;
 
 .center {
-    text-align: center;
-  }
+	text-align: center;
+}
 
-  .left {
-    text-align: left;
-  }
+.left {
+	text-align: left;
+}
 
-  .right {
-    text-align: right;
-  }
+.right {
+	text-align: right;
+}
 
-  @media only screen and (min-width: 600px) {
-    .wp-block-columns .layout-column-1,
-    .wp-block-columns .layout-column-2 {
-      margin-right: 5%;
-    }
-  }
+@media only screen and (min-width: 600px) {
+	.wp-block-columns .layout-column-1,
+	.wp-block-columns .layout-column-2 {
+		margin-right: 5%;
+	}
+}
 
-  .wp-block-image {
-    margin-bottom: 1.2em;
-  }
+.wp-block-image {
+	margin-bottom: 1.2em;
+}
 
-  .bulb-text-link {
-    // color: inherit;
-    box-shadow: 0 -1px 0 inset;
-    text-decoration: none;
-    transition: .3s ease;
+.bulb-text-link {
+	box-shadow: 0 -1px 0 inset;
+	text-decoration: none;
+	transition: 0.3s ease;
 
-    &:hover {
-      color: inherit;
-      box-shadow: 0 -2px 0 inset;
-      color: $accent;
-    }
-  }
+	&:hover {
+		color: inherit;
+		box-shadow: 0 -2px 0 inset;
+		color: $accent;
+	}
+}
 
+.bulb-editor {
+	&-section-label {
+		color: rgb(59, 48, 48);
+		font-size: 1.3em;
+		margin-bottom: 0.5em;
+	}
+
+	&-field-label {
+		color: #7c7c7c;
+		margin-bottom: 0.5em;
+		border-bottom: 1px solid #8092af;
+	}
+
+	&-answer {
+		background-color: #ececec;
+		padding: 1rem;
+		margin: 1rem 0;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-column-gap: 1rem;
+		justify-items: stretch;
+		align-items: stretch;
+
+		&-label {
+			font-weight: bold;
+
+			&-feedback {
+				font-weight: bold;
+				font-size: 0.9em;
+			}
+		}
+	}
+}
+
+.content-container {
+	display: flex;
+	padding-bottom: 60px;
+}
+
+@media screen and (max-width: 600px) {
+	// Change flex-direction from row to column, for custom ordering.
+	.content-container {
+		flex-direction: column;
+	}
+
+	// Make links come 2nd in order, after the bulb container.
+	.bulb-page-links {
+		order: 2;
+	}
+
+	// Since this is a column, change flex-basis back to auto.
+	.bulb-container {
+		flex: 1 0 auto;
+	}
+}
+
+.bulb-container {
+	flex: 0 1 auto;
+}
+
+.bulb-page-links {
+	flex: 1 0 200px;
+	width: 200px;
+	margin-right: 40px;
+}
+
+.bulb-page-links__title {
+	margin: 0;
+	text-align: center;
+	font-size: 20px;
+	padding: 5px 0;
+	background-color: $lightgray;
+}
+
+.bulb-page-links__title a {
+	color: $white !important;
+}
+
+.bulb-page-links li a {
+	display: block;
+	padding: 6px 20px;
+}
+
+.current_page_item {
+	background-color: $gray !important;
+}
+
+.bulb-min-list {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.bulb-min-list li {
+	list-style: none;
+}
+
+.pagination h6 {
+	float: left;
+	margin: 5px;
+}
+
+.pagination {
+	clear: both;
+	position: relative;
+	font-size: 12px; /* Pagination text size */
+	line-height: 13px;
+	float: left; /* Pagination float direction */
+	margin: 0 0 20px 0;
+	width: 100%;
+	text-align: center;
+}
+
+.pagination span,
+.pagination a {
+	display: block;
+	float: left;
+	margin: 2px 2px 2px 0;
+	padding: 6px 9px 5px 9px;
+	text-decoration: none;
+	width: auto;
+	color: $black; /* Pagination text color */
+	background: #c0c0c0; /* Pagination non-active background color */
+	-webkit-transition: background 0.15s ease-in-out;
+	-moz-transition: background 0.15s ease-in-out;
+	-ms-transition: background 0.15s ease-in-out;
+	-o-transition: background 0.15s ease-in-out;
+	transition: background 0.15s ease-in-out;
+}
+
+.pagination a:hover {
+	color: $white;
+	background: $aqua-forest; /* Pagination background on hover */
+}
+
+.pagination .current {
+	padding: 6px 9px 5px 9px;
+	background: $lightgray; /* Current page background */
+	color: $white;
+}

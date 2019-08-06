@@ -1,6 +1,6 @@
 <?php
 /**
- * True/False question block
+ * Multiple Answer question block
  *
  * Register dynamic block functions
  *
@@ -11,7 +11,6 @@
 // Load helper functions.
 require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/get-feedback.php';
 
-
 /**
  * Render the dynamic block
  *
@@ -19,7 +18,7 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/get-feedback.php';
  * @param string $content The block's content.
  * @return string The html markup for the block
  */
-function bulb_render_block_tf( $attributes, $content ) {
+function bulb_render_block_ma( $attributes, $content ) {
 	// Get the question block instance id.
 	$id               = $attributes['id'];
 	$background_color = $attributes['backgroundColorControl'];
@@ -59,27 +58,25 @@ function bulb_render_block_tf( $attributes, $content ) {
  *
  * @return void
  */
-function bulb_register_question_tf() {
+function bulb_register_question_ma() {
 	register_block_type(
-		'bulb/question-tf', [
+		'bulb/question-ma', [
 			'attributes'      => [
 				'id'                     => [],
 				'type'                   => [
-					'default' => 'true-false',
+					'default' => 'multiple-answer',
 				],
-				'header'                 => [
-					'default' => 'Is the following statement true or false',
-				],
+				'header'                 => [],
 				'body'                   => [],
 				'answers'                => [
 					'default' => [
 						[
-							'answer'   => 'True',
+							'answer'   => '',
 							'feedback' => '',
 							'correct'  => true,
 						],
 						[
-							'answer'   => 'False',
+							'answer'   => '',
 							'feedback' => '',
 							'correct'  => false,
 						],
@@ -104,8 +101,8 @@ function bulb_register_question_tf() {
 					'type' => 'string',
 				],
 			],
-			'render_callback' => 'bulb_render_block_tf',
+			'render_callback' => 'bulb_render_block_mc',
 		]
 	);
 }
-add_action( 'init', 'bulb_register_question_tf' );
+add_action( 'init', 'bulb_register_question_ma' );

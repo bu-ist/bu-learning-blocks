@@ -1,6 +1,6 @@
 <?php
 /**
- * True/False question block
+ * Calculated Numeric question block
  *
  * Register dynamic block functions
  *
@@ -19,18 +19,12 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/get-feedback.php';
  * @param string $content The block's content.
  * @return string The html markup for the block
  */
-function bulb_render_block_tf( $attributes, $content ) {
+function bulb_render_block_cn( $attributes, $content ) {
 	// Get the question block instance id.
 	$id               = $attributes['id'];
 	$background_color = $attributes['backgroundColorControl'];
 	$text_color       = $attributes['textColorControl'];
 	$font_size        = $attributes['fontSize'];
-
-	// Parse any shortcodes in answer array.
-	foreach ( $attributes['answers'] as &$answer ) {
-		$answer['feedback'] = do_shortcode( $answer['feedback'] );
-		$answer['answer']   = do_shortcode( $answer['answer'] );
-	}
 
 	// Parse any shorcodes in feedback.
 	$attributes['feedback']['correct']   = do_shortcode( $attributes['feedback']['correct'] );
@@ -38,11 +32,13 @@ function bulb_render_block_tf( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the proposed data structure.
 	$data = [
-		'type'     => $attributes['type'],
-		'header'   => do_shortcode( $attributes['header'] ),
-		'body'     => do_shortcode( $attributes['body'] ),
-		'answers'  => $attributes['answers'],
-		'feedback' => $attributes['feedback'],
+		'type'          => $attributes['type'],
+		'header'        => do_shortcode( $attributes['header'] ),
+		'body'          => do_shortcode( $attributes['body'] ),
+		'answer'        => $attributes['answer'],
+		'answerRange'   => $attributes['answerRange'],
+		'decimalPlaces' => $attributes['decimalPlaces'],
+		'feedback'      => $attributes['feedback'],
 	];
 
 	// Save the block data as a JS variable.
@@ -59,31 +55,24 @@ function bulb_render_block_tf( $attributes, $content ) {
  *
  * @return void
  */
-function bulb_register_question_tf() {
+function bulb_register_question_cn() {
 	register_block_type(
-		'bulb/question-tf', [
+		'bulb/question-cn', [
 			'attributes'      => [
 				'id'                     => [],
 				'type'                   => [
-					'default' => 'true-false',
+					'default' => 'calculated-numeric',
 				],
-				'header'                 => [
-					'default' => 'Is the following statement true or false',
-				],
+				'header'                 => [],
 				'body'                   => [],
-				'answers'                => [
-					'default' => [
-						[
-							'answer'   => 'True',
-							'feedback' => '',
-							'correct'  => true,
-						],
-						[
-							'answer'   => 'False',
-							'feedback' => '',
-							'correct'  => false,
-						],
-					],
+				'answer'                 => [
+					'default' => '0.0',
+				],
+				'answerRange'            => [
+					'default' => '0.1',
+				],
+				'decimalPlaces'          => [
+					'default' => 3,
 				],
 				'feedback'               => [
 					'default' => [
@@ -104,8 +93,8 @@ function bulb_register_question_tf() {
 					'type' => 'string',
 				],
 			],
-			'render_callback' => 'bulb_render_block_tf',
+			'render_callback' => 'bulb_render_block_cn',
 		]
 	);
 }
-add_action( 'init', 'bulb_register_question_tf' );
+add_action( 'init', 'bulb_register_question_cn' );

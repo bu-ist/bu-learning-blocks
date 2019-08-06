@@ -1,5 +1,7 @@
 # BULB (Boston University Learning Blocks)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/b920b4489aa4ded7bd77/maintainability)](https://codeclimate.com/github/bu-ist/bu-learning-blocks/maintainability)
+
 ## Getting Started
 
 ### Local Environment
@@ -61,6 +63,13 @@ npm run test-php
 Code style in PHP is enforced using PHP_CodeSniffer. It is recommended that you install PHP_CodeSniffer and the WordPress Coding Standards for PHP_CodeSniffer ruleset using Composer. With Composer installed, run composer install from the project directory to install dependencies. The above npm run test-php will execute both unit tests and code linting. Code linting can be verified independently by running npm run lint-php.
 
 To run unit tests only, without the linter, use npm run test-unit-php instead.
+
+### Toggling WP_DEBUG
+
+```
+$ npm run enable-wp-debug
+$ npm run disable-wp-debug
+```
 
 ## Create Guten Block
 
