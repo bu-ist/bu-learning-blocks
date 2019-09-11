@@ -4,6 +4,8 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 const { Fragment } = wp.element;
+const { InspectorControls } = wp.editor;
+const { PanelBody, PanelRow, FormToggle } = wp.components;
 
 import Question from '../../components/Question';
 import Controls from '../../components/Controls';
@@ -33,6 +35,7 @@ export default registerBlockType( 'bulb/question-fitb', {
 				body,
 				answer,
 				feedback,
+				caseSensitive,
 				fontSize,
 				textAlignment,
 				textColorControl,
@@ -54,8 +57,27 @@ export default registerBlockType( 'bulb/question-fitb', {
 			} );
 		};
 
+		const toggleCaseSensitivity = event => setAttributes( { caseSensitive: event.target.checked } );
+
 		return (
 			<div className="bulb-question-fitb">
+				<InspectorControls>
+					<PanelBody>
+						<PanelRow>
+							<label
+								htmlFor="bulb-fitb-case-sensitivity"
+							>
+								{ __( 'Case sensitivity', 'bulearningblocks' ) }
+							</label>
+							<FormToggle
+								id="bulb-fitb-case-sensitivity"
+								label={ __( 'Case sensitivity', 'bulearningblocks' ) }
+								checked={ caseSensitive }
+								onChange={ toggleCaseSensitivity }
+							/>
+						</PanelRow>
+					</PanelBody>
+				</InspectorControls>
 				<Fragment>
 					<Controls { ...props } />
 					<Question

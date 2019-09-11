@@ -66,6 +66,9 @@ function bulb_register_question_fitb() {
 				'answer'                 => [
 					'default' => '',
 				],
+				'caseSensitive'          => [
+					'default' => true,
+				],
 				'feedback'               => [
 					'default' => [
 						'correct'   => '',
