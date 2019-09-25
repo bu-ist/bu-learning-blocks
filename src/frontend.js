@@ -112,5 +112,10 @@ function parseHTMLStringsCalculatedNumeric( questionData ) {
 
 function parseHTMLStringsFillInTheBlank( questionData ) {
 	const parsedQuestionData = parseHTMLStringsCommon( questionData );
+
+	// Ugly patch for boolean difficulties with wp_localize_script.
+	// Look at using wp_add_inline_instead.
+	parsedQuestionData.caseSensitive = !! parsedQuestionData.caseSensitive;
+
 	return parsedQuestionData;
 }
