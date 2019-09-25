@@ -57,7 +57,7 @@ export default registerBlockType( 'bulb/question-fitb', {
 			} );
 		};
 
-		const toggleCaseSensitivity = event => setAttributes( { caseSensitive: event.target.checked } );
+		const toggleCaseSensitivity = event => setAttributes( { caseSensitive: !! event.target.checked } );
 
 		return (
 			<div className="bulb-question-fitb">
