@@ -314,3 +314,39 @@
   }
 }
 ```
+
+## Question: Fill in the Blank
+
+```json
+{
+  "question": {
+    "type": "fill-in-the-blank",
+    "header": "String",
+    "body": "String",
+    "answer": "String",
+    "caseSensitive": "Boolean",
+    "feedback": {
+      "correct": "String",
+      "incorrect": "String"
+    }
+  }
+}
+```
+
+### Fill in the Blank Example
+
+``` json
+{
+  "quesstion": {
+    "type": "fill-in-the-blank",
+    "header": "Type in the word exactly in lower case",
+    "body": "What is the Spanish word for grandmother?",
+    "answer": "abuela",
+    "caseSensitive": true,
+    "feedback": {
+      "correct": "Yes, that is correct",
+      "incorrect": "No, that is not the exact lower case spelling",
+    }
+  }
+}
+```
