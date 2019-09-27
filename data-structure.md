@@ -337,7 +337,7 @@
 
 ``` json
 {
-  "quesstion": {
+  "question": {
     "type": "fill-in-the-blank",
     "header": "Type in the word exactly in lower case",
     "body": "What is the Spanish word for grandmother?",
