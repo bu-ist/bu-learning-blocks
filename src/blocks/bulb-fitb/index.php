@@ -32,11 +32,12 @@ function bulb_render_block_fitb( $attributes, $content ) {
 
 	// Transform gutenberg attributes into the front-end data structure.
 	$data = [
-		'type'     => $attributes['type'],
-		'header'   => do_shortcode( $attributes['header'] ),
-		'body'     => do_shortcode( $attributes['body'] ),
-		'answer'   => $attributes['answer'],
-		'feedback' => $attributes['feedback'],
+		'type'          => $attributes['type'],
+		'header'        => do_shortcode( $attributes['header'] ),
+		'body'          => do_shortcode( $attributes['body'] ),
+		'answer'        => $attributes['answer'],
+		'caseSensitive' => $attributes['caseSensitive'],
+		'feedback'      => $attributes['feedback'],
 	];
 
 	// Save the block data as a JS variable.
@@ -65,6 +66,9 @@ function bulb_register_question_fitb() {
 				'body'                   => [],
 				'answer'                 => [
 					'default' => '',
+				],
+				'caseSensitive'          => [
+					'default' => true,
 				],
 				'feedback'               => [
 					'default' => [
