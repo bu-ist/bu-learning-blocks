@@ -56,6 +56,8 @@ function parseHTMLStrings( questionData ) {
 			return parseHTMLStringsMultipleAnswer( questionData );
 		case 'calculated-numeric':
 			return parseHTMLStringsCalculatedNumeric( questionData );
+		case 'fill-in-the-blank':
+			return parseHTMLStringsFillInTheBlank( questionData );
 		default:
 			console.error(
 				`'${ questionData.type }' is not a recognized question type.`
@@ -105,5 +107,15 @@ function parseHTMLStringsMultipleAnswer( questionData ) {
 
 function parseHTMLStringsCalculatedNumeric( questionData ) {
 	const parsedQuestionData = parseHTMLStringsCommon( questionData );
+	return parsedQuestionData;
+}
+
+function parseHTMLStringsFillInTheBlank( questionData ) {
+	const parsedQuestionData = parseHTMLStringsCommon( questionData );
+
+	// Ugly patch for boolean difficulties with wp_localize_script.
+	// Look at using wp_add_inline_instead.
+	parsedQuestionData.caseSensitive = !! parsedQuestionData.caseSensitive;
+
 	return parsedQuestionData;
 }
