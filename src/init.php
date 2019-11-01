@@ -21,6 +21,7 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-cn/index.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-ma/index.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-mc/index.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-tf/index.php';
+require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-fitb/index.php';
 
 
 
