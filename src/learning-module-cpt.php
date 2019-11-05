@@ -14,23 +14,23 @@
 function bulb_register_learning_module_post_type() {
 	// Set various pieces of text, $labels is used inside the $args array.
 	$labels = array(
-		'name'               => __( 'Lessons', 'bulearningblocks' ),
-		'singular_name'      => __( 'Lesson', 'bulearningblocks' ),
+		'name'               => __( 'Lesson Pages', 'bulearningblocks' ),
+		'singular_name'      => __( 'Lesson Page', 'bulearningblocks' ),
 		'menu_name'          => __( 'Courses', 'bulearningblocks' ),
-		'add_new'            => __( 'Add New Lesson', 'bulearningblocks' ),
-		'add_new_item'       => __( 'Add New Lesson', 'bulearningblocks' ),
-		'edit_item'          => __( 'Edit Lesson', 'bulearningblocks' ),
-		'update_item'        => __( 'Update Lesson', 'bulearningblocks' ),
-		'new_item'           => __( 'New Lesson', 'bulearningblocks' ),
-		'all_items'          => __( 'All Lessons', 'bulearningblocks' ),
-		'view_item'          => __( 'View Lesson', 'bulearningblocks' ),
-		'view_items'         => __( 'View Lessons', 'bulearningblocks' ),
-		'attributes'         => __( 'Lesson Attributes', 'bulearningblocks' ),
-		'search_items'       => __( 'Search Lessons', 'bulearningblocks' ),
-		'not_found'          => __( 'No Lessons found', 'bulearningblocks' ),
-		'not_found_in_trash' => __( 'No Lessons found in Trash', 'bulearningblocks' ),
-		'archives'           => __( 'Lesson Archives', 'bulearningblocks' ),
-		'parent_item_colon'  => __( 'Lesson:', 'bulearningblocks' ),
+		'add_new'            => __( 'New Page', 'bulearningblocks' ),
+		'add_new_item'       => __( 'New Lesson Page', 'bulearningblocks' ),
+		'edit_item'          => __( 'Edit Lesson Page', 'bulearningblocks' ),
+		'update_item'        => __( 'Update Lesson Page', 'bulearningblocks' ),
+		'new_item'           => __( 'New Lesson Page', 'bulearningblocks' ),
+		'all_items'          => __( 'All Lesson Pages', 'bulearningblocks' ),
+		'view_item'          => __( 'View Lesson Page', 'bulearningblocks' ),
+		'view_items'         => __( 'View Lesson Pages', 'bulearningblocks' ),
+		'attributes'         => __( 'Lesson Page Attributes', 'bulearningblocks' ),
+		'search_items'       => __( 'Search Lesson Pages', 'bulearningblocks' ),
+		'not_found'          => __( 'No Lesson Pages found', 'bulearningblocks' ),
+		'not_found_in_trash' => __( 'No Lessons Pages found in Trash', 'bulearningblocks' ),
+		'archives'           => __( 'Lesson Page Archives', 'bulearningblocks' ),
+		'parent_item_colon'  => __( 'Lesson Page:', 'bulearningblocks' ),
 	);
 	$rewrite = array(
 		'slug'       => 'lessons',
@@ -46,7 +46,7 @@ function bulb_register_learning_module_post_type() {
 		'public'              => true,
 		'publicly_queryable'  => true,
 		'query_var'           => true,
-		'capability_type'     => 'page',
+		'capability_type'     => 'post',
 		'supports'            => array(
 			'title',
 			'editor',
@@ -67,7 +67,6 @@ function bulb_register_learning_module_post_type() {
 		'menu_position'       => 30,
 		'exclude_from_search' => false,
 	);
-
 	register_post_type( 'bulb-learning-module', $args );
 }
 add_action( 'init', 'bulb_register_learning_module_post_type' );
@@ -98,7 +97,7 @@ function register_taxonomies() {
 	);
 	$args    = array(
 		'labels'            => $labels,
-		'hierarchical'      => false,
+		'hierarchical'      => true,
 		'public'            => true,
 		'show_ui'           => true,
 		'show_admin_column' => true,
@@ -165,6 +164,30 @@ function get_custom_post_type_template( $archive_template ) {
 	return $archive_template;
 }
 add_filter( 'archive_template', 'get_custom_post_type_template' );
+
+/**
+ * Enqueue the custom Taxonomy's archive template.
+ *
+ * @param string $archive Template file to be filtered.
+ *
+ * @return string $archive Filtered template.
+ *
+ * @since 0.0.5
+ */
+function bulb_archive_template( $template ) {
+
+	/* Checks for single template by post type */
+	if ( is_tax( 'bulb-courses' ) ) {
+		if ( file_exists( BULB_PLUGIN_DIR_PATH . 'src/taxonomy-bulb-courses.php' ) ) {
+			return BULB_PLUGIN_DIR_PATH . 'src/taxonomy-bulb-courses.php';
+		}
+	}
+
+	return $template;
+
+}
+/* Filter the single_template with our custom function*/
+add_filter( 'template_include', 'bulb_archive_template' );
 
 /**
  * Load script to kill attributes panel in Document editor panel.
