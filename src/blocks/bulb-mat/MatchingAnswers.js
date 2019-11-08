@@ -4,12 +4,7 @@ export default ( {
 	answers = [],
 	onChangeAnswers,
 	minAnswers = 1,
-	maxAnswers = 1,
-	defaultAnswer = {
-		answer: '',
-		feedback: '',
-		correct: false,
-	},
+	maxAnswers = 12,
 	feedbackPerAnswer = true,
 } ) => {
 	const onChangeAnswerValue = ( newAnswerValue, index ) => {
@@ -25,10 +20,11 @@ export default ( {
 	};
 
 	const onChangeCorrect = ( newCorrect, index ) => {
+		const oldCorrect = answers[ index ].correct;
 		const newAnswers = answers.map( ( answer ) => {
-			// Correct propery must be unique, so remove the newCorrect value from any answer that may already be using it.
+			// Correct propery must be unique, so swap for the old correct on a conflicting answer.
 			if ( answer.correct === newCorrect ) {
-				answer.correct = '';
+				answer.correct = oldCorrect;
 			}
 			return answer;
 		} );
@@ -39,7 +35,12 @@ export default ( {
 
 	const onAddAnswer = () => {
 		if ( answers.length < maxAnswers ) {
-			const newAnswers = [ ...answers, defaultAnswer ];
+			// Add next letter as the default correct on new answers.
+			const newAnswers = [ ...answers, {
+				answer: '',
+				feedback: '',
+				correct: String.fromCharCode( 65 + ( answers.length ) ),
+			} ];
 			onChangeAnswers( newAnswers );
 		}
 	};
