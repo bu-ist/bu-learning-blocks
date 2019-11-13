@@ -17,31 +17,23 @@
 get_header();
 ?>
 
-        <section id="primary" class="content-area">
-                <main id="main" class="site-main">
-
-                <?php
-                if ( have_posts() ) {
-
-                        // Load posts loop.
-                        while ( have_posts() ) {
-                                the_post();
-                                get_template_part( 'template-parts/content/content' );
-                        }
-
-                        // Previous/next page navigation.
-                        // twentynineteen_the_posts_navigation();
-
-                } else {
-
-                        // If no content, include the "No posts found" template.
-                        get_template_part( 'template-parts/content/content', 'none' );
-
-                }
-                ?>
-
-                </main><!-- .site-main -->
-        </section><!-- .content-area -->
-
+<h1>Course Title: <?php echo single_term_title( ); ?></h1>
 <?php
+
+if ( have_posts() ) :
+	while ( have_posts() ) :
+		the_post();
+		// echo get_the_term_list( $post->ID, 'bulb-courses', '<p><strong>Course Title: </strong>', ', ', '</p>');
+		?>
+		<a href="<?php the_permalink(); ?>"><?php the_title( ); ?></a>
+		</br>
+		<?php the_time(); ?>
+		</br>
+		<?php the_author(); ?>
+		</br>
+		</br>
+		<?php
+	endwhile;
+endif;
+
 get_footer();
