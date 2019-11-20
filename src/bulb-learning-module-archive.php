@@ -17,9 +17,10 @@ $terms = get_terms(
 		'hide_empty' => 1,
 	)
 ); ?>
-<h1>Course Index:</h1>
+<h1 class="bulb-page-title">Course Index:</h1>
 
-<div class="bulb-container bulb-container--narrow bulb-page-section">
+<section class="bulb-archive-container" >
+
 <?php
 
 foreach( $terms as $term ) {
@@ -34,20 +35,21 @@ foreach( $terms as $term ) {
 	);
 	$query = new WP_Query( $args );
 
-	echo'<h2>' . $term->name . '</h2>';
+	echo'<h2 class="bulb-term-heading">' . $term->name . '</h2>';
 
-	echo '<ul>';
+	echo '<ul class="bulb-list">';
 	while ( $query->have_posts() ) : $query->the_post(); ?>
-	<li class="post-item" id="post-<?php the_ID(); ?>">
+	<li class="bulb-list-item" id="post-<?php the_ID(); ?>">
 		<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 	</li>
 		<?php
 	endwhile;
 
 	echo '</ul>';
+	echo '<hr>';
 	wp_reset_postdata();
 }
 ?>
-</div>
+</section>
 <?php
 get_footer();
