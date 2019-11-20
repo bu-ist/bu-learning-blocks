@@ -154,6 +154,9 @@
   /* Current page background */
   color: #f4f4f4; }
 
+.bulb-page-links {
+  border: 1px solid black; }
+
 /**
  * Editor styles for the admin
  */
@@ -314,6 +317,9 @@
   background: #626e81;
   /* Current page background */
   color: #f4f4f4; }
+
+.bulb-page-links {
+  border: 1px solid black; }
 /**
  * #.# Common SCSS
  *
@@ -469,6 +475,9 @@
   background: #626e81;
   /* Current page background */
   color: #f4f4f4; }
+
+.bulb-page-links {
+  border: 1px solid black; }
 /**
  * #.# Common SCSS
  *
@@ -624,6 +633,9 @@
   background: #626e81;
   /* Current page background */
   color: #f4f4f4; }
+
+.bulb-page-links {
+  border: 1px solid black; }
 /**
  * #.# Common SCSS
  *
@@ -779,6 +791,9 @@
   background: #626e81;
   /* Current page background */
   color: #f4f4f4; }
+
+.bulb-page-links {
+  border: 1px solid black; }
 
 /**
  * Editor styles for the admin

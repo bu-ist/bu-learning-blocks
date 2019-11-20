@@ -17,19 +17,31 @@
 get_header();
 ?>
 
-<h1>Course Title: <?php echo single_term_title( ); ?></h1>
+<h1><strong>Course Title:</strong> <?php echo single_term_title(); ?></h1>
+<h3><?php single_term_title(); ?> Lessons:</h3>
 <?php
 
-if ( have_posts() ) :
-	while ( have_posts() ) :
-		the_post();
-		// echo get_the_term_list( $post->ID, 'bulb-courses', '<p><strong>Course Title: </strong>', ', ', '</p>');
+$args = array(
+	'paged'          => $paged,
+	'orderby'        => 'menu_order',
+	'order'          => 'ASC',
+	'posts_per_page' => -1,
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'bulb-courses',
+			'field'    => 'slug',
+			'terms'    => get_queried_object(),
+		),
+	),
+);
+
+$bulb_query = new WP_Query( $args );
+
+if ( $bulb_query->have_posts() ) :
+	while ( $bulb_query->have_posts() ) :
+		$bulb_query->the_post();
 		?>
 		<a href="<?php the_permalink(); ?>"><?php the_title( ); ?></a>
-		</br>
-		<?php the_time(); ?>
-		</br>
-		<?php the_author(); ?>
 		</br>
 		</br>
 		<?php

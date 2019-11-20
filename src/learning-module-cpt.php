@@ -1,10 +1,55 @@
 <?php
 /**
- * Register the Learning Module custom post type.
+ * Register the 'bulb-learning-module' custom post type.
  *
  * @since   0.0.1
  * @package BU Learning Blocks
  */
+
+/**
+ * Calls register_taxonomy
+ *
+ * @since 0.0.6
+ */
+function register_course_tax() {
+
+	$labels  = array(
+		'name'                       => _x( 'Courses', 'Taxonomy General Name', 'bulearningblocks' ),
+		'singular_name'              => _x( 'Course', 'Taxonomy Singular Name', 'bulearningblocks' ),
+		'menu_name'                  => __( 'Courses', 'bulearningblocks' ),
+		'all_items'                  => __( 'All Courses', 'bulearningblocks' ),
+		'view_item'                  => __( 'View Course', 'bulearningblocks' ),
+		'parent_item'                => __( 'Parent Course', 'bulearningblocks' ),
+		'parent_item_colon'          => __( 'Parent Course:', 'bulearningblocks' ),
+		'new_item_name'              => __( 'New Course Name', 'bulearningblocks' ),
+		'add_new_item'               => __( 'Assign Course', 'bulearningblocks' ),
+		'edit_item'                  => __( 'Edit Course', 'bulearningblocks' ),
+		'update_item'                => __( 'Update Course', 'bulearningblocks' ),
+		'separate_items_with_commas' => __( 'Separate courses with commas', 'bulearningblocks' ),
+		'search_items'               => __( 'Search Courses', 'bulearningblocks' ),
+		'add_or_remove_items'        => __( 'Add or remove courses', 'bulearningblocks' ),
+		'choose_from_most_used'      => __( 'Choose from the most used courses', 'bulearningblocks' ),
+		'not_found'                  => __( 'Not Found', 'bulearningblocks' ),
+	);
+	$rewrite = array(
+		'slug'         => 'courses',
+		'with_front'   => false,
+	);
+	$args    = array(
+		'labels'            => $labels,
+		'hierarchical'      => false,
+		'public'            => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_nav_menus' => true,
+		'show_in_rest'      => true,
+		'show_tagcloud'     => true,
+		'rewrite'           => $rewrite,
+		'has_archive'       => true,
+	);
+	register_taxonomy( 'bulb-courses', 'bulb-learning-module', $args );
+}
+add_action( 'init', 'register_course_tax' );
 
 /**
  * Calls register_post_type
@@ -30,17 +75,16 @@ function bulb_register_learning_module_post_type() {
 		'not_found'          => __( 'No Lesson Pages found', 'bulearningblocks' ),
 		'not_found_in_trash' => __( 'No Lessons Pages found in Trash', 'bulearningblocks' ),
 		'archives'           => __( 'Lesson Page Archives', 'bulearningblocks' ),
-		'parent_item_colon'  => __( 'Lesson Page:', 'bulearningblocks' ),
+		'parent_item_colon'  => __( 'Parent Lesson Page:', 'bulearningblocks' ),
 	);
 	$rewrite = array(
 		'slug'       => 'lessons',
-		'with_front' => true,
-		'pages'      => true,
-		'feeds'      => false,
+		'with_front' => false,
 	);
 
 	// Set various pieces of information about the post type.
 	$args = array(
+		'label'               => __( 'lesson', 'bulearningblocks' ),
 		'labels'              => $labels,
 		'description'         => __( 'Holds our Lessons', 'bulearningblocks' ),
 		'public'              => true,
@@ -52,7 +96,6 @@ function bulb_register_learning_module_post_type() {
 			'editor',
 			'author',
 			'revisions',
-			'custom-fields',
 			'page-attributes',
 		),
 		'taxonomies'          => array( 'bulb-courses' ),
@@ -70,47 +113,6 @@ function bulb_register_learning_module_post_type() {
 	register_post_type( 'bulb-learning-module', $args );
 }
 add_action( 'init', 'bulb_register_learning_module_post_type' );
-
-function register_taxonomies() {
-
-	$labels  = array(
-		'name'                       => _x( 'Courses', 'Taxonomy General Name', 'bulearningblocks' ),
-		'singular_name'              => _x( 'Course', 'Taxonomy Singular Name', 'bulearningblocks' ),
-		'menu_name'                  => __( 'Courses', 'bulearningblocks' ),
-		'all_items'                  => __( 'All Courses', 'bulearningblocks' ),
-		'view_item'                  => __( 'View Course', 'bulearningblocks' ),
-		'parent_item'                => __( 'Parent Course', 'bulearningblocks' ),
-		'parent_item_colon'          => __( 'Parent Course:', 'bulearningblocks' ),
-		'new_item_name'              => __( 'New Course Name', 'bulearningblocks' ),
-		'add_new_item'               => __( 'Add New Course', 'bulearningblocks' ),
-		'edit_item'                  => __( 'Edit Course', 'bulearningblocks' ),
-		'update_item'                => __( 'Update Course', 'bulearningblocks' ),
-		'separate_items_with_commas' => __( 'Separate courses with commas', 'bulearningblocks' ),
-		'search_items'               => __( 'Search Courses', 'bulearningblocks' ),
-		'add_or_remove_items'        => __( 'Add or remove courses', 'bulearningblocks' ),
-		'choose_from_most_used'      => __( 'Choose from the most used courses', 'bulearningblocks' ),
-		'not_found'                  => __( 'Not Found', 'bulearningblocks' ),
-	);
-	$rewrite = array(
-		'slug'         => 'courses',
-		'with_front'   => true,
-		'hierarchical' => false,
-	);
-	$args    = array(
-		'labels'            => $labels,
-		'hierarchical'      => true,
-		'public'            => true,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'show_in_nav_menus' => true,
-		'show_in_rest'      => true,
-		'show_tagcloud'     => true,
-		'rewrite'           => $rewrite,
-		'has_archive'       => true,
-	);
-	register_taxonomy( 'bulb-courses', 'bulb-learning-module', $args );
-}
-add_action( 'init', 'register_taxonomies' );
 
 /**
  * Flush rewrite rules for CPT

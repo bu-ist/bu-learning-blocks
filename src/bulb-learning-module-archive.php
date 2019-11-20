@@ -38,6 +38,7 @@ function get_bulb_parents( $bulb_query ) {
 add_filter( 'pre_get_posts', 'get_bulb_parents' );
 ?>
 
+<h1>Lesson Parent Pages:</h1>
 <div class="bulb-container bulb-container--narrow bulb-page-section">
 <?php
 while ( $bulb_query->have_posts() ) {

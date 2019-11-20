@@ -154,6 +154,9 @@
   /* Current page background */
   color: #f4f4f4; }
 
+.bulb-page-links {
+  border: 1px solid black; }
+
 .answer-list {
   list-style-type: none;
   padding-left: 2.5em;
@@ -342,6 +345,9 @@
   background: #626e81;
   /* Current page background */
   color: #f4f4f4; }
+
+.bulb-page-links {
+  border: 1px solid black; }
 
 .question {
   background: #eeeeee;
