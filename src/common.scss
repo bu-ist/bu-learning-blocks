@@ -109,7 +109,6 @@ $aqua-forest: #6aac70;
 
 .bulb-container {
 	flex: 0 1 auto;
-	border: 1px solid red;
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
@@ -118,7 +117,8 @@ $aqua-forest: #6aac70;
 .bulb-page-links {
 	flex: 1 0 200px;
 	width: 200px;
-	margin-right: 40px;
+	// margin-right: 40px;
+	float: right;
 }
 
 .bulb-page-links__title {

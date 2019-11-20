@@ -57,8 +57,8 @@ function bulb_widgets_init() {
 			'name'          => __( 'BULB Module Sidebar' ),
 			'id'            => 'bulb-module-sidebar',
 			'description'   => __( 'Add widgets here to appear on your BULB module pages.' ),
-			'before_widget' => '<aside id="sidebarPosts">',
-			'after_widget'  => '</aside>',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
 			'before_title'  => '<h3 class="widget-title">',
 			'after_title'   => '</h3>',
 		)

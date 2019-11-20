@@ -6,6 +6,18 @@
  */
 
 get_header();
+?>
+<div class="bulb-container bulb-container--narrow bulb-page-section">
+
+<?php if ( is_active_sidebar( 'bulb-module-sidebar' ) ) : ?>
+	<div class="sidebar bulb-module-sidebar">
+		<?php dynamic_sidebar( 'bulb-module-sidebar' ); ?>
+	</div>
+<?php endif; ?>
+
+
+<?php
+
 $the_parent_id = wp_get_post_parent_id( get_the_id() );
 $test_children = get_pages(
 	array(
@@ -38,7 +50,6 @@ if ( $the_parent_id || $test_children ) {
 	</div><!-- #page-links -->
 <?php } ?>
 
-<div class="bulb-container bulb-container--narrow bulb-page-section">
 	<div id="primary">
 		<main id="main" class="site-main">
 
@@ -132,9 +143,5 @@ if ( $the_parent_id || $test_children ) {
 	</div><!-- #primary -->
 </div><!-- #container -->
 <br>
-
 <?php
-if ( ! function_exists( 'dynamic_sidebar' ) || ! dynamic_sidebar( 'BULB Module Sidebar' ) ) {
-	dynamic_sidebar( 'BULB Module Sidebar' );
-}
 get_footer();
