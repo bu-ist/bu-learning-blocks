@@ -17,7 +17,7 @@ $terms = get_terms(
 		'hide_empty' => 1,
 	)
 ); ?>
-<h1 class="bulb-page-title">Course Index:</h1>
+<h1 class="bulb-page-title">Lesson Index:</h1>
 
 <section class="bulb-archive-container" >
 
@@ -29,7 +29,7 @@ foreach( $terms as $term ) {
 		'paged'          => $paged,
 		'posts_per_page' => -1,
 		'post_type' => 'bulb-learning-module',
-		'orderby'        => 'title',
+		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
 		'bulb-courses' => $term->slug
 	);

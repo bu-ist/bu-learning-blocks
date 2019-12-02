@@ -17,8 +17,8 @@
 get_header();
 ?>
 
-<h1><strong>Course Title:</strong> <?php echo single_term_title(); ?></h1>
-<h3><?php single_term_title(); ?> Lessons:</h3>
+<h1><strong>Lesson Title:</strong> <?php echo single_term_title(); ?></h1>
+<h3><?php single_term_title(); ?> Lesson Pages:</h3>
 <?php
 
 $args = array(
