@@ -23,22 +23,25 @@ $terms = get_terms(
 
 <?php
 
-foreach( $terms as $term ) {
-	// Define the query
-	$args = array(
+foreach ( $terms as $term_item ) {
+	// Define the query.
+	$args  = array(
 		'paged'          => $paged,
 		'posts_per_page' => -1,
-		'post_type' => 'bulb-learning-module',
+		'post_type'      => 'bulb-learning-module',
 		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
-		'bulb-courses' => $term->slug
+		'bulb-courses'   => $term_item->slug,
 	);
 	$query = new WP_Query( $args );
+	$name  = $term_item->name;
 
-	echo'<h2 class="bulb-term-heading">' . $term->name . '</h2>';
+	echo '<h2 class="bulb-term-heading">' . esc_html( $name ) . '</h2>';
 
 	echo '<ul class="bulb-list">';
-	while ( $query->have_posts() ) : $query->the_post(); ?>
+	while ( $query->have_posts() ) :
+		$query->the_post();
+		?>
 	<li class="bulb-list-item" id="post-<?php the_ID(); ?>">
 		<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 	</li>

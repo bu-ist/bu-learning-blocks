@@ -26,7 +26,7 @@ $args = array(
 	'orderby'        => 'menu_order',
 	'order'          => 'ASC',
 	'posts_per_page' => -1,
-	'tax_query' => array(
+	'tax_query'      => array(
 		array(
 			'taxonomy' => 'bulb-courses',
 			'field'    => 'slug',
@@ -41,7 +41,7 @@ if ( $bulb_query->have_posts() ) :
 	while ( $bulb_query->have_posts() ) :
 		$bulb_query->the_post();
 		?>
-		<a href="<?php the_permalink(); ?>"><?php the_title( ); ?></a>
+		<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 		</br>
 		</br>
 		<?php

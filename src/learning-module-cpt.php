@@ -32,8 +32,8 @@ function register_course_tax() {
 		'not_found'                  => __( 'Not Found', 'bulearningblocks' ),
 	);
 	$rewrite = array(
-		'slug'         => 'courses',
-		'with_front'   => false,
+		'slug'       => 'courses',
+		'with_front' => false,
 	);
 	$args    = array(
 		'labels'            => $labels,
@@ -58,7 +58,7 @@ add_action( 'init', 'register_course_tax' );
  */
 function bulb_register_learning_module_post_type() {
 	// Set various pieces of text, $labels is used inside the $args array.
-	$labels = array(
+	$labels  = array(
 		'name'               => __( 'Lesson Pages', 'bulearningblocks' ),
 		'singular_name'      => __( 'Lesson Page', 'bulearningblocks' ),
 		'menu_name'          => __( 'BULB Lessons', 'bulearningblocks' ),
@@ -171,9 +171,9 @@ add_filter( 'archive_template', 'get_custom_post_type_template' );
 /**
  * Enqueue the custom Taxonomy's archive template.
  *
- * @param string $archive Template file to be filtered.
+ * @param string $template Template file to be filtered.
  *
- * @return string $archive Filtered template.
+ * @return string $template Filtered template.
  *
  * @since 0.0.5
  */
