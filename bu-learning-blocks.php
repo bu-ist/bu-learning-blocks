@@ -47,6 +47,26 @@ function gutenberg_notice() {
 }
 
 /**
+ * BULB Activation Hook registration
+ *
+ * @since 0.0.6
+ */
+	/**
+	 * Activate_bulb
+	 *
+	 * All the activation checks needed to ensure BULB is ready for use
+	 *
+	 * @since 0.0.6
+	 */
+function activate_bulb() {
+	if ( false === get_option( 'bulb_installed', false ) ) {
+		update_option( 'bulb_cpt_install_dialog', 1 );
+	}
+	update_option( 'bulb_installed', 1 );
+}
+register_activation_hook( BULB_PLUGIN_FILE_PATH, 'activate_bulb' );
+
+/**
  * Initializes plugin on plugins_loaded.
  *
  * Waits for plugins_loaded hook to properly call function_exists.

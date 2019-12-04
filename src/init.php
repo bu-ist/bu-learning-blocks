@@ -43,8 +43,45 @@ add_filter(
 	2
 );
 
+/**
+ * Load the cpt install dialog if we haven't already.
+ */
+if ( get_option( 'bulb_cpt_install_dialog' ) ) {
+	add_action( 'admin_init', 'load_cpt_install_dialog' );
+}
+function load_cpt_install_dialog() {
+	?>
+		<div id="message" class="updated notice is-dismissible">
+			<p>
+				<?php echo wp_kses_post( __( '<strong>Welcome to BU Learning Blocks</strong>', 'bulearningblocks' ) ); ?>
+			</p>
+
+			<p class="submit">
+
+				<a href="<?php echo esc_url( add_query_arg( 'install_bulb_cpt', 'true' ) ); ?>"
+				class="button-primary">
+
+					<?php esc_html_e( 'Install Blocks and Pages', 'bulearningblocks' ); ?>
+
+				</a>
+
+				<a class="skip button" href="<?php echo esc_url( add_query_arg( 'skip_install_bulb_pages', 'true' ) ); ?>">
+
+					<?php esc_html_e( 'Install Blocks Only', 'bulearningblocks' ); ?>
+
+				</a>
+
+			</p>
+		</div>
+	<?php
+
+	// delete_option( 'bulb_cpt_install_dialog' );
+}
+
+
 // Register a learning-module custom post type.
 require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
+
 
 /**
  * Register a dynamic sidebar
