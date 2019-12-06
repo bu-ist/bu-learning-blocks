@@ -52,19 +52,25 @@ function gutenberg_notice() {
  * @since 0.0.6
  */
 	/**
-	 * Activate_bulb
+	 * Activate BULB
 	 *
 	 * All the activation checks needed to ensure BULB is ready for use
 	 *
 	 * @since 0.0.6
 	 */
-function activate_bulb() {
-	if ( false === get_option( 'bulb_installed', false ) ) {
+function bulb_activate() {
+	if ( false === get_option( 'bulb_active', false ) ) {
 		update_option( 'bulb_cpt_install_dialog', 1 );
 	}
-	update_option( 'bulb_installed', 1 );
+	update_option( 'bulb_active', 1 );
 }
-register_activation_hook( BULB_PLUGIN_FILE_PATH, 'activate_bulb' );
+register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_activate' );
+
+function bulb_deactivate() {
+	delete_option( 'bulb_active' );
+	delete_option( 'bulb_cpt_install' );
+}
+register_deactivation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_deactivate' );
 
 /**
  * Initializes plugin on plugins_loaded.

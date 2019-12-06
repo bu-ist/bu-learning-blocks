@@ -70,7 +70,7 @@ if ( get_option( 'bulb_cpt_install_dialog' ) ) {
  */
 function load_cpt_install_dialog() {
 	?>
-			<div id="message" class="updated notice is-dismissible">
+			<div id="message" class="updated notice">
 			<p>
 				<?php echo wp_kses_post( __( '<strong>Welcome to BU Learning Blocks</strong>', 'bulearningblocks' ) ); ?>
 			</p>
