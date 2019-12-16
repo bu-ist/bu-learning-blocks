@@ -8,7 +8,7 @@
  * @package BU Learning Blocks
  */
 
-// Exit if accessed dire ctly.
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
