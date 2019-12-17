@@ -26,7 +26,7 @@ $args = array(
 	'orderby'        => 'menu_order',
 	'order'          => 'ASC',
 	'posts_per_page' => -1,
-	'tax_query'      => array(
+	'tax_query'      => array( // WPCS: slow query ok.
 		array(
 			'taxonomy' => 'bulb-courses',
 			'field'    => 'slug',
