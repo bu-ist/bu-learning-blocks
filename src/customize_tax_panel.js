@@ -1,5 +1,14 @@
 var el = wp.element.createElement;
 
+/**
+ * Customizes the label within the taxonomy editor component.
+ *
+ * @since 0.0.7
+ *
+ * @param {Component} OriginalComponent Post taxonomy editor component.
+ *
+ * @returns {Component} The customized editor component.
+ */
 function customizeLessonSelector( OriginalComponent ) {
 	return function( props ) {
 		if ( props.slug === 'bulb-courses' ) {
