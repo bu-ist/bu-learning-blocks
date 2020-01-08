@@ -209,3 +209,19 @@ function remove_bulb_attributes_panel() {
 if ( class_exists( 'BU_Navigation_Plugin' ) ) {
 	add_action( 'enqueue_block_editor_assets', 'remove_bulb_attributes_panel' );
 }
+
+/**
+ * Load script to customize the taxonomy menu in the lesson page editor.
+ *
+ * @since 0.0.7
+ */
+function bulb_add_admin_scripts() {
+	wp_enqueue_script(
+		'customize_tax_panel',
+		BULB_PLUGIN_URL . 'src/customize_tax_panel.js',
+		array(),
+		filemtime( plugin_dir_path( __DIR__ ) . 'src/customize_tax_panel.js' ), // Gets file modification time for cache busting.
+		true // Enqueue the script in the footer.
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'bulb_add_admin_scripts' );
