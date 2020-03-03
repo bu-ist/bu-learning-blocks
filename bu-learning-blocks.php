@@ -47,6 +47,34 @@ function gutenberg_notice() {
 }
 
 /**
+ * BULB Activation Hook registration
+ *
+ * All the activation checks needed to ensure BULB is ready for use
+ *
+ * @since 0.0.6
+ */
+function bulb_activate() {
+	if ( false === get_option( 'bulb_active', false ) ) {
+		update_option( 'bulb_cpt_install_dialog', 1 );
+	}
+	update_option( 'bulb_active', 1 );
+}
+register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_activate' );
+
+/**
+ * BULB De-activation Hook registration
+ *
+ * All the de-activation checks needed to ensure BULB is properly de-activated
+ *
+ * @since 0.0.6
+ */
+function bulb_deactivate() {
+	delete_option( 'bulb_active' );
+	delete_option( 'bulb_cpt_install' );
+}
+register_deactivation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_deactivate' );
+
+/**
  * Initializes plugin on plugins_loaded.
  *
  * Waits for plugins_loaded hook to properly call function_exists.
