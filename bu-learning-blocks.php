@@ -7,7 +7,7 @@
  * Author URI: http://www.bu.edu/
  * Text Domain: bulearningblocks
  * Domain Path: /languages
- * Version: 0.0.6
+ * Version: v0.0.7
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
