@@ -18,11 +18,11 @@ export default ( {
 	<div className="bulb-editor-answer">
 		<div className="bulb-answer-content">
 			<div className="bulb-editor-answer-label">
-				{ __( 'Answer', 'bulearningblocks' ) } { index + 1 }
+				{ __( 'Prompt', 'bulearningblocks' ) } { index + 1 }
 			</div>
 			<RichText
 				tagName="p"
-				placeholder={ __( 'Answer', 'bulearningblocks' ) }
+				placeholder={ __( 'Prompt', 'bulearningblocks' ) }
 				keepPlaceholderOnFocus={ true }
 				className="answer-text"
 				onChange={ newAnswerValue => {
@@ -33,11 +33,11 @@ export default ( {
 			{ feedbackPerAnswer && (
 				<Fragment>
 					<div className="bulb-editor-answer-label-feedback">
-						{ __( 'Feedback', 'bulearningblocks' ) }
+						{ __( 'Answer', 'bulearningblocks' ) }
 					</div>
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Feedback', 'bulearningblocks' ) }
+						placeholder={ __( 'Answer', 'bulearningblocks' ) }
 						keepPlaceholderOnFocus={ true }
 						className="answer-feedback"
 						onChange={ newFeedback => {
@@ -48,7 +48,7 @@ export default ( {
 				</Fragment>
 			) }
 			<SelectControl
-				label={ __( 'Correct' ) }
+				label={ __( 'Sequence' ) }
 				value={ correct }
 				onChange={ newCorrect => onChangeCorrect( newCorrect, index ) }
 				// Make A, B, C, D options for as many answers that currently exist.

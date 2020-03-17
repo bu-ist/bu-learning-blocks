@@ -71,13 +71,13 @@ export default ( {
 
 	const renderAddAnswer = () => {
 		if ( answers.length < maxAnswers ) {
-			return <button onClick={ onAddAnswer }>Add Answer</button>;
+			return <button onClick={ onAddAnswer }>Add Pair</button>;
 		}
 	};
 
 	return (
 		<div>
-			<h5 className="bulb-editor-section-label">Answers</h5>
+			<h5 className="bulb-editor-section-label">Pairs</h5>
 			{ renderAnswers() }
 			{ renderAddAnswer() }
 		</div>
