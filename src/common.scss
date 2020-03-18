@@ -109,12 +109,16 @@ $aqua-forest: #6aac70;
 
 .bulb-container {
 	flex: 0 1 auto;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .bulb-page-links {
 	flex: 1 0 200px;
 	width: 200px;
-	margin-right: 40px;
+	// margin-right: 40px;
+	float: right;
 }
 
 .bulb-page-links__title {
@@ -190,4 +194,26 @@ $aqua-forest: #6aac70;
 	padding: 6px 9px 5px 9px;
 	background: $lightgray; /* Current page background */
 	color: $white;
+}
+
+.bulb-page-links {
+	border: 1px solid black;
+}
+
+.bulb-page-title {
+	text-align: center;
+}
+
+.bulb-archive-container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+
+.bulb-list {
+	list-style-type: none;
+}
+
+.bulb-list-item {
+	padding-left: 2%;
 }

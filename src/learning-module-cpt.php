@@ -1,10 +1,55 @@
 <?php
 /**
- * Register the Learning Module custom post type.
+ * Register the 'bulb-learning-module' custom post type.
  *
  * @since   0.0.1
  * @package BU Learning Blocks
  */
+
+/**
+ * Calls register_taxonomy
+ *
+ * @since 0.0.6
+ */
+function register_course_tax() {
+
+	$labels  = array(
+		'name'                       => _x( 'Lessons', 'Taxonomy General Name', 'bulearningblocks' ),
+		'singular_name'              => _x( 'Lesson', 'Taxonomy Singular Name', 'bulearningblocks' ),
+		'menu_name'                  => __( 'Lessons', 'bulearningblocks' ),
+		'all_items'                  => __( 'All Lessons', 'bulearningblocks' ),
+		'view_item'                  => __( 'View Lesson', 'bulearningblocks' ),
+		'parent_item'                => __( 'Parent Lesson', 'bulearningblocks' ),
+		'parent_item_colon'          => __( 'Parent Lesson:', 'bulearningblocks' ),
+		'new_item_name'              => __( 'New Lesson Name', 'bulearningblocks' ),
+		'add_new_item'               => __( 'Create Lesson', 'bulearningblocks' ),
+		'edit_item'                  => __( 'Edit Lesson', 'bulearningblocks' ),
+		'update_item'                => __( 'Update Lesson', 'bulearningblocks' ),
+		'separate_items_with_commas' => __( 'Separate lessons with commas', 'bulearningblocks' ),
+		'search_items'               => __( 'Search Lessons', 'bulearningblocks' ),
+		'add_or_remove_items'        => __( 'Add or remove lessons', 'bulearningblocks' ),
+		'choose_from_most_used'      => __( 'Choose from the most used lessons', 'bulearningblocks' ),
+		'not_found'                  => __( 'Not Found', 'bulearningblocks' ),
+	);
+	$rewrite = array(
+		'slug'       => 'courses',
+		'with_front' => false,
+	);
+	$args    = array(
+		'labels'            => $labels,
+		'hierarchical'      => false,
+		'public'            => true,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'show_in_nav_menus' => true,
+		'show_in_rest'      => true,
+		'show_tagcloud'     => true,
+		'rewrite'           => $rewrite,
+		'has_archive'       => true,
+	);
+	register_taxonomy( 'bulb-courses', 'bulb-learning-module', $args );
+}
+add_action( 'init', 'register_course_tax' );
 
 /**
  * Calls register_post_type
@@ -13,28 +58,35 @@
  */
 function bulb_register_learning_module_post_type() {
 	// Set various pieces of text, $labels is used inside the $args array.
-	$labels = array(
-		'name'               => __( 'Learning Modules', 'bulearningblocks' ),
-		'singular_name'      => __( 'Learning Module Page', 'bulearningblocks' ),
-		'add_new'            => __( 'Add Learning Module Page', 'bulearningblocks' ),
-		'add_new_item'       => __( 'Add Learning Module Page', 'bulearningblocks' ),
-		'edit_item'          => __( 'Edit Learning Module Page', 'bulearningblocks' ),
-		'new_item'           => __( 'New Learning Module Page', 'bulearningblocks' ),
-		'all_items'          => __( 'All Learning Modules', 'bulearningblocks' ),
-		'view_item'          => __( 'View Learning Module Page', 'bulearningblocks' ),
-		'view_items'         => __( 'View Learning Module Pages', 'bulearningblocks' ),
-		'attributes'         => __( 'Learning Module Attributes', 'bulearningblocks' ),
-		'search_items'       => __( 'Search Learning Module Pages', 'bulearningblocks' ),
-		'not_found'          => __( 'No Learning Modules found', 'bulearningblocks' ),
-		'not_found_in_trash' => __( 'No Learning Modules found in Trash', 'bulearningblocks' ),
-		'archives'           => __( 'Learning Module Archives', 'bulearningblocks' ),
-		'parent_item_colon'  => __( 'Learning Module:', 'bulearningblocks' ),
+	$labels  = array(
+		'name'               => __( 'Lesson Pages', 'bulearningblocks' ),
+		'singular_name'      => __( 'Lesson Page', 'bulearningblocks' ),
+		'menu_name'          => __( 'BULB Lessons', 'bulearningblocks' ),
+		'add_new'            => __( 'New Lesson Page', 'bulearningblocks' ),
+		'add_new_item'       => __( 'New Lesson Page', 'bulearningblocks' ),
+		'edit_item'          => __( 'Edit Lesson Page', 'bulearningblocks' ),
+		'update_item'        => __( 'Update Lesson Page', 'bulearningblocks' ),
+		'new_item'           => __( 'New Lesson Page', 'bulearningblocks' ),
+		'all_items'          => __( 'All Lesson Pages', 'bulearningblocks' ),
+		'view_item'          => __( 'View Lesson Page', 'bulearningblocks' ),
+		'view_items'         => __( 'View Lesson Pages', 'bulearningblocks' ),
+		'attributes'         => __( 'Lesson Page Attributes', 'bulearningblocks' ),
+		'search_items'       => __( 'Search Lesson Pages', 'bulearningblocks' ),
+		'not_found'          => __( 'No Lesson Pages found', 'bulearningblocks' ),
+		'not_found_in_trash' => __( 'No Lessons Pages found in Trash', 'bulearningblocks' ),
+		'archives'           => __( 'Lesson Page Archives', 'bulearningblocks' ),
+		'parent_item_colon'  => __( 'Parent Lesson Page:', 'bulearningblocks' ),
+	);
+	$rewrite = array(
+		'slug'       => 'lessons',
+		'with_front' => false,
 	);
 
 	// Set various pieces of information about the post type.
 	$args = array(
+		'label'               => __( 'lesson', 'bulearningblocks' ),
 		'labels'              => $labels,
-		'description'         => __( 'Holds our Learning Modules', 'bulearningblocks' ),
+		'description'         => __( 'Holds our Lessons', 'bulearningblocks' ),
 		'public'              => true,
 		'publicly_queryable'  => true,
 		'query_var'           => true,
@@ -46,13 +98,10 @@ function bulb_register_learning_module_post_type() {
 			'revisions',
 			'page-attributes',
 		),
-		'taxonomies'          => array(
-			'category',
-			'post_tag',
-		),
+		'taxonomies'          => array( 'bulb-courses' ),
 		'hierarchical'        => true,
 		'has_archive'         => true,
-		'rewrite'             => array( 'slug' => 'modules' ),
+		'rewrite'             => $rewrite,
 		'show_in_admin_bar'   => true,
 		'show_in_nav_menus'   => true,
 		'show_in_rest'        => true,
@@ -61,7 +110,6 @@ function bulb_register_learning_module_post_type() {
 		'menu_position'       => 30,
 		'exclude_from_search' => false,
 	);
-
 	register_post_type( 'bulb-learning-module', $args );
 }
 add_action( 'init', 'bulb_register_learning_module_post_type' );
@@ -121,6 +169,30 @@ function get_custom_post_type_template( $archive_template ) {
 add_filter( 'archive_template', 'get_custom_post_type_template' );
 
 /**
+ * Enqueue the custom Taxonomy's archive template.
+ *
+ * @param string $template Template file to be filtered.
+ *
+ * @return string $template Filtered template.
+ *
+ * @since 0.0.5
+ */
+function bulb_archive_template( $template ) {
+
+	/* Checks for single template by post type */
+	if ( is_tax( 'bulb-courses' ) ) {
+		if ( file_exists( BULB_PLUGIN_DIR_PATH . 'src/taxonomy-bulb-courses.php' ) ) {
+			return BULB_PLUGIN_DIR_PATH . 'src/taxonomy-bulb-courses.php';
+		}
+	}
+
+	return $template;
+
+}
+/* Filter the single_template with our custom function*/
+add_filter( 'template_include', 'bulb_archive_template' );
+
+/**
  * Load script to kill attributes panel in Document editor panel.
  *
  * @since 0.0.3
@@ -137,3 +209,19 @@ function remove_bulb_attributes_panel() {
 if ( class_exists( 'BU_Navigation_Plugin' ) ) {
 	add_action( 'enqueue_block_editor_assets', 'remove_bulb_attributes_panel' );
 }
+
+/**
+ * Load script to customize the taxonomy menu in the lesson page editor.
+ *
+ * @since 0.0.7
+ */
+function bulb_add_admin_scripts() {
+	wp_enqueue_script(
+		'customize_tax_panel',
+		BULB_PLUGIN_URL . 'src/customize_tax_panel.js',
+		array(),
+		filemtime( plugin_dir_path( __DIR__ ) . 'src/customize_tax_panel.js' ), // Gets file modification time for cache busting.
+		true // Enqueue the script in the footer.
+	);
+}
+add_action( 'enqueue_block_editor_assets', 'bulb_add_admin_scripts' );
