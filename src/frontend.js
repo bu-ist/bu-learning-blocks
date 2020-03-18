@@ -58,6 +58,9 @@ function parseHTMLStrings( questionData ) {
 			return parseHTMLStringsCalculatedNumeric( questionData );
 		case 'fill-in-the-blank':
 			return parseHTMLStringsFillInTheBlank( questionData );
+		case 'matching':
+			// Do we really need separate parsing functions for each question type?
+			return parseHTMLStringsMultipleAnswer( questionData );
 		default:
 			console.error(
 				`'${ questionData.type }' is not a recognized question type.`
