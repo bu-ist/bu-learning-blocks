@@ -35,9 +35,11 @@ $aqua-forest: #6aac70;
 	}
 }
 
+/*
 .wp-block-image {
 	margin-bottom: 1.2em;
 }
+*/
 
 .bulb-text-link {
 	box-shadow: 0 -1px 0 inset;
@@ -85,6 +87,7 @@ $aqua-forest: #6aac70;
 	}
 }
 
+/* for BU Responsive theme */
 .content-container {
 	display: flex;
 	padding-bottom: 60px;
@@ -146,18 +149,13 @@ $aqua-forest: #6aac70;
 	padding: 0;
 	margin: 0;
 	list-style: none;
+
+	li {
+		list-style: none;
+	}
 }
 
-.bulb-min-list li {
-	list-style: none;
-}
-
-.pagination h6 {
-	float: left;
-	margin: 5px;
-}
-
-.pagination {
+.bulb-pagination {
 	clear: both;
 	position: relative;
 	font-size: 12px; /* Pagination text size */
@@ -166,34 +164,37 @@ $aqua-forest: #6aac70;
 	margin: 0 0 20px 0;
 	width: 100%;
 	text-align: center;
-}
 
-.pagination span,
-.pagination a {
-	display: block;
-	float: left;
-	margin: 2px 2px 2px 0;
-	padding: 6px 9px 5px 9px;
-	text-decoration: none;
-	width: auto;
-	color: $black; /* Pagination text color */
-	background: #c0c0c0; /* Pagination non-active background color */
-	-webkit-transition: background 0.15s ease-in-out;
-	-moz-transition: background 0.15s ease-in-out;
-	-ms-transition: background 0.15s ease-in-out;
-	-o-transition: background 0.15s ease-in-out;
-	transition: background 0.15s ease-in-out;
-}
+	h6 {
+		float: left;
+		margin: 5px;
+	}
+	span, a {
+		display: block;
+		float: left;
+		margin: 2px 2px 2px 0;
+		padding: 6px 9px 5px 9px;
+		text-decoration: none;
+		width: auto;
+		color: $black; /* Pagination text color */
+		background: #c0c0c0; /* Pagination non-active background color */
+		-webkit-transition: background 0.15s ease-in-out;
+		-moz-transition: background 0.15s ease-in-out;
+		-ms-transition: background 0.15s ease-in-out;
+		-o-transition: background 0.15s ease-in-out;
+		transition: background 0.15s ease-in-out;
+	}
 
-.pagination a:hover {
-	color: $white;
-	background: $aqua-forest; /* Pagination background on hover */
-}
+	a:hover {
+		color: $white;
+		background: $aqua-forest; /* Pagination background on hover */
+	}
 
-.pagination .current {
-	padding: 6px 9px 5px 9px;
-	background: $lightgray; /* Current page background */
-	color: $white;
+	.current {
+		padding: 6px 9px 5px 9px;
+		background: $lightgray; /* Current page background */
+		color: $white;
+	}
 }
 
 .bulb-page-links {

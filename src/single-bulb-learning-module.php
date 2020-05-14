@@ -110,7 +110,7 @@ if ( $the_parent_id || $test_children ) {
 		$showitems            = ( $range * 2 ) + 1;
 		?>
 
-			<div class="pagination">
+			<div class="bulb-pagination">
 				<h6>Page <?php echo esc_html( $current_module_index + 1 ); ?> of <?php echo esc_html( $total_pages ); ?></h6>
 
 			<?php
