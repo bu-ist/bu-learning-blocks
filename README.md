@@ -1,76 +1,14 @@
-# BULB (Boston University Learning Blocks)
+# BU Learning Blocks
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b920b4489aa4ded7bd77/maintainability)](https://codeclimate.com/github/bu-ist/bu-learning-blocks/maintainability)
 
-## Getting Started
+BU Learning Blocks (BULB) is a collection of Gutenberg blocks and WordPress Custom Post Types that enable the easy creation of academic lessons. With BULB you can facilitate online learning by embedding self-assessment questions directly into your lesson. Creating and publishing a BULB Lesson is no different than creating a standard WordPress Page. The plugin provides two key capabilities that are not provided by WordPress:
 
-### Local Environment
+- A set of blocks that help you add different types of self-assessment questions
+- A way to order and navigate multiple Lesson Pages in a specific sequence
 
-First, you need a WordPress Environment to run the plugin on. The quickest way to get up and running is to use the provided docker setup. Install [docker](https://www.docker.com/) and [docker-compose](https://docs.docker.com/compose/) by following the most recent instructions on the docker site.
+BULB is not a Learning Management System (LMS) and, currently, does not have typical LMS features such as scoring or timers. The objective of BULB is to improve learning and retention through in-line questions that reinforce the subject matter and allow students to test their understanding directly within the Lesson Page.
 
-In the folder of your preference, clone this project and enter the working directory:
+BULB questions are inserted into the lesson content through the placement of blocks into the page editor. The questions are added and articulated in the WordPress block editor and are saved within the Lesson Page content. BULB does not add any tables to the WordPress database.
 
-```bash
-git clone git@github.com:bu-ist/bu-learning-blocks.git
-cd bu-learning-blocks
-```
-
-Then, run a setup script to check if docker and node are configured properly and starts the local WordPress instance. You may need to run this script multiple times if prompted.
-
-```
-./bin/setup-local-env.sh
-```
-
-If everything was successful, you'll see the following ascii art:
-
-```
-Welcome to...
-
-########  ##     ## ##       ########
-##     ## ##     ## ##       ##     ##
-##     ## ##     ## ##       ##     ##
-########  ##     ## ##       ########
-##     ## ##     ## ##       ##     ##
-##     ## ##     ## ##       ##     ##
-########   #######  ######## ########
-```
-
-The WordPress installation should be available at `http://localhost:8888` (username: `admin`, password: `password`).
-Inside this repository, you can use any docker command to interact with your containers. If this port is in use, you can override it in your `docker-compose.override.yml` file.
-
-To bring down this local WordPress instance later run:
-
-```
-docker-compose down
-```
-
-If you'd like to see your changes reflected in this local WordPress instance, run:
-
-```
-npm start
-```
-
-## Testing
-
-### PHP Testing
-
-Tests for PHP use PHPUnit as the testing framework. If you're using the built-in local environment, you can run the PHP tests locally using this command:
-
-```
-npm run test-php
-```
-
-Code style in PHP is enforced using PHP_CodeSniffer. It is recommended that you install PHP_CodeSniffer and the WordPress Coding Standards for PHP_CodeSniffer ruleset using Composer. With Composer installed, run composer install from the project directory to install dependencies. The above npm run test-php will execute both unit tests and code linting. Code linting can be verified independently by running npm run lint-php.
-
-To run unit tests only, without the linter, use npm run test-unit-php instead.
-
-### Toggling WP_DEBUG
-
-```
-$ npm run enable-wp-debug
-$ npm run disable-wp-debug
-```
-
-## Create Guten Block
-
-This project was bootstrapped with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
+BULB is compatible with WordPress 5.3.2 and above and the Gutenberg editor must be enabled.
