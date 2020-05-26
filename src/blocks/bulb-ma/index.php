@@ -101,7 +101,7 @@ function bulb_register_question_ma() {
 					'type' => 'string',
 				],
 			],
-			'render_callback' => 'bulb_render_block_mc',
+			'render_callback' => 'bulb_render_block_ma',
 		]
 	);
 }
