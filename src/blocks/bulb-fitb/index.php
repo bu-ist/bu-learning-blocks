@@ -58,35 +58,52 @@ function bulb_register_question_fitb() {
 	register_block_type(
 		'bulb/question-fitb', [
 			'attributes'      => [
-				'id'                     => [],
+				'id'                     => [
+					'default' => '',
+					'type'    => 'string',
+				],
 				'type'                   => [
 					'default' => 'fill-in-the-blank',
+					'type'    => 'string',
 				],
-				'header'                 => [],
-				'body'                   => [],
+				'header'                 => [
+					'default' => '',
+					'type'    => 'string',
+				],
+				'body'                   => [
+					'default' => '',
+					'type'    => 'string',
+				],
 				'answer'                 => [
 					'default' => '',
+					'type'    => 'string',
 				],
 				'caseSensitive'          => [
 					'default' => true,
+					'type'    => 'boolean',
 				],
 				'feedback'               => [
 					'default' => [
 						'correct'   => '',
 						'incorrect' => '',
 					],
+					'type'    => 'array',
 				],
 				'textAlignment'          => [
 					'default' => 'left',
+					'type'    => 'string',
 				],
 				'backgroundColorControl' => [
-					'type' => 'string',
+					'default' => '',
+					'type'    => 'string',
 				],
 				'textColorControl'       => [
-					'type' => 'string',
+					'default' => '',
+					'type'    => 'string',
 				],
 				'fontSize'               => [
-					'type' => 'string',
+					'default' => '',
+					'type'    => 'string',
 				],
 			],
 			'render_callback' => 'bulb_render_block_fitb',
