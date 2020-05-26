@@ -62,12 +62,22 @@ function bulb_register_question_ma() {
 	register_block_type(
 		'bulb/question-ma', [
 			'attributes'      => [
-				'id'                     => [],
+				'id'                     => [
+					'default' => '',
+					'type'    => 'string',
+				],
 				'type'                   => [
 					'default' => 'multiple-answer',
+					'type'    => 'string',
 				],
-				'header'                 => [],
-				'body'                   => [],
+				'header'                 => [
+					'default' => '',
+					'type'    => 'string',
+				],
+				'body'                   => [
+					'default' => '',
+					'type'    => 'string',
+				],
 				'answers'                => [
 					'default' => [
 						[
@@ -81,24 +91,33 @@ function bulb_register_question_ma() {
 							'correct'  => false,
 						],
 					],
+					'type'    => 'array',
+					'items'   => [
+						'type' => 'object',
+					],
 				],
 				'feedback'               => [
 					'default' => [
 						'correct'   => '',
 						'incorrect' => '',
 					],
+					'type'    => 'object',
 				],
 				'textAlignment'          => [
 					'default' => 'left',
+					'type'    => 'string',
 				],
 				'backgroundColorControl' => [
-					'type' => 'string',
+					'default' => 'left',
+					'type'    => 'string',
 				],
 				'textColorControl'       => [
-					'type' => 'string',
+					'default' => 'left',
+					'type'    => 'string',
 				],
 				'fontSize'               => [
-					'type' => 'string',
+					'default' => 'left',
+					'type'    => 'string',
 				],
 			],
 			'render_callback' => 'bulb_render_block_ma',
