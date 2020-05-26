@@ -87,7 +87,7 @@ function bulb_register_question_fitb() {
 						'correct'   => '',
 						'incorrect' => '',
 					],
-					'type'    => 'array',
+					'type'    => 'object',
 				],
 				'textAlignment'          => [
 					'default' => 'left',
