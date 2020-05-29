@@ -14,14 +14,14 @@ import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-mc', {
-	title: __( 'BULB - Multiple Choice', 'bulearningblocks' ),
+	title: __( 'BULB - Multiple Choice', 'bu-learning-blocks' ),
 	description: __( 'Add a Multiple Choice question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
 	keywords: [
-		__( 'bu-learning-block', 'bulearningblocks' ),
-		__( 'BULB', 'bulearningblocks' ),
-		__( 'Multiple Choice Question', 'bulearningblocks' ),
+		__( 'bu-learning-block', 'bu-learning-blocks' ),
+		__( 'BULB', 'bu-learning-blocks' ),
+		__( 'Multiple Choice Question', 'bu-learning-blocks' ),
 	],
 
 	edit: props => {

@@ -11,14 +11,14 @@ import Controls from '../../components/Controls';
 
 // Register the block.
 export default registerBlockType( 'bulb/question-mat', {
-	title: __( 'BULB - Matching', 'bulearningblocks' ),
+	title: __( 'BULB - Matching', 'bu-learning-blocks' ),
 	description: __( 'Add a Matching question.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
 	keywords: [
-		__( 'bu-learning-block', 'bulearningblocks' ),
-		__( 'BULB', 'bulearningblocks' ),
-		__( 'Matching Question', 'bulearningblocks' ),
+		__( 'bu-learning-block', 'bu-learning-blocks' ),
+		__( 'BULB', 'bu-learning-blocks' ),
+		__( 'Matching Question', 'bu-learning-blocks' ),
 	],
 
 	edit: props => {

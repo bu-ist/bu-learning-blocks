@@ -16,14 +16,14 @@ import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-fitb', {
-	title: __( 'BULB - Fill in the Blank', 'bulearningblocks' ),
+	title: __( 'BULB - Fill in the Blank', 'bu-learning-blocks' ),
 	description: __( 'Add a Fill in the Blank question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
 	keywords: [
-		__( 'bu-learning-block', 'bulearningblocks' ),
-		__( 'BULB', 'bulearningblocks' ),
-		__( 'Fill in the Blank Question', 'bulearningblocks' ),
+		__( 'bu-learning-block', 'bu-learning-blocks' ),
+		__( 'BULB', 'bu-learning-blocks' ),
+		__( 'Fill in the Blank Question', 'bu-learning-blocks' ),
 	],
 
 	edit: props => {
@@ -67,11 +67,11 @@ export default registerBlockType( 'bulb/question-fitb', {
 							<label
 								htmlFor="bulb-fitb-case-sensitivity"
 							>
-								{ __( 'Case sensitivity', 'bulearningblocks' ) }
+								{ __( 'Case sensitivity', 'bu-learning-blocks' ) }
 							</label>
 							<FormToggle
 								id="bulb-fitb-case-sensitivity"
-								label={ __( 'Case sensitivity', 'bulearningblocks' ) }
+								label={ __( 'Case sensitivity', 'bu-learning-blocks' ) }
 								checked={ caseSensitive }
 								onChange={ toggleCaseSensitivity }
 							/>

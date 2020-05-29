@@ -11,10 +11,10 @@ export default props => {
 	if ( props.singleFeedback ) {
 		return (
 			<div>
-				<h5>{ __( 'Feedback:', 'bulearningblocks' ) }</h5>
+				<h5>{ __( 'Feedback:', 'bu-learning-blocks' ) }</h5>
 				<EnhancedRichText
 					className="question-feedback"
-					placeholder={ __( 'Enter Feedback', 'bulearningblocks' ) }
+					placeholder={ __( 'Enter Feedback', 'bu-learning-blocks' ) }
 					value={ props.feedback.correct }
 					onChange={ newValue =>
 						onChangeFeedback( {
@@ -29,19 +29,19 @@ export default props => {
 	}
 	return (
 		<div>
-			<h4 className="bulb-editor-section-label">{ __( 'Feedback', 'bulearningblocks' ) }</h4>
-			<h5 className="bulb-editor-field-label"> { __( 'Correct Feedback', 'bulearningblocks' ) }</h5>
+			<h4 className="bulb-editor-section-label">{ __( 'Feedback', 'bu-learning-blocks' ) }</h4>
+			<h5 className="bulb-editor-field-label"> { __( 'Correct Feedback', 'bu-learning-blocks' ) }</h5>
 			<EnhancedRichText
 				className="question-feedback"
-				placeholder={ __( 'Enter Correct Feedback', 'bulearningblocks' ) }
+				placeholder={ __( 'Enter Correct Feedback', 'bu-learning-blocks' ) }
 				value={ props.feedback.correct }
 				onChange={ newValue => onChangeFeedback( { correct: newValue } ) }
 				{ ...props }
 			/>
-			<h5 className="bulb-editor-field-label">{ __( 'Incorrect Feedback', 'bulearningblocks' ) }</h5>
+			<h5 className="bulb-editor-field-label">{ __( 'Incorrect Feedback', 'bu-learning-blocks' ) }</h5>
 			<EnhancedRichText
 				className="question-feedback"
-				placeholder={ __( 'Enter Incorrect Feedback', 'bulearningblocks' ) }
+				placeholder={ __( 'Enter Incorrect Feedback', 'bu-learning-blocks' ) }
 				value={ props.feedback.incorrect }
 				onChange={ newValue => onChangeFeedback( { incorrect: newValue } ) }
 				{ ...props }

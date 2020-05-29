@@ -5,7 +5,7 @@
  * Description: BU Learning Blocks — is a collection of tools to enable the easy creation of academic lessons with embedded self-assessment questions.
  * Author: Boston University: Web Applications
  * Author URI: http://www.bu.edu/
- * Text Domain: bulearningblocks
+ * Text Domain: bu-learning-blocks
  * Domain Path: /languages
  * Version: v0.0.8
  * License: GPL2+
@@ -36,10 +36,10 @@ function gutenberg_notice() {
 	?>
 		<div class="notice notice-error is-dismissible">
 			<p>
-				<?php esc_html_e( 'BULB Error: BU Learning Blocks requires either WordPress 5.0.0, or the Gutenberg plugin to be installed and activated on any version previous to 5.0.0.', 'bulearningblocks' ); ?>
+				<?php esc_html_e( 'BULB Error: BU Learning Blocks requires either WordPress 5.0.0, or the Gutenberg plugin to be installed and activated on any version previous to 5.0.0.', 'bu-learning-blocks' ); ?>
 			</p>
 			<p>
-				<?php esc_html_e( 'Please install and activate the Gutenberg plugin to use BU Learning Blocks.', 'bulearningblocks' ); ?>
+				<?php esc_html_e( 'Please install and activate the Gutenberg plugin to use BU Learning Blocks.', 'bu-learning-blocks' ); ?>
 			</p>
 		</div>
 	<?php
