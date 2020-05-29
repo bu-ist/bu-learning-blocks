@@ -35,7 +35,7 @@ add_filter(
 			array(
 				array(
 					'slug'  => 'bu-learning-blocks',
-					'title' => __( 'BULB', 'bu-learning-blocks' ),
+					'title' => __( 'BULB', 'bulearningblocks' ),
 				),
 			)
 		);
@@ -73,7 +73,7 @@ function load_cpt_install_dialog() {
 	?>
 			<div id="message" class="updated notice">
 			<p>
-				<?php echo wp_kses_post( __( '<strong>Welcome to BU Learning Blocks</strong>', 'bu-learning-blocks' ) ); ?>
+				<?php echo wp_kses_post( __( '<strong>Welcome to BU Learning Blocks</strong>', 'bulearningblocks' ) ); ?>
 			</p>
 
 			<p class="submit">
@@ -81,13 +81,13 @@ function load_cpt_install_dialog() {
 				<a href="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=install_cpt"
 				class="button-primary">
 
-					<?php esc_html_e( 'Install Blocks and Pages', 'bu-learning-blocks' ); ?>
+					<?php esc_html_e( 'Install Blocks and Pages', 'bulearningblocks' ); ?>
 
 				</a>
 
 				<a class="skip button" href="">
 
-					<?php esc_html_e( 'Install Blocks Only', 'bu-learning-blocks' ); ?>
+					<?php esc_html_e( 'Install Blocks Only', 'bulearningblocks' ); ?>
 
 				</a>
 
