@@ -13,7 +13,6 @@
  *
  * @since 0.0.1
  */
-
 function bulb_block_assets() {
 	// Frontend Scripts.
 	if ( ! is_admin() ) { // If not on an admin page, enqueue JavaScript for the front-end view.
