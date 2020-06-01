@@ -13,6 +13,7 @@
  *
  * @since 0.0.1
  */
+
 function bulb_block_assets() {
 	// Frontend Scripts.
 	if ( ! is_admin() ) { // If not on an admin page, enqueue JavaScript for the front-end view.
@@ -56,7 +57,6 @@ function bulb_block_editor_assets() {
 	);
 
 	wp_set_script_translations( 'bulb-block-js', 'bu-learning-blocks' );
-
 
 	// Styles.
 	wp_enqueue_style(
