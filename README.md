@@ -2,6 +2,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b920b4489aa4ded7bd77/maintainability)](https://codeclimate.com/github/bu-ist/bu-learning-blocks/maintainability)
 
+## About
+
 BU Learning Blocks (BULB) is a collection of Gutenberg blocks and WordPress Custom Post Types that enable the easy creation of academic lessons. With BULB you can facilitate online learning by embedding self-assessment questions directly into your lesson. Creating and publishing a BULB Lesson is no different than creating a standard WordPress Page. The plugin provides two key capabilities that are not provided by WordPress:
 
 - A set of blocks that help you add different types of self-assessment questions
@@ -12,3 +14,29 @@ BULB is not a Learning Management System (LMS) and, currently, does not have typ
 BULB questions are inserted into the lesson content through the placement of blocks into the page editor. The questions are added and articulated in the WordPress block editor and are saved within the Lesson Page content. BULB does not add any tables to the WordPress database.
 
 BULB is compatible with WordPress 5.3.2 and above and the Gutenberg editor must be enabled.
+
+## Installing and activating
+
+BULB can be installed and activated like any other WordPress plugin.  
+
+When activated, BU Learning Blocks presents a choice to install only the question blocks or both the question blocks and the BULB custom post type. BULB Question Blocks can be used on WordPress Posts or Pages, and on BULB Lesson Pages. If you wish to use the question blocks in your site content, but do not wish to create BULB Lessons, select “Install Blocks Only”.
+
+The plugin can be activated and deactivated, no custom posts will be deleted.  Deleting the plugin will cause all of the custom post type data to be deleted as well.
+
+## Developing with BULB
+
+To get started developing the plugin, clone this repo and run `npm install`.  
+
+To compile working changes run `npm start`.
+
+This plugin also includes the [wp-env local development setup](https://www.npmjs.com/package/@wordpress/env).
+
+If you have Docker installed, you can start a local WordPress Docker container to test the plugin.  Run this:
+
+```bash
+npm run wp-env start
+```
+
+to initialize a local wp site container.  
+
+After starting, a new WordPress site with the plugin installed will be available at http://localhost:8888/
