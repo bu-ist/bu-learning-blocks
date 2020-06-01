@@ -60,7 +60,7 @@ function bulb_admin_install_cpt() {
  * Load the cpt install dialog if we haven't already.
  */
 if ( get_option( 'bulb_cpt_install_dialog' ) ) {
-	add_action( 'admin_init', 'load_cpt_install_dialog' );
+	add_action( 'admin_notices', 'load_cpt_install_dialog' );
 }
 
 
