@@ -19,7 +19,7 @@ function bulb_block_assets() {
 		wp_enqueue_script(
 			'bulb-frontend-js',
 			BULB_PLUGIN_URL . 'dist/frontend.build.js', // Minified JS file, built with Webpack.
-			array( 'wp-element' ), // Dependency 'wp-element' loads react and react-dom in the frontend view.
+			array( 'wp-element', 'wp-i18n' ), // Dependency 'wp-element' loads react and react-dom in the frontend view.
 			filemtime( plugin_dir_path( __DIR__ ) . 'dist/frontend.build.js' ), // Gets file modification time for cache busting.
 			true // Enqueue the script in the footer.
 		);

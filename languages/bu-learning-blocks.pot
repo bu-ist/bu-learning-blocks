@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-05-29T20:32:01+00:00\n"
+"POT-Creation-Date: 2020-06-01T17:58:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: bu-learning-blocks\n"
@@ -43,6 +43,12 @@ msgid "Please install and activate the Gutenberg plugin to use BU Learning Block
 msgstr ""
 
 #: src/init.php:38
+#: src/blocks/bulb-cn/index.js:23
+#: src/blocks/bulb-fitb/index.js:25
+#: src/blocks/bulb-ma/index.js:23
+#: src/blocks/bulb-mat/index.js:20
+#: src/blocks/bulb-mc/index.js:23
+#: src/blocks/bulb-tf/index.js:23
 msgid "BULB"
 msgstr ""
 
@@ -192,4 +198,132 @@ msgstr ""
 
 #: src/learning-module-cpt.php:89
 msgid "Holds our Lessons"
+msgstr ""
+
+#: src/blocks/bulb-cn/index.js:17
+msgid "BULB - Calculated Numeric"
+msgstr ""
+
+#: src/blocks/bulb-cn/index.js:22
+#: src/blocks/bulb-fitb/index.js:24
+#: src/blocks/bulb-ma/index.js:22
+#: src/blocks/bulb-mat/index.js:19
+#: src/blocks/bulb-mc/index.js:22
+#: src/blocks/bulb-tf/index.js:22
+msgid "bu-learning-block"
+msgstr ""
+
+#: src/blocks/bulb-cn/index.js:24
+msgid "Calculated Numeric Question"
+msgstr ""
+
+#: src/blocks/bulb-fitb/index.js:19
+msgid "BULB - Fill in the Blank"
+msgstr ""
+
+#: src/blocks/bulb-fitb/index.js:26
+msgid "Fill in the Blank Question"
+msgstr ""
+
+#: src/blocks/bulb-fitb/index.js:70
+#: src/blocks/bulb-fitb/index.js:74
+msgid "Case sensitivity"
+msgstr ""
+
+#: src/blocks/bulb-ma/index.js:17
+msgid "BULB - Multiple Answer"
+msgstr ""
+
+#: src/blocks/bulb-ma/index.js:24
+msgid "Multiple Answer Question"
+msgstr ""
+
+#: src/blocks/bulb-mat/index.js:14
+msgid "BULB - Matching"
+msgstr ""
+
+#: src/blocks/bulb-mat/index.js:21
+msgid "Matching Question"
+msgstr ""
+
+#: src/blocks/bulb-mat/MatchingAnswer.js:21
+#: src/blocks/bulb-mat/MatchingAnswer.js:25
+msgid "Prompt"
+msgstr ""
+
+#: src/blocks/bulb-mat/MatchingAnswer.js:36
+#: src/blocks/bulb-mat/MatchingAnswer.js:40
+#: src/components/Answer.js:23
+#: src/components/Answer.js:27
+msgid "Answer"
+msgstr ""
+
+#: src/blocks/bulb-mc/index.js:17
+msgid "BULB - Multiple Choice"
+msgstr ""
+
+#: src/blocks/bulb-mc/index.js:24
+msgid "Multiple Choice Question"
+msgstr ""
+
+#: src/blocks/bulb-tf/index.js:17
+msgid "BULB - True/False"
+msgstr ""
+
+#: src/blocks/bulb-tf/index.js:24
+msgid "True False Question"
+msgstr ""
+
+#: src/components/Answer.js:38
+#: src/components/Answer.js:42
+#: src/components/QuestionFeedback.js:32
+msgid "Feedback"
+msgstr ""
+
+#: src/components/Answer.js:61
+msgid "Correct Answer"
+msgstr ""
+
+#: src/components/QuestionBody.js:7
+msgid "Question Body"
+msgstr ""
+
+#: src/components/QuestionBody.js:10
+msgid "Enter Question Body"
+msgstr ""
+
+#: src/components/QuestionFeedback.js:14
+msgid "Feedback:"
+msgstr ""
+
+#: src/components/QuestionFeedback.js:17
+msgid "Enter Feedback"
+msgstr ""
+
+#: src/components/QuestionFeedback.js:33
+msgid "Correct Feedback"
+msgstr ""
+
+#: src/components/QuestionFeedback.js:36
+msgid "Enter Correct Feedback"
+msgstr ""
+
+#: src/components/QuestionFeedback.js:41
+msgid "Incorrect Feedback"
+msgstr ""
+
+#: src/components/QuestionFeedback.js:44
+msgid "Enter Incorrect Feedback"
+msgstr ""
+
+#: src/components/QuestionHeader.js:7
+msgid "Question"
+msgstr ""
+
+#: src/components/QuestionHeader.js:8
+msgid "Question Header"
+msgstr ""
+
+#: src/components/QuestionHeader.js:11
+msgid "Enter Question Header"
 msgstr ""
