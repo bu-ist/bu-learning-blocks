@@ -14,14 +14,14 @@ import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-cn', {
-	title: __( 'BULB - Calculated Numeric', 'bulearningblocks' ),
+	title: __( 'BULB - Calculated Numeric', 'bu-learning-blocks' ),
 	description: __( 'Add a Calculated Numeric question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
 	keywords: [
-		__( 'bu-learning-block', 'bulearningblocks' ),
-		__( 'BULB', 'bulearningblocks' ),
-		__( 'Calculated Numeric Question', 'bulearningblocks' ),
+		__( 'bu-learning-block', 'bu-learning-blocks' ),
+		__( 'BULB', 'bu-learning-blocks' ),
+		__( 'Calculated Numeric Question', 'bu-learning-blocks' ),
 	],
 
 	edit: props => {

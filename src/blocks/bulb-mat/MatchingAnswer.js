@@ -18,11 +18,11 @@ export default ( {
 	<div className="bulb-editor-answer">
 		<div className="bulb-answer-content">
 			<div className="bulb-editor-answer-label">
-				{ __( 'Prompt', 'bulearningblocks' ) } { index + 1 }
+				{ __( 'Prompt', 'bu-learning-blocks' ) } { index + 1 }
 			</div>
 			<RichText
 				tagName="p"
-				placeholder={ __( 'Prompt', 'bulearningblocks' ) }
+				placeholder={ __( 'Prompt', 'bu-learning-blocks' ) }
 				keepPlaceholderOnFocus={ true }
 				className="answer-text"
 				onChange={ newAnswerValue => {
@@ -33,11 +33,11 @@ export default ( {
 			{ feedbackPerAnswer && (
 				<Fragment>
 					<div className="bulb-editor-answer-label-feedback">
-						{ __( 'Answer', 'bulearningblocks' ) }
+						{ __( 'Answer', 'bu-learning-blocks' ) }
 					</div>
 					<RichText
 						tagName="p"
-						placeholder={ __( 'Answer', 'bulearningblocks' ) }
+						placeholder={ __( 'Answer', 'bu-learning-blocks' ) }
 						keepPlaceholderOnFocus={ true }
 						className="answer-feedback"
 						onChange={ newFeedback => {
