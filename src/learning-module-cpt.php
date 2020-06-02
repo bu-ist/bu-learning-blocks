@@ -32,7 +32,7 @@ function register_course_tax() {
 		'not_found'                  => __( 'Not Found', 'bu-learning-blocks' ),
 	);
 	$rewrite = array(
-		'slug'       => 'courses',
+		'slug'       => 'lesson',
 		'with_front' => false,
 	);
 	$args    = array(
