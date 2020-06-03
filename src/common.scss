@@ -129,7 +129,7 @@ $aqua-forest: #6aac70;
 				}
 			}
 			li {
-				.current_page_item {
+				&.current_page_item {
 					background-color: $gray !important;
 				}
 
