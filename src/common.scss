@@ -88,40 +88,31 @@ $aqua-forest: #6aac70;
 }
 
 /* for BU Responsive theme */
-.content-container {
+.content-container, .site-content {
 	display: flex;
 	padding-bottom: 60px;
-}
 
-@media screen and (max-width: 600px) {
-	// Change flex-direction from row to column, for custom ordering.
-	.content-container {
+	@media screen and (max-width: 600px) {
+		// Change flex-direction from row to column, for custom ordering.
 		flex-direction: column;
 	}
 
-	// Make links come 2nd in order, after the bulb container.
-	.bulb-page-links {
-		order: 2;
+	article.bulb-learning-module {
+		flex: 70%;
+		@media screen and (max-width: 600px) {
+			// Change flex-direction from row to column, for custom ordering.
+			flex: auto;
+		}
 	}
 
-	// Since this is a column, change flex-basis back to auto.
-	.bulb-container {
-		flex: 1 0 auto;
+	.sidebar.bulb-module-sidebar {
+		flex: 30%;
+		@media screen and (max-width: 600px) {
+			// Change flex-direction from row to column, for custom ordering.
+			flex: 1 0 auto;
+			order: 2;
+		}
 	}
-}
-
-.bulb-container {
-	flex: 0 1 auto;
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.bulb-page-links {
-	flex: 1 0 200px;
-	width: 200px;
-	// margin-right: 40px;
-	float: right;
 }
 
 .bulb-page-links__title {
@@ -198,6 +189,7 @@ $aqua-forest: #6aac70;
 }
 
 .bulb-page-links {
+	width: 100%;
 	border: 1px solid black;
 }
 
