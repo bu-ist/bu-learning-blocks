@@ -25,7 +25,10 @@ function bulb_block_assets() {
 		);
 	}
 
-	wp_set_script_translations( 'bulb-frontend-js', 'bu-learning-blocks' );
+	global $wp_version;
+	if ( version_compare( $wp_version, '5.0.0', '>=' ) ) {
+		wp_set_script_translations( 'bulb-frontend-js', 'bu-learning-blocks' );
+	}
 
 	// Shared Frontend/Editor Styles.
 	wp_enqueue_style(
@@ -55,7 +58,10 @@ function bulb_block_editor_assets() {
 		true // Enqueue the script in the footer.
 	);
 
-	wp_set_script_translations( 'bulb-block-js', 'bu-learning-blocks' );
+	global $wp_version;
+	if ( version_compare( $wp_version, '5.0.0', '>=' ) ) {
+		wp_set_script_translations( 'bulb-block-js', 'bu-learning-blocks' );
+	}
 
 	// Styles.
 	wp_enqueue_style(
