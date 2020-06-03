@@ -40,3 +40,9 @@ npm run wp-env start
 to initialize a local wp site container.  
 
 After starting, a new WordPress site with the plugin installed will be available at http://localhost:8888/
+
+## BU React Questions
+
+BULB uses [BU React Questions](https://www.npmjs.com/package/@bostonuniversity/react-questions) to render the interactive question blocks.  Changes to the front-end rendering of interactive questions must be made there.
+
+BU React Questions is also a standalone package that can be used independently of BULB.
