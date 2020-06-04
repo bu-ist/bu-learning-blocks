@@ -75,28 +75,26 @@ $aqua-forest: #6aac70;
 	}
 }
 
-/* for BU Responsive theme */
+/* Integrates with BU Responsive theme */
 .content-container, .site-content {
 	display: flex;
 	padding-bottom: 60px;
 
 	@media screen and (max-width: 600px) {
-		// Change flex-direction from row to column, for custom ordering.
+		// Change flex-direction for narrow screens.
 		flex-direction: column;
 	}
 
 	article.bulb-learning-module {
 		flex: 70%;
 		@media screen and (max-width: 600px) {
-			// Change flex-direction from row to column, for custom ordering.
-			flex: auto;
+			flex: 1 0 auto;
 		}
 	}
 
 	.sidebar.bulb-module-sidebar {
 		flex: 30%;
 		@media screen and (max-width: 600px) {
-			// Change flex-direction from row to column, for custom ordering.
 			flex: 1 0 auto;
 			order: 2;
 		}
