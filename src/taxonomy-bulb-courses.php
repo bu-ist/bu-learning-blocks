@@ -14,8 +14,6 @@
  * @since 1.0.0
  */
 
-error_log('yo wassabi');
-error_log( get_post_type_archive_link('bulb-learning-module') );
 get_header();
 ?>
 
