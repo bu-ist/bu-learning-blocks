@@ -194,8 +194,8 @@ $aqua-forest: #6aac70;
 
 .bulb-list {
 	list-style-type: none;
-}
 
-.bulb-list-item {
-	padding-left: 2%;
+	&-item {
+		padding-left: 2%;
+	}
 }
