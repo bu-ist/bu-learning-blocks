@@ -7,10 +7,6 @@
 
 get_header();
 ?>
-
-
-
-
 <?php
 
 $the_parent_id = wp_get_post_parent_id( get_the_id() );
@@ -20,8 +16,7 @@ $test_children = get_pages(
 		'post_type' => 'bulb-learning-module',
 	)
 );
-?>
-<?php
+
 $current_post_id = get_the_ID();
 
 while ( have_posts() ) :
@@ -107,7 +102,6 @@ $showitems            = ( $range * 2 ) + 1;
 	?>
 	</div><!-- .pagination -->
 </article><!-- #post-<?php the_ID(); ?> -->
-
 
 <div class="sidebar bulb-module-sidebar">
 	<?php dynamic_sidebar( 'bulb-module-sidebar' ); ?>
