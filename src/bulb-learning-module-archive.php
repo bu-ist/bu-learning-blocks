@@ -19,8 +19,6 @@ $terms = get_terms(
 ); ?>
 
 <article class="bulb-archive-container">
-
-
 <h1 class="bulb-page-title">Lesson Index:</h1>
 
 <?php
