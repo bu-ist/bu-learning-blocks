@@ -41,18 +41,6 @@ $aqua-forest: #6aac70;
 }
 */
 
-.bulb-text-link {
-	box-shadow: 0 -1px 0 inset;
-	text-decoration: none;
-	transition: 0.3s ease;
-
-	&:hover {
-		color: inherit;
-		box-shadow: 0 -2px 0 inset;
-		color: $accent;
-	}
-}
-
 .bulb-editor {
 	&-section-label {
 		color: rgb(59, 48, 48);
