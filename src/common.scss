@@ -116,29 +116,32 @@ $aqua-forest: #6aac70;
 					color: $white !important;
 				}
 			}
-			li {
-				&.current_page_item {
-					background-color: $gray !important;
-				}
 
-				a {
-					display: block;
-					padding: 6px 20px;
+
+			&-min-list {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			
+				li {
+					list-style: none;
+					
+					a {
+						display: block;
+						padding: 6px 20px;
+					}
+					&.current_page_item {
+						background-color: $gray !important;
+					}
 				}
 			}
+
+
 		}		
 	}
 }
 
-.bulb-min-list {
-	padding: 0;
-	margin: 0;
-	list-style: none;
 
-	li {
-		list-style: none;
-	}
-}
 
 .bulb-pagination {
 	clear: both;

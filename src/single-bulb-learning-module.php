@@ -116,7 +116,7 @@ $showitems            = ( $range * 2 ) + 1;
 		?>
 		<div class="bulb-page-links">
 			<h3 class="bulb-page-links__title"><a href="<?php echo esc_url( get_permalink( $the_parent_id ) ); ?>"><?php echo esc_html( get_the_title( $the_parent_id ) ); ?></a></h3>
-			<ul class="bulb-min-list">
+			<ul class="bulb-page-links-min-list">
 				<?php
 				if ( $the_parent_id ) {
 					$find_children_of = $the_parent_id;
