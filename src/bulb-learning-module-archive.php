@@ -17,9 +17,11 @@ $terms = get_terms(
 		'hide_empty' => 1,
 	)
 ); ?>
-<h1 class="bulb-page-title">Lesson Index:</h1>
 
-<section class="bulb-archive-container" >
+<article class="bulb-archive-container">
+
+
+<h1 class="bulb-page-title">Lesson Index:</h1>
 
 <?php
 
@@ -53,6 +55,7 @@ foreach ( $terms as $term_item ) {
 	wp_reset_postdata();
 }
 ?>
-</section>
+</article>
+<div class="sidebar"></div>
 <?php
 get_footer();
