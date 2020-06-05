@@ -93,7 +93,18 @@ $aqua-forest: #6aac70;
 				background-color: $lightgray;
 	
 				a {
-					color: $white !important;
+					color: $white;
+					text-decoration: none;
+					
+					&:active,
+					&:visited {
+						color: $white;
+					}
+					&:hover,
+					&:focus {
+							color: $gray;
+							text-decoration: underline;
+					}
 				}
 			}
 
@@ -110,7 +121,7 @@ $aqua-forest: #6aac70;
 						padding: 6px 20px;
 					}
 					&.current_page_item {
-						background-color: $gray !important;
+						background-color: $gray;
 					}
 				}
 			}
