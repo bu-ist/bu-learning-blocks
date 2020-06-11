@@ -14,14 +14,14 @@ import './styles/editor.scss';
 
 // Register the block
 export default registerBlockType( 'bulb/question-tf', {
-	title: __( 'BULB - True/False', 'bulearningblocks' ),
+	title: __( 'BULB - True/False', 'bu-learning-blocks' ),
 	description: __( 'Add a TRUE/FALSE question to your learning module.' ),
 	icon: 'welcome-learn-more',
 	category: 'bu-learning-blocks',
 	keywords: [
-		__( 'bu-learning-block', 'bulearningblocks' ),
-		__( 'BULB', 'bulearningblocks' ),
-		__( 'True False Question', 'bulearningblocks' ),
+		__( 'bu-learning-block', 'bu-learning-blocks' ),
+		__( 'BULB', 'bu-learning-blocks' ),
+		__( 'True False Question', 'bu-learning-blocks' ),
 	],
 
 	edit: props => {

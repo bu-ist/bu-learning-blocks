@@ -20,11 +20,11 @@ export default function Answer( {
 		<div className="bulb-editor-answer">
 			<div className="bulb-answer-content">
 				<div className="bulb-editor-answer-label">
-					{ __( 'Answer', 'bulearningblocks' ) } { index + 1 }
+					{ __( 'Answer', 'bu-learning-blocks' ) } { index + 1 }
 				</div>
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Answer', 'bulearningblocks' ) }
+					placeholder={ __( 'Answer', 'bu-learning-blocks' ) }
 					keepPlaceholderOnFocus={ true }
 					className={ classnames( 'answer-text' ) }
 					onChange={ newAnswerValue => {
@@ -35,11 +35,11 @@ export default function Answer( {
 				{ feedbackPerAnswer && (
 					<Fragment>
 						<div className="bulb-editor-answer-label-feedback">
-							{ __( 'Feedback', 'bulearningblocks' ) }
+							{ __( 'Feedback', 'bu-learning-blocks' ) }
 						</div>
 						<RichText
 							tagName="p"
-							placeholder={ __( 'Feedback', 'bulearningblocks' ) }
+							placeholder={ __( 'Feedback', 'bu-learning-blocks' ) }
 							keepPlaceholderOnFocus={ true }
 							className={ classnames( 'answer-feedback' ) }
 							onChange={ newFeedback => {
@@ -58,7 +58,7 @@ export default function Answer( {
 						} }
 						checked={ correct }
 					/>{ ' ' }
-					{ __( 'Correct Answer', 'bulearningblocks' ) }
+					{ __( 'Correct Answer', 'bu-learning-blocks' ) }
 				</strong>
 			</div>
 			<div className="bulb-answer-controls">
