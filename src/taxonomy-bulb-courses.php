@@ -17,35 +17,41 @@
 get_header();
 ?>
 
-<h1><strong>Lesson Title:</strong> <?php echo single_term_title(); ?></h1>
-<h3><?php single_term_title(); ?> Lesson Pages:</h3>
-<?php
+<article class="bulb-archive-container">
 
-$args = array(
-	'paged'          => $paged,
-	'orderby'        => 'menu_order',
-	'order'          => 'ASC',
-	'posts_per_page' => -1,
-	'tax_query'      => array( // WPCS: slow query ok.
-		array(
-			'taxonomy' => 'bulb-courses',
-			'field'    => 'slug',
-			'terms'    => get_queried_object(),
+	<h1><strong>Lesson Title:</strong> <?php echo single_term_title(); ?></h1>
+	<h3><?php single_term_title(); ?> Lesson Pages:</h3>
+	<?php
+
+	$args = array(
+		'paged'          => $paged,
+		'orderby'        => 'menu_order',
+		'order'          => 'ASC',
+		'posts_per_page' => -1,
+		'tax_query'      => array( // WPCS: slow query ok.
+			array(
+				'taxonomy' => 'bulb-courses',
+				'field'    => 'slug',
+				'terms'    => get_queried_object(),
+			),
 		),
-	),
-);
+	);
 
-$bulb_query = new WP_Query( $args );
+	$bulb_query = new WP_Query( $args );
 
-if ( $bulb_query->have_posts() ) :
-	while ( $bulb_query->have_posts() ) :
-		$bulb_query->the_post();
-		?>
-		<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-		</br>
-		</br>
-		<?php
-	endwhile;
-endif;
+	if ( $bulb_query->have_posts() ) :
+		while ( $bulb_query->have_posts() ) :
+			$bulb_query->the_post();
+			?>
+			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+			</br>
+			</br>
+			<?php
+		endwhile;
+	endif;
+	?>
+</article>
+<div class="sidebar"></div>
+<?php
 
 get_footer();
