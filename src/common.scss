@@ -51,7 +51,7 @@ $aqua-forest: #6aac70;
 }
 
 /* Integrates with BU Responsive theme */
-.content-container, .site-content {
+.bulb-content {
 	display: flex;
 	padding-bottom: 60px;
 
@@ -73,7 +73,7 @@ $aqua-forest: #6aac70;
 			flex: 1 0 auto;
 			order: 2;
 		}
-		
+
 		.bulb-page-links {
 			width: 100%;
 			border: 1px solid black;
@@ -84,11 +84,11 @@ $aqua-forest: #6aac70;
 				font-size: 20px;
 				padding: 5px 0;
 				background-color: $lightgray;
-	
+
 				a {
 					color: $white;
 					text-decoration: none;
-					
+
 					&:active,
 					&:visited {
 						color: $white;
@@ -105,10 +105,10 @@ $aqua-forest: #6aac70;
 				padding: 0;
 				margin: 0;
 				list-style: none;
-			
+
 				li {
 					list-style: none;
-					
+
 					a {
 						display: block;
 						padding: 6px 20px;
@@ -118,7 +118,7 @@ $aqua-forest: #6aac70;
 					}
 				}
 			}
-		}		
+		}
 	}
 }
 

@@ -22,6 +22,7 @@ $current_post_id = get_the_ID();
 while ( have_posts() ) :
 	the_post();
 	?>
+	<div class="bulb-content">
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'content_area' ); ?>>
 			<header class="entry-header">
 				<?php
@@ -129,6 +130,7 @@ $showitems            = ( $range * 2 ) + 1;
 			</ul>
 		</div><!-- #page-links -->
 	<?php } ?>
+</div>
 </div>
 <?php
 get_footer();
