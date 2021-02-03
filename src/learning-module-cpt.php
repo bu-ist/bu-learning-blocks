@@ -132,8 +132,13 @@ register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_flush_rewrites' );
  * @return string Post content with pagination markup appended.
  */
 function bulb_add_pagination( $content ) {
-
 	global $post;
+
+	// Only display pagination on bulb type posts.
+	if ( 'bulb-learning-module' !== $post->post_type ) {
+		return $content;
+	}
+
 	$current_post_id = get_the_ID();
 
 	// Navigate the hierarchical custom post type.
