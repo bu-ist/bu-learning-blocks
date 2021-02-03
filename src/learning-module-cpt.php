@@ -125,32 +125,6 @@ function bulb_flush_rewrites() {
 }
 register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_flush_rewrites' );
 
-
-/**
- * Enqueue the custom post type's single- template.
- *
- * @param string $single Template file to be filtered.
- *
- * @return string $single Filtered template.
- *
- * @since 0.0.2
- */
-function bulb_cpt_template( $single ) {
-	global $post;
-
-	/* Checks for single template by post type */
-	if ( 'bulb-learning-module' === $post->post_type ) {
-		if ( file_exists( BULB_PLUGIN_DIR_PATH . 'src/single-bulb-learning-module.php' ) ) {
-			return BULB_PLUGIN_DIR_PATH . 'src/single-bulb-learning-module.php';
-		}
-	}
-
-	return $single;
-
-}
-/* Filter the single_template with our custom function*/
-add_filter( 'single_template', 'bulb_cpt_template' );
-
 /**
  * Load custom archive template.
  *
