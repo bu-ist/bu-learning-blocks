@@ -101,24 +101,4 @@ function load_cpt_install_dialog() {
 if ( get_option( 'bulb_cpt_install' ) ) {
 	// Register a learning-module custom post type.
 	require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
-
-	/**
-	 * Register a dynamic sidebar
-	 *
-	 * @return void
-	 */
-	function bulb_widgets_init() {
-		register_sidebar(
-			array(
-				'name'          => __( 'BULB Module Sidebar' ),
-				'id'            => 'bulb-module-sidebar',
-				'description'   => __( 'Add widgets here to appear on your BULB module pages.' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
-			)
-		);
-	}
-	add_action( 'widgets_init', 'bulb_widgets_init' );
 }
