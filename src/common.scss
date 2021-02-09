@@ -52,32 +52,28 @@ $aqua-forest: #6aac70;
 
 
 .bulb-pagination {
-	clear: both;
-	position: relative;
-	font-size: 12px; /* Pagination text size */
-	line-height: 13px;
-	float: left; /* Pagination float direction */
-	margin: 0 0 20px 0;
-	width: 100%;
-	text-align: center;
 
-	h6 {
-		float: left;
-		margin: 5px;
-	}
-	span, a {
-		display: block;
-		float: left;
+	display: flex;
+	font-size: 0.8em;
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
+
+	%pagination-spacing {
 		margin: 2px 2px 2px 0;
 		padding: 6px 9px 5px 9px;
+	}
+
+	&-label {
+		@extend %pagination-spacing;
+		font-weight: bold;
+	}
+
+	a, span {
+		@extend %pagination-spacing;
 		text-decoration: none;
 		width: auto;
 		color: $black; /* Pagination text color */
 		background: #c0c0c0; /* Pagination non-active background color */
-		-webkit-transition: background 0.15s ease-in-out;
-		-moz-transition: background 0.15s ease-in-out;
-		-ms-transition: background 0.15s ease-in-out;
-		-o-transition: background 0.15s ease-in-out;
 		transition: background 0.15s ease-in-out;
 	}
 

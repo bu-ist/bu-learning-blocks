@@ -6,8 +6,8 @@
  */
 
 ?>
-<div class="bulb-pagination">
-		<h6>Page <?php echo esc_html( $current_module_index + 1 ); ?> of <?php echo esc_html( $total_pages ); ?></h6>
+<div class="bulb-pagination" aria-label="pagination">
+	<div class="bulb-pagination-label">Page <?php echo esc_html( $current_module_index + 1 ); ?> of <?php echo esc_html( $total_pages ); ?></div>
 
 	<?php
 	if ( 1 !== $total_pages ) {
