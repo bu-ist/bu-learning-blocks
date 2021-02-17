@@ -89,6 +89,13 @@ $aqua-forest: #6aac70;
 	}
 }
 
+.bulb-learning-module {
+	// Adaptations to Responsive framework, suppress unnecessary footer metadata.
+	.single-meta, .archive-link-container {
+		display: none;
+	}
+}
+
 .bulb-archive-container {
 	margin-left: auto;
 	margin-right: auto;
