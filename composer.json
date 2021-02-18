@@ -5,15 +5,19 @@
 	"description": "Learning blocks for WordPress",
 	"homepage": "https://bu.edu/",
 	"keywords": [
-		"gutenberg", "wordpress", "editor", "wp", "react", "javascript"
+        "gutenberg",
+        "wordpress",
+        "editor",
+        "wp",
+        "react",
+        "javascript"
 	],
 	"support": {
 		"issues": "https://github.com/bu-ist/bu-learning-modules/issues"
 	},
 	"require-dev": {
-		"dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
 		"squizlabs/php_codesniffer": "^3.1",
-		"wimg/php-compatibility": "^8",
 		"wp-coding-standards/wpcs": "^0.14.0"
 	},
 	"require": {
