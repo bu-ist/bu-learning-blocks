@@ -50,105 +50,30 @@ $aqua-forest: #6aac70;
 	}
 }
 
-/* Integrates with BU Responsive theme */
-.bulb-content {
-	display: flex;
-	padding-bottom: 60px;
-
-	@media screen and (max-width: 600px) {
-		// Change flex-direction for narrow screens.
-		flex-direction: column;
-	}
-
-	article.bulb-learning-module {
-		flex: 70%;
-		@media screen and (max-width: 600px) {
-			flex: 1 0 auto;
-		}
-	}
-
-	.sidebar.bulb-module-sidebar {
-		flex: 30%;
-		@media screen and (max-width: 600px) {
-			flex: 1 0 auto;
-			order: 2;
-		}
-
-		.bulb-page-links {
-			width: 100%;
-			border: 1px solid black;
-
-			&__title {
-				margin: 0;
-				text-align: center;
-				font-size: 20px;
-				padding: 5px 0;
-				background-color: $lightgray;
-
-				a {
-					color: $white;
-					text-decoration: none;
-
-					&:active,
-					&:visited {
-						color: $white;
-					}
-					&:hover,
-					&:focus {
-							color: $gray;
-							text-decoration: underline;
-					}
-				}
-			}
-
-			&-min-list {
-				padding: 0;
-				margin: 0;
-				list-style: none;
-
-				li {
-					list-style: none;
-
-					a {
-						display: block;
-						padding: 6px 20px;
-					}
-					&.current_page_item {
-						background-color: $gray;
-					}
-				}
-			}
-		}
-	}
-}
 
 .bulb-pagination {
-	clear: both;
-	position: relative;
-	font-size: 12px; /* Pagination text size */
-	line-height: 13px;
-	float: left; /* Pagination float direction */
-	margin: 0 0 20px 0;
-	width: 100%;
-	text-align: center;
 
-	h6 {
-		float: left;
-		margin: 5px;
-	}
-	span, a {
-		display: block;
-		float: left;
+	display: flex;
+	font-size: 0.8em;
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
+
+	%pagination-spacing {
 		margin: 2px 2px 2px 0;
 		padding: 6px 9px 5px 9px;
+	}
+
+	&-label {
+		@extend %pagination-spacing;
+		font-weight: bold;
+	}
+
+	a, span {
+		@extend %pagination-spacing;
 		text-decoration: none;
 		width: auto;
 		color: $black; /* Pagination text color */
 		background: #c0c0c0; /* Pagination non-active background color */
-		-webkit-transition: background 0.15s ease-in-out;
-		-moz-transition: background 0.15s ease-in-out;
-		-ms-transition: background 0.15s ease-in-out;
-		-o-transition: background 0.15s ease-in-out;
 		transition: background 0.15s ease-in-out;
 	}
 
@@ -161,6 +86,13 @@ $aqua-forest: #6aac70;
 		padding: 6px 9px 5px 9px;
 		background: $lightgray; /* Current page background */
 		color: $white;
+	}
+}
+
+.bulb-learning-module {
+	// Adaptations to Responsive framework, suppress unnecessary footer metadata.
+	.single-meta, .archive-link-container {
+		display: none;
 	}
 }
 

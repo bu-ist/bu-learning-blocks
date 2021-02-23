@@ -125,31 +125,46 @@ function bulb_flush_rewrites() {
 }
 register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_flush_rewrites' );
 
-
 /**
- * Enqueue the custom post type's single- template.
+ * Add pagination to the post markup for the custom post type.
  *
- * @param string $single Template file to be filtered.
- *
- * @return string $single Filtered template.
- *
- * @since 0.0.2
+ * @param string $content The rendered post content.
+ * @return string Post content with pagination markup appended.
  */
-function bulb_cpt_template( $single ) {
+function bulb_add_pagination( $content ) {
 	global $post;
 
-	/* Checks for single template by post type */
-	if ( 'bulb-learning-module' === $post->post_type ) {
-		if ( file_exists( BULB_PLUGIN_DIR_PATH . 'src/single-bulb-learning-module.php' ) ) {
-			return BULB_PLUGIN_DIR_PATH . 'src/single-bulb-learning-module.php';
-		}
+	// Only display pagination on bulb type posts.
+	if ( 'bulb-learning-module' !== $post->post_type ) {
+		return $content;
 	}
 
-	return $single;
+	$current_post_id = get_the_ID();
 
+	// Navigate the hierarchical custom post type.
+	$module_parent        = ( 0 === $post->post_parent ? $post->ID : $post->post_parent );
+	$child_args           = array(
+		'post_type'   => 'bulb-learning-module',
+		'post_parent' => $module_parent,
+		'orderby'     => 'menu_order',
+		'order'       => 'ASC',
+	);
+	$module_ids           = array( $module_parent );
+	$module_ids           = array_merge( $module_ids, array_keys( get_children( $child_args ) ) );
+	$current_module_index = array_search( $current_post_id, $module_ids, true );
+	$total_pages          = count( $module_ids );
+	$range                = 2; // Adjust this value to set the number of pages that appear in the nav.
+	$showitems            = ( $range * 2 ) + 1;
+
+	ob_start();
+	include BULB_PLUGIN_DIR_PATH . 'src/templates/pagination.php';
+	$pagination = ob_get_contents();
+	ob_end_clean();
+
+	return $content . $pagination;
 }
-/* Filter the single_template with our custom function*/
-add_filter( 'single_template', 'bulb_cpt_template' );
+// Filter the post content to add pagination.
+add_filter( 'the_content', 'bulb_add_pagination' );
 
 /**
  * Load custom archive template.
