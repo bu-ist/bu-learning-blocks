@@ -95,7 +95,9 @@ $aqua-forest: #6aac70;
 		display: none;
 	}
 
-	// Adaptations for Twenty Twenty One theme, which styles input controls intensively
+	// **Adaptations for Twenty Twenty-One theme.
+	// Twenty Twenty-One sets rules on input elements that mess up Material UI checkboxes and radio buttons in the question components.
+	// This overrides the Twenty Twenty-One rules to match the Material UI settings, so the question work in the front end.
 	input[type=checkbox], input[type=radio] {
 		position: absolute;
 		width: 100%;
@@ -105,6 +107,7 @@ $aqua-forest: #6aac70;
 			opacity: 0;
 		}
 	}
+	// **End Twenty Twenty-One adaptations.
 }
 
 .bulb-archive-container {
