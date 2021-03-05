@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6e2324c9d0213fd75ea2a304749ebb8",
+    "content-hash": "76331d979867739678dcb7f2a240ed69",
     "packages": [
         {
             "name": "bu-ist/bu-navigation-core-widget",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bu-ist/bu-navigation-core-widget.git",
-                "reference": "438bab3926ea72bd0a79180819448a8d6d4b9ec4"
+                "reference": "9d3411ce405b632eb5d1f4b541fe7cbaa87bdc4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bu-ist/bu-navigation-core-widget/zipball/438bab3926ea72bd0a79180819448a8d6d4b9ec4",
-                "reference": "438bab3926ea72bd0a79180819448a8d6d4b9ec4",
+                "url": "https://api.github.com/repos/bu-ist/bu-navigation-core-widget/zipball/9d3411ce405b632eb5d1f4b541fe7cbaa87bdc4b",
+                "reference": "9d3411ce405b632eb5d1f4b541fe7cbaa87bdc4b",
                 "shasum": ""
             },
             "require": {
@@ -60,10 +60,10 @@
             ],
             "description": "Core data methods and widget logic for BU Navigation",
             "support": {
-                "source": "https://github.com/bu-ist/bu-navigation-core-widget/tree/1.0.1",
+                "source": "https://github.com/bu-ist/bu-navigation-core-widget/tree/1.0.2",
                 "issues": "https://github.com/bu-ist/bu-navigation-core-widget/issues"
             },
-            "time": "2021-02-16T16:32:24+00:00"
+            "time": "2021-03-05T21:30:53+00:00"
         },
         {
             "name": "composer/installers",
