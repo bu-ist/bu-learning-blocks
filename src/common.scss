@@ -94,6 +94,20 @@ $aqua-forest: #6aac70;
 	.single-meta, .archive-link-container {
 		display: none;
 	}
+
+	// **Adaptations for Twenty Twenty-One theme.
+	// Twenty Twenty-One sets rules on input elements that mess up Material UI checkboxes and radio buttons in the question components.
+	// This overrides the Twenty Twenty-One rules to match the Material UI settings, so the questions work in the front end.
+	input[type=checkbox], input[type=radio] {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+
+		&:disabled {
+			opacity: 0;
+		}
+	}
+	// **End Twenty Twenty-One adaptations.
 }
 
 .bulb-archive-container {
