@@ -13,7 +13,8 @@ const frontendConfig = {
 	}
 };
 
-const blocksConfig = Object.assign( {}, defaultConfig, {
+const blocksConfig = {
+    ...defaultConfig,
 	name: 'blocks',
 	entry: {
 		'blocks': './src/blocks.js'
@@ -22,7 +23,7 @@ const blocksConfig = Object.assign( {}, defaultConfig, {
 		path: path.join(__dirname, './build/blocks'),
 		filename: 'blocks.build.js'
 	}
-} );
+};
 
 module.exports = [
 	frontendConfig, blocksConfig
