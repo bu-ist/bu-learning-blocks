@@ -9,9 +9,6 @@ import Question from '../../components/Question';
 import Answers from '../../components/Answers';
 import Controls from '../../components/Controls';
 
-import './styles/style.scss';
-import './styles/editor.scss';
-
 // Register the block
 export default registerBlockType( 'bulb/question-mc', {
 	title: __( 'BULB - Multiple Choice', 'bu-learning-blocks' ),

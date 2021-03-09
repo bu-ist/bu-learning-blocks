@@ -9,7 +9,6 @@ import Question from '../../components/Question';
 import Controls from '../../components/Controls';
 import CalculatedNumericAnswer from './CalculatedNumericAnswer';
 
-import './styles/style.scss';
 import './styles/editor.scss';
 
 // Register the block
