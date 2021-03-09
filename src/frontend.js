@@ -9,6 +9,8 @@ import ReactHTMLParser from 'react-html-parser';
 // Import the react-questions library.
 import { Question } from '@bostonuniversity/react-questions';
 
+import './frontend.scss';
+
 // Find all .bulb-question DOM containers, collect their data from window and render <Questions> into them.
 document.querySelectorAll( '.bulb-question' ).forEach( questionContainer => {
 	const questionId = questionContainer.id;
