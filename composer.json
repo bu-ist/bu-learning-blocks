@@ -28,7 +28,7 @@
     },
     "require": {
         "composer/installers": "~1.0",
-        "bu-ist/bu-navigation-core-widget": "1.0.*"
+        "bu-ist/bu-navigation-core-widget": "1.0.2"
     },
     "extra": {
         "installer-paths": {
