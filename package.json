@@ -5,7 +5,8 @@
 	"scripts": {
 		"start": "wp-scripts start",
 		"build": "wp-scripts build",
-		"wp-env": "wp-env"
+		"wp-env": "wp-env",
+		"lint:js": "wp-scripts lint-js"
 	},
 	"dependencies": {
 		"@bostonuniversity/react-questions": "0.1.1",
