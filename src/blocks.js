@@ -8,6 +8,8 @@
  * Webpack is compiling as the input file.
  */
 
+import './blocks.scss';
+
 import './blocks/bulb-cn/index.js';
 import './blocks/bulb-ma/index.js';
 import './blocks/bulb-mc/index.js';
