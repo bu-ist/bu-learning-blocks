@@ -7,7 +7,7 @@
  * Author URI: http://www.bu.edu/
  * Text Domain: bu-learning-blocks
  * Domain Path: /languages
- * Version: v1.0.0
+ * Version: v1.1.0
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
@@ -82,6 +82,40 @@ register_deactivation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_deactivate' );
  * @since    0.0.2
  */
 function init_plugin() {
+	global $bu_navigation_plugin;
+
+	// Include the BU Navigation core and widget, if BU Navigation isn't already available.
+	if ( ! $bu_navigation_plugin ) {
+		require __DIR__ . '/inc/bu-navigation-core-widget/src/class-navigation-widget.php';
+		require __DIR__ . '/inc/bu-navigation-core-widget/src/data-active-section.php';
+		require __DIR__ . '/inc/bu-navigation-core-widget/src/data-format.php';
+		require __DIR__ . '/inc/bu-navigation-core-widget/src/data-get-urls.php';
+		require __DIR__ . '/inc/bu-navigation-core-widget/src/data-model.php';
+		require __DIR__ . '/inc/bu-navigation-core-widget/src/data-nav-labels.php';
+		require __DIR__ . '/inc/bu-navigation-core-widget/src/data-widget.php';
+		require __DIR__ . '/inc/bu-navigation-core-widget/src/filters.php';
+
+		// At BU this is defined in wp-config.php, so it must be independently declared.
+		define( 'BU_NAVIGATION_LINK_POST_TYPE', 'link' );
+
+		add_action( 'widgets_init', function() {
+			register_widget( 'BU\Plugins\Navigation\Navigation_Widget' );
+		});
+
+		/**
+		 * If BU Navigation isn't loaded, then declare a bu_navigation_supported_post_types function
+		 * that only returns the BULB custom post type
+		 *
+		 * The navigation widget will call this funtion to determine which posts should appear in the widget.
+		 * Absent the full BU Navigation widget, the built in widget should only display BULB posts.
+		 *
+		 * @return array Array of one value, the BULB custom post type
+		 */
+		function bu_navigation_supported_post_types() {
+			return [ 'bulb-learning-module' ];
+		}
+	}
+
 	// Only targets WordPress versions before 5.0, that don't have gutenberg activated.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		add_action( 'admin_notices', 'gutenberg_notice' );

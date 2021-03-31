@@ -1,15 +1,15 @@
-# Copyright (C) 2020 Boston University: Web Applications
+# Copyright (C) 2021 Boston University: Web Applications
 # This file is distributed under the same license as the BU Learning Blocks plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: BU Learning Blocks v1.0.0\n"
+"Project-Id-Version: BU Learning Blocks v1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bu-learning-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-01T20:04:33+00:00\n"
+"POT-Creation-Date: 2021-03-09T22:14:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: bu-learning-blocks\n"
@@ -43,24 +43,24 @@ msgid "Please install and activate the Gutenberg plugin to use BU Learning Block
 msgstr ""
 
 #: src/init.php:38
-#: src/blocks/bulb-cn/index.js:23
-#: src/blocks/bulb-fitb/index.js:25
-#: src/blocks/bulb-ma/index.js:23
+#: src/blocks/bulb-cn/index.js:22
+#: src/blocks/bulb-fitb/index.js:22
+#: src/blocks/bulb-ma/index.js:20
 #: src/blocks/bulb-mat/index.js:20
-#: src/blocks/bulb-mc/index.js:23
-#: src/blocks/bulb-tf/index.js:23
+#: src/blocks/bulb-mc/index.js:20
+#: src/blocks/bulb-tf/index.js:20
 msgid "BULB"
 msgstr ""
 
-#: src/init.php:76
+#: src/init.php:101
 msgid "<strong>Welcome to BU Learning Blocks</strong>"
 msgstr ""
 
-#: src/init.php:84
+#: src/init.php:109
 msgid "Install Blocks and Pages"
 msgstr ""
 
-#: src/init.php:90
+#: src/init.php:115
 msgid "Install Blocks Only"
 msgstr ""
 
@@ -200,41 +200,56 @@ msgstr ""
 msgid "Holds our Lessons"
 msgstr ""
 
-#: src/blocks/bulb-cn/index.js:17
+#: build/blocks/blocks.build.js:1
+#: src/components/QuestionHeader.js:7
+msgid "Question"
+msgstr ""
+
+#: build/blocks/blocks.build.js:1
+#: src/components/QuestionHeader.js:8
+msgid "Question Header"
+msgstr ""
+
+#: build/blocks/blocks.build.js:1
+#: src/components/QuestionHeader.js:11
+msgid "Enter Question Header"
+msgstr ""
+
+#: src/blocks/bulb-cn/index.js:16
 msgid "BULB - Calculated Numeric"
 msgstr ""
 
-#: src/blocks/bulb-cn/index.js:22
-#: src/blocks/bulb-fitb/index.js:24
-#: src/blocks/bulb-ma/index.js:22
+#: src/blocks/bulb-cn/index.js:21
+#: src/blocks/bulb-fitb/index.js:21
+#: src/blocks/bulb-ma/index.js:19
 #: src/blocks/bulb-mat/index.js:19
-#: src/blocks/bulb-mc/index.js:22
-#: src/blocks/bulb-tf/index.js:22
+#: src/blocks/bulb-mc/index.js:19
+#: src/blocks/bulb-tf/index.js:19
 msgid "bu-learning-block"
 msgstr ""
 
-#: src/blocks/bulb-cn/index.js:24
+#: src/blocks/bulb-cn/index.js:23
 msgid "Calculated Numeric Question"
 msgstr ""
 
-#: src/blocks/bulb-fitb/index.js:19
+#: src/blocks/bulb-fitb/index.js:16
 msgid "BULB - Fill in the Blank"
 msgstr ""
 
-#: src/blocks/bulb-fitb/index.js:26
+#: src/blocks/bulb-fitb/index.js:23
 msgid "Fill in the Blank Question"
 msgstr ""
 
-#: src/blocks/bulb-fitb/index.js:70
-#: src/blocks/bulb-fitb/index.js:74
+#: src/blocks/bulb-fitb/index.js:67
+#: src/blocks/bulb-fitb/index.js:71
 msgid "Case sensitivity"
 msgstr ""
 
-#: src/blocks/bulb-ma/index.js:17
+#: src/blocks/bulb-ma/index.js:14
 msgid "BULB - Multiple Answer"
 msgstr ""
 
-#: src/blocks/bulb-ma/index.js:24
+#: src/blocks/bulb-ma/index.js:21
 msgid "Multiple Answer Question"
 msgstr ""
 
@@ -258,19 +273,19 @@ msgstr ""
 msgid "Answer"
 msgstr ""
 
-#: src/blocks/bulb-mc/index.js:17
+#: src/blocks/bulb-mc/index.js:14
 msgid "BULB - Multiple Choice"
 msgstr ""
 
-#: src/blocks/bulb-mc/index.js:24
+#: src/blocks/bulb-mc/index.js:21
 msgid "Multiple Choice Question"
 msgstr ""
 
-#: src/blocks/bulb-tf/index.js:17
+#: src/blocks/bulb-tf/index.js:14
 msgid "BULB - True/False"
 msgstr ""
 
-#: src/blocks/bulb-tf/index.js:24
+#: src/blocks/bulb-tf/index.js:21
 msgid "True False Question"
 msgstr ""
 
@@ -314,16 +329,4 @@ msgstr ""
 
 #: src/components/QuestionFeedback.js:44
 msgid "Enter Incorrect Feedback"
-msgstr ""
-
-#: src/components/QuestionHeader.js:7
-msgid "Question"
-msgstr ""
-
-#: src/components/QuestionHeader.js:8
-msgid "Question Header"
-msgstr ""
-
-#: src/components/QuestionHeader.js:11
-msgid "Enter Question Header"
 msgstr ""

@@ -11,9 +11,6 @@ import Question from '../../components/Question';
 import Controls from '../../components/Controls';
 import FillInTheBlankAnswer from './FillInTheBlankAnswer';
 
-import './styles/style.scss';
-import './styles/editor.scss';
-
 // Register the block
 export default registerBlockType( 'bulb/question-fitb', {
 	title: __( 'BULB - Fill in the Blank', 'bu-learning-blocks' ),

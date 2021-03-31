@@ -52,6 +52,31 @@ add_action( 'admin_post_install_cpt', 'bulb_admin_install_cpt' );
  */
 function bulb_admin_install_cpt() {
 	update_option( 'bulb_cpt_install', 1 );
+
+	// If BULB is activated with a responsive-framework theme, place a sidebar nav widget.
+	if ( in_array(
+		get_template(),
+		array( 'responsive-framework', 'responsive-framework-2-x' ),
+		true
+	) ) {
+		$sidebars = get_option( 'sidebars_widgets' );
+
+		// Add a BU Navigation widget to the posts sidebar.
+		$sidebars['posts'] = array_merge( $sidebars['posts'], [ 'bu_pages-1' ] );
+		update_option( 'sidebars_widgets', $sidebars );
+
+		// BU Navigation widget settings, defaults from Responsive Framework.
+		update_option( 'widget_bu_pages', array(
+			'_multiwidget' => 1,
+			1              => array(
+				'navigation_title'      => 'section',
+				'navigation_title_text' => '',
+				'navigation_title_url'  => '',
+				'navigation_style'      => 'section',
+			),
+		) );
+	}
+
 	wp_safe_redirect( 'plugins.php' );
 	exit;
 }
@@ -101,24 +126,4 @@ function load_cpt_install_dialog() {
 if ( get_option( 'bulb_cpt_install' ) ) {
 	// Register a learning-module custom post type.
 	require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
-
-	/**
-	 * Register a dynamic sidebar
-	 *
-	 * @return void
-	 */
-	function bulb_widgets_init() {
-		register_sidebar(
-			array(
-				'name'          => __( 'BULB Module Sidebar' ),
-				'id'            => 'bulb-module-sidebar',
-				'description'   => __( 'Add widgets here to appear on your BULB module pages.' ),
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="widget-title">',
-				'after_title'   => '</h3>',
-			)
-		);
-	}
-	add_action( 'widgets_init', 'bulb_widgets_init' );
 }
