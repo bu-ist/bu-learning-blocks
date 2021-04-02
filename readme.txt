@@ -1,8 +1,16 @@
-# BU Learning Blocks
+=== BU Learning Blocks ===
+Contributors: carlosesilva, dannycrews, jdub233
+Tags: learning, teaching, education, online courses, boston university, bu
+Requires at least: 5.3.2
+Tested up to: 5.7
+Stable tag: 1.1.1
+Requires PHP: 7.0
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/b920b4489aa4ded7bd77/maintainability)](https://codeclimate.com/github/bu-ist/bu-learning-blocks/maintainability)
+BU Learning BLocks is a plugin to facilitate online learning.
 
-## About
+== Description ==
 
 BU Learning Blocks (BULB) is a collection of Gutenberg blocks and WordPress Custom Post Types that enable the easy creation of academic lessons. With BULB you can facilitate online learning by embedding self-assessment questions directly into your lesson. Creating and publishing a BULB Lesson is no different than creating a standard WordPress Page. The plugin provides two key capabilities that are not provided by WordPress:
 
@@ -17,7 +25,7 @@ BULB is compatible with WordPress 5.3.2 and above and the Gutenberg editor must 
 
 Additional documentation is available in the [BULB user guide](https://developer.bu.edu/bulb/).
 
-## Installing and activating
+# Installing and activating
 
 BULB can be installed and activated like any other WordPress plugin.  
 
@@ -25,30 +33,7 @@ When activated, BU Learning Blocks presents a choice to install only the questio
 
 The plugin can be activated and deactivated, no custom posts will be deleted.  Deleting the plugin will cause all of the custom post type data to be deleted as well.
 
-## Developing with BULB
+== Changelog ==
 
-To get started developing the plugin, clone this repo and run `npm install`.
-
-To compile working changes run `npm start`.  This will start the [wp-scripts](https://www.npmjs.com/package/@wordpress/scripts) based development toolchain.
-
-This plugin also includes the [wp-env local development setup](https://www.npmjs.com/package/@wordpress/env).
-
-If you have Docker installed, you can start a local WordPress Docker container to test the plugin.  Run this:
-
-```bash
-npm run wp-env start
-```
-
-to initialize a local wp site container.  
-
-After starting, a new WordPress site with the plugin installed will be available at http://localhost:8888/
-
-## BU React Questions
-
-BULB uses [BU React Questions](https://www.npmjs.com/package/@bostonuniversity/react-questions) to render the interactive question blocks.  Changes to the front-end rendering of interactive questions must be made there.
-
-BU React Questions is also a standalone package that can be used independently of BULB.
-
-## BU Navigation
-
-BULB uses the [core components from the BU Navigation plugin](https://github.com/bu-ist/bu-navigation-core-widget) to provide the lesson page navigation widget.  This package is installed through composer, and committed to the repo for ease of deployment.
+= 1.1.1 =
+* Initial public release
