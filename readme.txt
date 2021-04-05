@@ -33,6 +33,10 @@ When activated, BU Learning Blocks presents a choice to install only the questio
 
 The plugin can be activated and deactivated, no custom posts will be deleted.  Deleting the plugin will cause all of the custom post type data to be deleted as well.
 
+# Development
+
+Development takes place at https://github.com/bu-ist/bu-learning-blocks/
+
 == Changelog ==
 
 = 1.1.1 =
