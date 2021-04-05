@@ -3,11 +3,13 @@
  * Plugin Name: BU Learning Blocks
  * Plugin URI: https://github.com/bu-ist/bu-learning-blocks
  * Description: BU Learning Blocks — is a collection of tools to enable the easy creation of academic lessons with embedded self-assessment questions.
+ * Requires at least: 5.3.2
+ * Requires PHP: 7.0
  * Author: Boston University: Web Applications
  * Author URI: http://www.bu.edu/
  * Text Domain: bu-learning-blocks
  * Domain Path: /languages
- * Version: v1.1.0
+ * Version: v1.1.1
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
