@@ -8,9 +8,6 @@
  * @package BU Learning Blocks
  */
 
-// Load helper functions.
-require_once BULB_PLUGIN_DIR_PATH . 'src/helpers/get-feedback.php';
-
 /**
  * Render the dynamic block
  *
