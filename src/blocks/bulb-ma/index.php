@@ -8,6 +8,8 @@
  * @package BU Learning Blocks
  */
 
+namespace BU\Plugins\LearningBlocks;
+
 /**
  * Render the dynamic block
  *
@@ -117,8 +119,8 @@ function bulb_register_question_ma() {
 					'type'    => 'string',
 				],
 			],
-			'render_callback' => 'bulb_render_block_ma',
+			'render_callback' => __NAMESPACE__ . '\bulb_render_block_ma',
 		]
 	);
 }
-add_action( 'init', 'bulb_register_question_ma' );
+add_action( 'init', __NAMESPACE__ . '\bulb_register_question_ma' );
