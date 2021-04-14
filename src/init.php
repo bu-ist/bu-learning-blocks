@@ -8,6 +8,8 @@
  * @package BU Learning Blocks
  */
 
+namespace BU\Plugins\LearningBlocks;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -44,7 +46,7 @@ add_filter(
 	2
 );
 
-add_action( 'admin_post_install_cpt', 'bulb_admin_install_cpt' );
+add_action( 'admin_post_install_cpt', __NAMESPACE__ . '\bulb_admin_install_cpt' );
 /**
  * Update option to load custom post types.
  *
@@ -85,7 +87,7 @@ function bulb_admin_install_cpt() {
  * Load the cpt install dialog if we haven't already.
  */
 if ( get_option( 'bulb_cpt_install_dialog' ) ) {
-	add_action( 'admin_notices', 'load_cpt_install_dialog' );
+	add_action( 'admin_notices', __NAMESPACE__ . '\load_cpt_install_dialog' );
 }
 
 
