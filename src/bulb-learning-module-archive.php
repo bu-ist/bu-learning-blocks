@@ -9,7 +9,7 @@
 
 get_header();
 
-$terms = get_terms(
+$bulb_terms = get_terms(
 	'bulb-courses',
 	array(
 		'orderby'    => 'name',
@@ -23,7 +23,7 @@ $terms = get_terms(
 
 <?php
 
-foreach ( $terms as $term_item ) {
+foreach ( $bulb_terms as $term_item ) {
 	// Define the query.
 	$args  = array(
 		'paged'          => $paged,

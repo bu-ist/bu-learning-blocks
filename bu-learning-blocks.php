@@ -34,7 +34,7 @@ define( 'BULB_PLUGIN_FILE_PATH', __FILE__ );
  *
  * @since    0.0.2
  */
-function gutenberg_notice() {
+function bulb_gutenberg_notice() {
 	?>
 		<div class="notice notice-error is-dismissible">
 			<p>
@@ -83,7 +83,7 @@ register_deactivation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_deactivate' );
  *
  * @since    0.0.2
  */
-function init_plugin() {
+function bulb_init_plugin() {
 	global $bu_navigation_plugin;
 
 	// Include the BU Navigation core and widget, if BU Navigation isn't already available.
@@ -120,7 +120,7 @@ function init_plugin() {
 
 	// Only targets WordPress versions before 5.0, that don't have gutenberg activated.
 	if ( ! function_exists( 'register_block_type' ) ) {
-		add_action( 'admin_notices', 'gutenberg_notice' );
+		add_action( 'admin_notices', 'bulb_gutenberg_notice' );
 		return;
 	}
 
@@ -129,4 +129,4 @@ function init_plugin() {
 	 */
 	require_once BULB_PLUGIN_DIR_PATH . 'src/init.php';
 }
-add_action( 'plugins_loaded', 'init_plugin' );
+add_action( 'plugins_loaded', 'bulb_init_plugin' );

@@ -23,7 +23,7 @@ get_header();
 	<h3><?php single_term_title(); ?> Lesson Pages:</h3>
 	<?php
 
-	$args = array(
+	$bulb_tax_args = array(
 		'paged'          => $paged,
 		'orderby'        => 'menu_order',
 		'order'          => 'ASC',
@@ -37,11 +37,11 @@ get_header();
 		),
 	);
 
-	$bulb_query = new WP_Query( $args );
+	$bulb_tax_query = new WP_Query( $bulb_tax_args );
 
-	if ( $bulb_query->have_posts() ) :
-		while ( $bulb_query->have_posts() ) :
-			$bulb_query->the_post();
+	if ( $bulb_tax_query->have_posts() ) :
+		while ( $bulb_tax_query->have_posts() ) :
+			$bulb_tax_query->the_post();
 			?>
 			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 			</br>
