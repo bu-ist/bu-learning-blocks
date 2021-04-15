@@ -6,6 +6,8 @@
  * @package BU Learning Blocks
  */
 
+namespace BU\Plugins\LearningBlocks;
+
 /**
  * Enqueue Gutenberg block assets for both frontend + backend.
  *
@@ -38,7 +40,7 @@ function bulb_block_assets() {
 		filemtime( plugin_dir_path( __DIR__ ) . 'build/frontend/frontend.css' ) // Gets file modification time for cache busting.
 	);
 }
-add_action( 'enqueue_block_assets', 'bulb_block_assets' );
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\bulb_block_assets' );
 
 /**
  * Enqueue Gutenberg block assets for backend editor.
@@ -71,4 +73,4 @@ function bulb_block_editor_assets() {
 		filemtime( plugin_dir_path( __DIR__ ) . 'build/blocks/blocks.css' ) // Gets file modification time for cache busting.
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'bulb_block_editor_assets' );
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\bulb_block_editor_assets' );

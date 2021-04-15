@@ -6,6 +6,8 @@
  * @package BU Learning Blocks
  */
 
+namespace BU\Plugins\LearningBlocks;
+
 /**
  * Calls register_taxonomy
  *
@@ -49,14 +51,14 @@ function register_course_tax() {
 	);
 	register_taxonomy( 'bulb-courses', 'bulb-learning-module', $args );
 }
-add_action( 'init', 'register_course_tax' );
+add_action( 'init', __NAMESPACE__ . '\register_course_tax' );
 
 /**
  * Calls register_post_type
  *
  * @since 0.0.1
  */
-function bulb_register_learning_module_post_type() {
+function register_learning_module_post_type() {
 	// Set various pieces of text, $labels is used inside the $args array.
 	$labels  = array(
 		'name'               => __( 'Lesson Pages', 'bu-learning-blocks' ),
@@ -112,7 +114,7 @@ function bulb_register_learning_module_post_type() {
 	);
 	register_post_type( 'bulb-learning-module', $args );
 }
-add_action( 'init', 'bulb_register_learning_module_post_type' );
+add_action( 'init', __NAMESPACE__ . '\register_learning_module_post_type' );
 
 /**
  * Flush rewrite rules for CPT
@@ -120,10 +122,10 @@ add_action( 'init', 'bulb_register_learning_module_post_type' );
  * @since 0.0.4
  */
 function bulb_flush_rewrites() {
-	bulb_register_learning_module_post_type();
+	register_learning_module_post_type();
 	flush_rewrite_rules();
 }
-register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_flush_rewrites' );
+register_activation_hook( BULB_PLUGIN_FILE_PATH, __NAMESPACE__ . '\bulb_flush_rewrites' );
 
 /**
  * Add pagination to the post markup for the custom post type.
@@ -164,7 +166,7 @@ function bulb_add_pagination( $content ) {
 	return $content . $pagination;
 }
 // Filter the post content to add pagination.
-add_filter( 'the_content', 'bulb_add_pagination' );
+add_filter( 'the_content', __NAMESPACE__ . '\bulb_add_pagination' );
 
 /**
  * Load custom archive template.
@@ -181,7 +183,7 @@ function get_custom_post_type_template( $archive_template ) {
 	}
 	return $archive_template;
 }
-add_filter( 'archive_template', 'get_custom_post_type_template' );
+add_filter( 'archive_template', __NAMESPACE__ . '\get_custom_post_type_template' );
 
 /**
  * Enqueue the custom Taxonomy's archive template.
@@ -205,7 +207,7 @@ function bulb_archive_template( $template ) {
 
 }
 /* Filter the single_template with our custom function*/
-add_filter( 'template_include', 'bulb_archive_template' );
+add_filter( 'template_include', __NAMESPACE__ . '\bulb_archive_template' );
 
 /**
  * Load script to kill attributes panel in Document editor panel.
@@ -222,7 +224,7 @@ function remove_bulb_attributes_panel() {
 	);
 }
 if ( class_exists( 'BU_Navigation_Plugin' ) ) {
-	add_action( 'enqueue_block_editor_assets', 'remove_bulb_attributes_panel' );
+	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\remove_bulb_attributes_panel' );
 }
 
 /**
@@ -239,4 +241,4 @@ function bulb_add_admin_scripts() {
 		true // Enqueue the script in the footer.
 	);
 }
-add_action( 'enqueue_block_editor_assets', 'bulb_add_admin_scripts' );
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\bulb_add_admin_scripts' );
