@@ -1,6 +1,8 @@
 .bulb-video {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .bulb-video-caption {
@@ -17,6 +19,10 @@
 
 .bulb-video-captions-container {
     padding: 30px;
+    min-height: 0;
+    height: 0;
+    padding-bottom: 161.7%;
+    overflow-y: auto;
 }
 
 .bulb-video-caption-timestamp,
@@ -29,4 +35,18 @@
     align-self: start;
     background-color: lightblue;
     border-radius: 5px;
+}
+
+.bulb-video-player {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+
+.bulb-video-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

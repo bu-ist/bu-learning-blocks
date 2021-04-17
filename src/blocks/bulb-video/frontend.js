@@ -3,6 +3,7 @@
 const youtubeID = 'bNTSO3D5bc8';
 
 const captionsContainer = document.createElement('div');
+const videoBlock = document.querySelector('.bulb-video');
 
 captionsContainer.classList.add('bulb-video-captions-container');
 
@@ -24,6 +25,7 @@ function convertMS( milliseconds ) {
 	return `${hour}:${minute}:${seconds}`;
 }
 
+// Get the transcript. Requires a named transcript.
 fetch('https://www.youtube.com/api/timedtext?v=' + youtubeID +'&lang=en-US&fmt=json3')
 	.then(response => response.json())
 	.then(data => {
@@ -44,4 +46,28 @@ fetch('https://www.youtube.com/api/timedtext?v=' + youtubeID +'&lang=en-US&fmt=j
 			}
 });
 
-document.querySelector('.bulb-video').insertAdjacentElement( 'beforeend', captionsContainer );
+videoBlock.insertAdjacentElement( 'beforeend', captionsContainer );
+
+// Load YouTube player
+
+let tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+let firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: youtubeID,
+		playerVars: { 
+      'modestbranding': 0
+    },
+  });
+
+	console.log(player);
+}
