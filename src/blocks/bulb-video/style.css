@@ -12,6 +12,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.bulb-video-caption:hover {
+    cursor: pointer;
+}
+
 .bulb-video-player {
     background: gray;
     grid-column: span 3;

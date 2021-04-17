@@ -1,6 +1,7 @@
 // Starter code from https://stackoverflow.com/questions/32142656/get-youtube-captions/58435817#58435817
 
 const youtubeID = 'bNTSO3D5bc8';
+let player;
 
 const captionsContainer = document.createElement('div');
 const videoBlock = document.querySelector('.bulb-video');
@@ -25,22 +26,32 @@ function convertMS( milliseconds ) {
 	return `${hour}:${minute}:${seconds}`;
 }
 
+function seekToTime( event ) {
+	if ( event.target.className === 'bulb-video-caption' ) {
+		const time = event.target.firstElementChild.dataset.seekTo;
+		player.seekTo(time);
+	}
+}
+
 // Get the transcript. Requires a named transcript.
 fetch('https://www.youtube.com/api/timedtext?v=' + youtubeID +'&lang=en-US&fmt=json3')
 	.then(response => response.json())
 	.then(data => {
 			// Get the captions
 			const captions = data.events;
+			captionsContainer.addEventListener('click', seekToTime, true);
 
 			// For each caption, create a caption div and timestamp
 			for (const caption of captions) {
 				const timestamp = caption['tStartMs'];
+				const timeInSeconds = Math.floor(timestamp / 1000);
 				const captionText = caption['segs'][0].utf8;
 
+				// The pointer events settings below ensure the click event always uses the bulb-video-caption as the target.
 				captionsContainer.insertAdjacentHTML( 'beforeend', `
-					<div class="bulb-video-caption js-bulb-video-caption">
-						<time class="bulb-video-caption-timestamp" datetime="P${timestamp}SSS">${convertMS(timestamp)}</time>
-						<p>${captionText}</p>
+					<div class="bulb-video-caption">
+						<time class="bulb-video-caption-timestamp" datetime="P${timeInSeconds}S" data-seek-to="${timeInSeconds}" style="pointer-events: none;">${convertMS(timestamp)}</time>
+						<p style="pointer-events: none;">${captionText}</p>
 					</div>
 				`);
 			}
@@ -58,7 +69,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
-var player;
+
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '390',
