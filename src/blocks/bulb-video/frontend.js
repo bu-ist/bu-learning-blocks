@@ -34,6 +34,12 @@ function seekToTime( event ) {
 }
 
 // Get the transcript. Requires a named transcript.
+// This should probably be switched to https://developers.google.com/youtube/v3/docs/captions/download
+// but that involves an API key, and I'm also not sure how to deal with some of the web formats it returns.
+// That would be nice to figure out though, because one thing I can't get to from here is chapters.
+// Chapters are added in brackets to the video description, and you get to them using the API here:
+// https://developers.google.com/youtube/v3/docs/videos/list
+// A really nice enhancement would be to collapse the transcript by chapter, if it's available.
 fetch('https://www.youtube.com/api/timedtext?v=' + youtubeID +'&lang=en-US&fmt=json3')
 	.then(response => response.json())
 	.then(data => {
