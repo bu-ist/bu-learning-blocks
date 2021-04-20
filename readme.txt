@@ -39,6 +39,9 @@ Development takes place at https://github.com/bu-ist/bu-learning-blocks/
 
 == Changelog ==
 
+= 1.1.3 =
+* Add Github publish action
+
 = 1.1.2 =
 * Prefixing, function name, and variable name changes
 
