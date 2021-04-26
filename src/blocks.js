@@ -16,3 +16,4 @@ import './blocks/bulb-mc/index.js';
 import './blocks/bulb-tf/index.js';
 import './blocks/bulb-fitb/index.js';
 import './blocks/bulb-mat/index.js';
+import './blocks/bulb-video/index.js';
