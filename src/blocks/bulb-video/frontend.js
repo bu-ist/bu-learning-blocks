@@ -74,11 +74,10 @@ fetch('https://www.youtube.com/api/timedtext?v=' + youtubeID +'&lang=en-US&fmt=j
 videoBlock.insertAdjacentElement( 'beforeend', captionsContainer );
 
 // Load YouTube player
-let tag = document.createElement('script');
+let tag = document.createElement( 'script' );
 
 tag.src = "https://www.youtube.com/iframe_api";
-let firstScriptTag = document.getElementsByTagName( 'script' )[ 0 ];
-firstScriptTag.parentNode.insertBefore( tag, firstScriptTag );
+document.head.insertAdjacentElement( 'beforeend', tag );
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
