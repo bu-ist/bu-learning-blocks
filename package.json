@@ -10,6 +10,8 @@
 	},
 	"dependencies": {
 		"@bostonuniversity/react-questions": "0.1.1",
+		"@wordpress/components": "^13.0.3",
+		"@wordpress/i18n": "^3.20.0",
 		"classnames": "^2.2.6",
 		"react-html-parser": "^2.0.2"
 	},

@@ -4,6 +4,8 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
+import Edit from "./edit";
+
 import './styles/_frontend.scss';
 
 // Register the block.
@@ -24,28 +26,14 @@ export default registerBlockType( 'bulb/video', {
 		align: {
 			type: 'string',
 			default: 'full',
-		}
+		},
+		youtubeID: {
+			type: 'string',
+			default: 'bNTSO3D5bc8',
+		},
 	},
 
-	edit: props => {
-		const {
-			attributes: {
-				id,
-				type,
-				youtubeID,
-			},
-			setAttributes,
-			clientId,
-		} = props;
-
-		return (
-			<div className="bulb-video">
-				<div className="bulb-video-player">
-					<div id="player"></div>
-				</div>
-			</div>
-		);
-	},
+	edit: Edit,
 	save( { attributes } ) {
 		const {
 			youtubeID
