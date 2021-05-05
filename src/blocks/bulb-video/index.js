@@ -35,14 +35,12 @@ export default registerBlockType( 'bulb/video', {
 
 	edit: Edit,
 	save( { attributes } ) {
-		const {
-			youtubeID
-		} = attributes;
-
 		return (
 			<div className="bulb-video">
-				<div className="bulb-video-player">
-					<div id="player"></div>
+				<div
+					data-youtubeID={ attributes.youtubeID }
+					className="bulb-video-player"
+				>
 				</div>
 			</div>
 		);
