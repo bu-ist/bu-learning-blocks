@@ -40,9 +40,8 @@ export default registerBlockType( 'bulb/video', {
 				<div
 					data-youtubeID={ attributes.youtubeID }
 					className="bulb-video-player"
-				>
-				</div>
+				/>
 			</div>
 		);
-	}
+	},
 } );

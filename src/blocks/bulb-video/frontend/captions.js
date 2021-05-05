@@ -9,7 +9,9 @@ export default function Captions( { videoID } ) {
 	}, [] );
 
 	const initData = async () => {
-		const { data: { events: captions } } = await axios.get(
+		const {
+			data: { events: captions },
+		} = await axios.get(
 			`https://www.youtube.com/api/timedtext?v=${ videoID }&lang=en-US&fmt=json3`
 		);
 		setCaptions( captions );
@@ -23,8 +25,8 @@ export default function Captions( { videoID } ) {
 		const counterSecs = seconds % 60;
 		const counterMins = minutes % 60;
 
-		const displaySecs = counterSecs < 10 ? `0${counterSecs}` : counterSecs;
-		const displayMins = counterMins < 10 ? `0${counterMins}` : counterMins;
+		const displaySecs = counterSecs < 10 ? `0${ counterSecs }` : counterSecs;
+		const displayMins = counterMins < 10 ? `0${ counterMins }` : counterMins;
 
 		return `${ hours }:${ displayMins }:${ displaySecs }`;
 	};
@@ -33,18 +35,21 @@ export default function Captions( { videoID } ) {
 		<div className="bulb-video-captions-container">
 			{ captions &&
 				captions.map( ( caption ) => {
-					const seconds = Math.floor( caption[ 'tStartMs' ] );
+					const seconds = Math.floor( caption.tStartMs );
 
 					return (
-						<div key={caption['tStartMs']} className="bulb-video-caption">
-						<time
-							className="bulb-video-caption-timestamp"
-							dateTime={ `P${ seconds }S` }
+						<div
+							key={ caption.tStartMs }
+							className="bulb-video-caption"
 						>
+							<time
+								className="bulb-video-caption-timestamp"
+								dateTime={ `P${ seconds }S` }
+							>
 								{ convertMS( caption.tStartMs ) }
-						</time>
-							<p>{ caption[ 'segs' ][ 0 ].utf8 }</p>
-					</div>
+							</time>
+							<p>{ caption.segs[ 0 ].utf8 }</p>
+						</div>
 					);
 				} ) }
 		</div>
