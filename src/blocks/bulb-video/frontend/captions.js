@@ -37,7 +37,7 @@ export default function Captions( { videoID, playerRef } ) {
 		<div className="bulb-video-captions-container">
 			{ captions &&
 				captions.map( ( caption ) => {
-					const seconds = Math.floor( caption.tStartMs );
+					const seconds = caption.tStartMs / 1000;
 
 					return (
 						<div
