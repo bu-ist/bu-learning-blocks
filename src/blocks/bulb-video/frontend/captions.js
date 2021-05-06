@@ -39,6 +39,11 @@ export default function Captions( { videoID, playerRef } ) {
 				captions.map( ( caption ) => {
 					const seconds = caption.tStartMs / 1000;
 
+					const handleSeek = () => {
+						const internalPlayer = playerRef.current.getInternalPlayer();
+						internalPlayer.seekTo( seconds, true );
+					};
+
 					return (
 						<div
 							key={ caption.tStartMs }
@@ -47,12 +52,7 @@ export default function Captions( { videoID, playerRef } ) {
 							<time
 								className="bulb-video-caption-timestamp"
 								dateTime={ `P${ seconds }S` }
-								onClick={ () =>
-									playerRef.current.seekTo(
-										seconds,
-										'seconds'
-									)
-								}
+								onClick={ handleSeek }
 							>
 								{ convertMS( caption.tStartMs ) }
 							</time>
