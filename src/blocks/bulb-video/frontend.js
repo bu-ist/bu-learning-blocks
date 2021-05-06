@@ -13,6 +13,7 @@ const VideoWithCaptions = ( { videoID } ) => {
 				<ReactPlayer
 					url={ `https://www.youtube.com/watch?v=${ videoID }` }
 					ref={ playerRef }
+					config={ { youtube: { playerVars: { controls: 1 } } } }
 				/>
 			</div>
 			<Captions
