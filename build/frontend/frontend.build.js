@@ -36531,15 +36531,19 @@ function Captions(_ref) {
     className: "bulb-video-captions-container"
   }, captions && captions.map(function (caption) {
     var seconds = caption.tStartMs / 1000;
+
+    var handleSeek = function handleSeek() {
+      var internalPlayer = playerRef.current.getInternalPlayer();
+      internalPlayer.seekTo(seconds, true);
+    };
+
     return /*#__PURE__*/React.createElement("div", {
       key: caption.tStartMs,
       className: "bulb-video-caption"
     }, /*#__PURE__*/React.createElement("time", {
       className: "bulb-video-caption-timestamp",
       dateTime: "P".concat(seconds, "S"),
-      onClick: function onClick() {
-        return playerRef.current.seekTo(seconds, 'seconds');
-      }
+      onClick: handleSeek
     }, convertMS(caption.tStartMs)), /*#__PURE__*/React.createElement("p", null, caption.segs[0].utf8));
   }));
 }
