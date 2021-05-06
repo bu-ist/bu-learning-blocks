@@ -36433,7 +36433,7 @@ var VideoWithCaptions = function VideoWithCaptions(_ref) {
   }));
 };
 
-document.querySelectorAll('.bulb-video-player').forEach(function (playerContainer) {
+document.querySelectorAll('.bulb-video-container').forEach(function (playerContainer) {
   var containerVideoID = playerContainer.getAttribute('data-youtubeid');
   react_dom__WEBPACK_IMPORTED_MODULE_0___default.a.render( /*#__PURE__*/React.createElement(VideoWithCaptions, {
     videoID: containerVideoID

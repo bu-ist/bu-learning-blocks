@@ -1072,7 +1072,7 @@ function Edit(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit */ "./src/blocks/bulb-video/edit.js");
-/* harmony import */ var _styles_frontend_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/_frontend.scss */ "./src/blocks/bulb-video/styles/_frontend.scss");
+/* harmony import */ var _styles_frontend_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/frontend.scss */ "./src/blocks/bulb-video/styles/frontend.scss");
 /* harmony import */ var _styles_frontend_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_frontend_scss__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * Block dependencies
@@ -1105,20 +1105,18 @@ var registerBlockType = wp.blocks.registerBlockType;
   save: function save(_ref) {
     var attributes = _ref.attributes;
     return /*#__PURE__*/React.createElement("div", {
-      className: "bulb-video"
-    }, /*#__PURE__*/React.createElement("div", {
       "data-youtubeID": attributes.youtubeID,
-      className: "bulb-video-player"
-    }));
+      className: "bulb-video-container"
+    });
   }
 }));
 
 /***/ }),
 
-/***/ "./src/blocks/bulb-video/styles/_frontend.scss":
-/*!*****************************************************!*\
-  !*** ./src/blocks/bulb-video/styles/_frontend.scss ***!
-  \*****************************************************/
+/***/ "./src/blocks/bulb-video/styles/frontend.scss":
+/*!****************************************************!*\
+  !*** ./src/blocks/bulb-video/styles/frontend.scss ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
