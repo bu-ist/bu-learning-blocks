@@ -36,12 +36,10 @@ export default registerBlockType( 'bulb/video', {
 	edit: Edit,
 	save( { attributes } ) {
 		return (
-			<div className="bulb-video">
-				<div
-					data-youtubeID={ attributes.youtubeID }
-					className="bulb-video-player"
-				/>
-			</div>
+			<div
+				data-youtubeID={ attributes.youtubeID }
+				className="bulb-video-container"
+			/>
 		);
 	},
 } );

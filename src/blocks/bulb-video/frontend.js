@@ -26,7 +26,7 @@ const VideoWithCaptions = ( { videoID } ) => {
 };
 
 document
-	.querySelectorAll( '.bulb-video-player' )
+	.querySelectorAll( '.bulb-video-container' )
 	.forEach( ( playerContainer ) => {
 		const containerVideoID = playerContainer.getAttribute( 'data-youtubeid' );
 		ReactDOM.render(
