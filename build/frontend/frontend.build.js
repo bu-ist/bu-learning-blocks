@@ -36401,28 +36401,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_player_youtube__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-player/youtube */ "./node_modules/react-player/youtube.js");
 /* harmony import */ var react_player_youtube__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_player_youtube__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _frontend_captions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./frontend/captions */ "./src/blocks/bulb-video/frontend/captions.js");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _frontend_captions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./frontend/captions */ "./src/blocks/bulb-video/frontend/captions.js");
 
 
- // Starter code from https://stackoverflow.com/questions/32142656/get-youtube-captions/58435817#58435817
 
-function seekToTime(event) {
-  if (event.target.className === 'bulb-video-caption') {
-    var time = event.target.firstElementChild.dataset.seekTo;
-    player.seekTo(time);
-  }
-}
+
 
 var VideoWithCaptions = function VideoWithCaptions(_ref) {
   var videoID = _ref.videoID;
+  var playerRef = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["useRef"])({});
   return /*#__PURE__*/React.createElement("div", {
     className: "bulb-video"
   }, /*#__PURE__*/React.createElement("div", {
     className: "bulb-video-player"
   }, /*#__PURE__*/React.createElement(react_player_youtube__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    url: "https://www.youtube.com/watch?v=".concat(videoID)
-  })), /*#__PURE__*/React.createElement(_frontend_captions__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    url: "https://www.youtube.com/watch?v=".concat(videoID),
+    ref: playerRef,
+    config: {
+      youtube: {
+        playerVars: {
+          controls: 1
+        }
+      }
+    }
+  })), /*#__PURE__*/React.createElement(_frontend_captions__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "bulb-video-caption",
+    playerRef: playerRef,
     videoID: videoID
   }));
 };
@@ -36469,7 +36475,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Captions(_ref) {
-  var videoID = _ref.videoID;
+  var videoID = _ref.videoID,
+      playerRef = _ref.playerRef;
 
   var _useState = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -36523,13 +36530,16 @@ function Captions(_ref) {
   return /*#__PURE__*/React.createElement("div", {
     className: "bulb-video-captions-container"
   }, captions && captions.map(function (caption) {
-    var seconds = Math.floor(caption.tStartMs);
+    var seconds = caption.tStartMs / 1000;
     return /*#__PURE__*/React.createElement("div", {
       key: caption.tStartMs,
       className: "bulb-video-caption"
     }, /*#__PURE__*/React.createElement("time", {
       className: "bulb-video-caption-timestamp",
-      dateTime: "P".concat(seconds, "S")
+      dateTime: "P".concat(seconds, "S"),
+      onClick: function onClick() {
+        return playerRef.current.seekTo(seconds, 'seconds');
+      }
     }, convertMS(caption.tStartMs)), /*#__PURE__*/React.createElement("p", null, caption.segs[0].utf8));
   }));
 }
