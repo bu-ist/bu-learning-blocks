@@ -1,26 +1,25 @@
 import ReactDOM from 'react-dom';
 import ReactPlayer from 'react-player/youtube';
+import { useRef } from "@wordpress/element";
 
 import Captions from './frontend/captions';
 
-// Starter code from https://stackoverflow.com/questions/32142656/get-youtube-captions/58435817#58435817
-
-function seekToTime( event ) {
-	if ( event.target.className === 'bulb-video-caption' ) {
-		const time = event.target.firstElementChild.dataset.seekTo;
-		player.seekTo( time );
-	}
-}
-
 const VideoWithCaptions = ( { videoID } ) => {
+	const playerRef = useRef( {} );
+
 	return (
 		<div className="bulb-video">
 			<div className="bulb-video-player">
 				<ReactPlayer
 					url={ `https://www.youtube.com/watch?v=${ videoID }` }
+					ref={ playerRef }
 				/>
 			</div>
-			<Captions className="bulb-video-caption" videoID={ videoID } />
+			<Captions
+				className="bulb-video-caption"
+				playerRef={ playerRef }
+				videoID={ videoID }
+			/>
 		</div>
 	);
 };
@@ -28,11 +27,9 @@ const VideoWithCaptions = ( { videoID } ) => {
 document
 	.querySelectorAll( '.bulb-video-player' )
 	.forEach( ( playerContainer ) => {
-		const containerVideoID =  playerContainer.getAttribute( 'data-youtubeid' );
+		const containerVideoID = playerContainer.getAttribute( 'data-youtubeid' );
 		ReactDOM.render(
-			<VideoWithCaptions
-				videoID={ containerVideoID }
-			/>,
+			<VideoWithCaptions videoID={ containerVideoID } />,
 			playerContainer
 		);
 } );

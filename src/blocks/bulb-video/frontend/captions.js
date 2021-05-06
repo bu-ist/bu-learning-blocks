@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from '@wordpress/element';
 
-export default function Captions( { videoID } ) {
+export default function Captions( { videoID, playerRef } ) {
 	const [ captions, setCaptions ] = useState( [] );
 
 	useEffect( () => {
@@ -25,8 +25,10 @@ export default function Captions( { videoID } ) {
 		const counterSecs = seconds % 60;
 		const counterMins = minutes % 60;
 
-		const displaySecs = counterSecs < 10 ? `0${ counterSecs }` : counterSecs;
-		const displayMins = counterMins < 10 ? `0${ counterMins }` : counterMins;
+		const displaySecs =
+			counterSecs < 10 ? `0${ counterSecs }` : counterSecs;
+		const displayMins =
+			counterMins < 10 ? `0${ counterMins }` : counterMins;
 
 		return `${ hours }:${ displayMins }:${ displaySecs }`;
 	};
@@ -45,6 +47,12 @@ export default function Captions( { videoID } ) {
 							<time
 								className="bulb-video-caption-timestamp"
 								dateTime={ `P${ seconds }S` }
+								onClick={ () =>
+									playerRef.current.seekTo(
+										seconds,
+										'seconds'
+									)
+								}
 							>
 								{ convertMS( caption.tStartMs ) }
 							</time>
