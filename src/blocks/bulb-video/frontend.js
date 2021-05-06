@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import ReactPlayer from 'react-player/youtube';
-import { useRef } from "@wordpress/element";
+import { useRef } from '@wordpress/element';
 
 import Captions from './frontend/captions';
 

@@ -4,9 +4,9 @@
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
-import Edit from "./edit";
+import Edit from './edit';
 
-import './styles/_frontend.scss';
+import './styles/frontend.scss';
 
 // Register the block.
 export default registerBlockType( 'bulb/video', {
