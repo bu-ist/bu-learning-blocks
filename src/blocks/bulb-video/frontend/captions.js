@@ -9,10 +9,17 @@ export default function Captions( { videoID, playerRef } ) {
 	}, [] );
 
 	const initData = async () => {
+		const { data } = await axios.get(
+			`https://www.youtube.com/api/timedtext?v=${ videoID }&type=list`
+		);
+
+		const captionsList = new DOMParser().parseFromString(data, 'application/xml');
+		const firstTrackLangCode = captionsList.getElementsByTagName('track')[0].getAttribute('lang_code');
+
 		const {
 			data: { events: captions },
 		} = await axios.get(
-			`https://www.youtube.com/api/timedtext?v=${ videoID }&lang=en-US&fmt=json3`
+			`https://www.youtube.com/api/timedtext?v=${ videoID }&lang=${ firstTrackLangCode }&fmt=json3`
 		);
 		setCaptions( captions );
 	};
