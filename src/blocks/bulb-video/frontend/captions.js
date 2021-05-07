@@ -9,19 +9,30 @@ export default function Captions( { videoID, playerRef } ) {
 	}, [] );
 
 	const initData = async () => {
+		// Fetch caption track listing first.
 		const { data } = await axios.get(
 			`https://www.youtube.com/api/timedtext?v=${ videoID }&type=list`
 		);
 
-		const captionsList = new DOMParser().parseFromString(data, 'application/xml');
-		const firstTrackLangCode = captionsList.getElementsByTagName('track')[0].getAttribute('lang_code');
+		// The track listing response is XML, so parse it as a DOM Document.
+		const captionsList = new DOMParser().parseFromString(
+			data,
+			'application/xml'
+		);
 
+		// We're just fetching the first track, assuming there aren't multiple languages.
+		// Ultimately, there should be a UI to switch between any available caption tracks.
+		const firstTrackLangCode = captionsList
+			.getElementsByTagName( 'track' )[ 0 ]
+			.getAttribute( 'lang_code' );
+
+		// Fetch the actual captions.
 		const {
-			data: { events: captions },
+			data: { events },
 		} = await axios.get(
 			`https://www.youtube.com/api/timedtext?v=${ videoID }&lang=${ firstTrackLangCode }&fmt=json3`
 		);
-		setCaptions( captions );
+		setCaptions( events );
 	};
 
 	const convertMS = ( milliseconds ) => {
