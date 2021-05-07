@@ -36489,21 +36489,29 @@ function Captions(_ref) {
 
   var initData = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var _yield$axios$get, captions;
+      var _yield$axios$get, data, captionsList, firstTrackLangCode, _yield$axios$get2, captions;
 
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://www.youtube.com/api/timedtext?v=".concat(videoID, "&lang=en-US&fmt=json3"));
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://www.youtube.com/api/timedtext?v=".concat(videoID, "&type=list"));
 
             case 2:
               _yield$axios$get = _context.sent;
-              captions = _yield$axios$get.data.events;
+              data = _yield$axios$get.data;
+              captionsList = new DOMParser().parseFromString(data, 'application/xml');
+              firstTrackLangCode = captionsList.getElementsByTagName('track')[0].getAttribute('lang_code');
+              _context.next = 8;
+              return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://www.youtube.com/api/timedtext?v=".concat(videoID, "&lang=").concat(firstTrackLangCode, "&fmt=json3"));
+
+            case 8:
+              _yield$axios$get2 = _context.sent;
+              captions = _yield$axios$get2.data.events;
               setCaptions(captions);
 
-            case 5:
+            case 11:
             case "end":
               return _context.stop();
           }
