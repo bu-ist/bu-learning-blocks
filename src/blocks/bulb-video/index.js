@@ -20,7 +20,7 @@ export default registerBlockType( 'bulb/video', {
 		__( 'Video', 'bu-learning-blocks' ),
 	],
 	supports: {
-		align: [ 'full' ],
+		align: [ 'full', 'wide', 'center' ],
 	},
 	attributes: {
 		align: {

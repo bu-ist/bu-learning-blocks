@@ -1089,7 +1089,7 @@ var registerBlockType = wp.blocks.registerBlockType;
   category: 'bu-learning-blocks',
   keywords: [__('bu-learning-block', 'bu-learning-blocks'), __('BULB', 'bu-learning-blocks'), __('Video', 'bu-learning-blocks')],
   supports: {
-    align: ['full']
+    align: ['full', 'wide', 'center']
   },
   attributes: {
     align: {
