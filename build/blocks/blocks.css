@@ -60,6 +60,7 @@
 }
 
 .bulb-video-captions-container {
+  background: #fff;
   padding: 30px;
   min-height: 0;
   height: 0;
@@ -76,8 +77,16 @@
 .bulb-video-caption-timestamp {
   -ms-grid-row-align: start;
       align-self: start;
-  background-color: lightblue;
+  background-color: #28303d;
   border-radius: 5px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0.75;
+  padding: 0.1em 0.5em;
+}
+.bulb-video-caption-timestamp:hover {
+  opacity: 1;
 }
 
 .bulb-video-player {
