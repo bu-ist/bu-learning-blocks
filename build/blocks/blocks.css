@@ -89,6 +89,10 @@
   opacity: 1;
 }
 
+.bulb-video-caption p {
+  line-height: 1.3;
+}
+
 .bulb-video-player {
   position: relative;
   padding-bottom: 56.25%;
