@@ -36489,7 +36489,7 @@ function Captions(_ref) {
 
   var initData = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var _yield$axios$get, data, captionsList, firstTrackLangCode, _yield$axios$get2, captions;
+      var _yield$axios$get, data, captionsList, firstTrackLangCode, _yield$axios$get2, events;
 
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -36501,15 +36501,19 @@ function Captions(_ref) {
             case 2:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
-              captionsList = new DOMParser().parseFromString(data, 'application/xml');
-              firstTrackLangCode = captionsList.getElementsByTagName('track')[0].getAttribute('lang_code');
+              // The track listing response is XML, so parse it as a DOM Document.
+              captionsList = new DOMParser().parseFromString(data, 'application/xml'); // We're just fetching the first track, assuming there aren't multiple languages.
+              // Ultimately, there should be a UI to switch between any available caption tracks.
+
+              firstTrackLangCode = captionsList.getElementsByTagName('track')[0].getAttribute('lang_code'); // Fetch the actual captions.
+
               _context.next = 8;
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("https://www.youtube.com/api/timedtext?v=".concat(videoID, "&lang=").concat(firstTrackLangCode, "&fmt=json3"));
 
             case 8:
               _yield$axios$get2 = _context.sent;
-              captions = _yield$axios$get2.data.events;
-              setCaptions(captions);
+              events = _yield$axios$get2.data.events;
+              setCaptions(events);
 
             case 11:
             case "end":

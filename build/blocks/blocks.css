@@ -1,13 +1,13 @@
 .bulb-editor-section-label {
   color: #3b3030;
   font-size: 1.3em;
-  margin-bottom: 0.5em; }
-
+  margin-bottom: 0.5em;
+}
 .bulb-editor-field-label {
   color: #7c7c7c;
   margin-bottom: 0.5em;
-  border-bottom: 1px solid #8092af; }
-
+  border-bottom: 1px solid #8092af;
+}
 .bulb-editor-answer {
   background-color: #ececec;
   padding: 1rem;
@@ -18,71 +18,81 @@
   grid-template-columns: 1fr auto;
   grid-column-gap: 1rem;
   justify-items: stretch;
-  align-items: stretch; }
-  .bulb-editor-answer-label {
-    font-weight: bold; }
-    .bulb-editor-answer-label-feedback {
-      font-weight: bold;
-      font-size: 0.9em; }
-
+  align-items: stretch;
+}
+.bulb-editor-answer-label {
+  font-weight: bold;
+}
+.bulb-editor-answer-label-feedback {
+  font-weight: bold;
+  font-size: 0.9em;
+}
 /**
  * Editor styles for the admin
  */
 .bulb-question-cn .possible-answers-list {
-  margin-left: 2rem; }
-
+  margin-left: 2rem;
+}
 .bulb-video {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4, 1fr);
   max-width: 90%;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 .bulb-video-caption {
   display: flex;
   margin-bottom: 1em;
   font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif; }
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-.bulb-video-caption:hover {
-  cursor: pointer; }
+.bulb-video-caption-timestamp:hover {
+  cursor: pointer;
+}
 
 .bulb-video-player {
   background: gray;
   -ms-grid-column-span: 3;
-  grid-column: span 3; }
+  grid-column: span 3;
+}
 
 .bulb-video-captions-container {
   padding: 30px;
   min-height: 0;
   height: 0;
   padding-bottom: 161.7%;
-  overflow-y: auto; }
+  overflow-y: auto;
+}
 
 .bulb-video-caption-timestamp,
 .bulb-video-caption p {
   padding: 0.2em 0.5em;
-  margin: 0; }
+  margin: 0;
+}
 
 .bulb-video-caption-timestamp {
   -ms-grid-row-align: start;
       align-self: start;
   background-color: lightblue;
-  border-radius: 5px; }
+  border-radius: 5px;
+}
 
 .bulb-video-player {
   position: relative;
   padding-bottom: 56.25%;
   /* 16:9 */
-  height: 0; }
+  height: 0;
+}
 
 .bulb-video-player iframe {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; }
-
+  height: 100%;
+}
 
 /*# sourceMappingURL=blocks.css.map*/
