@@ -104,12 +104,18 @@
     max-width: 1500px;
   }
 }
+.aligncenter .bulb-video {
+  display: block;
+}
 
 .bulb-video-caption {
   display: flex;
   margin-bottom: 1em;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
+}
+.aligncenter .bulb-video-caption {
+  text-align: left;
 }
 
 .bulb-video-caption-timestamp:hover {
@@ -132,6 +138,12 @@
     grid-column: span 3;
   }
 }
+@media screen and (min-width: 1400px) {
+  .alignwide .bulb-video-player {
+    -ms-grid-column-span: 2;
+    grid-column: span 2;
+  }
+}
 
 .bulb-video-captions-container {
   background: #fff;
@@ -148,6 +160,16 @@
     -ms-grid-column-span: 1;
     grid-column: span 1;
     padding-bottom: 161%;
+  }
+}
+.aligncenter .bulb-video-captions-container {
+  padding-bottom: 51%;
+}
+@media screen and (min-width: 1400px) {
+  .alignwide .bulb-video-captions-container {
+    -ms-grid-column-span: 2;
+    grid-column: span 2;
+    padding-bottom: 51%;
   }
 }
 

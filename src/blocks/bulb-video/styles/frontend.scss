@@ -7,6 +7,10 @@
   		display: grid;
   		max-width: 1500px;
   	}
+
+  	.aligncenter & {
+  		display: block;
+  	}
 }
 
 .bulb-video-caption {
@@ -14,6 +18,10 @@
     margin-bottom: 1em;
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
+
+    .aligncenter & {
+  		text-align: left;
+  	}
 }
 
 .bulb-video-caption-timestamp:hover {
@@ -31,6 +39,12 @@
     @media screen and (min-width: 1400px) {
   		grid-column: span 3;
   	}
+
+  	.alignwide & {
+  		@media screen and (min-width: 1400px) {
+	  		grid-column: span 2;
+	  	}
+  	}
 }
 
 .bulb-video-captions-container {
@@ -45,6 +59,17 @@
     @media screen and (min-width: 1400px) {
   		grid-column: span 1;
   		padding-bottom: 161%;
+  	}
+
+  	.aligncenter & {
+  		padding-bottom: 51%;
+  	}
+
+  	.alignwide & {
+  		@media screen and (min-width: 1400px) {
+	  		grid-column: span 2;
+	  		padding-bottom: 51%;
+	  	}
   	}
 }
 
