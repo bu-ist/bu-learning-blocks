@@ -1748,4 +1748,4 @@ var __ = wp.i18n.__;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=blocks.build.js.map
+//# sourceMappingURL=blocks.js.map

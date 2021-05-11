@@ -20,9 +20,9 @@ function bulb_block_assets() {
 	if ( ! is_admin() ) { // If not on an admin page, enqueue JavaScript for the front-end view.
 		wp_enqueue_script(
 			'bulb-frontend-js',
-			BULB_PLUGIN_URL . 'build/frontend/frontend.build.js', // Minified JS file, built with Webpack.
+			BULB_PLUGIN_URL . 'build/frontend.js', // Minified JS file, built with Webpack.
 			array( 'wp-element', 'wp-i18n' ), // Dependency 'wp-element' loads react and react-dom in the frontend view.
-			filemtime( plugin_dir_path( __DIR__ ) . 'build/frontend/frontend.build.js' ), // Gets file modification time for cache busting.
+			filemtime( plugin_dir_path( __DIR__ ) . 'build/frontend.js' ), // Gets file modification time for cache busting.
 			true // Enqueue the script in the footer.
 		);
 	}
@@ -35,9 +35,9 @@ function bulb_block_assets() {
 	// Shared Frontend/Editor Styles.
 	wp_enqueue_style(
 		'bulb-block-style-css',
-		BULB_PLUGIN_URL . 'build/frontend/frontend.css', // Block style CSS.
+		BULB_PLUGIN_URL . 'build/frontend.css', // Block style CSS.
 		array(),
-		filemtime( plugin_dir_path( __DIR__ ) . 'build/frontend/frontend.css' ) // Gets file modification time for cache busting.
+		filemtime( plugin_dir_path( __DIR__ ) . 'build/frontend.css' ) // Gets file modification time for cache busting.
 	);
 }
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\bulb_block_assets' );
@@ -54,9 +54,9 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\bulb_block_assets' );
 function bulb_block_editor_assets() {
 	wp_enqueue_script(
 		'bulb-block-js',
-		BULB_PLUGIN_URL . 'build/blocks/blocks.build.js', // Minified JS file, built with Webpack.
+		BULB_PLUGIN_URL . 'build/blocks.js', // Minified JS file, built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
-		filemtime( plugin_dir_path( __DIR__ ) . 'build/blocks/blocks.build.js' ), // Gets file modification time for cach busting.
+		filemtime( plugin_dir_path( __DIR__ ) . 'build/blocks.js' ), // Gets file modification time for cach busting.
 		true // Enqueue the script in the footer.
 	);
 
@@ -68,9 +68,9 @@ function bulb_block_editor_assets() {
 	// Styles.
 	wp_enqueue_style(
 		'bulb-block-editor-css',
-		BULB_PLUGIN_URL . 'build/blocks/blocks.css', // Block editor CSS.
+		BULB_PLUGIN_URL . 'build/blocks.css', // Block editor CSS.
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-		filemtime( plugin_dir_path( __DIR__ ) . 'build/blocks/blocks.css' ) // Gets file modification time for cache busting.
+		filemtime( plugin_dir_path( __DIR__ ) . 'build/blocks.css' ) // Gets file modification time for cache busting.
 	);
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\bulb_block_editor_assets' );
