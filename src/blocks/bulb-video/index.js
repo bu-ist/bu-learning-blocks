@@ -25,7 +25,7 @@ export default registerBlockType( 'bulb/video', {
 	attributes: {
 		align: {
 			type: 'string',
-			default: 'full',
+			default: 'center',
 		},
 		youtubeID: {
 			type: 'string',
