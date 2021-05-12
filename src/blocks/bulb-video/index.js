@@ -29,7 +29,7 @@ export default registerBlockType( 'bulb/video', {
 		},
 		youtubeID: {
 			type: 'string',
-			default: 'bNTSO3D5bc8',
+			default: 'gWCFyaUBkCs',
 		},
 	},
 

@@ -1098,7 +1098,7 @@ var registerBlockType = wp.blocks.registerBlockType;
     },
     youtubeID: {
       type: 'string',
-      "default": 'bNTSO3D5bc8'
+      "default": 'gWCFyaUBkCs'
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],
