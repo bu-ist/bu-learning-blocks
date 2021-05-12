@@ -4,6 +4,8 @@ import { useState, useEffect } from '@wordpress/element';
 export default function Captions( { videoID, playerRef } ) {
 	const [ captions, setCaptions ] = useState( [] );
 
+	const [ searchString, setSearchString ] = useState( '' );
+
 	useEffect( () => {
 		initData();
 	}, [] );
@@ -53,6 +55,11 @@ export default function Captions( { videoID, playerRef } ) {
 
 	return (
 		<div className="bulb-video-captions-container">
+			<input
+				type="text"
+				onChange={ ({ target: { value } }) => setSearchString(value) }
+				value={searchString}
+			/>
 			{ captions &&
 				captions.map( ( caption ) => {
 					const seconds = caption.tStartMs / 1000;
@@ -61,6 +68,11 @@ export default function Captions( { videoID, playerRef } ) {
 						const internalPlayer = playerRef.current.getInternalPlayer();
 						internalPlayer.seekTo( seconds, true );
 					};
+
+					const filteredText = caption.segs[0].utf8.replace(
+						new RegExp( searchString, 'gi' ),
+						match => `<mark style='background: #2769AA; color:white'>${match}</mark>`
+					);
 
 					return (
 						<div
@@ -74,7 +86,7 @@ export default function Captions( { videoID, playerRef } ) {
 							>
 								{ convertMS( caption.tStartMs ) }
 							</time>
-							<p>{ caption.segs[ 0 ].utf8 }</p>
+							<p dangerouslySetInnerHTML={{ __html: filteredText }} />
 						</div>
 					);
 				} ) }
