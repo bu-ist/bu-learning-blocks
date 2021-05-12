@@ -37,6 +37,10 @@ export default function Captions( { videoID, playerRef } ) {
 		setCaptions( events );
 	};
 
+	const filteredCaptions = captions.filter( ({ segs }) => (
+		segs[0].utf8.toLowerCase().indexOf( searchString.toLowerCase() ) !== -1
+	) );
+
 	const convertMS = ( milliseconds ) => {
 		const seconds = Math.floor( milliseconds / 1000 );
 		const minutes = Math.floor( seconds / 60 );
@@ -61,7 +65,7 @@ export default function Captions( { videoID, playerRef } ) {
 				value={searchString}
 			/>
 			{ captions &&
-				captions.map( ( caption ) => {
+				filteredCaptions.map( ( caption ) => {
 					const seconds = caption.tStartMs / 1000;
 
 					const handleSeek = () => {
