@@ -1094,7 +1094,7 @@ var registerBlockType = wp.blocks.registerBlockType;
   attributes: {
     align: {
       type: 'string',
-      "default": 'full'
+      "default": 'center'
     },
     youtubeID: {
       type: 'string',
