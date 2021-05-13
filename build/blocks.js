@@ -1094,11 +1094,11 @@ var registerBlockType = wp.blocks.registerBlockType;
   attributes: {
     align: {
       type: 'string',
-      "default": 'full'
+      "default": 'center'
     },
     youtubeID: {
       type: 'string',
-      "default": 'bNTSO3D5bc8'
+      "default": 'gWCFyaUBkCs'
     }
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_0__["default"],

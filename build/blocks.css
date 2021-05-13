@@ -33,21 +33,18 @@
 .bulb-question-cn .possible-answers-list {
   margin-left: 2rem;
 }
-.bulb-video {
+.alignfull .bulb-video, .alignwide .bulb-video {
   -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4, 1fr);
   max-width: 90%;
   margin: 0 auto;
 }
 @media screen and (min-width: 960px) {
-  .bulb-video {
+  .alignfull .bulb-video, .alignwide .bulb-video {
     display: -ms-grid;
     display: grid;
     max-width: 1500px;
   }
-}
-.aligncenter .bulb-video {
-  display: block;
 }
 
 .bulb-video-caption {
@@ -98,20 +95,10 @@
   padding-bottom: 51%;
 }
 @media screen and (min-width: 1400px) {
-  .bulb-video-captions-container {
+  .alignfull .bulb-video-captions-container {
     -ms-grid-column-span: 1;
     grid-column: span 1;
     padding-bottom: 161%;
-  }
-}
-.aligncenter .bulb-video-captions-container {
-  padding-bottom: 51%;
-}
-@media screen and (min-width: 1400px) {
-  .alignwide .bulb-video-captions-container {
-    -ms-grid-column-span: 2;
-    grid-column: span 2;
-    padding-bottom: 51%;
   }
 }
 
