@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useState, useEffect } from '@wordpress/element';
 
+import CaptionItem from "./captionItem";
+
 export default function Captions( { videoID, playerRef } ) {
 	const [ captions, setCaptions ] = useState( [] );
 
@@ -41,22 +43,6 @@ export default function Captions( { videoID, playerRef } ) {
 		segs[0].utf8.toLowerCase().indexOf( searchString.toLowerCase() ) !== -1
 	) );
 
-	const convertMS = ( milliseconds ) => {
-		const seconds = Math.floor( milliseconds / 1000 );
-		const minutes = Math.floor( seconds / 60 );
-		const hours = Math.floor( minutes / 60 );
-
-		const counterSecs = seconds % 60;
-		const counterMins = minutes % 60;
-
-		const displaySecs =
-			counterSecs < 10 ? `0${ counterSecs }` : counterSecs;
-		const displayMins =
-			counterMins < 10 ? `0${ counterMins }` : counterMins;
-
-		return `${ hours }:${ displayMins }:${ displaySecs }`;
-	};
-
 	return (
 		<div className="bulb-video-captions-container">
 			<input
@@ -65,35 +51,7 @@ export default function Captions( { videoID, playerRef } ) {
 				value={searchString}
 			/>
 			{ captions &&
-				filteredCaptions.map( ( caption ) => {
-					const seconds = caption.tStartMs / 1000;
-
-					const handleSeek = () => {
-						const internalPlayer = playerRef.current.getInternalPlayer();
-						internalPlayer.seekTo( seconds, true );
-					};
-
-					const filteredText = caption.segs[0].utf8.replace(
-						new RegExp( searchString, 'gi' ),
-						match => `<mark style='background: #2769AA; color:white'>${match}</mark>`
-					);
-
-					return (
-						<div
-							key={ caption.tStartMs }
-							className="bulb-video-caption"
-						>
-							<time
-								className="bulb-video-caption-timestamp"
-								dateTime={ `P${ seconds }S` }
-								onClick={ handleSeek }
-							>
-								{ convertMS( caption.tStartMs ) }
-							</time>
-							<p dangerouslySetInnerHTML={{ __html: filteredText }} />
-						</div>
-					);
-				} ) }
+				filteredCaptions.map((caption) => <CaptionItem caption={caption} searchString={searchString} playerRef={playerRef} /> ) }
 		</div>
 	);
 }
