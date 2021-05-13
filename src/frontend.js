@@ -9,6 +9,10 @@ import ReactHTMLParser from 'react-html-parser';
 // Import the react-questions library.
 import { Question } from '@bostonuniversity/react-questions';
 
+// Import the bulb-video frontend.
+// TODO: this really should only be added to the page when this block is present.
+import './blocks/bulb-video/frontend.js';
+
 import './frontend.scss';
 
 // Find all .bulb-question DOM containers, collect their data from window and render <Questions> into them.
