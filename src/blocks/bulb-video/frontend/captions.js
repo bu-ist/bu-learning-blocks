@@ -1,16 +1,30 @@
 import axios from 'axios';
-import { useState, useEffect } from '@wordpress/element';
+import { useState, useEffect, useRef } from '@wordpress/element';
 
 import CaptionItem from './captionItem';
 
 export default function Captions({ videoID, playerRef }) {
 	const [captions, setCaptions] = useState([]);
-
 	const [searchString, setSearchString] = useState('');
 
+	// Set up a ref to track targets of navigation events.
+	const navTo = useRef(null);
+
+	// Run once to asynchronously load captions from API.
 	useEffect(() => {
 		initData();
 	}, []);
+
+	// Run on searchString updates to check if a navTo target was set.
+	useEffect(() => {
+		if (navTo.current) {
+			// Navigate to the target ref.
+			navTo.current.scrollIntoView({ behavior: 'smooth' });
+
+			// Then reset ref to null for next searchString event.
+			navTo.current = null;
+		}
+	}, [searchString]);
 
 	const initData = async () => {
 		// Fetch caption track listing first.
@@ -60,6 +74,8 @@ export default function Captions({ videoID, playerRef }) {
 						caption={caption}
 						searchString={searchString}
 						playerRef={playerRef}
+						navTo={navTo}
+						setSearchString={setSearchString}
 					/>
 				))}
 		</div>

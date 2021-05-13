@@ -1,4 +1,4 @@
-const CaptionItem = ({ caption, searchString, playerRef }) => {
+const CaptionItem = ({ caption, searchString, playerRef, navTo, setSearchString }) => {
 	const seconds = caption.tStartMs / 1000;
 
 	const convertMS = (milliseconds) => {
@@ -15,9 +15,14 @@ const CaptionItem = ({ caption, searchString, playerRef }) => {
 		return `${hours}:${displayMins}:${displaySecs}`;
 	};
 
-	const handleSeek = () => {
+	const handleSeek = ({ target }) => {
+		// Seek to time in the video player
 		const internalPlayer = playerRef.current.getInternalPlayer();
 		internalPlayer.seekTo(seconds, true);
+
+		// If search mode was active, clear it and set the navTo target.
+		navTo.current = target.parentElement;
+		setSearchString('');
 	};
 
 	const filteredText = caption.segs[0].utf8.replace(
