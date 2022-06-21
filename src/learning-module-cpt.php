@@ -24,7 +24,7 @@ function register_course_tax() {
 		'parent_item'                => __( 'Parent Lesson', 'bu-learning-blocks' ),
 		'parent_item_colon'          => __( 'Parent Lesson:', 'bu-learning-blocks' ),
 		'new_item_name'              => __( 'New Lesson Name', 'bu-learning-blocks' ),
-		'add_new_item'               => __( 'Create Lesson', 'bu-learning-blocks' ),
+		'add_new_item'               => __( 'Include in Lesson (start typing name of Lesson)', 'bu-learning-blocks' ),
 		'edit_item'                  => __( 'Edit Lesson', 'bu-learning-blocks' ),
 		'update_item'                => __( 'Update Lesson', 'bu-learning-blocks' ),
 		'separate_items_with_commas' => __( 'Separate lessons with commas', 'bu-learning-blocks' ),
@@ -228,17 +228,29 @@ if ( class_exists( 'BU_Navigation_Plugin' ) ) {
 }
 
 /**
- * Load script to customize the taxonomy menu in the lesson page editor.
+ * Loads a script to customize the bu-courses taxonomy label.
+ *
+ * This used to modify the label of the taxonomy panel in the block editor.  Changes in the block editor made this
+ * much more difficult, so now the default label is the string that is used in the block editor.  This script
+ * customizes the taxonomy page instead, to what the default label used to be.
+ *
+ * Activated by the 'bulb-courses_add_form_fields' action, which is fired when the bu-courses taxonomy form is loaded.
  *
  * @since 0.0.7
  */
-function bulb_add_admin_scripts() {
+function bulb_add_admin_scripts( $hook_suffix ) {
+	// Double check that we're on the bulb taxonomy page, and bail if not.
+	if ( 'bulb-courses' !== $hook_suffix ) {
+		return;
+	}
+
+	// If we are on the bulb taxonomy page, enqueue the script to customize the label.
 	wp_enqueue_script(
-		'customize_tax_panel',
-		BULB_PLUGIN_URL . 'src/customize_tax_panel.js',
+		'customize_tax_label',
+		BULB_PLUGIN_URL . 'src/customize_tax_label.js',
 		array(),
-		filemtime( plugin_dir_path( __DIR__ ) . 'src/customize_tax_panel.js' ), // Gets file modification time for cache busting.
+		filemtime( plugin_dir_path( __DIR__ ) . 'src/customize_tax_label.js' ), // Gets file modification time for cache busting.
 		true // Enqueue the script in the footer.
 	);
 }
-add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\bulb_add_admin_scripts' );
+add_action( 'bulb-courses_add_form_fields', __NAMESPACE__ . '\bulb_add_admin_scripts' );
