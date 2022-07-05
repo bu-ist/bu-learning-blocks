@@ -237,6 +237,8 @@ if ( class_exists( 'BU_Navigation_Plugin' ) ) {
  * Activated by the 'bulb-courses_add_form_fields' action, which is fired when the bu-courses taxonomy form is loaded.
  *
  * @since 0.0.7
+ *
+ * @param string $hook_suffix The name of the hook that was activated.
  */
 function bulb_add_admin_scripts( $hook_suffix ) {
 	// Double check that we're on the bulb taxonomy page, and bail if not.
