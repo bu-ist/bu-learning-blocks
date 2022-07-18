@@ -2,8 +2,8 @@
 Contributors: carlosesilva, dannycrews, jdub233
 Tags: learning, teaching, education, online courses, boston university, bu
 Requires at least: 5.3.2
-Tested up to: 5.7
-Stable tag: 1.1.3
+Tested up to: 6.0
+Stable tag: 1.1.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,9 @@ The plugin can be activated and deactivated, no custom posts will be deleted.  D
 Development takes place at https://github.com/bu-ist/bu-learning-blocks/
 
 == Changelog ==
+
+= 1.1.4 =
+* Patch issues with 5.8 and 5.9 compatibility
 
 = 1.1.3 =
 * Add Github publish action
