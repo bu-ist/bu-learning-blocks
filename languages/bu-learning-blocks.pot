@@ -1,17 +1,17 @@
-# Copyright (C) 2021 Boston University: Web Applications
-# This file is distributed under the same license as the BU Learning Blocks plugin.
+# Copyright (C) 2022 Boston University: Web Applications
+# This file is distributed under the GPL2+.
 msgid ""
 msgstr ""
-"Project-Id-Version: BU Learning Blocks v1.1.3\n"
+"Project-Id-Version: BU Learning Blocks 1.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bu-learning-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-09T22:14:20+00:00\n"
+"POT-Creation-Date: 2022-07-18T17:16:56-04:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: bu-learning-blocks\n"
 
 #. Plugin Name of the plugin
@@ -34,15 +34,15 @@ msgstr ""
 msgid "http://www.bu.edu/"
 msgstr ""
 
-#: bu-learning-blocks.php:39
+#: bu-learning-blocks.php:41
 msgid "BULB Error: BU Learning Blocks requires either WordPress 5.0.0, or the Gutenberg plugin to be installed and activated on any version previous to 5.0.0."
 msgstr ""
 
-#: bu-learning-blocks.php:42
+#: bu-learning-blocks.php:44
 msgid "Please install and activate the Gutenberg plugin to use BU Learning Blocks."
 msgstr ""
 
-#: src/init.php:38
+#: src/init.php:41
 #: src/blocks/bulb-cn/index.js:22
 #: src/blocks/bulb-fitb/index.js:22
 #: src/blocks/bulb-ma/index.js:20
@@ -52,167 +52,152 @@ msgstr ""
 msgid "BULB"
 msgstr ""
 
-#: src/init.php:101
+#: src/init.php:104
 msgid "<strong>Welcome to BU Learning Blocks</strong>"
 msgstr ""
 
-#: src/init.php:109
+#: src/init.php:112
 msgid "Install Blocks and Pages"
 msgstr ""
 
-#: src/init.php:115
+#: src/init.php:118
 msgid "Install Blocks Only"
 msgstr ""
 
-#: src/learning-module-cpt.php:17
+#: src/learning-module-cpt.php:19
 msgctxt "Taxonomy General Name"
 msgid "Lessons"
 msgstr ""
 
-#: src/learning-module-cpt.php:18
+#: src/learning-module-cpt.php:20
 msgctxt "Taxonomy Singular Name"
 msgid "Lesson"
 msgstr ""
 
-#: src/learning-module-cpt.php:19
+#: src/learning-module-cpt.php:21
 msgid "Lessons"
 msgstr ""
 
-#: src/learning-module-cpt.php:20
+#: src/learning-module-cpt.php:22
 msgid "All Lessons"
 msgstr ""
 
-#: src/learning-module-cpt.php:21
+#: src/learning-module-cpt.php:23
 msgid "View Lesson"
 msgstr ""
 
-#: src/learning-module-cpt.php:22
+#: src/learning-module-cpt.php:24
 msgid "Parent Lesson"
 msgstr ""
 
-#: src/learning-module-cpt.php:23
+#: src/learning-module-cpt.php:25
 msgid "Parent Lesson:"
 msgstr ""
 
-#: src/learning-module-cpt.php:24
+#: src/learning-module-cpt.php:26
 msgid "New Lesson Name"
 msgstr ""
 
-#: src/learning-module-cpt.php:25
-msgid "Create Lesson"
-msgstr ""
-
-#: src/learning-module-cpt.php:26
-msgid "Edit Lesson"
-msgstr ""
-
 #: src/learning-module-cpt.php:27
-msgid "Update Lesson"
+msgid "Include in Lesson (start typing name of Lesson)"
 msgstr ""
 
 #: src/learning-module-cpt.php:28
-msgid "Separate lessons with commas"
+msgid "Edit Lesson"
 msgstr ""
 
 #: src/learning-module-cpt.php:29
-msgid "Search Lessons"
+msgid "Update Lesson"
 msgstr ""
 
 #: src/learning-module-cpt.php:30
-msgid "Add or remove lessons"
+msgid "Separate lessons with commas"
 msgstr ""
 
 #: src/learning-module-cpt.php:31
-msgid "Choose from the most used lessons"
+msgid "Search Lessons"
 msgstr ""
 
 #: src/learning-module-cpt.php:32
+msgid "Add or remove lessons"
+msgstr ""
+
+#: src/learning-module-cpt.php:33
+msgid "Choose from the most used lessons"
+msgstr ""
+
+#: src/learning-module-cpt.php:34
 msgid "Not Found"
 msgstr ""
 
-#: src/learning-module-cpt.php:62
+#: src/learning-module-cpt.php:64
 msgid "Lesson Pages"
 msgstr ""
 
-#: src/learning-module-cpt.php:63
+#: src/learning-module-cpt.php:65
 msgid "Lesson Page"
 msgstr ""
 
-#: src/learning-module-cpt.php:64
+#: src/learning-module-cpt.php:66
 msgid "BULB Lessons"
 msgstr ""
 
-#: src/learning-module-cpt.php:65
-#: src/learning-module-cpt.php:66
-#: src/learning-module-cpt.php:69
+#: src/learning-module-cpt.php:67
+#: src/learning-module-cpt.php:68
+#: src/learning-module-cpt.php:71
 msgid "New Lesson Page"
 msgstr ""
 
-#: src/learning-module-cpt.php:67
+#: src/learning-module-cpt.php:69
 msgid "Edit Lesson Page"
 msgstr ""
 
-#: src/learning-module-cpt.php:68
+#: src/learning-module-cpt.php:70
 msgid "Update Lesson Page"
 msgstr ""
 
-#: src/learning-module-cpt.php:70
+#: src/learning-module-cpt.php:72
 msgid "All Lesson Pages"
 msgstr ""
 
-#: src/learning-module-cpt.php:71
+#: src/learning-module-cpt.php:73
 msgid "View Lesson Page"
 msgstr ""
 
-#: src/learning-module-cpt.php:72
+#: src/learning-module-cpt.php:74
 msgid "View Lesson Pages"
 msgstr ""
 
-#: src/learning-module-cpt.php:73
+#: src/learning-module-cpt.php:75
 msgid "Lesson Page Attributes"
 msgstr ""
 
-#: src/learning-module-cpt.php:74
+#: src/learning-module-cpt.php:76
 msgid "Search Lesson Pages"
 msgstr ""
 
-#: src/learning-module-cpt.php:75
+#: src/learning-module-cpt.php:77
 msgid "No Lesson Pages found"
 msgstr ""
 
-#: src/learning-module-cpt.php:76
+#: src/learning-module-cpt.php:78
 msgid "No Lessons Pages found in Trash"
 msgstr ""
 
-#: src/learning-module-cpt.php:77
+#: src/learning-module-cpt.php:79
 msgid "Lesson Page Archives"
 msgstr ""
 
-#: src/learning-module-cpt.php:78
+#: src/learning-module-cpt.php:80
 msgid "Parent Lesson Page:"
 msgstr ""
 
-#: src/learning-module-cpt.php:87
+#: src/learning-module-cpt.php:89
 msgid "lesson"
 msgstr ""
 
-#: src/learning-module-cpt.php:89
+#: src/learning-module-cpt.php:91
 msgid "Holds our Lessons"
-msgstr ""
-
-#: build/blocks/blocks.build.js:1
-#: src/components/QuestionHeader.js:7
-msgid "Question"
-msgstr ""
-
-#: build/blocks/blocks.build.js:1
-#: src/components/QuestionHeader.js:8
-msgid "Question Header"
-msgstr ""
-
-#: build/blocks/blocks.build.js:1
-#: src/components/QuestionHeader.js:11
-msgid "Enter Question Header"
 msgstr ""
 
 #: src/blocks/bulb-cn/index.js:16
@@ -329,4 +314,16 @@ msgstr ""
 
 #: src/components/QuestionFeedback.js:44
 msgid "Enter Incorrect Feedback"
+msgstr ""
+
+#: src/components/QuestionHeader.js:7
+msgid "Question"
+msgstr ""
+
+#: src/components/QuestionHeader.js:8
+msgid "Question Header"
+msgstr ""
+
+#: src/components/QuestionHeader.js:11
+msgid "Enter Question Header"
 msgstr ""
