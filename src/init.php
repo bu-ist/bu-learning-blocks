@@ -26,11 +26,12 @@ require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-tf/index.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-fitb/index.php';
 require_once BULB_PLUGIN_DIR_PATH . 'src/blocks/bulb-mat/index.php';
 
-
+// To support versions before and after 5.8, check the WordPress version and use the newer 'block_categories_all' tag if it's 5.8 or newer.
+$block_category_filter = ( version_compare( get_bloginfo( 'version' ), '5.8', '>=' ) ) ? 'block_categories_all' : 'block_categories';
 
 // Add BULB custom block category.
 add_filter(
-	'block_categories',
+	$block_category_filter,
 	function( $categories, $post ) {
 		return array_merge(
 			$categories,
