@@ -3,3 +3,5 @@ node_modules/
 composer.json
 composer.lock
 vendor/
+/src/.DS_Store
+sftp-config.json

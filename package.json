@@ -10,8 +10,13 @@
 	},
 	"dependencies": {
 		"@bostonuniversity/react-questions": "0.1.1",
+		"@wordpress/components": "^13.0.3",
+		"@wordpress/element": "^2.20.3",
+		"@wordpress/i18n": "^3.20.0",
+		"axios": "^0.21.1",
 		"classnames": "^2.2.6",
-		"react-html-parser": "^2.0.2"
+		"react-html-parser": "^2.0.2",
+		"react-player": "^2.9.0"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-class-properties": "^7.13.0",
