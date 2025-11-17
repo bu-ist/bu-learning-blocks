@@ -88,12 +88,12 @@ function bu_navigation_widget_<?php echo $this->number; ?>_validate(e)
 
 function bu_navigation_widget_<?php echo $this->number; ?>_title_changed()
 {
-	var is_static = jQuery('#<?php echo $this->get_field_id('navigation_title_static');?>').attr('checked');
+	var is_static = jQuery('#<?php echo $this->get_field_id('navigation_title_static');?>').prop('checked');
 
 	if (is_static) {
-		jQuery(this).siblings('input.only-if-static').attr('disabled', false);
+		jQuery(this).siblings('input.only-if-static').prop('disabled', false);
 	} else {
-		jQuery(this).siblings('input.only-if-static').attr('disabled', true);
+		jQuery(this).siblings('input.only-if-static').prop('disabled', true);
 		jQuery(this).siblings('span.navigation-url-error').text('');
 	}
 }
@@ -126,7 +126,7 @@ jQuery(document).ready( function($)
 	jQuery("#<?php echo $this->get_field_id('navigation_title_url'); ?>").change(function () {
 		if (jQuery("#<?php echo $this->get_field_id('navigation_title_url'); ?>").val())
 		{
-			jQuery("#<?php echo $this->get_field_id('navigation_title_static'); ?>").attr("checked", "checked");
+			jQuery("#<?php echo $this->get_field_id('navigation_title_static'); ?>").prop("checked", true);
 		}
 
 		validationHandler(null);
@@ -135,7 +135,7 @@ jQuery(document).ready( function($)
 	jQuery("#<?php echo $this->get_field_id('navigation_title_text'); ?>").change(function () {
 		if (jQuery("#<?php echo $this->get_field_id('navigation_title_text'); ?>").val())
 		{
-			jQuery("#<?php echo $this->get_field_id('navigation_title_static'); ?>").attr("checked", "checked");
+			jQuery("#<?php echo $this->get_field_id('navigation_title_static'); ?>").prop("checked", true);
 		}
 	});
 
