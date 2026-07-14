@@ -56,28 +56,28 @@ add_action( 'admin_post_install_cpt', __NAMESPACE__ . '\bulb_admin_install_cpt' 
 function bulb_admin_install_cpt() {
 	update_option( 'bulb_cpt_install', 1 );
 
-	// If BULB is activated with a responsive-framework theme, place a sidebar nav widget.
-	if ( in_array(
-		get_template(),
-		array( 'responsive-framework', 'responsive-framework-2-x' ),
-		true
-	) ) {
-		$sidebars = get_option( 'sidebars_widgets' );
+	// If the theme provides the conventional 'posts' sidebar, place a sidebar nav widget.
+	if ( is_registered_sidebar( 'posts' ) ) {
+		$sidebars = get_option( 'sidebars_widgets', array() );
+		$posts    = isset( $sidebars['posts'] ) ? (array) $sidebars['posts'] : array();
 
-		// Add a BU Navigation widget to the posts sidebar.
-		$sidebars['posts'] = array_merge( $sidebars['posts'], [ 'bu_pages-1' ] );
-		update_option( 'sidebars_widgets', $sidebars );
+		if ( ! in_array( 'bu_pages-1', $posts, true ) ) {
+			// Add a BU Navigation widget to the front of the posts sidebar,
+			// since some themes only display the first widgets in this area.
+			$sidebars['posts'] = array_merge( [ 'bu_pages-1' ], $posts );
+			update_option( 'sidebars_widgets', $sidebars );
 
-		// BU Navigation widget settings, defaults from Responsive Framework.
-		update_option( 'widget_bu_pages', array(
-			'_multiwidget' => 1,
-			1              => array(
-				'navigation_title'      => 'section',
-				'navigation_title_text' => '',
-				'navigation_title_url'  => '',
-				'navigation_style'      => 'section',
-			),
-		) );
+			// BU Navigation widget settings, defaults from Responsive Framework.
+			update_option( 'widget_bu_pages', array(
+				'_multiwidget' => 1,
+				1              => array(
+					'navigation_title'      => 'section',
+					'navigation_title_text' => '',
+					'navigation_title_url'  => '',
+					'navigation_style'      => 'section',
+				),
+			) );
+		}
 	}
 
 	wp_safe_redirect( 'plugins.php' );
