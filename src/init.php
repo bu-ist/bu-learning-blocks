@@ -56,27 +56,35 @@ add_action( 'admin_post_install_cpt', __NAMESPACE__ . '\bulb_admin_install_cpt' 
 function bulb_admin_install_cpt() {
 	update_option( 'bulb_cpt_install', 1 );
 
-	// If the theme provides the conventional 'posts' sidebar, place a sidebar nav widget.
-	if ( is_registered_sidebar( 'posts' ) ) {
+	// If BULB is activated with a responsive-framework theme, place a sidebar nav widget.
+	// Placement is limited to BU Responsive Framework themes, where the BU Navigation
+	// widget and the 'posts' sidebar are known to be available.
+	if ( 0 === strpos( get_template(), 'responsive-framework' ) && is_registered_sidebar( 'posts' ) ) {
 		$sidebars = get_option( 'sidebars_widgets', array() );
 		$posts    = isset( $sidebars['posts'] ) ? (array) $sidebars['posts'] : array();
 
-		if ( ! in_array( 'bu_pages-1', $posts, true ) ) {
-			// Add a BU Navigation widget to the front of the posts sidebar,
-			// since some themes only display the first widgets in this area.
-			$sidebars['posts'] = array_merge( [ 'bu_pages-1' ], $posts );
-			update_option( 'sidebars_widgets', $sidebars );
+		// Skip placement if the posts sidebar already has a navigation widget.
+		if ( empty( preg_grep( '/^bu_pages-\d+$/', $posts ) ) ) {
+			// Register the settings as a new widget instance, preserving any
+			// existing BU Navigation widget instances in other sidebars.
+			$widget_settings = get_option( 'widget_bu_pages', array() );
+			$instance_ids    = array_filter( array_keys( (array) $widget_settings ), 'is_int' );
+			$instance_id     = empty( $instance_ids ) ? 1 : max( $instance_ids ) + 1;
 
 			// BU Navigation widget settings, defaults from Responsive Framework.
-			update_option( 'widget_bu_pages', array(
-				'_multiwidget' => 1,
-				1              => array(
-					'navigation_title'      => 'section',
-					'navigation_title_text' => '',
-					'navigation_title_url'  => '',
-					'navigation_style'      => 'section',
-				),
-			) );
+			$widget_settings[ $instance_id ] = array(
+				'navigation_title'      => 'section',
+				'navigation_title_text' => '',
+				'navigation_title_url'  => '',
+				'navigation_style'      => 'section',
+			);
+			$widget_settings['_multiwidget'] = 1;
+			update_option( 'widget_bu_pages', $widget_settings );
+
+			// Add the BU Navigation widget to the front of the posts sidebar,
+			// since the theme only displays the first widgets in this area.
+			$sidebars['posts'] = array_merge( [ 'bu_pages-' . $instance_id ], $posts );
+			update_option( 'sidebars_widgets', $sidebars );
 		}
 	}
 

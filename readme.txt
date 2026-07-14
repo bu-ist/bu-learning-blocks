@@ -40,9 +40,10 @@ Development takes place at https://github.com/bu-ist/bu-learning-blocks/
 == Changelog ==
 
 = 1.1.5 =
-* Place the navigation widget in any theme that registers a 'posts' sidebar, instead of checking for specific theme names
+* Place the navigation widget on any BU Responsive Framework theme that registers a 'posts' sidebar, instead of checking for specific theme names
 * Prepend the navigation widget to the posts sidebar so themes that limit the number of displayed widgets still show it
-* Skip widget placement if the widget is already present, so re-installs do not duplicate it or overwrite its settings
+* Skip widget placement if the posts sidebar already has a navigation widget, so re-installs do not duplicate it
+* Add the widget settings as a new instance instead of overwriting existing navigation widget instances in other sidebars
 
 = 1.1.4 =
 * Patch issues with 5.8 and 5.9 compatibility
