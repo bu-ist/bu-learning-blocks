@@ -54,13 +54,18 @@ add_action( 'admin_post_install_cpt', __NAMESPACE__ . '\bulb_admin_install_cpt' 
  * @since 0.0.6
  */
 function bulb_admin_install_cpt() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_die( esc_html__( 'You do not have permission to install BU Learning Blocks post types.', 'bu-learning-blocks' ) );
+	}
+	check_admin_referer( 'bulb_install_cpt' );
+
 	update_option( 'bulb_cpt_install', 1 );
 
 	// If BULB is activated with a responsive-framework theme, place a sidebar nav widget.
 	// Placement is limited to BU Responsive Framework themes, where the BU Navigation
 	// widget and the 'posts' sidebar are known to be available.
 	if ( 0 === strpos( get_template(), 'responsive-framework' ) && is_registered_sidebar( 'posts' ) ) {
-		$sidebars = get_option( 'sidebars_widgets', array() );
+		$sidebars = wp_get_sidebars_widgets();
 		$posts    = isset( $sidebars['posts'] ) ? (array) $sidebars['posts'] : array();
 
 		// Skip placement if the posts sidebar already has a navigation widget.
@@ -84,7 +89,7 @@ function bulb_admin_install_cpt() {
 			// Add the BU Navigation widget to the front of the posts sidebar,
 			// since the theme only displays the first widgets in this area.
 			$sidebars['posts'] = array_merge( [ 'bu_pages-' . $instance_id ], $posts );
-			update_option( 'sidebars_widgets', $sidebars );
+			wp_set_sidebars_widgets( $sidebars );
 		}
 	}
 
@@ -114,7 +119,7 @@ function load_cpt_install_dialog() {
 
 			<p class="submit">
 
-				<a href="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=install_cpt"
+				<a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_cpt' ), 'bulb_install_cpt' ) ); ?>"
 				class="button-primary">
 
 					<?php esc_html_e( 'Install Blocks and Pages', 'bu-learning-blocks' ); ?>
