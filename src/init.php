@@ -142,4 +142,7 @@ function load_cpt_install_dialog() {
 if ( get_option( 'bulb_cpt_install' ) ) {
 	// Register a learning-module custom post type.
 	require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
+
+	// Lesson page sidebar setting and rendering.
+	require_once BULB_PLUGIN_DIR_PATH . 'src/lesson-sidebar.php';
 }
