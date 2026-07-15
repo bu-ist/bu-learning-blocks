@@ -61,10 +61,10 @@ function bulb_admin_install_cpt() {
 
 	update_option( 'bulb_cpt_install', 1 );
 
-	// If BULB is activated with a responsive-framework theme, place a sidebar nav widget.
-	// Placement is limited to BU Responsive Framework themes, where the BU Navigation
-	// widget and the 'posts' sidebar are known to be available.
-	if ( 0 === strpos( get_template(), 'responsive-framework' ) && is_registered_sidebar( 'posts' ) ) {
+	// If the theme provides the conventional 'posts' sidebar, place a sidebar nav widget.
+	// The widget comes from BU Navigation when it is active, or from the core navigation
+	// widget bundled with this plugin when it is not.
+	if ( is_registered_sidebar( 'posts' ) ) {
 		$sidebars = wp_get_sidebars_widgets();
 		$posts    = isset( $sidebars['posts'] ) ? (array) $sidebars['posts'] : array();
 
