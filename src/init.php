@@ -61,6 +61,14 @@ function bulb_admin_install_cpt() {
 
 	update_option( 'bulb_cpt_install', 1 );
 
+	// Register the lesson post type and flush rewrite rules now so its permalinks
+	// resolve immediately. The post type file is only loaded on requests where
+	// 'bulb_cpt_install' is already set, so it is not yet loaded during this first
+	// install and the activation-time flush cannot register the rewrite rules.
+	require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
+	register_learning_module_post_type();
+	flush_rewrite_rules();
+
 	// If the theme provides the conventional 'posts' sidebar, place a sidebar nav widget.
 	// The widget comes from BU Navigation when it is active, or from the core navigation
 	// widget bundled with this plugin when it is not.

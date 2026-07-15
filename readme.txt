@@ -40,6 +40,7 @@ Development takes place at https://github.com/bu-ist/bu-learning-blocks/
 == Changelog ==
 
 = 1.2.0 =
+* Flush rewrite rules when installing the lesson post type so Lesson Page permalinks resolve without a manual permalink re-save
 * Add a BULB Settings page with an option to show only the navigation widget in the sidebar on Lesson Pages
 * Place the navigation widget in any theme that registers a 'posts' sidebar, instead of checking for specific theme names
 * Prepend the navigation widget to the posts sidebar so themes that limit the number of displayed widgets still show it
