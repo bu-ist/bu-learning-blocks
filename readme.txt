@@ -3,7 +3,7 @@ Contributors: carlosesilva, dannycrews, jdub233
 Tags: learning, teaching, education, online courses, boston university, bu
 Requires at least: 5.3.2
 Tested up to: 6.0
-Stable tag: 1.1.4
+Stable tag: 1.2.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,15 @@ The plugin can be activated and deactivated, no custom posts will be deleted.  D
 Development takes place at https://github.com/bu-ist/bu-learning-blocks/
 
 == Changelog ==
+
+= 1.2.0 =
+* Flush rewrite rules when installing the lesson post type so Lesson Page permalinks resolve without a manual permalink re-save
+* Add a BULB Settings page with an option to show only the navigation widget in the sidebar on Lesson Pages
+* Place the navigation widget in any theme that registers a 'posts' sidebar, instead of checking for specific theme names
+* Prepend the navigation widget to the posts sidebar so themes that limit the number of displayed widgets still show it
+* Skip widget placement if the posts sidebar already has a navigation widget, so re-installs do not duplicate it
+* Add the widget settings as a new instance instead of overwriting existing navigation widget instances in other sidebars
+* Require the manage_options capability and a nonce for the post type install action
 
 = 1.1.4 =
 * Patch issues with 5.8 and 5.9 compatibility

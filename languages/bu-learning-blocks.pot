@@ -1,36 +1,41 @@
-# Copyright (C) 2022 Boston University: Web Applications
+# Copyright (C) 2026 Boston University: Web Applications
 # This file is distributed under the GPL2+.
 msgid ""
 msgstr ""
-"Project-Id-Version: BU Learning Blocks 1.1.4\n"
+"Project-Id-Version: BU Learning Blocks 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bu-learning-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-07-18T17:16:56-04:00\n"
+"POT-Creation-Date: 2026-07-15T00:13:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bu-learning-blocks\n"
 
 #. Plugin Name of the plugin
+#: bu-learning-blocks.php
 msgid "BU Learning Blocks"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: bu-learning-blocks.php
 msgid "https://github.com/bu-ist/bu-learning-blocks"
 msgstr ""
 
 #. Description of the plugin
+#: bu-learning-blocks.php
 msgid "BU Learning Blocks — is a collection of tools to enable the easy creation of academic lessons with embedded self-assessment questions."
 msgstr ""
 
 #. Author of the plugin
+#: bu-learning-blocks.php
 msgid "Boston University: Web Applications"
 msgstr ""
 
 #. Author URI of the plugin
+#: bu-learning-blocks.php
 msgid "http://www.bu.edu/"
 msgstr ""
 
@@ -52,15 +57,19 @@ msgstr ""
 msgid "BULB"
 msgstr ""
 
-#: src/init.php:104
+#: src/init.php:58
+msgid "You do not have permission to install BU Learning Blocks post types."
+msgstr ""
+
+#: src/init.php:117
 msgid "<strong>Welcome to BU Learning Blocks</strong>"
 msgstr ""
 
-#: src/init.php:112
+#: src/init.php:125
 msgid "Install Blocks and Pages"
 msgstr ""
 
-#: src/init.php:118
+#: src/init.php:131
 msgid "Install Blocks Only"
 msgstr ""
 
@@ -198,6 +207,31 @@ msgstr ""
 
 #: src/learning-module-cpt.php:91
 msgid "Holds our Lessons"
+msgstr ""
+
+#: src/lesson-sidebar.php:33
+msgid "Lesson Page Sidebar"
+msgstr ""
+
+#: src/lesson-sidebar.php:40
+msgid "Sidebar widgets"
+msgstr ""
+
+#: src/lesson-sidebar.php:57
+msgid "Show only the navigation widget in the sidebar on Lesson Pages"
+msgstr ""
+
+#: src/lesson-sidebar.php:60
+msgid "When unchecked, Lesson Pages display every widget in the posts sidebar, which is shared with posts and archives."
+msgstr ""
+
+#: src/lesson-sidebar.php:73
+#: src/lesson-sidebar.php:90
+msgid "BULB Settings"
+msgstr ""
+
+#: src/lesson-sidebar.php:74
+msgid "Settings"
 msgstr ""
 
 #: src/blocks/bulb-cn/index.js:16

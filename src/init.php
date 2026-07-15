@@ -54,30 +54,51 @@ add_action( 'admin_post_install_cpt', __NAMESPACE__ . '\bulb_admin_install_cpt' 
  * @since 0.0.6
  */
 function bulb_admin_install_cpt() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		wp_die( esc_html__( 'You do not have permission to install BU Learning Blocks post types.', 'bu-learning-blocks' ) );
+	}
+	check_admin_referer( 'bulb_install_cpt' );
+
 	update_option( 'bulb_cpt_install', 1 );
 
-	// If BULB is activated with a responsive-framework theme, place a sidebar nav widget.
-	if ( in_array(
-		get_template(),
-		array( 'responsive-framework', 'responsive-framework-2-x' ),
-		true
-	) ) {
-		$sidebars = get_option( 'sidebars_widgets' );
+	// Register the lesson post type and flush rewrite rules now so its permalinks
+	// resolve immediately. The post type file is only loaded on requests where
+	// 'bulb_cpt_install' is already set, so it is not yet loaded during this first
+	// install and the activation-time flush cannot register the rewrite rules.
+	require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
+	register_learning_module_post_type();
+	flush_rewrite_rules();
 
-		// Add a BU Navigation widget to the posts sidebar.
-		$sidebars['posts'] = array_merge( $sidebars['posts'], [ 'bu_pages-1' ] );
-		update_option( 'sidebars_widgets', $sidebars );
+	// If the theme provides the conventional 'posts' sidebar, place a sidebar nav widget.
+	// The widget comes from BU Navigation when it is active, or from the core navigation
+	// widget bundled with this plugin when it is not.
+	if ( is_registered_sidebar( 'posts' ) ) {
+		$sidebars = wp_get_sidebars_widgets();
+		$posts    = isset( $sidebars['posts'] ) ? (array) $sidebars['posts'] : array();
 
-		// BU Navigation widget settings, defaults from Responsive Framework.
-		update_option( 'widget_bu_pages', array(
-			'_multiwidget' => 1,
-			1              => array(
+		// Skip placement if the posts sidebar already has a navigation widget.
+		if ( empty( preg_grep( '/^bu_pages-\d+$/', $posts ) ) ) {
+			// Register the settings as a new widget instance, preserving any
+			// existing BU Navigation widget instances in other sidebars.
+			$widget_settings = get_option( 'widget_bu_pages', array() );
+			$instance_ids    = array_filter( array_keys( (array) $widget_settings ), 'is_int' );
+			$instance_id     = empty( $instance_ids ) ? 1 : max( $instance_ids ) + 1;
+
+			// BU Navigation widget settings, defaults from Responsive Framework.
+			$widget_settings[ $instance_id ] = array(
 				'navigation_title'      => 'section',
 				'navigation_title_text' => '',
 				'navigation_title_url'  => '',
 				'navigation_style'      => 'section',
-			),
-		) );
+			);
+			$widget_settings['_multiwidget'] = 1;
+			update_option( 'widget_bu_pages', $widget_settings );
+
+			// Add the BU Navigation widget to the front of the posts sidebar,
+			// since the theme only displays the first widgets in this area.
+			$sidebars['posts'] = array_merge( [ 'bu_pages-' . $instance_id ], $posts );
+			wp_set_sidebars_widgets( $sidebars );
+		}
 	}
 
 	wp_safe_redirect( 'plugins.php' );
@@ -106,7 +127,7 @@ function load_cpt_install_dialog() {
 
 			<p class="submit">
 
-				<a href="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>?action=install_cpt"
+				<a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=install_cpt' ), 'bulb_install_cpt' ) ); ?>"
 				class="button-primary">
 
 					<?php esc_html_e( 'Install Blocks and Pages', 'bu-learning-blocks' ); ?>
@@ -129,4 +150,7 @@ function load_cpt_install_dialog() {
 if ( get_option( 'bulb_cpt_install' ) ) {
 	// Register a learning-module custom post type.
 	require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
+
+	// Lesson page sidebar setting and rendering.
+	require_once BULB_PLUGIN_DIR_PATH . 'src/lesson-sidebar.php';
 }

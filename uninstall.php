@@ -15,6 +15,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 $bulb_options = array(
 	'bulb_active',
 	'bulb_cpt_install',
+	'bulb_lesson_sidebar_nav_only',
 );
 foreach ( $bulb_options as $option ) {
 	if ( get_option( $option ) ) {
