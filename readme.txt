@@ -40,6 +40,7 @@ Development takes place at https://github.com/bu-ist/bu-learning-blocks/
 == Changelog ==
 
 = 1.2.1 =
+* Register the lesson taxonomy before flushing rewrite rules on install, so lesson term archives resolve without a manual permalink re-save
 * Use the wp.blockEditor API instead of the deprecated wp.editor API, which warned in the block editor from WordPress 5.3 onward
 * Declare the wp-block-editor and wp-components script dependencies the block editor assets rely on, and the wp-data and wp-edit-post dependencies used by the page attributes script
 * Fix the build so both the frontend and blocks bundles are emitted, instead of the second build deleting the first bundle

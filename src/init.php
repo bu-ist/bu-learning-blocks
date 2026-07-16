@@ -66,6 +66,7 @@ function bulb_admin_install_cpt() {
 	// 'bulb_cpt_install' is already set, so it is not yet loaded during this first
 	// install and the activation-time flush cannot register the rewrite rules.
 	require_once BULB_PLUGIN_DIR_PATH . 'src/learning-module-cpt.php';
+	register_course_tax();
 	register_learning_module_post_type();
 	flush_rewrite_rules();
 
