@@ -58,7 +58,7 @@ function bulb_block_editor_assets() {
 		'bulb-block-js',
 		BULB_PLUGIN_URL . 'build/blocks/blocks.build.js', // Minified JS file, built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-block-editor', 'wp-components' ), // Dependencies, defined above.
-		filemtime( plugin_dir_path( __DIR__ ) . 'build/blocks/blocks.build.js' ), // Gets file modification time for cach busting.
+		filemtime( plugin_dir_path( __DIR__ ) . 'build/blocks/blocks.build.js' ), // Gets file modification time for cache busting.
 		true // Enqueue the script in the footer.
 	);
 
