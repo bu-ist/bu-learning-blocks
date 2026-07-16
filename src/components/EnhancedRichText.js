@@ -1,4 +1,4 @@
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 export default props => (
 	<RichText

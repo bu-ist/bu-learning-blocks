@@ -218,7 +218,7 @@ function remove_bulb_attributes_panel() {
 	wp_enqueue_script(
 		'remove-panel-js',
 		BULB_PLUGIN_URL . 'src/remove_attributes_panel.js',
-		array(),
+		array( 'wp-data', 'wp-edit-post' ), // The script dispatches to the 'core/edit-post' store.
 		filemtime( plugin_dir_path( __DIR__ ) . 'src/remove_attributes_panel.js' ), // Gets file modification time for cache busting.
 		true // Enqueue the script in the footer.
 	);

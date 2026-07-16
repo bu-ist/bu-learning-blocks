@@ -48,6 +48,8 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\bulb_block_assets' );
  * `wp-blocks`: includes block type registration and related functions.
  * `wp-element`: includes the WordPress Element abstraction for describing the structure of your blocks.
  * `wp-i18n`: To internationalize the block's text.
+ * `wp-block-editor`: provides the block editor controls used by the blocks.
+ * `wp-components`: provides the UI controls used in the block inspector.
  *
  * @since 1.0.0
  */
@@ -55,7 +57,7 @@ function bulb_block_editor_assets() {
 	wp_enqueue_script(
 		'bulb-block-js',
 		BULB_PLUGIN_URL . 'build/blocks/blocks.build.js', // Minified JS file, built with Webpack.
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
+		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-block-editor', 'wp-components' ), // Dependencies, defined above.
 		filemtime( plugin_dir_path( __DIR__ ) . 'build/blocks/blocks.build.js' ), // Gets file modification time for cach busting.
 		true // Enqueue the script in the footer.
 	);
