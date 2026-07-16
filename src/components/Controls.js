@@ -1,5 +1,5 @@
 const { Component } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 
 /**
  * Create a Block Controls wrapper Component

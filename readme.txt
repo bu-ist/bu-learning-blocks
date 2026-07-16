@@ -2,8 +2,8 @@
 Contributors: carlosesilva, dannycrews, jdub233
 Tags: learning, teaching, education, online courses, boston university, bu
 Requires at least: 5.3.2
-Tested up to: 6.0
-Stable tag: 1.1.4
+Tested up to: 7.0
+Stable tag: 1.2.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,22 @@ The plugin can be activated and deactivated, no custom posts will be deleted.  D
 Development takes place at https://github.com/bu-ist/bu-learning-blocks/
 
 == Changelog ==
+
+= 1.2.1 =
+* Register the lesson taxonomy before flushing rewrite rules on install, so lesson term archives resolve without a manual permalink re-save
+* Use the wp.blockEditor API instead of the deprecated wp.editor API, which warned in the block editor from WordPress 5.3 onward
+* Declare the wp-block-editor and wp-components script dependencies the block editor assets rely on, and the wp-data and wp-edit-post dependencies used by the page attributes script
+* Fix the build so both the frontend and blocks bundles are emitted, instead of the second build deleting the first bundle
+* Tested up to WordPress 7.0
+
+= 1.2.0 =
+* Flush rewrite rules when installing the lesson post type so Lesson Page permalinks resolve without a manual permalink re-save
+* Add a BULB Settings page with an option to show only the navigation widget in the sidebar on Lesson Pages
+* Place the navigation widget in any theme that registers a 'posts' sidebar, instead of checking for specific theme names
+* Prepend the navigation widget to the posts sidebar so themes that limit the number of displayed widgets still show it
+* Skip widget placement if the posts sidebar already has a navigation widget, so re-installs do not duplicate it
+* Add the widget settings as a new instance instead of overwriting existing navigation widget instances in other sidebars
+* Require the manage_options capability and a nonce for the post type install action
 
 = 1.1.4 =
 * Patch issues with 5.8 and 5.9 compatibility
