@@ -2,8 +2,8 @@
 Contributors: carlosesilva, dannycrews, jdub233
 Tags: learning, teaching, education, online courses, boston university, bu
 Requires at least: 5.3.2
-Tested up to: 6.0
-Stable tag: 1.2.0
+Tested up to: 7.0
+Stable tag: 1.2.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,12 @@ The plugin can be activated and deactivated, no custom posts will be deleted.  D
 Development takes place at https://github.com/bu-ist/bu-learning-blocks/
 
 == Changelog ==
+
+= 1.2.1 =
+* Use the wp.blockEditor API instead of the deprecated wp.editor API, which warned in the block editor from WordPress 5.3 onward
+* Declare the wp-block-editor and wp-components script dependencies the block editor assets rely on, and the wp-data and wp-edit-post dependencies used by the page attributes script
+* Fix the build so both the frontend and blocks bundles are emitted, instead of the second build deleting the first bundle
+* Tested up to WordPress 7.0
 
 = 1.2.0 =
 * Flush rewrite rules when installing the lesson post type so Lesson Page permalinks resolve without a manual permalink re-save
