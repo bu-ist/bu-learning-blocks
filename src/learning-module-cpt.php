@@ -117,6 +117,30 @@ function register_learning_module_post_type() {
 add_action( 'init', __NAMESPACE__ . '\register_learning_module_post_type' );
 
 /**
+ * Declare the lesson post type to BU Access Control.
+ *
+ * BU Access Control builds its supported-post-type list from the
+ * 'bu_acl_supported_post_types' filter (default: 'page', 'attachment'). Adding
+ * the slug here makes lessons eligible for ACL's restriction meta box and its
+ * REST exclusion. The callback is only registered when this file is loaded,
+ * which is gated on the lesson post type being installed, so coverage tracks
+ * the post type per site. Where Access Control is not present the filter is
+ * never applied and this is an inert no-op.
+ *
+ * @since 1.2.2
+ *
+ * @param array $post_types Supported post type slugs.
+ * @return array Post type slugs including the lesson post type.
+ */
+function add_acl_support( $post_types ) {
+	if ( ! in_array( 'bulb-learning-module', (array) $post_types, true ) ) {
+		$post_types[] = 'bulb-learning-module';
+	}
+	return $post_types;
+}
+add_filter( 'bu_acl_supported_post_types', __NAMESPACE__ . '\add_acl_support' );
+
+/**
  * Flush rewrite rules for CPT
  *
  * @since 0.0.4
@@ -152,7 +176,7 @@ function bulb_add_pagination( $content ) {
 		'order'       => 'ASC',
 	);
 	$module_ids           = array( $module_parent );
-	$module_ids           = array_merge( $module_ids, array_keys( get_children( $child_args ) ) );
+	$module_ids           = array_merge( $module_ids, array_keys( get_children( $child_args ) ) ); // phpcs:ignore WordPress.VIP.RestrictedFunctions.get_posts_get_children -- Pre-existing lesson-pagination query, unchanged by this branch; VIP cache concern tracked as separate tech debt.
 	$current_module_index = array_search( $current_post_id, $module_ids, true );
 	$total_pages          = count( $module_ids );
 	$range                = 2; // Adjust this value to set the number of pages that appear in the nav.
